@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · GitBook</title>
+        <title>Vue-loader · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,7 +57,7 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="docker.html" />
+    <link rel="next" href="vue-cli.md" />
     
     
 
@@ -87,7 +87,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -140,7 +140,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1" data-path="vue-loader.html">
+        <li class="chapter active" data-level="1.4.1" data-path="vue-loader.html">
             
                 <a href="vue-loader.html">
             
@@ -265,7 +265,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >Vue-loader</a>
     </h1>
 </div>
 
@@ -280,8 +280,32 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="introduction">Introduction</h1>
-<p><code>my blog</code></p>
+                                <h1 id="vue-loader">Vue Loader</h1>
+<pre><code>Vue loader &#x53EF;&#x4EE5;&#x5E2E;&#x52A9;&#x4F60;&#x914D;&#x7F6E;&#x57FA;&#x4E8E; `WebPack` ()&#x800C;&#x975E;VueCLI) &#x6765;&#x5F00;&#x59CB;&#x4F60;&#x7684;&#x9879;&#x76EE;
+&#x7528;&#x4E8E;&#x628A;SFC (SingleFileComponent) &#x8F6C;&#x5316;&#x4E3A; js 
+</code></pre><p>&#x4E24;&#x4E2A;&#x529E;&#x6CD5; Setup Vue Project, &#x4E00;&#x4E2A;&#x662F;&#x4F7F;&#x7528; Vue-Cli, &#x53E6;&#x4E00;&#x79CD;&#x662F;&#x624B;&#x5DE5;&#x5EFA;&#x7ACB;&#x9879;&#x76EE; <code>Webpack-dev-server -hot</code></p>
+<p>Vue loader &#x7684;&#x7248;&#x672C;&#x5FC5;&#x987B;&#x548C; VUE &#x7684;&#x7248;&#x672C;&#x4FDD;&#x6301;&#x4E00;&#x81F4;. Vue Load &#x4E3B;&#x8981;&#x4F7F;&#x7528;&#x5728; WebPack &#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;:</p>
+<pre><code class="lang-js"><span class="hljs-comment">// webpack.config.js</span>
+<span class="hljs-keyword">const</span> VueLoaderPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;vue-loader/lib/plugin&apos;</span>)
+
+<span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-built_in">module</span>: {
+    rules: [
+      <span class="hljs-comment">// ... other rules</span>
+      {
+        test: <span class="hljs-regexp">/\.vue$/</span>,
+        loader: <span class="hljs-string">&apos;vue-loader&apos;</span>
+      }
+    ]
+  },
+  plugins: [
+    <span class="hljs-comment">// make sure to include the plugin!</span>
+    <span class="hljs-keyword">new</span> VueLoaderPlugin()
+  ]
+}
+</code></pre>
+<p>Vue &#x4E2D;&#x7684; template &#x4F1A;&#x88AB; Vue loader &#x8F6C;&#x5316;&#x4E3A; JS &#x4EE3;&#x7801;</p>
+<p>Hot reload &#x662F;&#x6307;&#x7F16;&#x8F91;&#x4E86; Vue &#x4EE3;&#x7801;&#x540E;, &#x6D4F;&#x89C8;&#x5668;&#x9875;&#x9762;&#x81EA;&#x52A8;&#x66F4;&#x65B0;(&#x975E;&#x5237;&#x65B0;)&#x7684;&#x6548;&#x679C;</p>
 
                                 
                                 </section>
@@ -310,7 +334,7 @@
             
                 
                 
-                <a href="docker.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Docker">
+                <a href="vue-cli.md" class="navigation navigation-next navigation-unique" aria-label="Next page: Vue-cli">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -321,7 +345,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Docker","level":"1.2","depth":1,"path":"docker.md","ref":"docker.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2019-05-05T14:59:21.558Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-01T11:17:40.759Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Vue-loader","level":"1.4.1","depth":2,"next":{"title":"Vue-cli","level":"1.4.2","depth":2,"path":"vue-cli.md","ref":"vue-cli.md","articles":[]},"previous":{"title":"Vue","level":"1.4","depth":1,"ref":"","articles":[{"title":"Vue-loader","level":"1.4.1","depth":2,"path":"vue-loader.md","ref":"vue-loader.md","articles":[]},{"title":"Vue-cli","level":"1.4.2","depth":2,"path":"vue-cli.md","ref":"vue-cli.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"vue-loader.md","mtime":"2019-08-24T16:24:53.287Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-01T11:17:40.759Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

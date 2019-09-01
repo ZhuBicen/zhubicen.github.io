@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · GitBook</title>
+        <title>Docker · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="docker.html" />
+    <link rel="next" href="cppSlide.html" />
     
+    
+    <link rel="prev" href="./" />
     
 
     </head>
@@ -87,7 +89,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -100,7 +102,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" data-path="docker.html">
+        <li class="chapter active" data-level="1.2" data-path="docker.html">
             
                 <a href="docker.html">
             
@@ -265,7 +267,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >Docker</a>
     </h1>
 </div>
 
@@ -280,8 +282,61 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="introduction">Introduction</h1>
-<p><code>my blog</code></p>
+                                <h1 id="docker">Docker</h1>
+<h2 id="docker-commands">Docker commands</h2>
+<h3 id="running-a-container-image">Running a container image</h3>
+<ul>
+<li><code>docker run --name kubia-container -p 8080:8080 -d kubia</code></li>
+</ul>
+<pre><code>Run a container with bash
+</code></pre><ul>
+<li><code>docker run --rm -ti ubuntu:latest /bin/bash</code></li>
+</ul>
+<pre><code>Remove if exist
+</code></pre><ul>
+<li><code>docker run -ti --restart=always</code></li>
+</ul>
+<pre><code>Restart when failure
+</code></pre><p>To kill a container, run <code>docker kill xxxcontainer-id</code></p>
+<p>Remove all containers, run <code>docker rm $(docker ps -a -q)</code></p>
+<p>Remove all images, run <code>docker rmi $(docker images -q -)</code></p>
+<ul>
+<li><code>-d</code> means detach</li>
+<li><code>--name</code> is the name of the container</li>
+<li><code>kubia</code> is the image name</li>
+</ul>
+<h3 id="stop-a-container">Stop a container</h3>
+<p><code>docker stop kubia-container</code></p>
+<h3 id="start-a-container">Start a container</h3>
+<p><code>docker start kubia-container</code></p>
+<h2 id="remove-a-container">Remove a container</h2>
+<p><code>docker rm kubia-container</code></p>
+<h3 id="list-all-the-containers">List all the containers</h3>
+<ul>
+<li><code>docker ps -a</code> show all the docker processes</li>
+<li><code>docker ps</code> show only the started processes</li>
+</ul>
+<h3 id="delete-all-the-stopped-containers">Delete all the stopped containers</h3>
+<p>before performing the removal command, you can get a list of all non-running (stopped) containers that will be removed using the following command:</p>
+<p><code>docker container ls -a --filter status=exited --filter status=created</code></p>
+<p>To remove all stopped containers use the docker container prune command:</p>
+<p><code>docker container prune</code></p>
+<h2 id="how-to-push-a-docker-image">How to push a docker image</h2>
+<pre><code class="lang-bash">docker login
+docker tag firstimage YOUR_DOCKERHUB_NAME/firstimage
+docker push YOUR_DOCKERHUB_NAME/firstimage
+</code></pre>
+<h2 id="minikube">Minikube</h2>
+<p><code>minikube start --docker-env http_proxy=http://127.0.0.1:1080 --docker-env https_proxy=http://127.0.0.1:1080</code></p>
+<p><code>minikube start --docker-env http_proxy=http://127.0.0.1:1080 --docker-env https_proxy=https://127.0.0.1:1080</code></p>
+<p><a href="https://codefarm.me/2018/08/09/http-proxy-docker-minikube/" target="_blank">Minikube behind http proxy</a></p>
+<pre><code>minikube start --docker-env HTTP_PROXY=http://127.0.0.1:1080/ --docker-env HTTPS_PROXY=http://127.0.0.1:1080/ --docker-env NO_PROXY=index.docker.io,registry.hub.docker.com,
+ registry-1.docker.io,registry.docker-cn.com,
+ registry-mirror-cache-cn.oss-cn-shanghai.aliyuncs.com,
+ 192.168.99.100 --registry-mirror https://registry.docker-cn.com
+</code></pre><!--stackedit_data:
+eyJoaXN0b3J5IjpbODc5NjE5NjldfQ==
+-->
 
                                 
                                 </section>
@@ -309,8 +364,12 @@
 
             
                 
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Introduction">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="docker.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Docker">
+                
+                <a href="cppSlide.html" class="navigation navigation-next " aria-label="Next page: C++">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -321,7 +380,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Docker","level":"1.2","depth":1,"path":"docker.md","ref":"docker.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2019-05-05T14:59:21.558Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-01T11:17:40.759Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Docker","level":"1.2","depth":1,"next":{"title":"C++","level":"1.3","depth":1,"path":"cppSlide.md","ref":"cppSlide.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docker.md","mtime":"2019-08-24T13:44:46.786Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-01T11:17:40.759Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

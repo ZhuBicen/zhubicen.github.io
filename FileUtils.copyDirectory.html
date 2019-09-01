@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · GitBook</title>
+        <title>copyDirectory · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,6 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="docker.html" />
-    
     
 
     </head>
@@ -87,7 +85,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -185,7 +183,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.1" data-path="FileUtils.copyDirectory.html">
+        <li class="chapter active" data-level="1.5.1" data-path="FileUtils.copyDirectory.html">
             
                 <a href="FileUtils.copyDirectory.html">
             
@@ -265,7 +263,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >copyDirectory</a>
     </h1>
 </div>
 
@@ -280,9 +278,33 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="introduction">Introduction</h1>
-<p><code>my blog</code></p>
+                                <p>&#x4ECA;&#x5929;&#x9047;&#x5230;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x5728; <code>executor</code>&#x91CC;&#x6267;&#x884C;&#x4E00;&#x4E2A;<code>task</code>&#x65F6;&#xFF0C;&#x5728;&#x6267;&#x884C;&#x5230; <code>FileUtils.copyDirectory</code>&#x65F6;&#xFF0C;&#x5C31;&#x9ED8;&#x9ED8;&#x7684;&#x9000;&#x51FA;&#x4E86;&#xFF08;&#x5176;&#x5B9E;&#x65F6;&#x629B;&#x51FA;&#x4E86; <code>IOException</code>&#xFF09;&#xFF0C;&#x4E0D;&#x77E5;&#x9053;&#x53D1;&#x751F;&#x4E86;&#x4EC0;&#x4E48;&#x3002;</p>
+<p>&#x539F;&#x56E0;&#x5728;&#x4E8E;&#xFF0C;&#x5BF9;&#x4E8E;&#x5F02;&#x5E38;&#x7684;&#x5904;&#x7406;&#x592A;&#x8FC7;&#x4E8E;&#x7C97;&#x7CD9;&#x3002;</p>
+<pre><code>copyDirectory
+public static void copyDirectory(File srcDir,
+                 File destDir,
+                 boolean preserveFileDate)
+                          throws IOException
+Copies a whole directory to a new location.
+This method copies the contents of the specified source directory to within the specified destination directory.
 
+The destination directory is created if it does not exist. If the destination directory did exist, then this method merges the source with the destination, with the source taking precedence.
+
+Note: Setting preserveFileDate to true tries to preserve the files&apos; last modified date/times using File.setLastModified(long), however it is not guaranteed that those operations will succeed. If the modification operation fails, no indication is provided.
+
+Parameters:
+srcDir - an existing directory to copy, must not be null
+destDir - the new directory, must not be null
+preserveFileDate - true if the file date of the copy should be the same as the original
+Throws:
+NullPointerException - if source or destination is null
+IOException - if source or destination is invalid
+IOException - if an IO error occurs during copying
+Since:
+1.1
+</code></pre><!--stackedit_data:
+eyJoaXN0b3J5IjpbMTY1OTQ0MzU5MV19
+-->
                                 
                                 </section>
                             
@@ -310,10 +332,6 @@
             
                 
                 
-                <a href="docker.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Docker">
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                
             
         
     </div>
@@ -321,7 +339,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Docker","level":"1.2","depth":1,"path":"docker.md","ref":"docker.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2019-05-05T14:59:21.558Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-01T11:17:40.759Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"copyDirectory","level":"1.5.1","depth":2,"next":{"title":"[Others]","level":"1.6","depth":1,"ref":"","articles":[{"title":"ElasticSearch","level":"1.6.1","depth":2,"path":"es_introduction.md","ref":"es_introduction.md","articles":[]}]},"previous":{"title":"[Java]","level":"1.5","depth":1,"ref":"","articles":[{"title":"copyDirectory","level":"1.5.1","depth":2,"path":"FileUtils.copyDirectory.md","ref":"FileUtils.copyDirectory.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"FileUtils.copyDirectory.md","mtime":"2019-08-24T13:44:46.769Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-01T11:17:40.759Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
