@@ -14,4 +14,4 @@ git config --global alias.st status
 
 git 常用操作示意图:
 
-![1576475173484](C:\code\quickstart\content\posts\git-alias.assets\1576475173484.png)
+![1576475173484](./git-alias.assets/1576475173484.png)

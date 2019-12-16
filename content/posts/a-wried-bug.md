@@ -31,24 +31,7 @@ tags: []
   MessageExt msg = msgs.get(0);
   String tags = msg.getTags();
   try {
-   ObjectNode taskJson = (ObjectNode) JacksonHelper.fromStr(str);
-
-   if (tags.contains(RocketmqConst.MSG_TAG_RUNNING_DONE) && taskJson.has("test-line")) {
-    long start = System.currentTimeMillis();
-    logger.info("Running done from " + taskJson.get("test-line").get("ip").asText() + ", sid is: "
-      + taskJson.get("sid").asText() + ", msg id:" + msg.getMsgId());
-    MacRunning running = AnanDB.find(MacRunning.class, "sid", taskJson.get("sid").asInt());
-    if (!basicCheck(running, taskJson)) {
-     return ConsumeOrderlyStatus.SUCCESS;
-    }
-    persist(running, taskJson);
-    long cost = System.currentTimeMillis() - start;
-    if (cost > 200) {
-     logger.error("Running done cost: " + cost);
-    }
-    return ConsumeOrderlyStatus.SUCCESS;
-   }
-
+   //....
    return ConsumeOrderlyStatus.SUCCESS;
   } catch (Exception exception) {
    logger.error("Exception occured:", exception);
@@ -63,9 +46,9 @@ tags: []
 
 无奈只能和 Mihi 一起打 log， 打了一圈，最后发现在这一句（`notifyCdeJobStatus` )没有进去：
 
-![1576473823378](C:\code\quickstart\content\posts\a-wried-bug.assets\1576473823378.png)
+![1576473823378](./a-wried-bug.assets/1576473823378.png)
 
-这时候，Mihi 说最近老付把老的 XML，删除掉了。我一想还真是。指不定就是配置的问题。所以我们果断 `revert` 了 svn 上关于 xml 的改动。然后发现，之前的错误打印没有了，系统正常了。
+这时候，Mihi 说最近老付把旧的 XML 删除掉了。我一想还真可能是这个问题。指不定就是配置的问题。所以我们果断 `revert` 了 svn 上关于 xml 的改动。然后发现，之前的错误打印没有了，系统正常了。
 
 哎
 
@@ -73,14 +56,14 @@ Mihi 给我看了如下的 `CdeJobNotifier` 的代码，心想还真是有关系
 
 进这个 `CdeJobNotifer` 里看看是这样的：
 
-![1576473851593](C:\code\quickstart\content\posts\a-wried-bug.assets\1576473851593.png)
+![1576473851593](./a-wried-bug.assets/1576473851593.png)
 
 还记得前面我说过，一些过时的 xml 被删除掉了，但是这里的代码还在找老的 xml， 因此 `xmlPath` 实际上为一个无效的路径，而 `JDom2Helper.fromFile` 会返回 `null` 对， 接下来就会出现 `NullPointerException` 。
 
 
 哪问题来了，为啥我们在 `consumeMessage` 下的 try catch 没有捕获到这个异常呢。google 了一下, 原因如下截图所示：
 
-![1576474015612](C:\code\quickstart\content\posts\a-wried-bug.assets\1576474015612.png)
+![1576474015612](a-wried-bug.assets/1576474015612.png)
 
 
 
