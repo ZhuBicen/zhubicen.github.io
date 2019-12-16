@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ElasticSearch on quick start</title>
+    <link>https://zhubicen.github.io/tags/elasticsearch/</link>
+    <description>Recent content in ElasticSearch on quick start</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 23 Jan 2019 21:08:24 +0800</lastBuildDate>
+    
+	<atom:link href="https://zhubicen.github.io/tags/elasticsearch/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Elastic Search Quickstart</title>
+      <link>https://zhubicen.github.io/posts/elastic-search-quickstart/</link>
+      <pubDate>Wed, 23 Jan 2019 21:08:24 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/elastic-search-quickstart/</guid>
+      <description>Prerequisites What is Elasticsearch  high-performance RESTful search engine and document store  Start Elasticsearch On Windows: elastic‑search‑dir\bin\elasticsearch.bat
+Using cURL for REST commands Create an index $ curl ‑XPUT &amp;quot;http://localhost:9200/music/&amp;quot;
+Insert a document $ curl XPUT &amp;quot;http://localhost:9200/music/songs/1&amp;quot; ‑d &#39; { &amp;quot;name&amp;quot;: &amp;quot;Deck the Halls&amp;quot;, &amp;quot;year&amp;quot;: 1885, &amp;quot;lyrics&amp;quot;: &amp;quot;Fa la la la la&amp;quot; }&#39; View a document $ curl ‑XGET &amp;quot;http://localhost:9200/music/songs/1&amp;quot; Output:
+{&amp;quot;_index&amp;quot;:&amp;quot;music&amp;quot;,&amp;quot;_type&amp;quot;:&amp;quot;songs&amp;quot;,&amp;quot;_id&amp;quot;:&amp;quot;1&amp;quot;,&amp;quot;_version&amp;quot;:1,&amp;quot;found&amp;quot;:true,&amp;quot;_source&amp;quot;: { &amp;quot;name&amp;quot;: &amp;quot;Deck the Halls&amp;quot;, &amp;quot;year&amp;quot;: 1885, &amp;quot;lyrics&amp;quot;: &amp;quot;Fa la la la la&amp;quot; }} Update a document $ curl ‑XPUT &amp;quot;http://localhost:9200/music/lyrics/1&amp;quot; ‑d &#39;{ &amp;quot;name&amp;quot;: &amp;quot;Deck the Halls&amp;quot;, &amp;quot;year&amp;quot;: 1886, &amp;quot;lyrics&amp;quot;: &amp;quot;Fa la la la la&amp;quot; }&#39; Delete a document curl ‑XDELETE &amp;quot;http://localhost:9200/music/lyrics/1&amp;quot; Insert a document from a file  $ curl ‑XPUT &amp;quot;http://localhost:9200/music/lyrics/2&amp;quot; ‑d @caseyjones.</description>
+    </item>
+    
+  </channel>
+</rss>

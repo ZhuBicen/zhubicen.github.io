@@ -9,11 +9,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>
     
-    Heap Corruption
+    解读 C&#43;&#43; 指针声明
      | 阿碧 
   </title>
   <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.eb4797a608f467160f71b5cc518dffb9b3fef0edc95e6def8dc4033ba1888b8f414e3d1d3e6c9804ca3e6f125539d8af48b28dcecb4eafc5805bde0b3c8d6956.css' integrity='sha512-60eXpgj0ZxYPcbXMUY3/ubP&#43;8O3JXm3vjcQDO6GIi49BTj0dPmyYBMo&#43;bxJVOdivSLKNzstOr8WAW94LPI1pVg=='>
-  <link rel="canonical" href="https://zhubicen.github.io/posts/heap-corruption/">
+  <link rel="canonical" href="https://zhubicen.github.io/posts/c&#43;&#43;pointer/">
   <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
   <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -22,30 +22,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer">
 <meta name="author" content="阿碧">
-<meta name="description" content="昨天遇到一个HEAP CORRUPTION错误，花了好多的时间才找到原因，现总结如下，希望大家遇到同样的问题的时候，能迅速定位错误的代码。
-错误的现象是这样的：
-在程序的开始处我申请了一块内存，中间对其进行了一些操作，在程序结束处，释放内存的时候，引起错误：
-HEAP CORRUPTION DETECTED：after Normal block(#***) at 0x****.CRT detected that application wrote memory after end of heap buffer. 错误原因：
-以对内存操作的过程中，所写的地址超出了，所分配内存的边界
-解决办法：
-在可能出错的代码处，使用_CrtCheckMemory进行检测
-比如：
- int* p = new int[2]; *(p&#43;2) = 1; _ASSERTE( _CrtCheckMemory( ) ); ">
+<meta name="description" content="char *const cp ; // const pointer to char char const * pc ; // pointer to const char const char * pc2 ; // pointer to const char Some people find it helpful to read such declarations right to left. For example, &quot;cp is a const pointer to a char&quot; and &quot;pc2 is a pointer to a char const .&quot; 如何复杂的表达式声明，掌握了方法一样可以读出来。首先，()和[]具有比*更高的优先级。因此先读[]，读作 array of，读作pointer to。当然()具有最高的优先级，如果（）里没有内容类似 returntype ( function)()的，读作function。
+char (*(*x())[])()，从里面往外读 , x is a function returning pointer to D，读到这里可以进行一个简化， char(*D)[]()，继续读，D is array of function returning char。因此： function returning pointer to array[] of pointer to function returning char">
 
-<meta property="og:title" content="Heap Corruption" />
-<meta property="og:description" content="昨天遇到一个HEAP CORRUPTION错误，花了好多的时间才找到原因，现总结如下，希望大家遇到同样的问题的时候，能迅速定位错误的代码。
-错误的现象是这样的：
-在程序的开始处我申请了一块内存，中间对其进行了一些操作，在程序结束处，释放内存的时候，引起错误：
-HEAP CORRUPTION DETECTED：after Normal block(#***) at 0x****.CRT detected that application wrote memory after end of heap buffer. 错误原因：
-以对内存操作的过程中，所写的地址超出了，所分配内存的边界
-解决办法：
-在可能出错的代码处，使用_CrtCheckMemory进行检测
-比如：
- int* p = new int[2]; *(p&#43;2) = 1; _ASSERTE( _CrtCheckMemory( ) ); " />
+<meta property="og:title" content="解读 C&#43;&#43; 指针声明" />
+<meta property="og:description" content="char *const cp ; // const pointer to char char const * pc ; // pointer to const char const char * pc2 ; // pointer to const char Some people find it helpful to read such declarations right to left. For example, &quot;cp is a const pointer to a char&quot; and &quot;pc2 is a pointer to a char const .&quot; 如何复杂的表达式声明，掌握了方法一样可以读出来。首先，()和[]具有比*更高的优先级。因此先读[]，读作 array of，读作pointer to。当然()具有最高的优先级，如果（）里没有内容类似 returntype ( function)()的，读作function。
+char (*(*x())[])()，从里面往外读 , x is a function returning pointer to D，读到这里可以进行一个简化， char(*D)[]()，继续读，D is array of function returning char。因此： function returning pointer to array[] of pointer to function returning char" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zhubicen.github.io/posts/heap-corruption/" />
-<meta property="article:published_time" content="2006-11-10T22:58:46+08:00" />
-<meta property="article:modified_time" content="2006-11-10T22:58:46+08:00" />
+<meta property="og:url" content="https://zhubicen.github.io/posts/c&#43;&#43;pointer/" />
+<meta property="article:published_time" content="2009-06-27T10:33:33+08:00" />
+<meta property="article:modified_time" content="2009-06-27T10:33:33+08:00" />
 
 
 </head>
@@ -158,11 +144,11 @@ HEAP CORRUPTION DETECTED：after Normal block(#***) at 0x****.CRT detected that 
   <div class="hero-body">
 <div class="container">
   <h1 class="title">
-    Heap Corruption
+    解读 C&#43;&#43; 指针声明
   </h1>
   <h2 class="subtitle">
-    <time datetime='2006-11-10T22:58:46&#43;08:00'>
-      November 10, 2006
+    <time datetime='2009-06-27T10:33:33&#43;08:00'>
+      June 27, 2009
     </time>
     
     <br>
@@ -181,18 +167,21 @@ HEAP CORRUPTION DETECTED：after Normal block(#***) at 0x****.CRT detected that 
 <section class="section">
   <div class="container">
 <div class="content is-medium">
-  <p>昨天遇到一个HEAP CORRUPTION错误，花了好多的时间才找到原因，现总结如下，希望大家遇到同样的问题的时候，能迅速定位错误的代码。</p>
-<p>错误的现象是这样的：</p>
-<p>在程序的开始处我申请了一块内存，中间对其进行了一些操作，在程序结束处，释放内存的时候，引起错误：</p>
-<pre><code>HEAP CORRUPTION DETECTED：after Normal block(#***) at 0x****.CRT detected that application wrote memory after end of heap buffer.
-</code></pre><p>错误原因：</p>
-<p>以对内存操作的过程中，所写的地址超出了，所分配内存的边界</p>
-<p>解决办法：</p>
-<p>在可能出错的代码处，使用_CrtCheckMemory进行检测</p>
-<p>比如：</p>
-<pre><code> int* p = new int[2];
- *(p+2) = 1;
- _ASSERTE( _CrtCheckMemory( ) );
+  <pre><code>char *const cp ; // const pointer to char 
+char const * pc ; // pointer to const char
+const char * pc2 ; // pointer to const char 
+Some people find it helpful to read such declarations right to left. For example, &quot;cp is a const pointer to a char&quot; and &quot;pc2 is a pointer to a char const .&quot;
+</code></pre><p>如何复杂的表达式声明，掌握了方法一样可以读出来。首先，()和[]具有比*更高的优先级。因此先读[]，读作 array of，<em>读作pointer to。当然()具有最高的优先级，如果（）里没有内容类似 returntype (</em> function)()的，读作function。</p>
+<p><code>char (*(*x())[])()</code>，从里面往外读 , x is a function returning pointer to D，读到这里可以进行一个简化， <code>char(*D)[]()</code>，继续读，D is array of function returning char。因此： function returning pointer to array[] of  pointer to function returning char</p>
+<pre><code>char (*(*x[3])())[5]  ---&gt;&gt; char(*D)())[5]，x is array3 of pointer to , D is function return char[5]。
+</code></pre><p>这是我比较好理解的方法，写的也比较粗糙。更详细请参考这里：</p>
+<p><a href="http://blog.chinaunix.net/u/12783/showart_378340.html">http://blog.chinaunix.net/u/12783/showart_378340.html</a></p>
+<pre><code>int
+int *
+int *[3]
+int (*)[]
+int *()
+int (*[])(void)
 </code></pre>
 </div>
 
