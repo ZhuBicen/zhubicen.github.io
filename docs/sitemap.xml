@@ -3,26 +3,26 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://localhost:8080/posts/</loc>
+    <loc>https://zhubicen.github.io/posts/</loc>
     <lastmod>2019-11-27T21:37:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:8080/</loc>
+    <loc>https://zhubicen.github.io/</loc>
     <lastmod>2019-11-27T21:37:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:8080/posts/spring-cloud-quickstart/</loc>
+    <loc>https://zhubicen.github.io/posts/spring-cloud-quickstart/</loc>
     <lastmod>2019-11-27T21:37:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:8080/categories/</loc>
+    <loc>https://zhubicen.github.io/categories/</loc>
   </url>
   
   <url>
-    <loc>http://localhost:8080/tags/</loc>
+    <loc>https://zhubicen.github.io/tags/</loc>
   </url>
   
 </urlset>

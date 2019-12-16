@@ -1,4 +1,5 @@
-baseURL = "http://example.org/"
+publishDir = "docs"
+baseURL = "https://zhubicen.github.io/"
 languageCode = "en-us"
 title = "quick start"
 theme = "hugo-kiera" 

@@ -1,23 +1,23 @@
 
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
  <channel>
-   <title>quick start</title>
-   <link>http://localhost:8080/</link>
-   <description>Recent content on quick start</description>
+   <title>Posts on quick start</title>
+   <link>https://zhubicen.github.io/posts/</link>
+   <description>Recent content in Posts on quick start</description>
    <generator>Hugo -- gohugo.io</generator>
    <language>en-us</language>
    <lastBuildDate>Wed, 27 Nov 2019 21:37:00 +0800</lastBuildDate>
    
-       <atom:link href="http://localhost:8080/index.xml" rel="self" type="application/rss+xml" />
+       <atom:link href="https://zhubicen.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
    
    
      <item>
        <title>Spring Cloud Quickstart</title>
-       <link>http://localhost:8080/posts/spring-cloud-quickstart/</link>
+       <link>https://zhubicen.github.io/posts/spring-cloud-quickstart/</link>
        <pubDate>Wed, 27 Nov 2019 21:37:00 +0800</pubDate>
        
-       <guid>http://localhost:8080/posts/spring-cloud-quickstart/</guid>
-       <description>&lt;p&gt;&lt;img src=&#34;../images/1575127662002.png&#34; alt=&#34;1575127662002&#34;&gt;&lt;/p&gt;
+       <guid>https://zhubicen.github.io/posts/spring-cloud-quickstart/</guid>
+       <description>&lt;p&gt;&lt;img src=&#34;../../../../Codequickstartstatic/1575127662002.png&#34; alt=&#34;1575127662002&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Spring Cloud 是 spring 的全家桶之一， 为使用 Java 构建微服务提供了便利的基础设施。 本文主要通过把现有的三个服务改造为微服务，以此对 Spring Cloud 微服务组件有直观的了解。&lt;/p&gt;
 &lt;p&gt;本文采用的 &lt;code&gt;Spring Cloud&lt;/code&gt; 版本为：&lt;code&gt;Greenwich.SR2&lt;/code&gt;， 其对应的相关组件的版本为&lt;/p&gt;
 &lt;table&gt;
@@ -101,7 +101,7 @@ name: Bernard
 &lt;p&gt;在启动 &lt;code&gt;configserver&lt;/code&gt; 前，首先适配 configserver 的 &lt;code&gt;application.yml&lt;/code&gt; 中的 &lt;code&gt;searchLocations&lt;/code&gt;字段，指向本地的 &lt;code&gt;config-yml&lt;/code&gt; 目录。&lt;/p&gt;
 &lt;p&gt;在 &lt;code&gt;configserver&lt;/code&gt; 目录下运行， &lt;code&gt;mvn spring-boot:run&lt;/code&gt; 。configserver 的端口在&lt;code&gt;8888&lt;/code&gt;，configserver 启动后， 可以分别访问如下的 URL，以查看 Greeting 服务，Name 服务，以及 Web 服务的 config 文件&lt;/p&gt;
 &lt;p&gt;访问 &lt;code&gt;http::localhost:8888/greeting/default&lt;/code&gt; 可以查看到如下的返回：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;image/1575113719003.png&#34; alt=&#34;1575113719003&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;spring-cloud-quickstart.assets/1575113719003.png&#34; alt=&#34;1575113719003&#34;&gt;&lt;/p&gt;
 &lt;p&gt;访问 &lt;code&gt;http::localhost:8888/name/default&lt;/code&gt; 可以查看到如下的返回：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;spring-cloud-quickstart.assets/1575113740397.png&#34; alt=&#34;1575113740397&#34;&gt;&lt;/p&gt;
 &lt;p&gt;访问&lt;code&gt;http://localhsot:8888/web/default&lt;/code&gt;可以查看到如下的返回：&lt;/p&gt;
