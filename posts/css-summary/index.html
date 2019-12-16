@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    
+    CSS 项目心得
+     | 阿碧 
+  </title>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.eb4797a608f467160f71b5cc518dffb9b3fef0edc95e6def8dc4033ba1888b8f414e3d1d3e6c9804ca3e6f125539d8af48b28dcecb4eafc5805bde0b3c8d6956.css' integrity='sha512-60eXpgj0ZxYPcbXMUY3/ubP&#43;8O3JXm3vjcQDO6GIi49BTj0dPmyYBMo&#43;bxJVOdivSLKNzstOr8WAW94LPI1pVg=='>
+  <link rel="canonical" href="https://zhubicen.github.io/posts/css-summary/">
+  <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="阿碧">
+<meta name="description" content="接到一个任务，把现有的一个.NET做的网站外观及布局进行改版。以前没有做过此类工作，工作嘛，没有办法，只好来了。
+.NET之前还是有所了解的。因此我首先读了一本书[Beginning HTML with CSS and XHTML Modern Guide and Reference], 能过此书我了解了主要的HTML标签，以及各自的用途。然后通过这本书了解了最基本的CSS用法[Beginning.CSS.Web.Development.From.Novice.to.Professional]。之后又到网上搜索，买了一本经典的网站重构。这本书总体还行，能给读者一个高屋建瓴的把握。不过着实如网上所说，这本书前面大部分费话太多。最后又下载了[CSS禅意花园]和[CSS Mastery]了解了一下。
+CSS最核心的东西就是其“盒模型”，弄懂了这个，再加上布局的方法，一切皆可搞定。开发过程中我大量使用了google chrome。和其它同事交流时，他们说最的一个测试的浏览器才是google chrome，而我不是。我第一个拿它来测试，它启动迅速，又有很好用的”开发工具“（在页面上点右键-》审查元素，觉得这个开发工具超级强大[当然喜欢firefox的可以使用其开发工具Web Developer。IE下也有相应的工具，但是不太好用]。chrome上搞定之后，一般来说ie7,8和firefox都是没有问题的。比较容易出现在问题是，一些CSS的默认值是不一样的，所以最好指定一下，如果不指定，不同的浏览器会有不同的效果。最扯淡的是ie6，还好ie6的bug在网上有很多的讨论。去搜一搜一般都能搞定。IE6什么时候才会死啊？郁闷。
+还有一个经验是，要想把CSS写的完美，精炼，好的HTML代码是必须的。如果网页生成的HTML代码一堆混乱，我看着就头疼，看到烂代码，总是会去改后台代使其生成精炼的语义化的HTML。">
+
+<meta property="og:title" content="CSS 项目心得" />
+<meta property="og:description" content="接到一个任务，把现有的一个.NET做的网站外观及布局进行改版。以前没有做过此类工作，工作嘛，没有办法，只好来了。
+.NET之前还是有所了解的。因此我首先读了一本书[Beginning HTML with CSS and XHTML Modern Guide and Reference], 能过此书我了解了主要的HTML标签，以及各自的用途。然后通过这本书了解了最基本的CSS用法[Beginning.CSS.Web.Development.From.Novice.to.Professional]。之后又到网上搜索，买了一本经典的网站重构。这本书总体还行，能给读者一个高屋建瓴的把握。不过着实如网上所说，这本书前面大部分费话太多。最后又下载了[CSS禅意花园]和[CSS Mastery]了解了一下。
+CSS最核心的东西就是其“盒模型”，弄懂了这个，再加上布局的方法，一切皆可搞定。开发过程中我大量使用了google chrome。和其它同事交流时，他们说最的一个测试的浏览器才是google chrome，而我不是。我第一个拿它来测试，它启动迅速，又有很好用的”开发工具“（在页面上点右键-》审查元素，觉得这个开发工具超级强大[当然喜欢firefox的可以使用其开发工具Web Developer。IE下也有相应的工具，但是不太好用]。chrome上搞定之后，一般来说ie7,8和firefox都是没有问题的。比较容易出现在问题是，一些CSS的默认值是不一样的，所以最好指定一下，如果不指定，不同的浏览器会有不同的效果。最扯淡的是ie6，还好ie6的bug在网上有很多的讨论。去搜一搜一般都能搞定。IE6什么时候才会死啊？郁闷。
+还有一个经验是，要想把CSS写的完美，精炼，好的HTML代码是必须的。如果网页生成的HTML代码一堆混乱，我看着就头疼，看到烂代码，总是会去改后台代使其生成精炼的语义化的HTML。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhubicen.github.io/posts/css-summary/" />
+<meta property="article:published_time" content="2009-08-25T16:38:54+08:00" />
+<meta property="article:modified_time" content="2009-08-25T16:38:54+08:00" />
+
+
+</head>
+<body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      <figure class="image">
+        <img alt="" class="is-rounded" src="https://www.gravatar.com/avatar/a7074f9fedfabb09fc4a6b6973c3f25f?s=128&d=identicon">
+      </figure>
+    </a>
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      quick start
+    </a>
+  </div>
+  
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/c&#43;&#43;/">
+        
+        C&#43;&#43;
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/chrome/">
+        
+        Chrome
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/css/">
+        
+        CSS
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/emacs/">
+        
+        Emacs
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/english/">
+        
+        English
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/git/">
+        
+        Git
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/golang/">
+        
+        Golang
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/java/">
+        
+        Java
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/javascript/">
+        
+        Java script
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/linux/">
+        
+        Linux
+        
+      </a>
+      
+    </div>
+    
+    <div class="navbar-end">
+      
+      <a class="navbar-item" href="mailto:zhubicen@gmail.com" target="_blank">
+        <span class="icon">
+          <img alt="email" src='https://zhubicen.github.io/icons/svg/email.svg'>
+        </span>
+      </a>
+      <a class="navbar-item" href="https://zhubicen.github.io/index.xml" target="_blank">
+        <span class="icon">
+          <img alt="rss" src='https://zhubicen.github.io/icons/svg/rss.svg'>
+        </span>
+      </a>
+      
+    </div>
+  </div>
+</nav>
+<section class="hero is-small is-info is-fullwidth">
+  <div class="hero-body">
+<div class="container">
+  <h1 class="title">
+    CSS 项目心得
+  </h1>
+  <h2 class="subtitle">
+    <time datetime='2009-08-25T16:38:54&#43;08:00'>
+      August 25, 2009
+    </time>
+    
+    <br>
+    
+    
+    
+    <a class="tag is-link" href="https://zhubicen.github.io/tags/css/">CSS</a>
+    
+    
+    
+  </h2>
+</div>
+
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+<div class="content is-medium">
+  <p>接到一个任务，把现有的一个.NET做的网站外观及布局进行改版。以前没有做过此类工作，工作嘛，没有办法，只好来了。</p>
+<p>.NET之前还是有所了解的。因此我首先读了一本书[Beginning HTML with CSS and XHTML Modern Guide and Reference], 能过此书我了解了主要的HTML标签，以及各自的用途。然后通过这本书了解了最基本的CSS用法[Beginning.CSS.Web.Development.From.Novice.to.Professional]。之后又到网上搜索，买了一本经典的网站重构。这本书总体还行，能给读者一个高屋建瓴的把握。不过着实如网上所说，这本书前面大部分费话太多。最后又下载了[CSS禅意花园]和[CSS Mastery]了解了一下。</p>
+<p>CSS最核心的东西就是其“盒模型”，弄懂了这个，再加上布局的方法，一切皆可搞定。开发过程中我大量使用了google chrome。和其它同事交流时，他们说最的一个测试的浏览器才是google chrome，而我不是。我第一个拿它来测试，它启动迅速，又有很好用的”开发工具“（在页面上点右键-》审查元素，觉得这个开发工具超级强大[当然喜欢firefox的可以使用其开发工具Web Developer。IE下也有相应的工具，但是不太好用]。chrome上搞定之后，一般来说ie7,8和firefox都是没有问题的。比较容易出现在问题是，一些CSS的默认值是不一样的，所以最好指定一下，如果不指定，不同的浏览器会有不同的效果。最扯淡的是ie6，还好ie6的bug在网上有很多的讨论。去搜一搜一般都能搞定。IE6什么时候才会死啊？郁闷。</p>
+<p><img src="css-summary.assets/image-20191216234039629.png" alt="image-20191216234039629"></p>
+<p>还有一个经验是，要想把CSS写的完美，精炼，好的HTML代码是必须的。如果网页生成的HTML代码一堆混乱，我看着就头疼，看到烂代码，总是会去改后台代使其生成精炼的语义化的HTML。</p>
+
+</div>
+
+
+  </div>
+</section><footer class="footer">
+  <div class="content has-text-centered">
+    
+    
+    <p>
+      
+      <a href="https://github.com/orf/bare-hugo-theme" target="_blank">Bare Hugo theme.</a>
+      
+      
+    </p>
+    
+  </div>
+</footer>
+
+
+</body>
+</html>

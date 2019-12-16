@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>JavaScript on quick start</title>
+    <link>https://zhubicen.github.io/tags/javascript/</link>
+    <description>Recent content in JavaScript on quick start</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 30 Aug 2018 17:33:31 +0800</lastBuildDate>
+    
+	<atom:link href="https://zhubicen.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>太老的 node 版本引起的问题</title>
+      <link>https://zhubicen.github.io/posts/too-old-npm/</link>
+      <pubDate>Thu, 30 Aug 2018 17:33:31 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/too-old-npm/</guid>
+      <description>今天被一个 redhat 镜像上的老版本的 node 和 npm 坑了（使用 yum install npm 安装的），npm -v (1.3.6), node -v(v0.10.48)。最新的版本是多少呢：
+这两者的版本差的太多了。导致了各种问题，比如：
+Cannot read property &#39;latest&#39; of undefined 网上搜到有些建议需要更新 npm，给出了命令，但是诡异的是使用 npm install npm -g 后，npm 就无法正常使用了，npm -v 都会导致错误，这个原因可能也是 node 的版本确实太低了。
+所以安装新版本 npm 后，一切问题都没有了。
+可以参考下面的页面，来安装较新版本的 npm:
+https://nodejs.org/en/download/package-manager/</description>
+    </item>
+    
+    <item>
+      <title>Javascript 学习笔记</title>
+      <link>https://zhubicen.github.io/posts/javascript-study/</link>
+      <pubDate>Fri, 05 Jun 2009 23:29:38 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/javascript-study/</guid>
+      <description>from http://www.howtocreate.co.uk/tutorials/javascript/
+定义变量 JS里变量的类型并不是非常重要，变量的类型可以在运行期改变。基础类型有，character，string，integer，float（or double)，boolean, function, object, array, undefined, null. Interger and float are grouped as ‘number’. Charater and string are grouped as string. array属于对象类型。
+变量的定义：
+var myFish = ‘A fish swam in the river’ 对象定义：
+var o1 = new Object(); var o2={myFirstProperty:1, myNextProperty:’hi’,etc}; 数组的使用：
+var nameOfArray = new Array(); var nameOfArray = new Array(&#39;content_of_first_cell&#39;,&#39;and_the_second&#39;,8,&#39;blah&#39;,&#39;etc&#39;); var nameOfArray = [&#39;content_of_first_cell&#39;,&#39;and_the_second&#39;,8,&#39;blah&#39;,&#39;etc&#39;]; 同时JavaScript可以定义多维数组： var nameOfArray = new Array(new Array(1,2,3,4),&#39;hello&#39;,[&#39;a&#39;,&#39;b&#39;,&#39;c&#39;]); 其它类型：Date,Image,Option,RegExp
+If at any time you refer to a variable that does not exist, you will cause an error.</description>
+    </item>
+    
+  </channel>
+</rss>

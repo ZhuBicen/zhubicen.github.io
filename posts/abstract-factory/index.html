@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    
+    Abstract Factory
+     | 阿碧 
+  </title>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.eb4797a608f467160f71b5cc518dffb9b3fef0edc95e6def8dc4033ba1888b8f414e3d1d3e6c9804ca3e6f125539d8af48b28dcecb4eafc5805bde0b3c8d6956.css' integrity='sha512-60eXpgj0ZxYPcbXMUY3/ubP&#43;8O3JXm3vjcQDO6GIi49BTj0dPmyYBMo&#43;bxJVOdivSLKNzstOr8WAW94LPI1pVg=='>
+  <link rel="canonical" href="https://zhubicen.github.io/posts/abstract-factory/">
+  <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="阿碧">
+<meta name="description" content="AF是一种对象创建型模式。
+对象创建型模式：将实例化委托给另一个对象。类创建型模式用继承来改变被初始化的类。
+在设计模式中提到：“AbstractFactory类通常用FactoryMethod实现，但也可以用Prototype实现。” AF模式侧重于产品的系列性，增加对某一产品的支持将比较困难。ＦＭ模式则没有此限制，ＦＭ又被称为虚构造函数。
+http://code.google.com/p/tcplex/source/browse/trunk/Design_Pattern/af.cpp
+#include &lt;iostream&gt;using namespace std; class MapSite { virtual void Enter() = 0; }; class Room:public MapSite { virtual void Enter(){ cout &lt;&lt; &#34;Entering room!&#34; &lt;&lt; endl; } }; class Door:public MapSite { virtual void Enter(){ cout &lt;&lt; &#34;Entering door!&#34; &lt;&lt; endl; } }; class Maze { public: Maze(); void AddRoom(Room*){} void AddDoor(Door*){} }; class MazeFactory { public: virtual Maze* MakeMaze()const{ return new Maze(); } virtual Room* MakeRoom()const{ return new Room(); } virtual Door* MakeDoor()const{ return new Door(); } }; class MazeGame { public: Maze* CreateMaze(MazeFactory&amp; factory){ Maze* mz = factory.">
+
+<meta property="og:title" content="Abstract Factory" />
+<meta property="og:description" content="AF是一种对象创建型模式。
+对象创建型模式：将实例化委托给另一个对象。类创建型模式用继承来改变被初始化的类。
+在设计模式中提到：“AbstractFactory类通常用FactoryMethod实现，但也可以用Prototype实现。” AF模式侧重于产品的系列性，增加对某一产品的支持将比较困难。ＦＭ模式则没有此限制，ＦＭ又被称为虚构造函数。
+http://code.google.com/p/tcplex/source/browse/trunk/Design_Pattern/af.cpp
+#include &lt;iostream&gt;using namespace std; class MapSite { virtual void Enter() = 0; }; class Room:public MapSite { virtual void Enter(){ cout &lt;&lt; &#34;Entering room!&#34; &lt;&lt; endl; } }; class Door:public MapSite { virtual void Enter(){ cout &lt;&lt; &#34;Entering door!&#34; &lt;&lt; endl; } }; class Maze { public: Maze(); void AddRoom(Room*){} void AddDoor(Door*){} }; class MazeFactory { public: virtual Maze* MakeMaze()const{ return new Maze(); } virtual Room* MakeRoom()const{ return new Room(); } virtual Door* MakeDoor()const{ return new Door(); } }; class MazeGame { public: Maze* CreateMaze(MazeFactory&amp; factory){ Maze* mz = factory." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhubicen.github.io/posts/abstract-factory/" />
+<meta property="article:published_time" content="2009-06-04T20:23:51+08:00" />
+<meta property="article:modified_time" content="2009-06-04T20:23:51+08:00" />
+
+
+</head>
+<body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      <figure class="image">
+        <img alt="" class="is-rounded" src="https://www.gravatar.com/avatar/a7074f9fedfabb09fc4a6b6973c3f25f?s=128&d=identicon">
+      </figure>
+    </a>
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      quick start
+    </a>
+  </div>
+  
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/c&#43;&#43;/">
+        
+        C&#43;&#43;
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/chrome/">
+        
+        Chrome
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/css/">
+        
+        CSS
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/emacs/">
+        
+        Emacs
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/english/">
+        
+        English
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/git/">
+        
+        Git
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/golang/">
+        
+        Golang
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/java/">
+        
+        Java
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/javascript/">
+        
+        Java script
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/linux/">
+        
+        Linux
+        
+      </a>
+      
+    </div>
+    
+    <div class="navbar-end">
+      
+      <a class="navbar-item" href="mailto:zhubicen@gmail.com" target="_blank">
+        <span class="icon">
+          <img alt="email" src='https://zhubicen.github.io/icons/svg/email.svg'>
+        </span>
+      </a>
+      <a class="navbar-item" href="https://zhubicen.github.io/index.xml" target="_blank">
+        <span class="icon">
+          <img alt="rss" src='https://zhubicen.github.io/icons/svg/rss.svg'>
+        </span>
+      </a>
+      
+    </div>
+  </div>
+</nav>
+<section class="hero is-small is-info is-fullwidth">
+  <div class="hero-body">
+<div class="container">
+  <h1 class="title">
+    Abstract Factory
+  </h1>
+  <h2 class="subtitle">
+    <time datetime='2009-06-04T20:23:51&#43;08:00'>
+      June 04, 2009
+    </time>
+    
+    <br>
+    
+    
+    
+    <a class="tag is-link" href="https://zhubicen.github.io/tags/c&#43;&#43;/">C&#43;&#43;</a>
+    
+    
+    
+  </h2>
+</div>
+
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+<div class="content is-medium">
+  <p>AF是一种对象创建型模式。</p>
+<p>对象创建型模式：将实例化委托给另一个对象。类创建型模式用继承来改变被初始化的类。</p>
+<p>在设计模式中提到：“AbstractFactory类通常用FactoryMethod实现，但也可以用Prototype实现。” </p>
+<p>AF模式侧重于产品的系列性，增加对某一产品的支持将比较困难。ＦＭ模式则没有此限制，ＦＭ又被称为虚构造函数。</p>
+<p><a href="http://code.google.com/p/tcplex/source/browse/trunk/Design_Pattern/af.cpp">http://code.google.com/p/tcplex/source/browse/trunk/Design_Pattern/af.cpp</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#</span><span style="color:#75715e">include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MapSite</span>
+{
+    <span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Enter</span>() <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+};
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Room</span><span style="color:#f92672">:</span><span style="color:#66d9ef">public</span> MapSite
+{
+    <span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Enter</span>(){
+        cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Entering room!</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> endl;
+    }
+};
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Door</span><span style="color:#f92672">:</span><span style="color:#66d9ef">public</span> MapSite
+{
+    <span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Enter</span>(){
+        cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Entering door!</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> endl;
+    }
+};
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Maze</span>
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    Maze();
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">AddRoom</span>(Room<span style="color:#f92672">*</span>){}
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">AddDoor</span>(Door<span style="color:#f92672">*</span>){}
+};
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MazeFactory</span>
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">virtual</span> Maze<span style="color:#f92672">*</span> MakeMaze()<span style="color:#66d9ef">const</span>{
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Maze</span>();
+    }
+    <span style="color:#66d9ef">virtual</span> Room<span style="color:#f92672">*</span> <span style="color:#a6e22e">MakeRoom</span>()<span style="color:#66d9ef">const</span>{
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Room();
+    }
+    <span style="color:#66d9ef">virtual</span> Door<span style="color:#f92672">*</span> <span style="color:#a6e22e">MakeDoor</span>()<span style="color:#66d9ef">const</span>{
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Door();
+    }
+};
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MazeGame</span>
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    Maze<span style="color:#f92672">*</span> CreateMaze(MazeFactory<span style="color:#f92672">&amp;</span> factory){
+        Maze<span style="color:#f92672">*</span> mz <span style="color:#f92672">=</span> factory.MakeMaze();
+        Room<span style="color:#f92672">*</span> rm <span style="color:#f92672">=</span> factory.MakeRoom();
+        Door<span style="color:#f92672">*</span> dr <span style="color:#f92672">=</span> factory.MakeDoor();
+        mz<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>AddRoom(rm);
+        mz<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>AddDoor(dr);
+        <span style="color:#66d9ef">return</span> mz;
+    }
+};
+</code></pre></div><p><a href="http://code.google.com/p/tcplex/source/browse/trunk/Design_Pattern/af2.cpp">http://code.google.com/p/tcplex/source/browse/trunk/Design_Pattern/af2.cpp</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#</span><span style="color:#75715e">include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Clonable</span>
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">virtual</span> Clonable<span style="color:#f92672">*</span> Clone() <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+};
+
+    
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MapSite</span>
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> Enter() <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+};
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Room</span><span style="color:#f92672">:</span><span style="color:#66d9ef">public</span> MapSite, Clonable
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> Enter(){
+        cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Entering room!</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> endl;
+    }
+    <span style="color:#66d9ef">virtual</span> Room<span style="color:#f92672">*</span> <span style="color:#a6e22e">Clone</span>(){
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Room();
+    }
+    
+};
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Door</span><span style="color:#f92672">:</span><span style="color:#66d9ef">public</span> MapSite, Clonable
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> Enter(){
+        cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Entering door!</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> endl;
+    }
+    <span style="color:#66d9ef">virtual</span> Door<span style="color:#f92672">*</span> <span style="color:#a6e22e">Clone</span>(){
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Door();
+    }
+};
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Maze</span><span style="color:#f92672">:</span><span style="color:#66d9ef">public</span> Clonable
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    Maze();
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">AddRoom</span>(Room<span style="color:#f92672">*</span>){}
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">AddDoor</span>(Door<span style="color:#f92672">*</span>){}
+    <span style="color:#66d9ef">virtual</span> Maze<span style="color:#f92672">*</span> <span style="color:#a6e22e">Clone</span>(){
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Maze();
+    }    
+};
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MazeFactory</span>
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    MazeFactory(Maze<span style="color:#f92672">*</span> maze, Room<span style="color:#f92672">*</span> room, Door<span style="color:#f92672">*</span> door)
+        <span style="color:#f92672">:</span>maze_(maze), room_(room), door_(door){}    
+    
+    <span style="color:#66d9ef">virtual</span> Maze<span style="color:#f92672">*</span> <span style="color:#a6e22e">MakeMaze</span>()<span style="color:#66d9ef">const</span>{
+        <span style="color:#66d9ef">return</span> maze_<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>Clone();
+    }
+    <span style="color:#66d9ef">virtual</span> Room<span style="color:#f92672">*</span> <span style="color:#a6e22e">MakeRoom</span>()<span style="color:#66d9ef">const</span>{
+        <span style="color:#66d9ef">return</span> room_<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>Clone();
+    }
+    <span style="color:#66d9ef">virtual</span> Door<span style="color:#f92672">*</span> <span style="color:#a6e22e">MakeDoor</span>()<span style="color:#66d9ef">const</span>{
+        <span style="color:#66d9ef">return</span> door_<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>Clone();
+    }
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+    Maze<span style="color:#f92672">*</span> maze_;
+    Door<span style="color:#f92672">*</span> door_;
+    Room<span style="color:#f92672">*</span> room_;
+};
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MazeGame</span>
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    Maze<span style="color:#f92672">*</span> CreateMaze(MazeFactory<span style="color:#f92672">&amp;</span> factory){
+        Maze<span style="color:#f92672">*</span> mz <span style="color:#f92672">=</span> factory.MakeMaze();
+        Room<span style="color:#f92672">*</span> rm <span style="color:#f92672">=</span> factory.MakeRoom();
+        Door<span style="color:#f92672">*</span> dr <span style="color:#f92672">=</span> factory.MakeDoor();
+        mz<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>AddRoom(rm);
+        mz<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>AddDoor(dr);
+        <span style="color:#66d9ef">return</span> mz;
+    }
+};
+
+</code></pre></div>
+</div>
+
+
+  </div>
+</section><footer class="footer">
+  <div class="content has-text-centered">
+    
+    
+    <p>
+      
+      <a href="https://github.com/orf/bare-hugo-theme" target="_blank">Bare Hugo theme.</a>
+      
+      
+    </p>
+    
+  </div>
+</footer>
+
+
+</body>
+</html>
