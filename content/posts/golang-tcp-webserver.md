@@ -2,7 +2,7 @@
 title: "一个基于 TCP 实现的 Golang Webserver"
 date: 2012-12-02T17:56:17+08:00
 draft: false
-tags: []
+tags: [golang]
 ---
 
 这个小程序是从，HTTP: The Definitive Guide,  A Minimal Perl Web Server

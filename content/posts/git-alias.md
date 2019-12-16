@@ -2,7 +2,7 @@
 title: "一些好用的 Git Alias"
 date: 2011-12-16T13:43:27+08:00
 draft: false
-tags: []
+tags: [git]
 ---
 
 比如,  从 svn 转到 git 的应该深有同感

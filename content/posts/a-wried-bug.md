@@ -2,7 +2,7 @@
 title: "A Wried Bug: 一个未捕获到的异常"
 date: 2019-12-13T16:20:02+08:00
 draft: false
-tags: []
+tags: [Java]
 ---
 
 今天本来是 TB 的，大部分同时都去爬山了。最近腿总是有点不舒服，所以就和同事 Mihi 一起回了公司

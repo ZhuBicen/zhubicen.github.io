@@ -2,7 +2,7 @@
 title: "HTTP Request 学习笔记"
 date: 2012-03-17T17:30:07+08:00
 draft: false
-tags: []
+tags: [golang]
 ---
 当我们在浏览器中输入一个地址，或者点击一个链接时，浏览器就会向Web服务
 器发送一个Http Request请求，在 Chrome 中可以使用 `右键->审查元

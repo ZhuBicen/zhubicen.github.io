@@ -2,7 +2,7 @@
 title: "Golang Template"
 date: 2011-12-08T15:52:30+08:00
 draft: false
-tags: []
+tags: [golang]
 ---
 
 这个 package 的目的是使用结构化的数据作为输入，来生成一些具有固定格式的
