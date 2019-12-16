@@ -1,0 +1,388 @@
+<!doctype html>
+
+<html lang="en-us">
+
+<head>
+  <title>quick start</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="The HTML5 Herald" />
+<meta name="author" content="" /><meta property="og:title" content="Spring Cloud Quickstart" />
+<meta property="og:description" content="Spring Cloud 是 spring 的全家桶之一， 为使用 Java 构建微服务提供了便利的基础设施。 本文主要通过把现有的三个服务改造为微服务，以此对 Spring Cloud 微服务组件有直观的了解。
+本文采用的 Spring Cloud 版本为：Greenwich.SR2， 其对应的相关组件的版本为
+   组件 版本     spring-boot 2.1.5.RELEASE   spring-cloud-config 2.1.3.RELEASE   spring-cloud-sleuth 2.1.1.RELEASE   spring-cloud-openfeign 2.1.2.RELEASE   spring-cloud-netflix 2.1.2.RELEASE    介绍 Spring Cloud 的主要组件 configserver, eureka, zipkin 的使用。
+准备工作 Clone 代码库：https://github.com/ZhuBicen/spring-cloud-quickstart.git，并了解其中的三个服务：
+Greeting 服务 Greeting 的配置文件如下：
+server: port: 9090 greeting: Hello 该服务提供如下接口：
+@RequestMapping(&#34;/&#34;) public String getGreeting(){ LOG." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:8080/posts/spring-cloud-quickstart/" />
+<meta property="article:published_time" content="2019-11-27T21:37:00+08:00" />
+<meta property="article:modified_time" content="2019-11-27T21:37:00+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Spring Cloud Quickstart"/>
+<meta name="twitter:description" content="Spring Cloud 是 spring 的全家桶之一， 为使用 Java 构建微服务提供了便利的基础设施。 本文主要通过把现有的三个服务改造为微服务，以此对 Spring Cloud 微服务组件有直观的了解。
+本文采用的 Spring Cloud 版本为：Greenwich.SR2， 其对应的相关组件的版本为
+   组件 版本     spring-boot 2.1.5.RELEASE   spring-cloud-config 2.1.3.RELEASE   spring-cloud-sleuth 2.1.1.RELEASE   spring-cloud-openfeign 2.1.2.RELEASE   spring-cloud-netflix 2.1.2.RELEASE    介绍 Spring Cloud 的主要组件 configserver, eureka, zipkin 的使用。
+准备工作 Clone 代码库：https://github.com/ZhuBicen/spring-cloud-quickstart.git，并了解其中的三个服务：
+Greeting 服务 Greeting 的配置文件如下：
+server: port: 9090 greeting: Hello 该服务提供如下接口：
+@RequestMapping(&#34;/&#34;) public String getGreeting(){ LOG."/>
+
+<meta name="generator" content="Hugo 0.61.0" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
+  <script src="https://kit.fontawesome.com/b76b73e8e8.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">quick start</a>
+            </h1>
+
+      <ul id="social-media">
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Spring Cloud Quickstart</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2019-11-27T21:37:00&#43;08:00">Nov 27, 2019</time>
+        </li>
+        
+
+        
+
+        <li>4 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    <p><img src="../images/1575127662002.png" alt="1575127662002"></p>
+<p>Spring Cloud 是 spring 的全家桶之一， 为使用 Java 构建微服务提供了便利的基础设施。 本文主要通过把现有的三个服务改造为微服务，以此对 Spring Cloud 微服务组件有直观的了解。</p>
+<p>本文采用的 <code>Spring Cloud</code> 版本为：<code>Greenwich.SR2</code>， 其对应的相关组件的版本为</p>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>spring-boot</td>
+<td>2.1.5.RELEASE</td>
+</tr>
+<tr>
+<td>spring-cloud-config</td>
+<td>2.1.3.RELEASE</td>
+</tr>
+<tr>
+<td>spring-cloud-sleuth</td>
+<td>2.1.1.RELEASE</td>
+</tr>
+<tr>
+<td>spring-cloud-openfeign</td>
+<td>2.1.2.RELEASE</td>
+</tr>
+<tr>
+<td>spring-cloud-netflix</td>
+<td>2.1.2.RELEASE</td>
+</tr>
+</tbody>
+</table>
+<p>介绍 Spring Cloud 的主要组件 <code>configserver</code>, <code>eureka</code>, <code>zipkin</code> 的使用。</p>
+<h2 id="heading">准备工作</h2>
+<p>Clone 代码库：<code>https://github.com/ZhuBicen/spring-cloud-quickstart.git</code>，并了解其中的三个服务：</p>
+<h3 id="greeting-">Greeting 服务</h3>
+<p>Greeting  的配置文件如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">server:
+  port: <span style="color:#ae81ff">9090</span>
+greeting: Hello
+</code></pre></div><p>该服务提供如下接口：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#a6e22e">@RequestMapping</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/&#34;</span><span style="color:#f92672">)</span>
+<span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getGreeting</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+    LOG<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Greeting: &#34;</span> <span style="color:#f92672">+</span> greetingProperties<span style="color:#f92672">.</span><span style="color:#a6e22e">getGreeting</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">return</span> greetingProperties<span style="color:#f92672">.</span><span style="color:#a6e22e">getGreeting</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p><code>greetingProperties</code> 的作用是读取配置文件中的 <code>greeting</code> 属性 <code>hello</code>。在此限于篇幅就不再展示<code>GreetingProperties</code>的代码。</p>
+<p>访问 <code>http://localhost:9090/</code> 会返回 <code>Hello</code></p>
+<h3 id="name-">Name 服务</h3>
+<p>Name  的配置文件如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">server.port: <span style="color:#ae81ff">7070</span>
+name: Bernard
+</code></pre></div><p>该服务提供如下接口：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#a6e22e">@RequestMapping</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/&#34;</span><span style="color:#f92672">)</span>
+<span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getName</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+	LOG<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Name: &#34;</span> <span style="color:#f92672">+</span> nameProperties<span style="color:#f92672">.</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+	<span style="color:#66d9ef">return</span> nameProperties<span style="color:#f92672">.</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p><code>nameProperties</code> 的作用是读取配置文件中的 <code>name</code> 属性 <code>Bernard</code>。在此限于篇幅就不再展示<code>NameProperties</code>的代码。</p>
+<p>访问 <code>http://localhost:7070/</code> 会返回 <code>Bernard</code></p>
+<h3 id="web-">Web 服务</h3>
+<p>Web 服务， 提供 <code>GetMapping(&quot;/&quot;)</code> 接口，该接口会调用<code> GreetingService</code> 类来调用是 <code>localhost:9090</code>， 通过 <code>Name Servicice</code>调用<code>localhost:7070</code>。</p>
+<p><code>GreetingService</code> 的代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#a6e22e">@Service</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">GreetingService</span> <span style="color:#f92672">{</span>
+	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> String URL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://localhost:9090&#34;</span><span style="color:#f92672">;</span>
+	<span style="color:#66d9ef">private</span> RestTemplate rest<span style="color:#f92672">;</span>
+
+	<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">GreetingService</span><span style="color:#f92672">(</span>RestTemplate rest<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		<span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">rest</span> <span style="color:#f92672">=</span> rest<span style="color:#f92672">;</span>
+	<span style="color:#f92672">}</span>
+
+	<span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getGreeting</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		<span style="color:#66d9ef">return</span> rest<span style="color:#f92672">.</span><span style="color:#a6e22e">getForObject</span><span style="color:#f92672">(</span>URL<span style="color:#f92672">,</span> String<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+	<span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Web 服务使用默认的 8080 端口，访问 <code>localhost:8080</code> 会返回字符串：<code>Hello Bernard</code>。 其中 <code>Hello</code> 来自于 <code>:9090</code>, <code>Bernard</code> 来自于 <code>:7070</code>。</p>
+<h2 id="-spring-cloud-configserver--eureka--zipkin">启动 Spring Cloud <code>configserver</code>,  <code>eureka</code> 以及 <code>zipkin</code></h2>
+<p>分别在 <code>configserver</code>, <code>eureka</code> 以及 <code>zipkin</code> 下运行 <code>mvn spring-boot:run</code> 以启动三个服务</p>
+<h3 id="-configserver">启动 configserver</h3>
+<p>在启动 <code>configserver</code> 前，首先适配 configserver 的 <code>application.yml</code> 中的 <code>searchLocations</code>字段，指向本地的 <code>config-yml</code> 目录。</p>
+<p>在 <code>configserver</code> 目录下运行， <code>mvn spring-boot:run</code> 。configserver 的端口在<code>8888</code>，configserver 启动后， 可以分别访问如下的 URL，以查看 Greeting 服务，Name 服务，以及 Web 服务的 config 文件</p>
+<p>访问 <code>http::localhost:8888/greeting/default</code> 可以查看到如下的返回：</p>
+<p><img src="image/1575113719003.png" alt="1575113719003"></p>
+<p>访问 <code>http::localhost:8888/name/default</code> 可以查看到如下的返回：</p>
+<p><img src="spring-cloud-quickstart.assets/1575113740397.png" alt="1575113740397"></p>
+<p>访问<code>http://localhsot:8888/web/default</code>可以查看到如下的返回：</p>
+<p><img src="spring-cloud-quickstart.assets/1575113802387.png" alt="1575113802387"></p>
+<p>有以上可见， congfigserver 已经把我们的三个微服务的配置文件管理了起来。</p>
+<h3 id="-eureka">启动 Eureka</h3>
+<p>在 <code>eureka</code> 目录下运行 <code>mvn spring-boot:run</code></p>
+<p>访问 <code>http://localhost:8761</code>可以查看到如下页面：</p>
+<p><img src="spring-cloud-quickstart.assets/1575114948654.png" alt="1575114948654"></p>
+<p>由于我们还没有向 eureka 注册任何服务，因此只看到 No instances available。后续我们将把 Greeting 服务，Name 服务以及 Web 服务向 eureka 注册</p>
+<h3 id="-zipkin">启动 zipkin</h3>
+<p>在 <code>zipkin</code> 目录下运行 <code>mvn spring-boot:run</code></p>
+<p>访问 <code>http://localhost:8761</code>可以查看到如下页面：</p>
+<p><img src="spring-cloud-quickstart.assets/1575116763807.png" alt="1575116763807"></p>
+<h2 id="-greeting-name--web-">改造 Greeting， Name 以及 Web 服务</h2>
+<h3 id="-greeting-">改造 Greeting 服务</h3>
+<p>在 pom.xml  中引入如下的四个依赖：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;dependency</span><span style="color:#f92672">&gt;</span>
+	<span style="color:#f92672">&lt;groupId</span><span style="color:#f92672">&gt;</span>org.springframework.cloud<span style="color:#f92672">&lt;/groupId&gt;</span>
+	<span style="color:#f92672">&lt;artifactId</span><span style="color:#f92672">&gt;</span>spring-cloud-starter-config<span style="color:#f92672">&lt;/artifactId&gt;</span>
+<span style="color:#f92672">&lt;/dependency&gt;</span>
+<span style="color:#f92672">&lt;dependency</span><span style="color:#f92672">&gt;</span>
+	<span style="color:#f92672">&lt;groupId</span><span style="color:#f92672">&gt;</span>org.springframework.cloud<span style="color:#f92672">&lt;/groupId&gt;</span>
+	<span style="color:#f92672">&lt;artifactId</span><span style="color:#f92672">&gt;</span>spring-cloud-starter-netflix-eureka-client<span style="color:#f92672">&lt;/artifactId&gt;</span>
+<span style="color:#f92672">&lt;/dependency&gt;</span>
+<span style="color:#f92672">&lt;dependency</span><span style="color:#f92672">&gt;</span>
+	<span style="color:#f92672">&lt;groupId</span><span style="color:#f92672">&gt;</span>org.springframework.cloud<span style="color:#f92672">&lt;/groupId&gt;</span>
+	<span style="color:#f92672">&lt;artifactId</span><span style="color:#f92672">&gt;</span>spring-cloud-starter-sleuth<span style="color:#f92672">&lt;/artifactId&gt;</span>
+<span style="color:#f92672">&lt;/dependency&gt;</span>
+<span style="color:#f92672">&lt;dependency</span><span style="color:#f92672">&gt;</span>
+	<span style="color:#f92672">&lt;groupId</span><span style="color:#f92672">&gt;</span>org.springframework.cloud<span style="color:#f92672">&lt;/groupId&gt;</span>
+	<span style="color:#f92672">&lt;artifactId</span><span style="color:#f92672">&gt;</span>spring-cloud-starter-zipkin<span style="color:#f92672">&lt;/artifactId&gt;</span>
+<span style="color:#f92672">&lt;/dependency&gt;</span>
+</code></pre></div><p>清空 <code>application.yml</code> 中的内容，加入以下内容：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">spring:
+  application:
+    name: greeting
+</code></pre></div><p>把 GreetingApplication.java 改为如下代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> brave.sampler.Sampler<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.boot.SpringApplication<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.boot.autoconfigure.SpringBootApplication<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.boot.context.properties.EnableConfigurationProperties<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.context.annotation.Bean<span style="color:#f92672">;</span>
+
+<span style="color:#a6e22e">@SpringBootApplication</span>
+<span style="color:#a6e22e">@EnableConfigurationProperties</span><span style="color:#f92672">(</span>GreetingProperties<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">)</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">GreetingApplication</span> <span style="color:#f92672">{</span>
+
+	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[</span><span style="color:#f92672">]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		SpringApplication<span style="color:#f92672">.</span><span style="color:#a6e22e">run</span><span style="color:#f92672">(</span>GreetingApplication<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span> args<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+	<span style="color:#f92672">}</span>
+
+	<span style="color:#a6e22e">@Bean</span>
+	Sampler <span style="color:#a6e22e">getSampler</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		<span style="color:#66d9ef">return</span> Sampler<span style="color:#f92672">.</span><span style="color:#a6e22e">ALWAYS_SAMPLE</span><span style="color:#f92672">;</span>
+	<span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p><code>spring-cloud-starter-starter-config</code> 会自动从 configserver <code>http://localhost:8888</code> 获取配置文件。<code>spring-cloud-starter-netflix-eureka-client</code> 会自动使用 <code>spring.application.name=greeting</code> 向服务注册中心注册。</p>
+<p>使用 <code>mvn spring-boot:run</code> 启动 greeting 服务，可以看到如下的日志：</p>
+<pre><code>2019-11-30 20:43:31.834  INFO [greeting,,,] 46140 --- [           main] c.c.c.ConfigServicePropertySourceLocator : Fetching config from server at : http://localhost:8888
+......
+2019-11-30 20:43:46.005  INFO [greeting,,,] 46140 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_GREETING/DESKTOP-U63FIUL:greeting:9090 - registration status: 204
+
+</code></pre><p><code>Fetching config from server at : http://localhost:8888</code> 表明 Greeting 服务已经自动从 <code>configserver</code>获取配置文件。由于 <code>:8888</code> 是约定的默认 <code>configserver</code> 端口，所以无需配置。<code>DiscoveryClient_GREETING/DESKTOP-U63FIUL:greeting:9090 - registration status: 204</code> 该日志表明， Greeting 服务已经向 <code>eureka</code>注册成功 ， 访问 eureka 服务 <code>http://localhost:8761</code> 可以看到 Greeting 服务已经注册成功：</p>
+<p><img src="spring-cloud-quickstart.assets/1575118713713.png" alt="1575118713713"></p>
+<h3 id="-name-">改造 Name 服务</h3>
+<p>清空 <code>application.yml</code> 中的内容，加入以下内容：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">spring:
+  application:
+    name: name
+</code></pre></div><p>把 NameApplication 同样改为如下内容：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#f92672">package</span> com.example.demo<span style="color:#f92672">;</span>
+
+<span style="color:#f92672">import</span> brave.sampler.Sampler<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.boot.SpringApplication<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.boot.autoconfigure.SpringBootApplication<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.boot.context.properties.EnableConfigurationProperties<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.context.annotation.Bean<span style="color:#f92672">;</span>
+
+<span style="color:#a6e22e">@SpringBootApplication</span>
+<span style="color:#a6e22e">@EnableConfigurationProperties</span><span style="color:#f92672">(</span>NameProperties<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">)</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NameApplication</span> <span style="color:#f92672">{</span>
+
+	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[</span><span style="color:#f92672">]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		SpringApplication<span style="color:#f92672">.</span><span style="color:#a6e22e">run</span><span style="color:#f92672">(</span>NameApplication<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span> args<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+	<span style="color:#f92672">}</span>
+
+	<span style="color:#a6e22e">@Bean</span>
+	Sampler <span style="color:#a6e22e">getSampler</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		<span style="color:#66d9ef">return</span> Sampler<span style="color:#f92672">.</span><span style="color:#a6e22e">ALWAYS_SAMPLE</span><span style="color:#f92672">;</span>
+	<span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+</code></pre></div><p>加入和 Greeting 服务相同的四个依赖，启动 Name 服务，可以看到和 Greeting 服务相似的日志内容。再次访问 <code>http://localhost:8761</code> 可以看到 Name 服务已经注册成功：</p>
+<p><img src="spring-cloud-quickstart.assets/1575119853094.png" alt="1575119853094"></p>
+<h3 id="-web-">改造 Web 服务</h3>
+<p>清空 <code>application.yml</code> 中的内容，加入以下内容：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">spring:
+  application:
+    name: web
+</code></pre></div><p>加入同 Greeting 服务相同的四个依赖，另外加入以下两个依赖项：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;dependency</span><span style="color:#f92672">&gt;</span>
+	<span style="color:#f92672">&lt;groupId</span><span style="color:#f92672">&gt;</span>org.springframework.cloud<span style="color:#f92672">&lt;/groupId&gt;</span>
+	<span style="color:#f92672">&lt;artifactId</span><span style="color:#f92672">&gt;</span>spring-cloud-starter-netflix-zuul<span style="color:#f92672">&lt;/artifactId&gt;</span>
+<span style="color:#f92672">&lt;/dependency&gt;</span>
+</code></pre></div><p>更改 WebApplication.java 如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#f92672">package</span> com.example.demo<span style="color:#f92672">;</span>
+
+<span style="color:#f92672">import</span> brave.sampler.Sampler<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.boot.SpringApplication<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.boot.autoconfigure.SpringBootApplication<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.boot.web.client.RestTemplateBuilder<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.cloud.client.loadbalancer.LoadBalanced<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.cloud.netflix.zuul.EnableZuulProxy<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.context.annotation.Bean<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.context.annotation.Configuration<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.web.client.RestTemplate<span style="color:#f92672">;</span>
+
+<span style="color:#a6e22e">@EnableZuulProxy</span>
+<span style="color:#a6e22e">@SpringBootApplication</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">WebApplication</span> <span style="color:#f92672">{</span>
+
+	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[</span><span style="color:#f92672">]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		SpringApplication<span style="color:#f92672">.</span><span style="color:#a6e22e">run</span><span style="color:#f92672">(</span>WebApplication<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span> args<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+	<span style="color:#f92672">}</span>
+
+	<span style="color:#a6e22e">@Configuration</span>
+	<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyConfig</span> <span style="color:#f92672">{</span>
+		<span style="color:#a6e22e">@LoadBalanced</span>
+		<span style="color:#a6e22e">@Bean</span>
+		<span style="color:#66d9ef">public</span> RestTemplate <span style="color:#a6e22e">rest</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+			<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> RestTemplateBuilder<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">build</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+		<span style="color:#f92672">}</span>
+	<span style="color:#f92672">}</span>
+
+	<span style="color:#a6e22e">@Bean</span>
+	Sampler <span style="color:#a6e22e">getSampler</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		<span style="color:#66d9ef">return</span> Sampler<span style="color:#f92672">.</span><span style="color:#a6e22e">ALWAYS_SAMPLE</span><span style="color:#f92672">;</span>
+	<span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p><code>@LoadBalance</code> 注解会自动拦截所有的使用 <code>RestTemplate</code>的请求，提取出其中的服务名，并使用该服务名到 eureka 中查询，相应的服务的具体信息，然后再去执行服务调用。比如我们如果使用 RestTemplate 调用 <code>http://greeting/</code>，<code>@LoadBalance</code> 会到 eureka 查询 greeting 服务对应的 IP（localhost) 和端口(9090)，再去执行真正的服务调用。</p>
+<p>因此把原有的 GreetingService 改为如下代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#f92672">package</span> com.example.demo<span style="color:#f92672">;</span>
+
+<span style="color:#f92672">import</span> org.springframework.stereotype.Service<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.web.client.RestTemplate<span style="color:#f92672">;</span>
+
+<span style="color:#a6e22e">@Service</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">GreetingService</span> <span style="color:#f92672">{</span>
+	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> String URL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://greeting/&#34;</span><span style="color:#f92672">;</span>
+	<span style="color:#66d9ef">private</span> RestTemplate rest<span style="color:#f92672">;</span>
+	<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">GreetingService</span><span style="color:#f92672">(</span>RestTemplate rest<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		<span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">rest</span> <span style="color:#f92672">=</span> rest<span style="color:#f92672">;</span>
+	<span style="color:#f92672">}</span>
+	<span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getGreeting</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		<span style="color:#66d9ef">return</span> rest<span style="color:#f92672">.</span><span style="color:#a6e22e">getForObject</span><span style="color:#f92672">(</span>URL<span style="color:#f92672">,</span> String<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+	<span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+</code></pre></div><p>把原有的 NameService 改为如下的代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#f92672">package</span> com.example.demo<span style="color:#f92672">;</span>
+
+<span style="color:#f92672">import</span> org.springframework.stereotype.Service<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.web.client.RestTemplate<span style="color:#f92672">;</span>
+
+
+<span style="color:#a6e22e">@Service</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NameService</span> <span style="color:#f92672">{</span>
+	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> String URL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://name/&#34;</span><span style="color:#f92672">;</span>
+	<span style="color:#66d9ef">private</span> RestTemplate rest<span style="color:#f92672">;</span>
+	<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">NameService</span><span style="color:#f92672">(</span>RestTemplate rest<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		<span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">rest</span> <span style="color:#f92672">=</span> rest<span style="color:#f92672">;</span>
+	<span style="color:#f92672">}</span>
+	<span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getName</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		<span style="color:#66d9ef">return</span> rest<span style="color:#f92672">.</span><span style="color:#a6e22e">getForObject</span><span style="color:#f92672">(</span>URL<span style="color:#f92672">,</span> String<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+	<span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>经过如上的改动，Greeting 和 Name 服务对于 Web 服务已经变得透明，Web 服务只需要知道 Greeting 服务和 Name 服务的服务名称即可，不需要知道具体的服务的端口和IP。这就是服务发现的核心内容</p>
+<p>重启 Web 服务，访问 <code>http://localhost:8080</code>，同样会返回: Hello Bernard</p>
+<p>由于我们为 WebApplication 添加了 <code>@EnableZuulProxy</code> 注解，因此 Web 服务同时还扮演了反向代理（或者称之为”服务网关“）的角色，因此我们可以通过 Web 服务调用 Greeting 和 Name 服务。</p>
+<p>访问 <code>http://localhost:8080/name/</code>，Zuul 会自动从 eureka 查询 name 服务的IP和端口，并发起调用。访问 <code>http://localhost:8080/greeting/</code>，Zuul 会自动从 eureka 查询 greeting 服务的IP和端口，并发起调用。</p>
+<h3 id="-zipkin-">查看 Zipkin 服务器</h3>
+<p>访问 Zipkin <code>http://localhost:9411</code>，由于以上代码中 <code> Sampler</code> 的配置，可以看到 zipkin 已经可以分析出，web, greeting 和 name 服务间的依赖关系</p>
+<p><img src="spring-cloud-quickstart.assets/1575123062971.png" alt="1575123062971"></p>
+<p>点击 ”Find Traces&rdquo; 还可以看到更多的内容：</p>
+<p><img src="spring-cloud-quickstart.assets/1575123208131.png" alt="1575123208131"></p>
+<h2 id="heading-1">参考文档：</h2>
+<p><a href="https://cloud.spring.io/spring-cloud-static/spring-cloud-config/2.1.3.RELEASE/single/spring-cloud-config.html">Spring Cloud Config 官方文档</a>
+<a href="https://cloud.spring.io/spring-cloud-sleuth/2.1.x/">Spring Cloud Sleuth 官方文档</a></p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://localhost:8080/index.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+
+</body>
+
+</html>
+
