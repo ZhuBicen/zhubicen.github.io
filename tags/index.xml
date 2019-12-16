@@ -6,9 +6,28 @@
     <description>Recent content in Tags on quick start</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Sun, 02 Dec 2012 17:22:04 +0800</lastBuildDate>
     
 	<atom:link href="https://zhubicen.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>C&#43;&#43;</title>
+      <link>https://zhubicen.github.io/tags/c&#43;&#43;/</link>
+      <pubDate>Sun, 02 Dec 2012 17:22:04 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/tags/c&#43;&#43;/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>emacs</title>
+      <link>https://zhubicen.github.io/tags/emacs/</link>
+      <pubDate>Fri, 09 Mar 2012 17:52:27 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/tags/emacs/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

@@ -40,12 +40,69 @@ server: port: 9090 greeting: Hello 该服务提供如下接口：
     </item>
     
     <item>
-      <title>Git Alias</title>
+      <title>一个基于 TCP 实现的 Golang Webserver</title>
+      <link>https://zhubicen.github.io/posts/golang-tcp-webserver/</link>
+      <pubDate>Sun, 02 Dec 2012 17:56:17 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/golang-tcp-webserver/</guid>
+      <description>这个小程序是从，HTTP: The Definitive Guide, A Minimal Perl Web Server 移植而来。
+package main import ( &amp;#34;fmt&amp;#34; &amp;#34;net&amp;#34; &amp;#34;bufio&amp;#34; ) func main() { ln, err := net.Listen(&amp;#34;tcp&amp;#34;, &amp;#34;:8080&amp;#34;) if err != nil { fmt.Println(err) return } for { conn, err := ln.Accept() if err != nil { fmt.Println(&amp;#34;Accept err= &amp;#34;, err) } fmt.Printf(&amp;#34; &amp;lt;&amp;lt;&amp;lt;Request From &amp;#39;%s&amp;#39;&amp;gt;&amp;gt;&amp;gt;\n&amp;#34;, conn.RemoteAddr()) rd := bufio.NewReader(conn) for { line, _, err := rd.ReadLine() if err != nil { fmt.</description>
+    </item>
+    
+    <item>
+      <title>一个简化版的 std::bind 实现</title>
+      <link>https://zhubicen.github.io/posts/simple-std-bind/</link>
+      <pubDate>Sun, 02 Dec 2012 17:22:04 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/simple-std-bind/</guid>
+      <description>#include &amp;lt;iostream&amp;gt;#include &amp;lt;algorithm&amp;gt;#include &amp;lt;vector&amp;gt; namespace { class placeholder1 { }; class placeholder2 { }; placeholder1 _1; placeholder2 _2; } template &amp;lt;typename R,typename T, typename Arg1, typename Arg2&amp;gt; class simple_bind_t { typedef R (T::*fn)(Arg1, Arg2); fn fn_; T t_; public: simple_bind_t(fn f,const T&amp;amp; t):fn_(f),t_(t) {} R operator()(Arg1 a, Arg2 b) { return (t_.*fn_)(a, b); } }; template &amp;lt;typename R,typename T, typename Arg1, typename Arg2&amp;gt; class simple_bind_t2 { typedef R (T::*fn)(Arg1, Arg2); fn fn_; T t_; public: simple_bind_t2(fn f,const T&amp;amp; t):fn_(f),t_(t) {} R operator()(Arg2 a, Arg1 b) { return (t_.</description>
+    </item>
+    
+    <item>
+      <title>HTTP Request 学习笔记</title>
+      <link>https://zhubicen.github.io/posts/golang-web-server-quickstart/</link>
+      <pubDate>Sat, 17 Mar 2012 17:30:07 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/golang-web-server-quickstart/</guid>
+      <description>当我们在浏览器中输入一个地址，或者点击一个链接时，浏览器就会向Web服务 器发送一个Http Request请求，在 Chrome 中可以使用 右键-&amp;gt;审查元 素-&amp;gt;Network来查看 Http Request，需要在打开此窗口的情况下，刷新页面。另 外还可以在地址栏中输入: chrome://net-internals/来查看 http request。 Request syntax 一个HTTP request由三个基础部分组成：
+ Request line HTTP headers Content 有三种 request headers： General Headers Request Headers Entity Headers  Request Headers和一种包含和一个特定的HTTP Request请求相关的信息，比如 User-Agent。
+General Headers中的内容理论上来说可以用在http request和http response中。
+Request Methods There are eight request methods in HTTP/1.1: GET, POST, PUT, DELETE, HEAD, TRACE, OPTIONS, and CONNECT.
+The Get Method A GET request traditionally contains no content and thus no entity headers.</description>
+    </item>
+    
+    <item>
+      <title> 逆向法专用的英语复读机</title>
+      <link>https://zhubicen.github.io/posts/englisth-reverse/</link>
+      <pubDate>Sat, 10 Mar 2012 17:48:58 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/englisth-reverse/</guid>
+      <description>您不知道逆向法？你out了：D
+这个程序是专门为逆向学习英语而设计，界面极其简单，或者你根本不需要去观 看或留意这个界面，因为一切都可以使用热键进行操作。使你专注于听写。本程序没 有设计供编辑功能，编辑功能可以由专业的文件编辑工具来完成，比如我用 Emacs，当然你可以先择Micosoft Word, Ultra Edit, Notepad++
+Ling Repeater</description>
+    </item>
+    
+    <item>
+      <title>在 Emacs 中使用 org-mode</title>
+      <link>https://zhubicen.github.io/posts/emacs-orgmode/</link>
+      <pubDate>Fri, 09 Mar 2012 17:52:27 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/emacs-orgmode/</guid>
+      <description>使用emacs24默认的包管理机制使得安装一些扩展包异常的方便。：D
+(package-initialize) (add-to-list &amp;#39;package-archives &amp;#39;(&amp;#34;marmalade&amp;#34; . &amp;#34;http://marmalade-repo.org/packages/&amp;#34;)) ;;如果你使用代理的话，请uncommnet ;;(setq url-proxy-services &amp;#39;((&amp;#34;http&amp;#34; . &amp;#34;127.0.0.1:8080&amp;#34;))) 然后可以使用package-list命令，此时emacs会生成一个buffer，在其中列出所 有可用的软件包，找到org2blog，用鼠标点进去，再点击Install即可。：D，所 有这一切都是无痛的.
+最后你可以到org2blog的页面上查看如何使用。[[https://github.com/punchagan/org2blog][org2blog]]
+希望自己以后要多总结！：D
+加油 :-)</description>
+    </item>
+    
+    <item>
+      <title>一些好用的 Git Alias</title>
       <link>https://zhubicen.github.io/posts/git-alias/</link>
       <pubDate>Fri, 16 Dec 2011 13:43:27 +0800</pubDate>
       
       <guid>https://zhubicen.github.io/posts/git-alias/</guid>
-      <description>git config --global alias.co checkout git config --global alias.br branch git config --global alias.ci commit git config --global alias.st status git 常用操作示意图:</description>
+      <description>比如, 从 svn 转到 git 的应该深有同感
+git config --global alias.co checkout git config --global alias.br branch git config --global alias.ci commit git config --global alias.st status git 常用操作示意图:</description>
     </item>
     
     <item>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    
+    一个简化版的 std::bind 实现
+     | 阿碧 
+  </title>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.eb4797a608f467160f71b5cc518dffb9b3fef0edc95e6def8dc4033ba1888b8f414e3d1d3e6c9804ca3e6f125539d8af48b28dcecb4eafc5805bde0b3c8d6956.css' integrity='sha512-60eXpgj0ZxYPcbXMUY3/ubP&#43;8O3JXm3vjcQDO6GIi49BTj0dPmyYBMo&#43;bxJVOdivSLKNzstOr8WAW94LPI1pVg=='>
+  <link rel="canonical" href="https://zhubicen.github.io/posts/simple-std-bind/">
+  <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="阿碧">
+<meta name="description" content="#include &lt;iostream&gt;#include &lt;algorithm&gt;#include &lt;vector&gt; namespace { class placeholder1 { }; class placeholder2 { }; placeholder1 _1; placeholder2 _2; } template &lt;typename R,typename T, typename Arg1, typename Arg2&gt; class simple_bind_t { typedef R (T::*fn)(Arg1, Arg2); fn fn_; T t_; public: simple_bind_t(fn f,const T&amp; t):fn_(f),t_(t) {} R operator()(Arg1 a, Arg2 b) { return (t_.*fn_)(a, b); } }; template &lt;typename R,typename T, typename Arg1, typename Arg2&gt; class simple_bind_t2 { typedef R (T::*fn)(Arg1, Arg2); fn fn_; T t_; public: simple_bind_t2(fn f,const T&amp; t):fn_(f),t_(t) {} R operator()(Arg2 a, Arg1 b) { return (t_.">
+
+<meta property="og:title" content="一个简化版的 std::bind 实现" />
+<meta property="og:description" content="#include &lt;iostream&gt;#include &lt;algorithm&gt;#include &lt;vector&gt; namespace { class placeholder1 { }; class placeholder2 { }; placeholder1 _1; placeholder2 _2; } template &lt;typename R,typename T, typename Arg1, typename Arg2&gt; class simple_bind_t { typedef R (T::*fn)(Arg1, Arg2); fn fn_; T t_; public: simple_bind_t(fn f,const T&amp; t):fn_(f),t_(t) {} R operator()(Arg1 a, Arg2 b) { return (t_.*fn_)(a, b); } }; template &lt;typename R,typename T, typename Arg1, typename Arg2&gt; class simple_bind_t2 { typedef R (T::*fn)(Arg1, Arg2); fn fn_; T t_; public: simple_bind_t2(fn f,const T&amp; t):fn_(f),t_(t) {} R operator()(Arg2 a, Arg1 b) { return (t_." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhubicen.github.io/posts/simple-std-bind/" />
+<meta property="article:published_time" content="2012-12-02T17:22:04+08:00" />
+<meta property="article:modified_time" content="2012-12-02T17:22:04+08:00" />
+
+
+</head>
+<body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      <figure class="image">
+        <img alt="" class="is-rounded" src="https://www.gravatar.com/avatar/a7074f9fedfabb09fc4a6b6973c3f25f?s=128&d=identicon">
+      </figure>
+    </a>
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      quick start
+    </a>
+  </div>
+  
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/c&#43;&#43;/">
+        
+        C&#43;&#43;
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/emacs/">
+        
+        Emacs
+        
+      </a>
+      
+    </div>
+    
+    <div class="navbar-end">
+      
+      <a class="navbar-item" href="mailto:zhubicen@gmail.com" target="_blank">
+        <span class="icon">
+          <img alt="email" src='https://zhubicen.github.io/icons/svg/email.svg'>
+        </span>
+      </a>
+      <a class="navbar-item" href="https://zhubicen.github.io/index.xml" target="_blank">
+        <span class="icon">
+          <img alt="rss" src='https://zhubicen.github.io/icons/svg/rss.svg'>
+        </span>
+      </a>
+      
+    </div>
+  </div>
+</nav>
+<section class="hero is-small is-info is-fullwidth">
+  <div class="hero-body">
+<div class="container">
+  <h1 class="title">
+    一个简化版的 std::bind 实现
+  </h1>
+  <h2 class="subtitle">
+    <time datetime='2012-12-02T17:22:04&#43;08:00'>
+      December 02, 2012
+    </time>
+    
+    <br>
+    
+    
+    
+    <a class="tag is-link" href="https://zhubicen.github.io/tags/c&#43;&#43;/">C&#43;&#43;</a>
+    
+    
+    
+  </h2>
+</div>
+
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+<div class="content is-medium">
+  <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#</span><span style="color:#75715e">include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">include</span> <span style="color:#75715e">&lt;algorithm&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">include</span> <span style="color:#75715e">&lt;vector&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">namespace</span> {
+  <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">placeholder1</span> { };
+  <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">placeholder2</span> { };
+  placeholder1 _1;
+  placeholder2 _2;
+}
+
+<span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> R,<span style="color:#66d9ef">typename</span> T, <span style="color:#66d9ef">typename</span> Arg1, <span style="color:#66d9ef">typename</span> Arg2<span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">simple_bind_t</span> {
+  <span style="color:#66d9ef">typedef</span> <span style="color:#a6e22e">R</span> (T<span style="color:#f92672">:</span><span style="color:#f92672">:</span><span style="color:#f92672">*</span>fn)(Arg1, Arg2);
+  fn fn_;
+  T t_;
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+
+  simple_bind_t(fn f,<span style="color:#66d9ef">const</span> T<span style="color:#f92672">&amp;</span> t)<span style="color:#f92672">:</span>fn_(f),t_(t) {}
+
+  R <span style="color:#a6e22e">operator</span>()(Arg1 a, Arg2 b) {
+    <span style="color:#66d9ef">return</span> (t_.<span style="color:#f92672">*</span>fn_)(a, b);
+  }
+};
+
+
+<span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> R,<span style="color:#66d9ef">typename</span> T, <span style="color:#66d9ef">typename</span> Arg1, <span style="color:#66d9ef">typename</span> Arg2<span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">simple_bind_t2</span> {
+  <span style="color:#66d9ef">typedef</span> <span style="color:#a6e22e">R</span> (T<span style="color:#f92672">:</span><span style="color:#f92672">:</span><span style="color:#f92672">*</span>fn)(Arg1, Arg2);
+  fn fn_;
+  T t_;
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+
+  simple_bind_t2(fn f,<span style="color:#66d9ef">const</span> T<span style="color:#f92672">&amp;</span> t)<span style="color:#f92672">:</span>fn_(f),t_(t) {}
+
+  R <span style="color:#a6e22e">operator</span>()(Arg2 a, Arg1 b) {
+    <span style="color:#66d9ef">return</span> (t_.<span style="color:#f92672">*</span>fn_)(b, a);
+  }
+};
+
+
+<span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> R, <span style="color:#66d9ef">typename</span> T, <span style="color:#66d9ef">typename</span> Arg1, <span style="color:#66d9ef">typename</span> Arg2<span style="color:#f92672">&gt;</span>
+simple_bind_t <span style="color:#f92672">&lt;</span>R,T,Arg1, Arg2<span style="color:#f92672">&gt;</span> 
+simple_bind(R (T<span style="color:#f92672">:</span><span style="color:#f92672">:</span><span style="color:#f92672">*</span>fn)(Arg1, Arg2), <span style="color:#66d9ef">const</span> T<span style="color:#f92672">&amp;</span> t, <span style="color:#66d9ef">const</span> placeholder1<span style="color:#f92672">&amp;</span>, <span style="color:#66d9ef">const</span> placeholder2<span style="color:#f92672">&amp;</span>) {
+    <span style="color:#66d9ef">return</span> simple_bind_t<span style="color:#f92672">&lt;</span>R,T,Arg1, Arg2<span style="color:#f92672">&gt;</span>(fn,t);
+}
+
+<span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> R, <span style="color:#66d9ef">typename</span> T, <span style="color:#66d9ef">typename</span> Arg1, <span style="color:#66d9ef">typename</span> Arg2<span style="color:#f92672">&gt;</span>
+simple_bind_t2 <span style="color:#f92672">&lt;</span>R,T,Arg1, Arg2<span style="color:#f92672">&gt;</span> 
+simple_bind(R (T<span style="color:#f92672">:</span><span style="color:#f92672">:</span><span style="color:#f92672">*</span>fn)(Arg1, Arg2), <span style="color:#66d9ef">const</span> T<span style="color:#f92672">&amp;</span> t, <span style="color:#66d9ef">const</span> placeholder2<span style="color:#f92672">&amp;</span>, <span style="color:#66d9ef">const</span> placeholder1<span style="color:#f92672">&amp;</span>) {
+    <span style="color:#66d9ef">return</span> simple_bind_t2<span style="color:#f92672">&lt;</span>R,T,Arg1, Arg2<span style="color:#f92672">&gt;</span>(fn,t);
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Test</span> {
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+  <span style="color:#66d9ef">void</span> do_stuff(<span style="color:#66d9ef">const</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">&amp;</span> v, <span style="color:#66d9ef">int</span> i) {
+    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>copy(v.begin(),v.end(), std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>ostream_iterator<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>(std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout,<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74"> </span><span style="color:#e6db74">&#34;</span>));
+    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74"> i = </span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> i <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+  }
+};
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+  Test t;
+  std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> vec;
+  vec.push_back(<span style="color:#ae81ff">42</span>);
+  vec.push_back(<span style="color:#ae81ff">32</span>);
+  simple_bind(<span style="color:#f92672">&amp;</span>Test<span style="color:#f92672">:</span><span style="color:#f92672">:</span>do_stuff, t, _1, _2)(vec, <span style="color:#ae81ff">999</span>);
+  simple_bind(<span style="color:#f92672">&amp;</span>Test<span style="color:#f92672">:</span><span style="color:#f92672">:</span>do_stuff, t, _2, _1)(<span style="color:#ae81ff">999</span>, vec);
+}
+</code></pre></div>
+</div>
+
+
+  </div>
+</section><footer class="footer">
+  <div class="content has-text-centered">
+    
+    
+    <p>
+      
+      <a href="https://github.com/orf/bare-hugo-theme" target="_blank">Bare Hugo theme.</a>
+      
+      
+    </p>
+    
+  </div>
+</footer>
+
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C&#43;&#43; on quick start</title>
+    <link>https://zhubicen.github.io/tags/c&#43;&#43;/</link>
+    <description>Recent content in C&#43;&#43; on quick start</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 02 Dec 2012 17:22:04 +0800</lastBuildDate>
+    
+	<atom:link href="https://zhubicen.github.io/tags/c++/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>一个简化版的 std::bind 实现</title>
+      <link>https://zhubicen.github.io/posts/simple-std-bind/</link>
+      <pubDate>Sun, 02 Dec 2012 17:22:04 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/simple-std-bind/</guid>
+      <description>#include &amp;lt;iostream&amp;gt;#include &amp;lt;algorithm&amp;gt;#include &amp;lt;vector&amp;gt; namespace { class placeholder1 { }; class placeholder2 { }; placeholder1 _1; placeholder2 _2; } template &amp;lt;typename R,typename T, typename Arg1, typename Arg2&amp;gt; class simple_bind_t { typedef R (T::*fn)(Arg1, Arg2); fn fn_; T t_; public: simple_bind_t(fn f,const T&amp;amp; t):fn_(f),t_(t) {} R operator()(Arg1 a, Arg2 b) { return (t_.*fn_)(a, b); } }; template &amp;lt;typename R,typename T, typename Arg1, typename Arg2&amp;gt; class simple_bind_t2 { typedef R (T::*fn)(Arg1, Arg2); fn fn_; T t_; public: simple_bind_t2(fn f,const T&amp;amp; t):fn_(f),t_(t) {} R operator()(Arg2 a, Arg1 b) { return (t_.</description>
+    </item>
+    
+  </channel>
+</rss>
