@@ -51,7 +51,7 @@ server: port: 9090 greeting: Hello 该服务提供如下接口：
     <item>
       <title>Golang Template</title>
       <link>https://zhubicen.github.io/posts/golang-template/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 08 Dec 2011 15:52:30 +0800</pubDate>
       
       <guid>https://zhubicen.github.io/posts/golang-template/</guid>
       <description>这个 package 的目的是使用结构化的数据作为输入，来生成一些具有固定格式的 文本。从而结构化的数据可以转化为我们需要的文本。
