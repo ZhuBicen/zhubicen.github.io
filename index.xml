@@ -6,10 +6,23 @@
     <description>Recent content on quick start</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 27 Nov 2019 21:37:00 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 13 Dec 2019 16:20:02 +0800</lastBuildDate>
     
 	<atom:link href="https://zhubicen.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>A Wried Bug: 一个未捕获到的异常</title>
+      <link>https://zhubicen.github.io/posts/a-wried-bug/</link>
+      <pubDate>Fri, 13 Dec 2019 16:20:02 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/a-wried-bug/</guid>
+      <description>今天本来是 TB 的，大部分同时都去爬山了。最近腿总是有点不舒服，所以就和同事 Mihi 一起回了公司
+到了公司发现有同事在催我 Coverity 的事情了，我就立刻动手准备在 SVN 上把 trunk.xml 改掉。在改掉前还没有忘记先 svn update 一把，顺便瞄了一眼，老付把旧的项目的 xml 文件删除掉了。心想删掉也好，其实早该删除掉了。更新完成后就把我的改动更新上去，提交了，一切正常
+去茶水间倒了杯水，刚坐下。Mihi 通过 Jabber 找我，描述的问题是这样的： 发布了一个最新的 taskgenerator， 发现有问题，就 revert binary， revert 问题后发现问题还是有，很奇怪
+我赶紧放下手中的活，去看了看， task generateor 出问题的话，整个 CDE 就挂了。看了一下错误是这样的：
+15:11:20 INFO - Running done from 10.109.2.107, sid is: 4728798, msg id:C0A8001F109E08EFB8463BE83EAB0003 15:11:21 INFO - Running done from 10.109.2.107, sid is: 4728798, msg id:C0A8001F109E08EFB8463BE83EAB0003 15:11:21 RunningDoneMsgListner.java:90 ERROR - Abnormal running status, sid: 4728798, status: 1 从现象上看是，同一个错误打印了两遍：“Running done from &amp;ldquo;，并且两遍的 message Id 是一样的，我说这个错误我碰到过，应该是 consuemMessage 函数里出现了异常，导致消息没有处理成功，所以出现了第二次处理</description>
+    </item>
     
     <item>
       <title>Spring Cloud Quickstart</title>
