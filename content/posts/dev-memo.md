@@ -1,5 +1,5 @@
 ---
-title: "Windows X-Server 使用记录
+title: "Windows X-Server 使用记录"
 date: 2010-12-23T20:02:24+08:00
 draft: false
 tags: [Linux]
