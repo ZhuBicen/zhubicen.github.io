@@ -1,7 +1,7 @@
 ---
 title: "Visual Assit"
 date: 2006-11-16T23:01:37+08:00
-draft: true
+draft: false
 tags: [C++]
 ---
 

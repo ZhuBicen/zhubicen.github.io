@@ -1,7 +1,7 @@
 ---
 title: "How to Install Samba Server"
 date: 2007-01-25T22:36:03+08:00
-draft: true
+draft: false
 tags: [Linux]
 ---
 

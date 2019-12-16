@@ -1,8 +1,8 @@
 ---
 title: "Cairo Study"
 date: 2008-11-23T23:09:13+08:00
-draft: true
-tags: []
+draft: False
+tags: [C++]
 ---
 
 Cairo是一个支持多种输出设备的２Ｄ图形库。当前支持的输出目标（output target）包括：X Window System，Quartz，Win32，image buffers，PostScript，PDF，还有 SVG。

@@ -1,8 +1,8 @@
 ---
 title: "解读 C++ 指针声明"
 date: 2009-06-27T10:33:33+08:00
-draft: true
-tags: []
+draft: false
+tags: [C++]
 ---
 ```
 char *const cp ; // const pointer to char 
