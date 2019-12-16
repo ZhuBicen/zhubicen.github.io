@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    
+    C&#43;&#43;17 Structure Binding
+     | 阿碧 
+  </title>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.eb4797a608f467160f71b5cc518dffb9b3fef0edc95e6def8dc4033ba1888b8f414e3d1d3e6c9804ca3e6f125539d8af48b28dcecb4eafc5805bde0b3c8d6956.css' integrity='sha512-60eXpgj0ZxYPcbXMUY3/ubP&#43;8O3JXm3vjcQDO6GIi49BTj0dPmyYBMo&#43;bxJVOdivSLKNzstOr8WAW94LPI1pVg=='>
+  <link rel="canonical" href="https://zhubicen.github.io/posts/c&#43;&#43;17-structure-binding/">
+  <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="阿碧">
+<meta name="description" content="什么是Structured Binding Structured binding 是 C&#43;&#43; 17 的一个新 feature, 他允许你绑定变量到实例或者构造列表中的元素。也可以这么说, 他允许开发人员同时声明多个变量, 并且有 tuple 或 struct 提供初始化值
+他的主要目的是使代码更加易读。 像引用一样，Structured Binding 是一个已经存在对象的别名; 与引用不同的是  Structed Binding 的类型可以不是引用
+在 C&#43;&#43; 17 中可以写出如下的代码：
+std::string func() { auto [succeeded, value] = get_some_pair(); return value; } Structed Binding 是如何工作的 编译器会把以上的代码翻译成如下的代码：
+std::string func() { auto e = get_some_pair(); auto&amp; succeeded = e.first; auto&amp; value = e.second; return value } Structured Binding 与 NVRO 由于 NRVO 不能用在 sub object 因此，从性能方面考虑，如下的代码相比性能较好：">
+
+<meta property="og:title" content="C&#43;&#43;17 Structure Binding" />
+<meta property="og:description" content="什么是Structured Binding Structured binding 是 C&#43;&#43; 17 的一个新 feature, 他允许你绑定变量到实例或者构造列表中的元素。也可以这么说, 他允许开发人员同时声明多个变量, 并且有 tuple 或 struct 提供初始化值
+他的主要目的是使代码更加易读。 像引用一样，Structured Binding 是一个已经存在对象的别名; 与引用不同的是  Structed Binding 的类型可以不是引用
+在 C&#43;&#43; 17 中可以写出如下的代码：
+std::string func() { auto [succeeded, value] = get_some_pair(); return value; } Structed Binding 是如何工作的 编译器会把以上的代码翻译成如下的代码：
+std::string func() { auto e = get_some_pair(); auto&amp; succeeded = e.first; auto&amp; value = e.second; return value } Structured Binding 与 NVRO 由于 NRVO 不能用在 sub object 因此，从性能方面考虑，如下的代码相比性能较好：" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhubicen.github.io/posts/c&#43;&#43;17-structure-binding/" />
+<meta property="article:published_time" content="2019-09-23T20:19:23+08:00" />
+<meta property="article:modified_time" content="2019-09-23T20:19:23+08:00" />
+
+
+</head>
+<body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      <figure class="image">
+        <img alt="" class="is-rounded" src="https://www.gravatar.com/avatar/a7074f9fedfabb09fc4a6b6973c3f25f?s=128&d=identicon">
+      </figure>
+    </a>
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      quick start
+    </a>
+  </div>
+  
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/c&#43;&#43;/">
+        
+        C&#43;&#43;
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/emacs/">
+        
+        Emacs
+        
+      </a>
+      
+    </div>
+    
+    <div class="navbar-end">
+      
+      <a class="navbar-item" href="mailto:zhubicen@gmail.com" target="_blank">
+        <span class="icon">
+          <img alt="email" src='https://zhubicen.github.io/icons/svg/email.svg'>
+        </span>
+      </a>
+      <a class="navbar-item" href="https://zhubicen.github.io/index.xml" target="_blank">
+        <span class="icon">
+          <img alt="rss" src='https://zhubicen.github.io/icons/svg/rss.svg'>
+        </span>
+      </a>
+      
+    </div>
+  </div>
+</nav>
+<section class="hero is-small is-info is-fullwidth">
+  <div class="hero-body">
+<div class="container">
+  <h1 class="title">
+    C&#43;&#43;17 Structure Binding
+  </h1>
+  <h2 class="subtitle">
+    <time datetime='2019-09-23T20:19:23&#43;08:00'>
+      September 23, 2019
+    </time>
+    
+    <br>
+    
+    
+    
+    <a class="tag is-link" href="https://zhubicen.github.io/tags/c&#43;&#43;/">C&#43;&#43;</a>
+    
+    
+    
+  </h2>
+</div>
+
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+<div class="content is-medium">
+  <h1 id="structured-binding">什么是Structured Binding</h1>
+<p><code>Structured binding</code> 是 C++ 17 的一个新  feature, 他允许你绑定变量到实例或者构造列表中的元素。也可以这么说,  他允许开发人员同时声明多个变量, 并且有 <code>tuple</code> 或 <code>struct</code> 提供初始化值</p>
+<p>他的主要目的是使代码更加易读。 像引用一样，<code>Structured Binding</code> 是一个已经存在对象的别名; 与引用不同的是 <code> Structed Binding</code> 的类型可以不是引用</p>
+<p>在 C++ 17 中可以写出如下的代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++">std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>string func() {
+    <span style="color:#66d9ef">auto</span> [succeeded, value] <span style="color:#f92672">=</span> get_some_pair();
+    <span style="color:#66d9ef">return</span> value;
+}
+</code></pre></div><h1 id="structed-binding-">Structed Binding 是如何工作的</h1>
+<p>编译器会把以上的代码翻译成如下的代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++">std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>string func() {
+    <span style="color:#66d9ef">auto</span> e <span style="color:#f92672">=</span> get_some_pair();
+    <span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> succeeded <span style="color:#f92672">=</span> e.first;
+    <span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> value <span style="color:#f92672">=</span> e.second;
+    <span style="color:#66d9ef">return</span> value
+}
+</code></pre></div><h1 id="structured-binding---nvro">Structured Binding 与  <code>NVRO</code></h1>
+<p>由于 <code>NRVO</code> 不能用在 <code>sub object</code> 因此，从性能方面考虑，如下的代码相比性能较好：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++">std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>string func() {
+    <span style="color:#66d9ef">auto</span> [succeeded, value] <span style="color:#f92672">=</span> get_some_pair();
+    <span style="color:#66d9ef">return</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>move(value);
+}
+
+</code></pre></div><h1 id="-stdvector-">和 <code>std::vector</code> 一起使用</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">f</span>(std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>array<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>, <span style="color:#ae81ff">3</span><span style="color:#f92672">&gt;</span> arr1, <span style="color:#66d9ef">int</span> (<span style="color:#f92672">&amp;</span>arr2)[<span style="color:#ae81ff">3</span>], <span style="color:#66d9ef">int</span> (<span style="color:#f92672">&amp;</span>arr3)[]) {
+    <span style="color:#66d9ef">auto</span> [a1,b1,c1] <span style="color:#f92672">=</span> arr1;
+    <span style="color:#66d9ef">auto</span> [a2,b2,c2] <span style="color:#f92672">=</span> arr2;
+    <span style="color:#66d9ef">auto</span> [a3,b3,c3] <span style="color:#f92672">=</span> arr3;
+}
+</code></pre></div><p><a href="https://en.wikipedia.org/wiki/Copy_elision#Return_value_optimization">RVO, Copy elision</a></p>
+<p><a href="https://www.youtube.com/watch?v=YePHP4aIc1g">https://www.youtube.com/watch?v=YePHP4aIc1g</a></p>
+
+</div>
+
+
+  </div>
+</section><footer class="footer">
+  <div class="content has-text-centered">
+    
+    
+    <p>
+      
+      <a href="https://github.com/orf/bare-hugo-theme" target="_blank">Bare Hugo theme.</a>
+      
+      
+    </p>
+    
+  </div>
+</footer>
+
+
+</body>
+</html>

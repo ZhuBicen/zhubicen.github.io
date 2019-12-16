@@ -40,6 +40,19 @@ server: port: 9090 greeting: Hello 该服务提供如下接口：
     </item>
     
     <item>
+      <title>C&#43;&#43;17 Structure Binding</title>
+      <link>https://zhubicen.github.io/posts/c&#43;&#43;17-structure-binding/</link>
+      <pubDate>Mon, 23 Sep 2019 20:19:23 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/c&#43;&#43;17-structure-binding/</guid>
+      <description>什么是Structured Binding Structured binding 是 C++ 17 的一个新 feature, 他允许你绑定变量到实例或者构造列表中的元素。也可以这么说, 他允许开发人员同时声明多个变量, 并且有 tuple 或 struct 提供初始化值
+他的主要目的是使代码更加易读。 像引用一样，Structured Binding 是一个已经存在对象的别名; 与引用不同的是  Structed Binding 的类型可以不是引用
+在 C++ 17 中可以写出如下的代码：
+std::string func() { auto [succeeded, value] = get_some_pair(); return value; } Structed Binding 是如何工作的 编译器会把以上的代码翻译成如下的代码：
+std::string func() { auto e = get_some_pair(); auto&amp;amp; succeeded = e.first; auto&amp;amp; value = e.second; return value } Structured Binding 与 NVRO 由于 NRVO 不能用在 sub object 因此，从性能方面考虑，如下的代码相比性能较好：</description>
+    </item>
+    
+    <item>
       <title>一个基于 TCP 实现的 Golang Webserver</title>
       <link>https://zhubicen.github.io/posts/golang-tcp-webserver/</link>
       <pubDate>Sun, 02 Dec 2012 17:56:17 +0800</pubDate>
