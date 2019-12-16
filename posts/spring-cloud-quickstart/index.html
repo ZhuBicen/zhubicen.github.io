@@ -1,13 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
 
-<html lang="en-us">
+
+
 
 <head>
-  <title>quick start</title>
-  <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="The HTML5 Herald" />
-<meta name="author" content="" /><meta property="og:title" content="Spring Cloud Quickstart" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    
+    Spring Cloud Quickstart
+     | 阿碧 
+  </title>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.eb4797a608f467160f71b5cc518dffb9b3fef0edc95e6def8dc4033ba1888b8f414e3d1d3e6c9804ca3e6f125539d8af48b28dcecb4eafc5805bde0b3c8d6956.css' integrity='sha512-60eXpgj0ZxYPcbXMUY3/ubP&#43;8O3JXm3vjcQDO6GIi49BTj0dPmyYBMo&#43;bxJVOdivSLKNzstOr8WAW94LPI1pVg=='>
+  <link rel="canonical" href="https://zhubicen.github.io/posts/spring-cloud-quickstart/">
+  <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="阿碧">
+<meta name="description" content="Spring Cloud 是 spring 的全家桶之一， 为使用 Java 构建微服务提供了便利的基础设施。 本文主要通过把现有的三个服务改造为微服务，以此对 Spring Cloud 微服务组件有直观的了解。
+本文采用的 Spring Cloud 版本为：Greenwich.SR2， 其对应的相关组件的版本为
+   组件 版本     spring-boot 2.1.5.RELEASE   spring-cloud-config 2.1.3.RELEASE   spring-cloud-sleuth 2.1.1.RELEASE   spring-cloud-openfeign 2.1.2.RELEASE   spring-cloud-netflix 2.1.2.RELEASE    介绍 Spring Cloud 的主要组件 configserver, eureka, zipkin 的使用。
+准备工作 Clone 代码库：https://github.com/ZhuBicen/spring-cloud-quickstart.git，并了解其中的三个服务：
+Greeting 服务 Greeting 的配置文件如下：
+server: port: 9090 greeting: Hello 该服务提供如下接口：
+@RequestMapping(&#34;/&#34;) public String getGreeting(){ LOG.">
+
+<meta property="og:title" content="Spring Cloud Quickstart" />
 <meta property="og:description" content="Spring Cloud 是 spring 的全家桶之一， 为使用 Java 构建微服务提供了便利的基础设施。 本文主要通过把现有的三个服务改造为微服务，以此对 Spring Cloud 微服务组件有直观的了解。
 本文采用的 Spring Cloud 版本为：Greenwich.SR2， 其对应的相关组件的版本为
    组件 版本     spring-boot 2.1.5.RELEASE   spring-cloud-config 2.1.3.RELEASE   spring-cloud-sleuth 2.1.1.RELEASE   spring-cloud-openfeign 2.1.2.RELEASE   spring-cloud-netflix 2.1.2.RELEASE    介绍 Spring Cloud 的主要组件 configserver, eureka, zipkin 的使用。
@@ -20,69 +43,61 @@ server: port: 9090 greeting: Hello 该服务提供如下接口：
 <meta property="article:published_time" content="2019-11-27T21:37:00+08:00" />
 <meta property="article:modified_time" content="2019-11-27T21:37:00+08:00" />
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Spring Cloud Quickstart"/>
-<meta name="twitter:description" content="Spring Cloud 是 spring 的全家桶之一， 为使用 Java 构建微服务提供了便利的基础设施。 本文主要通过把现有的三个服务改造为微服务，以此对 Spring Cloud 微服务组件有直观的了解。
-本文采用的 Spring Cloud 版本为：Greenwich.SR2， 其对应的相关组件的版本为
-   组件 版本     spring-boot 2.1.5.RELEASE   spring-cloud-config 2.1.3.RELEASE   spring-cloud-sleuth 2.1.1.RELEASE   spring-cloud-openfeign 2.1.2.RELEASE   spring-cloud-netflix 2.1.2.RELEASE    介绍 Spring Cloud 的主要组件 configserver, eureka, zipkin 的使用。
-准备工作 Clone 代码库：https://github.com/ZhuBicen/spring-cloud-quickstart.git，并了解其中的三个服务：
-Greeting 服务 Greeting 的配置文件如下：
-server: port: 9090 greeting: Hello 该服务提供如下接口：
-@RequestMapping(&#34;/&#34;) public String getGreeting(){ LOG."/>
 
-<meta name="generator" content="Hugo 0.61.0" />
-    
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
-  <script src="https://kit.fontawesome.com/b76b73e8e8.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
-  <link rel="stylesheet" type="text/css" href="/css/styles.css" /></head>
-
-<body>
-  <div id="container">
-    <header>
-      <h1>
-                <a href="/">quick start</a>
-            </h1>
-
-      <ul id="social-media">
-      </ul>
+</head>
+<body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      <figure class="image">
+        <img alt="" class="is-rounded" src="https://www.gravatar.com/avatar/a7074f9fedfabb09fc4a6b6973c3f25f?s=128&d=identicon">
+      </figure>
+    </a>
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      quick start
+    </a>
+  </div>
+  
+  <div class="navbar-menu">
+    <div class="navbar-start">
       
-    </header>
-
+    </div>
     
-<nav>
-    <ul>
-        
-    </ul>
+    <div class="navbar-end">
+      
+      <a class="navbar-item" href="mailto:zhubicen@gmail.com" target="_blank">
+        <span class="icon">
+          <img alt="email" src='https://zhubicen.github.io/icons/svg/email.svg'>
+        </span>
+      </a>
+      <a class="navbar-item" href="https://zhubicen.github.io/index.xml" target="_blank">
+        <span class="icon">
+          <img alt="rss" src='https://zhubicen.github.io/icons/svg/rss.svg'>
+        </span>
+      </a>
+      
+    </div>
+  </div>
 </nav>
-
-    <main>
-
-
-
-
-<article>
-
-    <h1>Spring Cloud Quickstart</h1>
-
+<section class="hero is-small is-info is-fullwidth">
+  <div class="hero-body">
+<div class="container">
+  <h1 class="title">
+    Spring Cloud Quickstart
+  </h1>
+  <h2 class="subtitle">
+    <time datetime='2019-11-27T21:37:00&#43;08:00'>
+      November 27, 2019
+    </time>
     
-        <aside>
-    <ul>
-        <li>
-            <time class="post-date" datetime="2019-11-27T21:37:00&#43;08:00">Nov 27, 2019</time>
-        </li>
-        
+  </h2>
+</div>
 
-        
-
-        <li>4 minutes read</li>
-    </ul>
-</aside>
-
-    
-
-    <p><img src="../../../../Codequickstartstatic/1575127662002.png" alt="1575127662002"></p>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+<div class="content is-medium">
+  <p><img src="../../../../Codequickstartstatic/1575127662002.png" alt="1575127662002"></p>
 <p>Spring Cloud 是 spring 的全家桶之一， 为使用 Java 构建微服务提供了便利的基础设施。 本文主要通过把现有的三个服务改造为微服务，以此对 Spring Cloud 微服务组件有直观的了解。</p>
 <p>本文采用的 <code>Spring Cloud</code> 版本为：<code>Greenwich.SR2</code>， 其对应的相关组件的版本为</p>
 <table>
@@ -357,32 +372,24 @@ name: Bernard
 <p><a href="https://cloud.spring.io/spring-cloud-static/spring-cloud-config/2.1.3.RELEASE/single/spring-cloud-config.html">Spring Cloud Config 官方文档</a>
 <a href="https://cloud.spring.io/spring-cloud-sleuth/2.1.x/">Spring Cloud Sleuth 官方文档</a></p>
 
-
-</article>
-
-
-<section class="post-nav">
-    <ul>
-        
-        
-    </ul>
-</section>
-    
-
-
-
-
-
-</main>
-    <footer>
-        <h6> |
-            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
-            <a href="https://zhubicen.github.io/index.xml">Subscribe </a></h6>
-    </footer>
 </div>
-<script src="/js/scripts.js"></script>
+
+
+  </div>
+</section><footer class="footer">
+  <div class="content has-text-centered">
+    
+    
+    <p>
+      
+      <a href="https://github.com/orf/bare-hugo-theme" target="_blank">Bare Hugo theme.</a>
+      
+      
+    </p>
+    
+  </div>
+</footer>
+
 
 </body>
-
 </html>
-
