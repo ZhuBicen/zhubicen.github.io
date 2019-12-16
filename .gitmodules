@@ -4,3 +4,7 @@
 [submodule "themes/hugo-kiera"]
 	path = themes/hugo-kiera
 	url = https://github.com/funkydan2/hugo-kiera.git
+
+[submodule "docs"]
+	path = docs
+	url = https://github.com/ZhuBicen/zhubicen.github.io.git
