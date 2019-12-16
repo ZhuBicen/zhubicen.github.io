@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker on quick start</title>
+    <link>https://zhubicen.github.io/tags/docker/</link>
+    <description>Recent content in Docker on quick start</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 26 Jul 2019 10:45:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://zhubicen.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ubuntu Docker Timezone</title>
+      <link>https://zhubicen.github.io/posts/ubuntu-docker-timezone/</link>
+      <pubDate>Fri, 26 Jul 2019 10:45:18 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/ubuntu-docker-timezone/</guid>
+      <description>一般来讲如下方法就够了：
+RUN echo &amp;quot;Asia/Shanghai&amp;quot; &amp;gt; /etc/timezone RUN dpkg-reconfigure -f noninteractive tzdata 但是因为 Ubuntu 的 bug, 要添加一行 RUn rm -f /etc/localtime, 因此:
+RUN echo &amp;quot;Asia/Shanghai&amp;quot; &amp;gt; /etc/timezone RUN rm -f /etc/localtime RUN dpkg-reconfigure -f noninteractive tzdata 以上参考自：docker-timezone-in-ubuntu-16-04-image, 虽然原文只是针对 1604, 笔者亲测1804也是适用的</description>
+    </item>
+    
+  </channel>
+</rss>

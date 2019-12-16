@@ -6,10 +6,24 @@
     <description>Recent content in CSS on quick start</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 25 Aug 2009 16:38:54 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 07 Dec 2019 20:50:35 +0800</lastBuildDate>
     
 	<atom:link href="https://zhubicen.github.io/tags/css/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Vuetify Icon</title>
+      <link>https://zhubicen.github.io/posts/vuetify-icon/</link>
+      <pubDate>Sat, 07 Dec 2019 20:50:35 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/vuetify-icon/</guid>
+      <description>安装 Vuetify 的步骤
+ yarn global add @vue/cli vue create my-app vue add vuetify  第三步后， 会自动再 public/index.html 文件下添加字体，是默认的 material design icon
+因此再安装后，使用 v-icon 时，需要使用 mdi 前缀。比如： &amp;lt;v-icon&amp;gt;mdi-basketball&amp;lt;/v-icon&amp;gt;
+但是再使用一些文档中的例子的时候，比如从 codepen 中粘贴过来是，里面用的字体可能是不带 mdi 前缀的，因此需要按如下的步骤安装 material icon
+yarn add material-design-icons-iconfont -D 并在main.js ， index.js 或者 app.js 中，添加如下：
+import &#39;material-design-icons-iconfont/dist/material-design-icons.css&#39; Material design icon 和 Material icon 是不同的两套图标</description>
+    </item>
     
     <item>
       <title>CSS 项目心得</title>

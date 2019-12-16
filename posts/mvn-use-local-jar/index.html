@@ -9,13 +9,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>
     
-    Posts tagged with
-    
-    English
+    Maven 中使用本地 jar 包
      | 阿碧 
   </title>
   <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.eb4797a608f467160f71b5cc518dffb9b3fef0edc95e6def8dc4033ba1888b8f414e3d1d3e6c9804ca3e6f125539d8af48b28dcecb4eafc5805bde0b3c8d6956.css' integrity='sha512-60eXpgj0ZxYPcbXMUY3/ubP&#43;8O3JXm3vjcQDO6GIi49BTj0dPmyYBMo&#43;bxJVOdivSLKNzstOr8WAW94LPI1pVg=='>
-  <link rel="canonical" href="https://zhubicen.github.io/tags/english/">
+  <link rel="canonical" href="https://zhubicen.github.io/posts/mvn-use-local-jar/">
   <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
   <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -24,13 +22,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer">
 <meta name="author" content="阿碧">
-<meta name="description" content="C&#43;&#43;/golang/Java/JavaScript developer">
+<meta name="description" content="你可以包含本地的 jar, 像下面一样:
+但是, 在使用 mvn package 时,这个 jar 不会被打包进去,除非使用下面的方式安装
+mvn install:install-file -Dfile=&quot;C:\Users\xxx\lib\LoginRadius-1.0.jar&quot; -DgroupId=LoginRadius -DartifactId=LoginRadius -Dversion=1.0 -Dpackaging=jar` https://stackoverflow.com/questions/19065666/how-to-include-system-dependencies-in-war-built-using-maven">
 
-<meta property="og:title" content="English" />
-<meta property="og:description" content="C&#43;&#43;/golang/Java/JavaScript developer" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://zhubicen.github.io/tags/english/" />
-<meta property="og:updated_time" content="2012-03-10T17:48:58+08:00" />
+<meta property="og:title" content="Maven 中使用本地 jar 包" />
+<meta property="og:description" content="你可以包含本地的 jar, 像下面一样:
+但是, 在使用 mvn package 时,这个 jar 不会被打包进去,除非使用下面的方式安装
+mvn install:install-file -Dfile=&quot;C:\Users\xxx\lib\LoginRadius-1.0.jar&quot; -DgroupId=LoginRadius -DartifactId=LoginRadius -Dversion=1.0 -Dpackaging=jar` https://stackoverflow.com/questions/19065666/how-to-include-system-dependencies-in-war-built-using-maven" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhubicen.github.io/posts/mvn-use-local-jar/" />
+<meta property="article:published_time" content="2019-08-20T20:48:32+08:00" />
+<meta property="article:modified_time" content="2019-08-20T20:48:32+08:00" />
 
 
 </head>
@@ -136,26 +139,37 @@
 <section class="hero is-small is-info is-fullwidth">
   <div class="hero-body">
 <div class="container">
-  <article class="media">
-    <div class="media-content">
-      <h1 class="title">
-        Posts tagged with English
-      </h1>
-    </div>
-  </article>
+  <h1 class="title">
+    Maven 中使用本地 jar 包
+  </h1>
+  <h2 class="subtitle">
+    <time datetime='2019-08-20T20:48:32&#43;08:00'>
+      August 20, 2019
+    </time>
+    
+    <br>
+    
+    
+    
+    <a class="tag is-link" href="https://zhubicen.github.io/tags/java/">Java</a>
+    
+    
+    
+  </h2>
 </div>
 
   </div>
 </section>
 <section class="section">
   <div class="container">
-<div class="posts">
-  
-  <div class="post">
-    <div><a href="https://zhubicen.github.io/posts/englisth-reverse/" class="title is-size-5"> 逆向法专用的英语复读机</a></div>
-    <div class="subtitle is-6">March 10, 2012</div>
-  </div>
-  
+<div class="content is-medium">
+  <p>你可以包含本地的 jar, 像下面一样:</p>
+<p><img src="mvn-use-local-jar.assets/image-20191217004922024.png" alt="image-20191217004922024"></p>
+<p>但是, 在使用 <code>mvn package</code> 时,这个 jar 不会被打包进去,除非使用下面的方式<code>安装</code></p>
+<pre><code>mvn install:install-file 
+-Dfile=&quot;C:\Users\xxx\lib\LoginRadius-1.0.jar&quot; -DgroupId=LoginRadius -DartifactId=LoginRadius -Dversion=1.0 -Dpackaging=jar`
+</code></pre><p><a href="https://stackoverflow.com/questions/19065666/how-to-include-system-dependencies-in-war-built-using-maven">https://stackoverflow.com/questions/19065666/how-to-include-system-dependencies-in-war-built-using-maven</a></p>
+
 </div>
 
 
