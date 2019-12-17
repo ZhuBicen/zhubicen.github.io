@@ -6,10 +6,24 @@
     <description>Recent content on quick start</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 17 Dec 2019 20:41:07 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 17 Dec 2019 22:32:48 +0800</lastBuildDate>
     
 	<atom:link href="https://zhubicen.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ES6 中的 const</title>
+      <link>https://zhubicen.github.io/posts/js-const/</link>
+      <pubDate>Tue, 17 Dec 2019 22:32:48 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/js-const/</guid>
+      <description>Java Script 中的 const 变量，在执行的过程中不能重新赋值，但是可以对原有值更改。
+比如：s
+const constVar = {}; constVar.newProperty = &amp;#34;newValue&amp;#34;; 这个初看起来挺奇怪的，但是 C++ 其实也是如此。由于 JavaScript 中的变量是引用，所以那 C++ 中的引用进行对比的话，两者的语义是相近的，但是不完全一致
+如下代码是可以的：
+MyClass myObject; const MyClass&amp;amp; constObject = myObject; myObject.a = 1; 但是在C++ 中不可直接使用 const reference 来改变值的属性：
+MyClass myObject; const MyClass&amp;amp; constObject = myObject; constObject.a = 2;// 这样是不行的: expression must be a modifiable value </description>
+    </item>
     
     <item>
       <title>一个关于闭包的直观理解</title>
