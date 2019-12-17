@@ -6,10 +6,26 @@
     <description>Recent content in JavaScript on quick start</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 07 Dec 2019 20:50:35 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 17 Dec 2019 20:41:07 +0800</lastBuildDate>
     
 	<atom:link href="https://zhubicen.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>一个关于闭包的直观理解</title>
+      <link>https://zhubicen.github.io/posts/js-closure/</link>
+      <pubDate>Tue, 17 Dec 2019 20:41:07 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/js-closure/</guid>
+      <description>Operationally, a closure is a record storing a function together with an environment.
+ 闭包的概念很抽象，但是我们可以很简单的阐述如何创建一个闭包：
+function outerFunction() { let outValue; function innterFunction() { outValue = &amp;#34;assigned by closure&amp;#34;;	}	return innerFunction; } closure1 = outerFunction(1) closure2 = outerFunction(2) 在以上的代码中，当我们调用 outerFunction() 时， 闭包就生成了。cloure1 和 clousre2 就是两个闭包，虽然它们指向同一个内部函数。但是却拥有各自的 outValue。 在我们这个例子中， 闭包环境中只有一个变量outValue。因此闭包就像一个魔法气泡一样，把与其相关的执行环境包裹了起来，因此各个闭包互相独立。
+由于 closure1 和 clousre2 各自拥有自己的状态outvalue，因此两者可以互不影响。
+举个🌰：
+在 DOM 编程中， closure1 和 cloure2 可以为两个不同按钮的 click 函数。这样两个按钮的状态可以互不影响，同时工作。
+比如，稍加变化后的代码，就可以用于记录两个按钮的点击次数
+&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;button type=&amp;#34;button&amp;#34; id=&amp;#34;button1&amp;#34;&amp;gt;Click Me!</description>
+    </item>
     
     <item>
       <title>Vuetify Icon</title>
