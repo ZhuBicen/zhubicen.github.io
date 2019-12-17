@@ -23,7 +23,7 @@
 <meta name="referrer" content="no-referrer">
 <meta name="author" content="阿碧">
 <meta name="description" content="Java Script 中的 const 变量，在执行的过程中不能重新赋值，但是可以对原有值更改。
-比如：s
+比如：
 const constVar = {}; constVar.newProperty = &#34;newValue&#34;; 这个初看起来挺奇怪的，但是 C&#43;&#43; 其实也是如此。由于 JavaScript 中的变量是引用，所以那 C&#43;&#43; 中的引用进行对比的话，两者的语义是相近的，但是不完全一致
 如下代码是可以的：
 MyClass myObject; const MyClass&amp; constObject = myObject; myObject.a = 1; 但是在C&#43;&#43; 中不可直接使用 const reference 来改变值的属性：
@@ -31,7 +31,7 @@ MyClass myObject; const MyClass&amp; constObject = myObject; constObject.a = 2;/
 
 <meta property="og:title" content="ES6 中的 const" />
 <meta property="og:description" content="Java Script 中的 const 变量，在执行的过程中不能重新赋值，但是可以对原有值更改。
-比如：s
+比如：
 const constVar = {}; constVar.newProperty = &#34;newValue&#34;; 这个初看起来挺奇怪的，但是 C&#43;&#43; 其实也是如此。由于 JavaScript 中的变量是引用，所以那 C&#43;&#43; 中的引用进行对比的话，两者的语义是相近的，但是不完全一致
 如下代码是可以的：
 MyClass myObject; const MyClass&amp; constObject = myObject; myObject.a = 1; 但是在C&#43;&#43; 中不可直接使用 const reference 来改变值的属性：
@@ -176,7 +176,7 @@ MyClass myObject; const MyClass&amp; constObject = myObject; constObject.a = 2;/
   <div class="container">
 <div class="content is-medium">
   <p>Java Script 中的 const 变量，在执行的过程中不能重新赋值，但是可以对原有值更改。</p>
-<p>比如：s</p>
+<p>比如：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">constVar</span> <span style="color:#f92672">=</span> {};
 <span style="color:#a6e22e">constVar</span>.<span style="color:#a6e22e">newProperty</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;newValue&#34;</span>;
 </code></pre></div><p>这个初看起来挺奇怪的，但是 <code>C++</code> 其实也是如此。由于 <code>JavaScript</code> 中的变量是引用，所以那 <code>C++</code> 中的引用进行对比的话，两者的语义是相近的，但是不完全一致</p>
