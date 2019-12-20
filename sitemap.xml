@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://zhubicen.github.io/tags/javascript/</loc>
+    <lastmod>2019-12-21T00:43:10+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://zhubicen.github.io/posts/</loc>
     <lastmod>2019-12-21T00:43:10+08:00</lastmod>
   </url>
@@ -13,22 +18,17 @@
   </url>
   
   <url>
+    <loc>https://zhubicen.github.io/tags/</loc>
+    <lastmod>2019-12-21T00:43:10+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://zhubicen.github.io/posts/instance-of/</loc>
     <lastmod>2019-12-21T00:43:10+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://zhubicen.github.io/posts/js-const/</loc>
-    <lastmod>2019-12-17T22:32:48+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhubicen.github.io/tags/javascript/</loc>
-    <lastmod>2019-12-17T22:32:48+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhubicen.github.io/tags/</loc>
     <lastmod>2019-12-17T22:32:48+08:00</lastmod>
   </url>
   
