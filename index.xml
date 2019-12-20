@@ -6,10 +6,27 @@
     <description>Recent content on quick start</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 17 Dec 2019 22:32:48 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 21 Dec 2019 00:43:10 +0800</lastBuildDate>
     
 	<atom:link href="https://zhubicen.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>理解 instance Of</title>
+      <link>https://zhubicen.github.io/posts/instance-of/</link>
+      <pubDate>Sat, 21 Dec 2019 00:43:10 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/instance-of/</guid>
+      <description>The instanceof operator tests whether the prototype property of a constructor appears anywhere in the prototype chain of an object.
+ object instanceof constructor
+instance of 的语义是：检查右边的函数的原型，是否存在于操作符左边的原型链上。
+原型链 首先我们来理解一下原型链的意义：
+假定我们有 a, b 和 c 三个 object
+Object.setPrototypeOf(a, b); Object.setPrototypeOf(b, c); 上面的代码就把 b 设置为了 a 的原型， c 设置为 b 的原型，因此 a 的原型指向 b，b 的原型指向 c。因此每一个对象都可以有自己的原型，每一个原型也可以拥有自己的原型，以次类推形成一个原型链。
+a 在查找一个属性时，如果 a 本身没有此属性的情况下，会在他的原型对象上查找， 如果在原型 b 上还是没有找到，就到 b 的原型上查找。
+构造函数与原型 在 JavaScript 中，够造原型的方式有很多种，但是使用构造函数来创建函数，是最经典的方法。
+function C() { this.</description>
+    </item>
     
     <item>
       <title>ES6 中的 const</title>
