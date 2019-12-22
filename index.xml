@@ -6,13 +6,39 @@
     <description>Recent content on quick start</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 21 Dec 2019 00:43:10 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 22 Dec 2019 14:32:54 +0800</lastBuildDate>
     
 	<atom:link href="https://zhubicen.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>理解 instance Of</title>
+      <title>Git Submodule 教程</title>
+      <link>https://zhubicen.github.io/posts/git-submodules/</link>
+      <pubDate>Sun, 22 Dec 2019 14:32:54 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/git-submodules/</guid>
+      <description>为现有的仓库增加 submodule git submodule add (repository) (directory) 在执行了以上命令后，在 git 仓库的根目录下，会出现一个 .gitmodules，里面会记录当前添加的作为 submodule 的 git 仓库的地址。
+提交这个 .gitmodules 文件：
+git add .gitmodules git commit -m&amp;quot;add sumodule file&amp;quot; git push 经过以上的步骤，我们就把为我们的 git 仓库添加了一个 submodule
+clone 现有的包含 submodule 的仓库 重新clone 我们的仓库，会发现，里面只有一个空的目录。这是因为，默认情况下，git clone 不会把 submodule 同时 clone 下来。为了把submodule 也 clone 下来，需要运行一下的 submodule 指令
+git submodule init git submodule update // 也有可能 sumbodule 可能会包含其他的 git repo, 所以可以使用一下的命令 git submodule update --init --recursive submodule 也是一个普通的 repo，我们可以在目录中，执行log， status， checkout和branch</description>
+    </item>
+    
+    <item>
+      <title>Java Functional Interface</title>
+      <link>https://zhubicen.github.io/posts/runnable-lambda/</link>
+      <pubDate>Sun, 22 Dec 2019 01:06:03 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/runnable-lambda/</guid>
+      <description>请看如下的 Java 代码：
+class MyClass { public setCalback(Runnable doneCallback) { if (something is done) { doneCallback(); } } }; MyClass mc = new MyClass(); mc.setCallback(() -&amp;gt; { // do other things })  为什么 lambda 可以实现Runnable 接口？
+ Runnable 的代码如下， 可以看到他是一个函数式接口 FunctionalInterface，类似的函数是接口，在 Java中还有很多，比如 ActionLisener 和 Comparator
+package java.lang; @FunctionalInterface public interface Runnable { void run(); } 什么是函数是接口？ 函数式接口是一种只有一种方法的接口。具有相同签名的 lambda 函数可以转化为这种接口。
+ A functional interface is an interface that contains only one abstract method.</description>
+    </item>
+    
+    <item>
+      <title>JavaScript instance of</title>
       <link>https://zhubicen.github.io/posts/instance-of/</link>
       <pubDate>Sat, 21 Dec 2019 00:43:10 +0800</pubDate>
       

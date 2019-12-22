@@ -176,7 +176,7 @@
 <div class="content is-medium">
   <h2 id="heading">问题</h2>
 <p>在开发 SpringBoot 微服务的过程中，经常发生的情况是，需要使用 Windows 进行开发，但是微服务最终会部署在 Linux 上，因此而产生的的开发环境和生产环境的不一致，会导致上线后的一些问题</p>
-<h2 id="heading1">解决办法</h2>
+<h2 id="heading-1">解决办法</h2>
 <p>通过把源代码目录挂载到 Docker 中，并在 Doker 中，运行 <code>mvn spring-boot:run</code>，因为 Docker 和 Windows 共享相同的目录，所以 Docker 中的 maven 可以检测到代码的改动，自动重启 SpringBoot 服务</p>
 <ul>
 <li>假设你的 Spring 代码可以使用 <code>mvn spring-boot:run</code> 正常运行。为了使 Maven 可以检测到代码的改动以重启服务，请确保 <code>pom.xml</code> 里添加了依赖项：<code>spring-boot-devtools</code></li>
@@ -193,7 +193,7 @@
 <li>进入 Docker 目录，编译生成 Docker Image <code>docker build -t app:dev .</code></li>
 <li>运行 Docker: <code>docker run -v d:/Project/demo/src:/app/src app:dev</code></li>
 </ul>
-<h2 id="heading2">参考</h2>
+<h2 id="heading-2">参考</h2>
 <ol>
 <li><a href="https://medium.com/@nieldw/caching-maven-dependencies-in-a-docker-build-dca6ca7ad612">https://medium.com/@nieldw/caching-maven-dependencies-in-a-docker-build-dca6ca7ad612</a></li>
 <li><a href="https://hub.docker.com/_/maven">https://hub.docker.com/_/maven</a></li>

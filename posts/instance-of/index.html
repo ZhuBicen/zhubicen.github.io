@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>
     
-    理解 instance Of
+    JavaScript instance of
      | 阿碧 
   </title>
   <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.eb4797a608f467160f71b5cc518dffb9b3fef0edc95e6def8dc4033ba1888b8f414e3d1d3e6c9804ca3e6f125539d8af48b28dcecb4eafc5805bde0b3c8d6956.css' integrity='sha512-60eXpgj0ZxYPcbXMUY3/ubP&#43;8O3JXm3vjcQDO6GIi49BTj0dPmyYBMo&#43;bxJVOdivSLKNzstOr8WAW94LPI1pVg=='>
@@ -32,7 +32,7 @@ a 在查找一个属性时，如果 a 本身没有此属性的情况下，会在
 构造函数与原型 在 JavaScript 中，够造原型的方式有很多种，但是使用构造函数来创建函数，是最经典的方法。
 function C() { this.">
 
-<meta property="og:title" content="理解 instance Of" />
+<meta property="og:title" content="JavaScript instance of" />
 <meta property="og:description" content="The instanceof operator tests whether the prototype property of a constructor appears anywhere in the prototype chain of an object.
  object instanceof constructor
 instance of 的语义是：检查右边的函数的原型，是否存在于操作符左边的原型链上。
@@ -158,7 +158,7 @@ function C() { this." />
   <div class="hero-body">
 <div class="container">
   <h1 class="title">
-    理解 instance Of
+    JavaScript instance of
   </h1>
   <h2 class="subtitle">
     <time datetime='2019-12-21T00:43:10&#43;08:00'>
@@ -194,7 +194,7 @@ Object.setPrototypeOf(b, c);
 </code></pre><p>上面的代码就把 b 设置为了 a 的原型， c 设置为 b 的原型，因此 a 的原型指向 b，b 的原型指向 c。因此每一个对象都可以有自己的原型，每一个原型也可以拥有自己的原型，以次类推形成一个原型链。</p>
 <p><img src="instance-of.assets/image-20191221005901923.png" alt="image-20191221005901923"></p>
 <p>a 在查找一个属性时，如果 a 本身没有此属性的情况下，会在他的原型对象上查找， 如果在原型  b 上还是没有找到，就到 b 的原型上查找。</p>
-<h1 id="heading1">构造函数与原型</h1>
+<h1 id="heading-1">构造函数与原型</h1>
 <p>在 JavaScript 中，够造原型的方式有很多种，但是使用构造函数来创建函数，是最经典的方法。</p>
 <pre><code>function C() {
 	this.property = 1;
@@ -205,7 +205,7 @@ object = new Constructor();
 </code></pre><p>在使用构造函数构造对象的时候，被构造对象的原型会设置为构造函数的原型。因此 <code>object</code> 的原型指向 <code>C</code> 的原型。另外，函数的原型通过 <code>constructor</code> 属性指向函数。因此形成了如下的原型链。很显然 函数<code>C</code> 的原型在 <code>object</code>的原型链上。因此</p>
 <p><code>object instance of C</code>  为 <code>true</code></p>
 <p><img src="instance-of.assets/image-20191221011624665.png" alt="image-20191221011624665"></p>
-<h1 id="heading2">深入理解</h1>
+<h1 id="heading-2">深入理解</h1>
 <p>事情远没有这么简单，以下是 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof">MDN</a> 上的举例</p>
 <p>比如：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">C</span>() {};
