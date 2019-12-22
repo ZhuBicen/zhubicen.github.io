@@ -1,5 +1,5 @@
 ---
-title: "理解 instance Of"
+title: "JavaScript instance of"
 date: 2019-12-21T00:43:10+08:00
 draft: false
 tags: [JavaScript]
