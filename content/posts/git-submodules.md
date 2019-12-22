@@ -24,8 +24,11 @@ git push
 重新`clone` 我们的仓库，会发现，里面只有一个空的目录。这是因为，默认情况下，`git clone` 不会把 `submodule` 同时 `clone` 下来。为了把`submodule` 也 `clone` 下来，需要运行一下的 `submodule` 指令
 
 ```
-git submodle init
-git submodle update
+git submodule init
+git submodule update
+// 也有可能 sumbodule 可能会包含其他的 git repo, 所以可以使用一下的命令
+git submodule update --init --recursive
+
 ```
 
 `submodule` 也是一个普通的 repo，我们可以在目录中，执行`log`， `status`， `checkout`和`branch`
