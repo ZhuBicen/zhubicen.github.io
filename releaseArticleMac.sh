@@ -3,4 +3,4 @@ Hugo
 cd docs
 git add *
 git commit -m"New Article" -a
-git push
+git push origin HEAD:master
