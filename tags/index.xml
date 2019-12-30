@@ -6,10 +6,19 @@
     <description>Recent content in Tags on quick start</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 29 Dec 2019 09:26:02 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 30 Dec 2019 20:45:33 +0800</lastBuildDate>
     
 	<atom:link href="https://zhubicen.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>books</title>
+      <link>https://zhubicen.github.io/tags/books/</link>
+      <pubDate>Mon, 30 Dec 2019 20:45:33 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/tags/books/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>JavaScript</title>
