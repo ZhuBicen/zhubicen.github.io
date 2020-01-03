@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    
+    Java Charset
+     | 阿碧 
+  </title>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.eb4797a608f467160f71b5cc518dffb9b3fef0edc95e6def8dc4033ba1888b8f414e3d1d3e6c9804ca3e6f125539d8af48b28dcecb4eafc5805bde0b3c8d6956.css' integrity='sha512-60eXpgj0ZxYPcbXMUY3/ubP&#43;8O3JXm3vjcQDO6GIi49BTj0dPmyYBMo&#43;bxJVOdivSLKNzstOr8WAW94LPI1pVg=='>
+  <link rel="canonical" href="https://zhubicen.github.io/posts/java-charset/">
+  <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="阿碧">
+<meta name="description" content="在给公司做抽奖程序的时候，做 了这么一个功能，从 csv 读取内容放到数据库，在 IDE 里测试的好好的。拿到命令行运行后，插入数据库就是乱码。
+后来发现是读取文本的内容的时候没有设置UTF8，但是为什么 IDE 是好的？IDE（包括 Eclipse 和 IntelliJ）里下直接就是 UTF8，所以不用设置Java IDE 包括 Eclipse 和 IDEA 默认的字符集都是 UTF-8，而系统本身的字符集（在使用命令行启动应用程序的时候），对于中文操作系统来说一般是 GBK，比如下面的代码，在 IDE 中运行的时候会打印 UTF-8，在 Windows 命令行运行的时候打印 GBK
+public class Application { public static void main(String[] args) throws InterruptedException { System.out.println(Charset.defaultCharset()); System.out.println(new OutputStreamWriter(new ByteArrayOutputStream()).getEncoding()); System.out.println(System.getProperty(&#34;file.encoding&#34;)); } } ">
+
+<meta property="og:title" content="Java Charset" />
+<meta property="og:description" content="在给公司做抽奖程序的时候，做 了这么一个功能，从 csv 读取内容放到数据库，在 IDE 里测试的好好的。拿到命令行运行后，插入数据库就是乱码。
+后来发现是读取文本的内容的时候没有设置UTF8，但是为什么 IDE 是好的？IDE（包括 Eclipse 和 IntelliJ）里下直接就是 UTF8，所以不用设置Java IDE 包括 Eclipse 和 IDEA 默认的字符集都是 UTF-8，而系统本身的字符集（在使用命令行启动应用程序的时候），对于中文操作系统来说一般是 GBK，比如下面的代码，在 IDE 中运行的时候会打印 UTF-8，在 Windows 命令行运行的时候打印 GBK
+public class Application { public static void main(String[] args) throws InterruptedException { System.out.println(Charset.defaultCharset()); System.out.println(new OutputStreamWriter(new ByteArrayOutputStream()).getEncoding()); System.out.println(System.getProperty(&#34;file.encoding&#34;)); } } " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhubicen.github.io/posts/java-charset/" />
+<meta property="article:published_time" content="2019-12-23T11:32:30+08:00" />
+<meta property="article:modified_time" content="2019-12-23T11:32:30+08:00" />
+
+
+</head>
+<body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      <figure class="image">
+        <img alt="" class="is-rounded" src="https://www.gravatar.com/avatar/a7074f9fedfabb09fc4a6b6973c3f25f?s=128&d=identicon">
+      </figure>
+    </a>
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      quick start
+    </a>
+  </div>
+  
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/books/">
+        
+        Books
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/c&#43;&#43;/">
+        
+        C&#43;&#43;
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/chrome/">
+        
+        Chrome
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/css/">
+        
+        CSS
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/docker/">
+        
+        Docker
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/elasticsearch/">
+        
+        Elastic search
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/emacs/">
+        
+        Emacs
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/english/">
+        
+        English
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/git/">
+        
+        Git
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/golang/">
+        
+        Golang
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/java/">
+        
+        Java
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/javascript/">
+        
+        Java script
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/linux/">
+        
+        Linux
+        
+      </a>
+      
+    </div>
+    
+    <div class="navbar-end">
+      
+      <a class="navbar-item" href="mailto:zhubicen@gmail.com" target="_blank">
+        <span class="icon">
+          <img alt="email" src='https://zhubicen.github.io/icons/svg/email.svg'>
+        </span>
+      </a>
+      <a class="navbar-item" href="https://zhubicen.github.io/index.xml" target="_blank">
+        <span class="icon">
+          <img alt="rss" src='https://zhubicen.github.io/icons/svg/rss.svg'>
+        </span>
+      </a>
+      
+    </div>
+  </div>
+</nav>
+<section class="hero is-small is-info is-fullwidth">
+  <div class="hero-body">
+<div class="container">
+  <h1 class="title">
+    Java Charset
+  </h1>
+  <h2 class="subtitle">
+    <time datetime='2019-12-23T11:32:30&#43;08:00'>
+      December 23, 2019
+    </time>
+    
+    <br>
+    
+    
+    
+    <a class="tag is-link" href="https://zhubicen.github.io/tags/java/">Java</a>
+    
+    
+    
+  </h2>
+</div>
+
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+<div class="content is-medium">
+  <p>在给公司做抽奖程序的时候，做 了这么一个功能，从 csv 读取内容放到数据库，在 IDE 里测试的好好的。拿到命令行运行后，插入数据库就是乱码。</p>
+<p>后来发现是读取文本的内容的时候没有设置UTF8，但是为什么 IDE 是好的？IDE（包括 Eclipse 和 IntelliJ）里下直接就是 UTF8，所以不用设置Java IDE 包括 Eclipse 和 IDEA 默认的字符集都是 UTF-8，而系统本身的字符集（在使用命令行启动应用程序的时候），对于中文操作系统来说一般是 <code>GBK</code>，比如下面的代码，在 IDE 中运行的时候会打印 <code>UTF-8</code>，在 Windows 命令行运行的时候打印 <code>GBK</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Application</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[</span><span style="color:#f92672">]</span> args<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> InterruptedException <span style="color:#f92672">{</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Charset<span style="color:#f92672">.</span><span style="color:#a6e22e">defaultCharset</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> OutputStreamWriter<span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> ByteArrayOutputStream<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getEncoding</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">getProperty</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;file.encoding&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div>
+</div>
+
+
+  </div>
+</section><footer class="footer">
+  <div class="content has-text-centered">
+    
+    
+    <p>
+      
+      <a href="https://github.com/orf/bare-hugo-theme" target="_blank">Bare Hugo theme.</a>
+      
+      
+    </p>
+    
+  </div>
+</footer>
+
+
+</body>
+</html>
