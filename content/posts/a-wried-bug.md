@@ -67,13 +67,13 @@ Mihi 给我看了如下的 `CdeJobNotifier` 的代码，心想还真是有关系
 
 
 
-因为 static block 中的异常，会转化为 `ExceptionInitializerError`， 而这个 `ExceptionInitializerError` 不是从 `exception` 继承的，而最终是从 `throwable` 继承的。`consumeMessage` 中的 try catch，只是捕获了 `exception` 而没有捕获 `throwable`。因此是捕获不到
+因为 `static block` 中的异常，会转化为 `ExceptionInitializerError`， 而这个 `ExceptionInitializerError` 不是从 `exception` 继承的，而最终是从 `throwable` 继承的。`consumeMessage` 中的 try catch，只是捕获了 `exception` 而没有捕获 `throwable`。因此是捕获不到
 
 
 
 这还不是事情的全部，当我打开 `JDom2Helper.getConfigXml` 中的代码是这样的：
 
-``` java
+```java
  public static Document fromFile(final File file) {
      try {
             return fromInputStream(new FileInputStream(file));
@@ -112,3 +112,6 @@ java.io.FileNotFoundException: config/sc/tddps/trunk.xml (No such file or direct
 - 为啥会一直有错误打印，static 代码不是只执行一遍吗？因为累没有加载成功，后面语言该类的时候还会继续加载
 
 
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTIyMDg3NzU4MF19
+-->
