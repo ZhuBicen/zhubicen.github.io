@@ -3,7 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-<<<<<<< HEAD
     <loc>https://zhubicen.github.io/tags/docker/</loc>
     <lastmod>2020-01-03T13:15:41+08:00</lastmod>
   </url>
@@ -11,42 +10,21 @@
   <url>
     <loc>https://zhubicen.github.io/posts/docker-proxy/</loc>
     <lastmod>2020-01-03T13:15:41+08:00</lastmod>
-=======
-    <loc>https://zhubicen.github.io/tags/chrome/</loc>
-    <lastmod>2020-01-01T18:58:36+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhubicen.github.io/posts/httpheader-link/</loc>
-    <lastmod>2020-01-01T18:58:36+08:00</lastmod>
->>>>>>> 8ea8c478c762c2fd3343957a4d8e17b1fd2e9767
   </url>
   
   <url>
     <loc>https://zhubicen.github.io/posts/</loc>
-<<<<<<< HEAD
     <lastmod>2020-01-03T13:15:41+08:00</lastmod>
-=======
-    <lastmod>2020-01-01T18:58:36+08:00</lastmod>
->>>>>>> 8ea8c478c762c2fd3343957a4d8e17b1fd2e9767
   </url>
   
   <url>
     <loc>https://zhubicen.github.io/</loc>
-<<<<<<< HEAD
     <lastmod>2020-01-03T13:15:41+08:00</lastmod>
-=======
-    <lastmod>2020-01-01T18:58:36+08:00</lastmod>
->>>>>>> 8ea8c478c762c2fd3343957a4d8e17b1fd2e9767
   </url>
   
   <url>
     <loc>https://zhubicen.github.io/tags/</loc>
-<<<<<<< HEAD
     <lastmod>2020-01-03T13:15:41+08:00</lastmod>
-=======
-    <lastmod>2020-01-01T18:58:36+08:00</lastmod>
->>>>>>> 8ea8c478c762c2fd3343957a4d8e17b1fd2e9767
   </url>
   
   <url>
@@ -70,7 +48,6 @@
   </url>
   
   <url>
-<<<<<<< HEAD
     <loc>https://zhubicen.github.io/tags/java/</loc>
     <lastmod>2019-12-23T11:32:30+08:00</lastmod>
   </url>
@@ -81,8 +58,6 @@
   </url>
   
   <url>
-=======
->>>>>>> 8ea8c478c762c2fd3343957a4d8e17b1fd2e9767
     <loc>https://zhubicen.github.io/posts/git-submodules/</loc>
     <lastmod>2019-12-22T14:32:54+08:00</lastmod>
   </url>
@@ -113,14 +88,6 @@
   </url>
   
   <url>
-<<<<<<< HEAD
-=======
-    <loc>https://zhubicen.github.io/tags/java/</loc>
-    <lastmod>2019-12-13T16:20:02+08:00</lastmod>
-  </url>
-  
-  <url>
->>>>>>> 8ea8c478c762c2fd3343957a4d8e17b1fd2e9767
     <loc>https://zhubicen.github.io/tags/css/</loc>
     <lastmod>2019-12-07T20:50:35+08:00</lastmod>
   </url>
@@ -146,14 +113,6 @@
   </url>
   
   <url>
-<<<<<<< HEAD
-=======
-    <loc>https://zhubicen.github.io/tags/docker/</loc>
-    <lastmod>2019-08-24T21:06:20+08:00</lastmod>
-  </url>
-  
-  <url>
->>>>>>> 8ea8c478c762c2fd3343957a4d8e17b1fd2e9767
     <loc>https://zhubicen.github.io/posts/docker-cheet-sheet/</loc>
     <lastmod>2019-08-24T21:06:20+08:00</lastmod>
   </url>
@@ -194,14 +153,11 @@
   </url>
   
   <url>
-<<<<<<< HEAD
     <loc>https://zhubicen.github.io/tags/chrome/</loc>
     <lastmod>2018-04-05T10:30:44+08:00</lastmod>
   </url>
   
   <url>
-=======
->>>>>>> 8ea8c478c762c2fd3343957a4d8e17b1fd2e9767
     <loc>https://zhubicen.github.io/posts/chrome-build-problem/</loc>
     <lastmod>2018-04-05T10:30:44+08:00</lastmod>
   </url>
@@ -402,14 +358,11 @@
   </url>
   
   <url>
-<<<<<<< HEAD
     <loc>https://zhubicen.github.io/posts/folder-created-from-st/file-created-from-stackedit/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-=======
->>>>>>> 8ea8c478c762c2fd3343957a4d8e17b1fd2e9767
     <loc>https://zhubicen.github.io/categories/</loc>
   </url>
   
