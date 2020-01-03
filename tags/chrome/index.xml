@@ -6,10 +6,22 @@
     <description>Recent content in Chrome on quick start</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 01 Jan 2020 18:58:36 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 03 Jan 2020 20:51:22 +0800</lastBuildDate>
     
 	<atom:link href="https://zhubicen.github.io/tags/chrome/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Chrome 未请求 Favicon</title>
+      <link>https://zhubicen.github.io/posts/favicon/</link>
+      <pubDate>Fri, 03 Jan 2020 20:51:22 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/favicon/</guid>
+      <description>发现 Chrome 并不是每次都请求 favicon，硬性重新加载即可
+![image-20200103205715291](/Users/bzhu/Library/Application Support/typora-user-images/image-20200103205715291.png)
+要为整个 Website 设定 Favicon 需要在文件服务器的根目录放置文件 favicon.ico， 以使 http://you.host.name/favicon.ico 可用。如果要为单个网页设定 Favicon， 可以在对应的 html 文件 head 中加入：
+ &amp;lt;head&amp;gt; &amp;lt;link rel=&amp;quot;shortcut icon&amp;quot; href=&amp;quot;http://example.com/favicon.ico&amp;quot; type=&amp;quot;image/vnd.microsoft.icon&amp;quot; /&amp;gt; &amp;lt;/head&amp;gt; </description>
+    </item>
     
     <item>
       <title>Chrome 不支持 Http Header Link</title>
