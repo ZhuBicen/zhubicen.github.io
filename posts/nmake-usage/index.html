@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    
+    Nmake Usage
+     | 阿碧 
+  </title>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.eb4797a608f467160f71b5cc518dffb9b3fef0edc95e6def8dc4033ba1888b8f414e3d1d3e6c9804ca3e6f125539d8af48b28dcecb4eafc5805bde0b3c8d6956.css' integrity='sha512-60eXpgj0ZxYPcbXMUY3/ubP&#43;8O3JXm3vjcQDO6GIi49BTj0dPmyYBMo&#43;bxJVOdivSLKNzstOr8WAW94LPI1pVg=='>
+  <link rel="canonical" href="https://zhubicen.github.io/posts/nmake-usage/">
+  <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="阿碧">
+<meta name="description" content="现在维护一个旧的支持多国语言的程序（使用vc6.0)，由于程序比较早，采用的方法也比较原始，因此每次要build一个语言的版本，就要改变一下编译的参数。比如，编译一个中文版的时候就要预定义：LAN_CHS，要编译韩文版的时候就要定义：LAN_KOR。这样来回的折腾实在是太麻烦了，我因此导出了该项目的makefile，通过增加一个参数的方式，可以指定要编译的语言版本，因此：nmake LAN=”CHS”就得到了一个中文版，nmake LAN=”KOR”就得到了一个韩文版：）
+为什么现在的vc2005, 2008不支持导出makefile了呢。当然我们有msbuild, devenv可以使用。
+nmake的参考在这里：http://msdn.microsoft.com/en-us/library/dd9y37ha(VS.80).aspx">
+
+<meta property="og:title" content="Nmake Usage" />
+<meta property="og:description" content="现在维护一个旧的支持多国语言的程序（使用vc6.0)，由于程序比较早，采用的方法也比较原始，因此每次要build一个语言的版本，就要改变一下编译的参数。比如，编译一个中文版的时候就要预定义：LAN_CHS，要编译韩文版的时候就要定义：LAN_KOR。这样来回的折腾实在是太麻烦了，我因此导出了该项目的makefile，通过增加一个参数的方式，可以指定要编译的语言版本，因此：nmake LAN=”CHS”就得到了一个中文版，nmake LAN=”KOR”就得到了一个韩文版：）
+为什么现在的vc2005, 2008不支持导出makefile了呢。当然我们有msbuild, devenv可以使用。
+nmake的参考在这里：http://msdn.microsoft.com/en-us/library/dd9y37ha(VS.80).aspx" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhubicen.github.io/posts/nmake-usage/" />
+<meta property="article:published_time" content="2008-12-16T20:11:21+08:00" />
+<meta property="article:modified_time" content="2008-12-16T20:11:21+08:00" />
+
+
+</head>
+<body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      <figure class="image">
+        <img alt="" class="is-rounded" src="https://www.gravatar.com/avatar/a7074f9fedfabb09fc4a6b6973c3f25f?s=128&d=identicon">
+      </figure>
+    </a>
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      quick start
+    </a>
+  </div>
+  
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/books/">
+        
+        Books
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/c&#43;&#43;/">
+        
+        C&#43;&#43;
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/chrome/">
+        
+        Chrome
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/css/">
+        
+        CSS
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/docker/">
+        
+        Docker
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/elasticsearch/">
+        
+        Elastic search
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/emacs/">
+        
+        Emacs
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/english/">
+        
+        English
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/git/">
+        
+        Git
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/golang/">
+        
+        Golang
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/java/">
+        
+        Java
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/javascript/">
+        
+        Java script
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/linux/">
+        
+        Linux
+        
+      </a>
+      
+    </div>
+    
+    <div class="navbar-end">
+      
+      <a class="navbar-item" href="mailto:zhubicen@gmail.com" target="_blank">
+        <span class="icon">
+          <img alt="email" src='https://zhubicen.github.io/icons/svg/email.svg'>
+        </span>
+      </a>
+      <a class="navbar-item" href="https://zhubicen.github.io/index.xml" target="_blank">
+        <span class="icon">
+          <img alt="rss" src='https://zhubicen.github.io/icons/svg/rss.svg'>
+        </span>
+      </a>
+      
+    </div>
+  </div>
+</nav>
+<section class="hero is-small is-info is-fullwidth">
+  <div class="hero-body">
+<div class="container">
+  <h1 class="title">
+    Nmake Usage
+  </h1>
+  <h2 class="subtitle">
+    <time datetime='2008-12-16T20:11:21&#43;08:00'>
+      December 16, 2008
+    </time>
+    
+    <br>
+    
+    
+    
+    <a class="tag is-link" href="https://zhubicen.github.io/tags/c&#43;&#43;/">C&#43;&#43;</a>
+    
+    
+    
+  </h2>
+</div>
+
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+<div class="content is-medium">
+  <p>现在维护一个旧的支持多国语言的程序（使用vc6.0)，由于程序比较早，采用的方法也比较原始，因此每次要build一个语言的版本，就要改变一下编译的参数。比如，编译一个中文版的时候就要预定义：LAN_CHS，要编译韩文版的时候就要定义：LAN_KOR。这样来回的折腾实在是太麻烦了，我因此导出了该项目的makefile，通过增加一个参数的方式，可以指定要编译的语言版本，因此：nmake LAN=”CHS”就得到了一个中文版，nmake LAN=”KOR”就得到了一个韩文版：）</p>
+<p>为什么现在的vc2005, 2008不支持导出makefile了呢。当然我们有msbuild, devenv可以使用。</p>
+<p>nmake的参考在这里：http://msdn.microsoft.com/en-us/library/dd9y37ha(VS.80).aspx</p>
+
+</div>
+
+
+  </div>
+</section><footer class="footer">
+  <div class="content has-text-centered">
+    
+    
+    <p>
+      
+      <a href="https://github.com/orf/bare-hugo-theme" target="_blank">Bare Hugo theme.</a>
+      
+      
+    </p>
+    
+  </div>
+</footer>
+
+
+</body>
+</html>

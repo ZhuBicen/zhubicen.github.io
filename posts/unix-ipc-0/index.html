@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    
+    Unix Ipc 0
+     | 阿碧 
+  </title>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.eb4797a608f467160f71b5cc518dffb9b3fef0edc95e6def8dc4033ba1888b8f414e3d1d3e6c9804ca3e6f125539d8af48b28dcecb4eafc5805bde0b3c8d6956.css' integrity='sha512-60eXpgj0ZxYPcbXMUY3/ubP&#43;8O3JXm3vjcQDO6GIi49BTj0dPmyYBMo&#43;bxJVOdivSLKNzstOr8WAW94LPI1pVg=='>
+  <link rel="canonical" href="https://zhubicen.github.io/posts/unix-ipc-0/">
+  <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="阿碧">
+<meta name="description" content="两种UNIX标准：
+ POSIX，是由IEEE(Institute for Electrical and Electronic Engineers)制定的标准，现由ISO/IEC维护。Posix标准包括3个部分：Part1 和Part2分别被称为Posix.1和Posix.2 System API for C Language Shell and Utility System Administration (正在制定中。。。) X / O p e n是一个国际计算机制造商组织。它提出了一个7卷本可移植性指南X/Open Portability Guide （X / O p e n可移植性指南）第3版〔X／Open 1989〕，我们将其称之为X P G 3。后来又发布了&quot;X/Open Single Unix Specification&quot;后来被称称为Unix95。1997看又发布了Unix98。  另外要指出的是关于 System V， 曾经也被称为 AT&amp;T System V，是Unix操作系统众多版本中的一支，另一支是BSD。它最初由 AT&amp;T 开发，在1983年第一次发布。一共发行了4个 System V 的主要版本：版本1、2、3 和 4。System V Release 4，或者称为SVR4，是最成功的版本，成为一些UNIX共同特性的源头。System v的ipc是open group的单一unix规格版本2[unix 98]所要求的。因此在Unix进程间通信一书中，分别讲述了Posix IPC和System V IPC。
+Posix和System V分别支持不同的MessageQueue, Shared Memory和Semaphores. PIPEs，FIFO,Record Locking机制即不属于Posix标准，也不属于XPG标准。">
+
+<meta property="og:title" content="Unix Ipc 0" />
+<meta property="og:description" content="两种UNIX标准：
+ POSIX，是由IEEE(Institute for Electrical and Electronic Engineers)制定的标准，现由ISO/IEC维护。Posix标准包括3个部分：Part1 和Part2分别被称为Posix.1和Posix.2 System API for C Language Shell and Utility System Administration (正在制定中。。。) X / O p e n是一个国际计算机制造商组织。它提出了一个7卷本可移植性指南X/Open Portability Guide （X / O p e n可移植性指南）第3版〔X／Open 1989〕，我们将其称之为X P G 3。后来又发布了&quot;X/Open Single Unix Specification&quot;后来被称称为Unix95。1997看又发布了Unix98。  另外要指出的是关于 System V， 曾经也被称为 AT&amp;T System V，是Unix操作系统众多版本中的一支，另一支是BSD。它最初由 AT&amp;T 开发，在1983年第一次发布。一共发行了4个 System V 的主要版本：版本1、2、3 和 4。System V Release 4，或者称为SVR4，是最成功的版本，成为一些UNIX共同特性的源头。System v的ipc是open group的单一unix规格版本2[unix 98]所要求的。因此在Unix进程间通信一书中，分别讲述了Posix IPC和System V IPC。
+Posix和System V分别支持不同的MessageQueue, Shared Memory和Semaphores. PIPEs，FIFO,Record Locking机制即不属于Posix标准，也不属于XPG标准。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhubicen.github.io/posts/unix-ipc-0/" />
+<meta property="article:published_time" content="2009-09-03T13:51:47+08:00" />
+<meta property="article:modified_time" content="2009-09-03T13:51:47+08:00" />
+
+
+</head>
+<body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      <figure class="image">
+        <img alt="" class="is-rounded" src="https://www.gravatar.com/avatar/a7074f9fedfabb09fc4a6b6973c3f25f?s=128&d=identicon">
+      </figure>
+    </a>
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      quick start
+    </a>
+  </div>
+  
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/books/">
+        
+        Books
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/c&#43;&#43;/">
+        
+        C&#43;&#43;
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/chrome/">
+        
+        Chrome
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/css/">
+        
+        CSS
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/docker/">
+        
+        Docker
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/elasticsearch/">
+        
+        Elastic search
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/emacs/">
+        
+        Emacs
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/english/">
+        
+        English
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/git/">
+        
+        Git
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/golang/">
+        
+        Golang
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/java/">
+        
+        Java
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/javascript/">
+        
+        Java script
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/linux/">
+        
+        Linux
+        
+      </a>
+      
+    </div>
+    
+    <div class="navbar-end">
+      
+      <a class="navbar-item" href="mailto:zhubicen@gmail.com" target="_blank">
+        <span class="icon">
+          <img alt="email" src='https://zhubicen.github.io/icons/svg/email.svg'>
+        </span>
+      </a>
+      <a class="navbar-item" href="https://zhubicen.github.io/index.xml" target="_blank">
+        <span class="icon">
+          <img alt="rss" src='https://zhubicen.github.io/icons/svg/rss.svg'>
+        </span>
+      </a>
+      
+    </div>
+  </div>
+</nav>
+<section class="hero is-small is-info is-fullwidth">
+  <div class="hero-body">
+<div class="container">
+  <h1 class="title">
+    Unix Ipc 0
+  </h1>
+  <h2 class="subtitle">
+    <time datetime='2009-09-03T13:51:47&#43;08:00'>
+      September 03, 2009
+    </time>
+    
+    <br>
+    
+    
+    
+    <a class="tag is-link" href="https://zhubicen.github.io/tags/linux/">Linux</a>
+    
+    
+    
+  </h2>
+</div>
+
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+<div class="content is-medium">
+  <p>两种UNIX标准：</p>
+<ol>
+<li>POSIX，是由IEEE(Institute for Electrical and Electronic Engineers)制定的标准，现由ISO/IEC维护。Posix标准包括3个部分：Part1 和Part2分别被称为Posix.1和Posix.2 System API for C Language Shell and Utility System Administration (正在制定中。。。)</li>
+<li>X / O p e n是一个国际计算机制造商组织。它提出了一个7卷本可移植性指南X/Open Portability Guide （X / O p e n可移植性指南）第3版〔X／Open 1989〕，我们将其称之为X P G 3。后来又发布了&quot;X/Open Single Unix Specification&quot;后来被称称为Unix95。1997看又发布了Unix98。</li>
+</ol>
+<p>另外要指出的是关于 System V， 曾经也被称为 AT&amp;T System V，是Unix操作系统众多版本中的一支，另一支是BSD。它最初由 AT&amp;T 开发，在1983年第一次发布。一共发行了4个 System V 的主要版本：版本1、2、3 和 4。System V Release 4，或者称为SVR4，是最成功的版本，成为一些UNIX共同特性的源头。System v的ipc是open group的单一unix规格版本2[unix 98]所要求的。因此在Unix进程间通信一书中，分别讲述了Posix IPC和System V IPC。</p>
+<p>Posix和System V分别支持不同的MessageQueue, Shared Memory和Semaphores.
+PIPEs，FIFO,Record Locking机制即不属于Posix标准，也不属于XPG标准。</p>
+<h2 id="heading">消息传递</h2>
+<ul>
+<li>MessageQueues:	包括Posix MessageQueue,和SystemV MessageQueue</li>
+<li>PIPE, FIFO</li>
+</ul>
+<h2 id="heading-1">同步机制</h2>
+<ul>
+<li>Mutex , Condition Variables</li>
+<li>Read-Write Locks</li>
+<li>Record Locking</li>
+<li>Semaphores</li>
+<li>共享内存:	包括Posix Semaphores，SystemV Semaphores</li>
+<li>Shared Memory:	包括Posix ShareMemory和SystemVMemory</li>
+</ul>
+<h2 id="heading-2">其它</h2>
+<p>Doors和SunRPC</p>
+<p>Linux IPC:</p>
+<p>最初的Unix发展为两个分支，一个是System V(system IPC)，一个是BSD (socket IPC)。而Linux综了两者的IPC机制。并实现了Posix IPC。
+另外请参考：深刻理解Linux进程间通信（IPC)</p>
+
+</div>
+
+
+  </div>
+</section><footer class="footer">
+  <div class="content has-text-centered">
+    
+    
+    <p>
+      
+      <a href="https://github.com/orf/bare-hugo-theme" target="_blank">Bare Hugo theme.</a>
+      
+      
+    </p>
+    
+  </div>
+</footer>
+
+
+</body>
+</html>

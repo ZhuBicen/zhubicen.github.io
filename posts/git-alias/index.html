@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>
     
-    一些好用的 Git Alias
+    git 常用配置
      | 阿碧 
   </title>
   <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.eb4797a608f467160f71b5cc518dffb9b3fef0edc95e6def8dc4033ba1888b8f414e3d1d3e6c9804ca3e6f125539d8af48b28dcecb4eafc5805bde0b3c8d6956.css' integrity='sha512-60eXpgj0ZxYPcbXMUY3/ubP&#43;8O3JXm3vjcQDO6GIi49BTj0dPmyYBMo&#43;bxJVOdivSLKNzstOr8WAW94LPI1pVg=='>
@@ -22,11 +22,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer">
 <meta name="author" content="阿碧">
-<meta name="description" content="比如, 从 svn 转到 git 的应该深有同感
+<meta name="description" content="代理 git config --global https.proxy http://127.0.0.1:1080 git config --global https.proxy http://127.0.0.1:1080 git config --global --unset http.proxy git config --global --unset https.proxy 别名 比如, 从 svn 转到 git 的应该深有同感
 git config --global alias.co checkout git config --global alias.br branch git config --global alias.ci commit git config --global alias.st status git 常用操作示意图:">
 
-<meta property="og:title" content="一些好用的 Git Alias" />
-<meta property="og:description" content="比如, 从 svn 转到 git 的应该深有同感
+<meta property="og:title" content="git 常用配置" />
+<meta property="og:description" content="代理 git config --global https.proxy http://127.0.0.1:1080 git config --global https.proxy http://127.0.0.1:1080 git config --global --unset http.proxy git config --global --unset https.proxy 别名 比如, 从 svn 转到 git 的应该深有同感
 git config --global alias.co checkout git config --global alias.br branch git config --global alias.ci commit git config --global alias.st status git 常用操作示意图:" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zhubicen.github.io/posts/git-alias/" />
@@ -50,15 +50,81 @@ git config --global alias.co checkout git config --global alias.br branch git co
   <div class="navbar-menu">
     <div class="navbar-start">
       
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/books/">
+        
+        Books
+        
+      </a>
+      
       <a class="navbar-item" href="https://zhubicen.github.io/tags/c&#43;&#43;/">
         
         C&#43;&#43;
         
       </a>
       
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/chrome/">
+        
+        Chrome
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/css/">
+        
+        CSS
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/docker/">
+        
+        Docker
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/elasticsearch/">
+        
+        Elastic search
+        
+      </a>
+      
       <a class="navbar-item" href="https://zhubicen.github.io/tags/emacs/">
         
         Emacs
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/english/">
+        
+        English
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/git/">
+        
+        Git
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/golang/">
+        
+        Golang
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/java/">
+        
+        Java
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/javascript/">
+        
+        Java script
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/linux/">
+        
+        Linux
         
       </a>
       
@@ -84,12 +150,20 @@ git config --global alias.co checkout git config --global alias.br branch git co
   <div class="hero-body">
 <div class="container">
   <h1 class="title">
-    一些好用的 Git Alias
+    git 常用配置
   </h1>
   <h2 class="subtitle">
     <time datetime='2011-12-16T13:43:27&#43;08:00'>
       December 16, 2011
     </time>
+    
+    <br>
+    
+    
+    
+    <a class="tag is-link" href="https://zhubicen.github.io/tags/git/">git</a>
+    
+    
     
   </h2>
 </div>
@@ -99,12 +173,18 @@ git config --global alias.co checkout git config --global alias.br branch git co
 <section class="section">
   <div class="container">
 <div class="content is-medium">
-  <p>比如,  从 svn 转到 git 的应该深有同感</p>
-<pre><code>git config --global alias.co checkout
+  <h1 id="heading">代理</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Shell" data-lang="Shell">git config --global https.proxy http://127.0.0.1:1080
+git config --global https.proxy http://127.0.0.1:1080
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+</code></pre></div><h1 id="heading-1">别名</h1>
+<p>比如,  从 svn 转到 git 的应该深有同感</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Shell" data-lang="Shell">git config --global alias.co checkout
 git config --global alias.br branch
 git config --global alias.ci commit
 git config --global alias.st status
-</code></pre><p>git 常用操作示意图:</p>
+</code></pre></div><p>git 常用操作示意图:</p>
 <p><img src="./git-alias.assets/1576475173484.png" alt="1576475173484"></p>
 
 </div>

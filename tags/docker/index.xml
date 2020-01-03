@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker on quick start</title>
+    <link>https://zhubicen.github.io/tags/docker/</link>
+    <description>Recent content in Docker on quick start</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 03 Jan 2020 13:15:41 +0800</lastBuildDate>
+    
+	<atom:link href="https://zhubicen.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Docker 的代理设置</title>
+      <link>https://zhubicen.github.io/posts/docker-proxy/</link>
+      <pubDate>Fri, 03 Jan 2020 13:15:41 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/docker-proxy/</guid>
+      <description>docker 的代理有两部分，一个是docker client，一个是docker daemon：
+这里是 docker daemon 的设置：https://docs.docker.com/config/daemon/systemd/。 这里的配置主要是docker pull 时的网络访问。 主要是设置两个文件：
+ /etc/systemd/system/docker.service.d/http-proxy.conf  [Service] Environment=&amp;quot;HTTP_PROXY=http://proxy.example.com:80/&amp;quot; /etc/systemd/system/docker.service.d/https-proxy.conf  [Service] Environment=&amp;quot;HTTPS_PROXY=https://proxy.example.com:443/&amp;quot;  sudo systemctl daemon-reload
+  sudo systemctl restart docker
+  systemctl show --property=Environment docker
+   这里是 docker client 的设置，主要是用于 docker container 中的网络访问 在 ~/.docker/config.json 文件中：
+{ &amp;#34;proxies&amp;#34;: { &amp;#34;default&amp;#34;: { &amp;#34;httpProxy&amp;#34;: &amp;#34;http://127.0.0.1:3001&amp;#34;, &amp;#34;httpsProxy&amp;#34;: &amp;#34;http://127.0.0.1:3001&amp;#34;, &amp;#34;noProxy&amp;#34;: &amp;#34;*.test.example.com,.example2.com&amp;#34; } } } </description>
+    </item>
+    
+    <item>
+      <title>Docker Cheet Sheet</title>
+      <link>https://zhubicen.github.io/posts/docker-cheet-sheet/</link>
+      <pubDate>Sat, 24 Aug 2019 21:06:20 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/docker-cheet-sheet/</guid>
+      <description>Docker Docker commands Running a container image  docker run --name kubia-container -p 8080:8080 -d kubia  Run a container with bash  docker run --rm -ti ubuntu:latest /bin/bash  Remove if exist  docker run -ti --restart=always  Restart when failure To kill a container, run docker kill xxxcontainer-id Remove all containers, run docker rm $(docker ps -a -q) Remove all images, run docker rmi $(docker images -q -)</description>
+    </item>
+    
+    <item>
+      <title>在 Docker 中开发 SpringBoot</title>
+      <link>https://zhubicen.github.io/posts/springboot-on-docker/</link>
+      <pubDate>Sat, 03 Aug 2019 20:46:59 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/springboot-on-docker/</guid>
+      <description>问题 在开发 SpringBoot 微服务的过程中，经常发生的情况是，需要使用 Windows 进行开发，但是微服务最终会部署在 Linux 上，因此而产生的的开发环境和生产环境的不一致，会导致上线后的一些问题
+解决办法 通过把源代码目录挂载到 Docker 中，并在 Doker 中，运行 mvn spring-boot:run，因为 Docker 和 Windows 共享相同的目录，所以 Docker 中的 maven 可以检测到代码的改动，自动重启 SpringBoot 服务
+ 假设你的 Spring 代码可以使用 mvn spring-boot:run 正常运行。为了使 Maven 可以检测到代码的改动以重启服务，请确保 pom.xml 里添加了依赖项：spring-boot-devtools 假设的你的代码目录在 C:\Project\springProject 中。请把下面命令中的目录自行替换为自己项目的目录 新建 Docker 目录，并在目录下新建文件 Dockerfile  FROMmaven:3.5.3-jdk-8-alpineWORKDIR/appCOPY pom.xml .RUN mvn dependency:go-offlineVOLUME/app/srcCMD [&amp;#34;mvn&amp;#34;, &amp;#34;spring-boot:run&amp;#34;] 进入 Docker 目录，编译生成 Docker Image docker build -t app:dev . 运行 Docker: docker run -v d:/Project/demo/src:/app/src app:dev  参考  https://medium.</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu Docker Timezone</title>
+      <link>https://zhubicen.github.io/posts/ubuntu-docker-timezone/</link>
+      <pubDate>Fri, 26 Jul 2019 10:45:18 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/ubuntu-docker-timezone/</guid>
+      <description>一般来讲如下方法就够了：
+RUN echo &amp;quot;Asia/Shanghai&amp;quot; &amp;gt; /etc/timezone RUN dpkg-reconfigure -f noninteractive tzdata 但是因为 Ubuntu 的 bug, 要添加一行 RUn rm -f /etc/localtime, 因此:
+RUN echo &amp;quot;Asia/Shanghai&amp;quot; &amp;gt; /etc/timezone RUN rm -f /etc/localtime RUN dpkg-reconfigure -f noninteractive tzdata 以上参考自：docker-timezone-in-ubuntu-16-04-image, 虽然原文只是针对 1604, 笔者亲测1804也是适用的</description>
+    </item>
+    
+  </channel>
+</rss>

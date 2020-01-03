@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    
+    收不到TaskbarButtonCreated消息
+     | 阿碧 
+  </title>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.eb4797a608f467160f71b5cc518dffb9b3fef0edc95e6def8dc4033ba1888b8f414e3d1d3e6c9804ca3e6f125539d8af48b28dcecb4eafc5805bde0b3c8d6956.css' integrity='sha512-60eXpgj0ZxYPcbXMUY3/ubP&#43;8O3JXm3vjcQDO6GIi49BTj0dPmyYBMo&#43;bxJVOdivSLKNzstOr8WAW94LPI1pVg=='>
+  <link rel="canonical" href="https://zhubicen.github.io/posts/taskbar-message/">
+  <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="阿碧">
+<meta name="description" content="一个WTL对话框小程序，想为其加上Win7特有的任务栏上的进度条功能，死活不行，注册消息 RegisterWindowMessage ( _T(&quot;TaskbarButtonCreated&quot;) );也是成功的，但是无论如何都收不到消息。
+重新用Wizard建立了一个最简单的小程序，发现是可以的。对比了半天，慢慢缩小问题的范围，折磨了几个小时，最后发现原来我的对话框有一个属性是，WS_EX_TOOLWINDOW, 所以把此属性去掉即可。
+diff -r fd2da7b96050 Ling/Ling.rc --- a/Ling/Ling.rc Sat Mar 03 13:57:18 2012 &#43;0800 &#43;&#43;&#43; b/Ling/Ling.rc Sat Mar 03 16:00:40 2012 &#43;0800 @@ -89,7 &#43;89,6 @@ LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL IDD_MAINDLG DIALOG 0, 0, 351, 28 STYLE DS_3DLOOK | DS_CENTER | DS_SHELLFONT | WS_BORDER | WS_VISIBLE | WS_POPUP | WS_SYSMENU -EXSTYLE WS_EX_TOOLWINDOW FONT 8, &quot;Ms Shell Dlg&quot; { CONTROL &quot;退出&quot;, IDOK, WC_BUTTON, WS_TABSTOP | WS_TABSTOP | BS_OWNERDRAW, 335, 0, 14, 14 diff -r fd2da7b96050 Ling/Release/Ling.">
+
+<meta property="og:title" content="收不到TaskbarButtonCreated消息" />
+<meta property="og:description" content="一个WTL对话框小程序，想为其加上Win7特有的任务栏上的进度条功能，死活不行，注册消息 RegisterWindowMessage ( _T(&quot;TaskbarButtonCreated&quot;) );也是成功的，但是无论如何都收不到消息。
+重新用Wizard建立了一个最简单的小程序，发现是可以的。对比了半天，慢慢缩小问题的范围，折磨了几个小时，最后发现原来我的对话框有一个属性是，WS_EX_TOOLWINDOW, 所以把此属性去掉即可。
+diff -r fd2da7b96050 Ling/Ling.rc --- a/Ling/Ling.rc Sat Mar 03 13:57:18 2012 &#43;0800 &#43;&#43;&#43; b/Ling/Ling.rc Sat Mar 03 16:00:40 2012 &#43;0800 @@ -89,7 &#43;89,6 @@ LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL IDD_MAINDLG DIALOG 0, 0, 351, 28 STYLE DS_3DLOOK | DS_CENTER | DS_SHELLFONT | WS_BORDER | WS_VISIBLE | WS_POPUP | WS_SYSMENU -EXSTYLE WS_EX_TOOLWINDOW FONT 8, &quot;Ms Shell Dlg&quot; { CONTROL &quot;退出&quot;, IDOK, WC_BUTTON, WS_TABSTOP | WS_TABSTOP | BS_OWNERDRAW, 335, 0, 14, 14 diff -r fd2da7b96050 Ling/Release/Ling." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhubicen.github.io/posts/taskbar-message/" />
+<meta property="article:published_time" content="2012-03-03T16:06:37+08:00" />
+<meta property="article:modified_time" content="2012-03-03T16:06:37+08:00" />
+
+
+</head>
+<body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      <figure class="image">
+        <img alt="" class="is-rounded" src="https://www.gravatar.com/avatar/a7074f9fedfabb09fc4a6b6973c3f25f?s=128&d=identicon">
+      </figure>
+    </a>
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      quick start
+    </a>
+  </div>
+  
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/books/">
+        
+        Books
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/c&#43;&#43;/">
+        
+        C&#43;&#43;
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/chrome/">
+        
+        Chrome
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/css/">
+        
+        CSS
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/docker/">
+        
+        Docker
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/elasticsearch/">
+        
+        Elastic search
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/emacs/">
+        
+        Emacs
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/english/">
+        
+        English
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/git/">
+        
+        Git
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/golang/">
+        
+        Golang
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/java/">
+        
+        Java
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/javascript/">
+        
+        Java script
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/linux/">
+        
+        Linux
+        
+      </a>
+      
+    </div>
+    
+    <div class="navbar-end">
+      
+      <a class="navbar-item" href="mailto:zhubicen@gmail.com" target="_blank">
+        <span class="icon">
+          <img alt="email" src='https://zhubicen.github.io/icons/svg/email.svg'>
+        </span>
+      </a>
+      <a class="navbar-item" href="https://zhubicen.github.io/index.xml" target="_blank">
+        <span class="icon">
+          <img alt="rss" src='https://zhubicen.github.io/icons/svg/rss.svg'>
+        </span>
+      </a>
+      
+    </div>
+  </div>
+</nav>
+<section class="hero is-small is-info is-fullwidth">
+  <div class="hero-body">
+<div class="container">
+  <h1 class="title">
+    收不到TaskbarButtonCreated消息
+  </h1>
+  <h2 class="subtitle">
+    <time datetime='2012-03-03T16:06:37&#43;08:00'>
+      March 03, 2012
+    </time>
+    
+    <br>
+    
+    
+    
+    <a class="tag is-link" href="https://zhubicen.github.io/tags/c&#43;&#43;/">C&#43;&#43;</a>
+    
+    
+    
+  </h2>
+</div>
+
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+<div class="content is-medium">
+  <p>一个WTL对话框小程序，想为其加上Win7特有的任务栏上的进度条功能，死活不行，注册消息
+<code>RegisterWindowMessage ( _T(&quot;TaskbarButtonCreated&quot;) )</code>;也是成功的，但是无论如何都收不到消息。</p>
+<p>重新用Wizard建立了一个最简单的小程序，发现是可以的。对比了半天，慢慢缩小问题的范围，折磨了几个小时，最后发现原来我的对话框有一个属性是，<code>WS_EX_TOOLWINDOW</code>, 所以把此属性去掉即可。</p>
+<pre><code>diff -r fd2da7b96050 Ling/Ling.rc
+--- a/Ling/Ling.rc      Sat Mar 03 13:57:18 2012 +0800
++++ b/Ling/Ling.rc      Sat Mar 03 16:00:40 2012 +0800
+@@ -89,7 +89,6 @@
+ LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+ IDD_MAINDLG DIALOG 0, 0, 351, 28
+ STYLE DS_3DLOOK | DS_CENTER | DS_SHELLFONT | WS_BORDER | WS_VISIBLE | WS_POPUP | WS_SYSMENU
+-EXSTYLE WS_EX_TOOLWINDOW
+ FONT 8, &quot;Ms Shell Dlg&quot;
+ {
+     CONTROL         &quot;退出&quot;, IDOK, WC_BUTTON, WS_TABSTOP | WS_TABSTOP | BS_OWNERDRAW, 335, 0, 14, 14
+diff -r fd2da7b96050 Ling/Release/Ling.exe
+Binary file Ling/Release/Ling.exe has changed
+</code></pre>
+</div>
+
+
+  </div>
+</section><footer class="footer">
+  <div class="content has-text-centered">
+    
+    
+    <p>
+      
+      <a href="https://github.com/orf/bare-hugo-theme" target="_blank">Bare Hugo theme.</a>
+      
+      
+    </p>
+    
+  </div>
+</footer>
+
+
+</body>
+</html>

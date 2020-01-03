@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on quick start</title>
+    <link>https://zhubicen.github.io/tags/linux/</link>
+    <description>Recent content in Linux on quick start</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 01 Mar 2018 16:26:41 +0800</lastBuildDate>
+    
+	<atom:link href="https://zhubicen.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用 Eclipse 的 Restore from local history 功能恢复误删除的文件</title>
+      <link>https://zhubicen.github.io/posts/eclipse-restore-from-local/</link>
+      <pubDate>Thu, 01 Mar 2018 16:26:41 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/eclipse-restore-from-local/</guid>
+      <description>在软件开发的过程中，如果不小是删除了正在开发的文件，是个令个苦恼的事情
+在文件还没有添加到版本控制系统之前，使用一些命令，比如 git clean 删除了不在版本控制系统中的文件，这样会造成文件丢失。由于 Linux 文件系统本身的限制，rm 的文件是很难恢复的。
+但是如果你是使用 Eclipse 开发的，有一个后悔药可以使用：
+ Select Project Right Click Select Restore from local history in the context menu Select your files Click OK.  这样误删除的文件就可以恢复了
+另外使用
+git clean -fdx 之前，可以使用 dry run ,以确认哪些文件会被清理
+git clean -fdxn</description>
+    </item>
+    
+    <item>
+      <title>Cygwin Gdb</title>
+      <link>https://zhubicen.github.io/posts/cygwin-gdb/</link>
+      <pubDate>Thu, 03 Mar 2011 00:07:42 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/cygwin-gdb/</guid>
+      <description>使用 ygwin 译出来的 序，无法运行，在命令行敲下文件名下，悄无声息的程序就反回了郁闷。加上g项，使用gdb加载，出现这个错误：
+db: unknown target exception 0xcxxxxxxx at 0xxxxxxxxxx.
+先查看了程序依赖的dll
+$ cygcheck.exe ./a.exe D:/tcplex/libssh2/a.exe C:/cygwin/bin/cygwin1.dll C:/WINDOWS/system32/ADVAPI32.DLL C:/WINDOWS/system32/KERNEL32.dll C:/WINDOWS/system32/ntdll.dll C:/WINDOWS/system32/RPCRT4.dll C:/WINDOWS/system32/Secur32.dll C:/cygwin/bin/cygssh2-1.dll C:/cygwin/bin/cyggcc_s-1.dll C:/cygwin/bin/cygcrypto-0.9.8.dll C:/cygwin/bin/cygz.dll C:/cygwin/bin/cygstdc++-6.dll &amp;gt; gdb ./a.exe (gdb) dll cygwin1.dll (gdb) break *&amp;amp;&amp;#39;dll::init&amp;#39; Breakpoint 1 at 0x61010270 (gdb) run 仍然是提示：nknown target exception
+所以怀疑是cygwin1.dll出了问题。回想最近刚使用新版的setup.exe更新过cygwin，是不是更新程序出了问题？
+重新运行cygwin setup.exe把base-cygwin reinstall就可以了。问题解决！</description>
+    </item>
+    
+    <item>
+      <title>Windows X-Server 使用记录</title>
+      <link>https://zhubicen.github.io/posts/dev-memo/</link>
+      <pubDate>Thu, 23 Dec 2010 20:02:24 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/dev-memo/</guid>
+      <description>ssh-host-config,ssh-user-config用来配置cygwin的ssh server. 完了之后中启动总是失败，查无果，无奈，，看到windows service的log后，发现问题了，原来是我的path中放入了一个cygwin1.dll。。这真是个个别情况。到网上查成了一种习惯，有的问题还是要自己查找原因。看LOG很重要。。 Cygrunsvr.exe可以操作Windows服务。
+如何引用setw, setfill等格式化操作符，而不用引用整个std.
+Cygwin下安装QT3后，发现qmake找不到，在/usr/lib/qt3/bin下找到了，运行qmake -makefile后，发现它以绝对路径的形式，生成了Makefile,所以运行make后可以找到uic, 等。 安装xserver,需要安装以下包。 xorg-server (required, the Cygwin/X X Server)
+ nit (required, scripts for starting the X server: xinit, startx, startwin (and a shortcut on the Start Menu to run it), startxdmcp.bat )
+  rg-docs (optional, man pages)
+  art-menu-icons (optional, adds icons for X Clients to the Start menu)
+ You may also select any X client programs you want to use, and any fonts you would like to have available.</description>
+    </item>
+    
+    <item>
+      <title>Compile Gcc4</title>
+      <link>https://zhubicen.github.io/posts/compile-gcc4/</link>
+      <pubDate>Tue, 12 Jan 2010 16:58:27 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/compile-gcc4/</guid>
+      <description>最新版本的GCC已经加入了部分C++0X的支持，所以决定自己动手安装最新版GCC
+准备工作 GCC的编译依赖于GMP和MPRF，如果要编译GMP的话，还要依赖于M4 M4可以这里下载：wget http://ftp.gnu.org/gnu/m4/m4-1.4.10.tar.bz2 gmp和mprf都可以在这里下载：ftp://gcc.gnu.org/pub/gcc/infrastructure 编译：
+ 下载gcc源代码。所有版本的gcc可以在这里下载到ftp://gcc.gnu.org/pub/gcc/releases/ tar jxvf gcc-4.4.2.tar.bz2 cd gcc-4.4.2 ./configure make make install  使用 假定新编译的gcc安装在/opt/gcc-4.4.2目录下。 /opt/gcc-4.42/bin/g++ -std=c++0x -lpthread HelloConcurencyWorld.cpp 导入新的C++库， export LD_LIBRARY_PATH=$LD_LIBRARY:/opt/gcc-4.4.2/lib 这样就可以运行编译后的C++程序了。
+void hello() { std::cout &amp;lt;&amp;lt; &amp;quot;Hello Concurrent Worldn&amp;quot;; } int main() { std::thread t(hello); t.join(); } 虽然步骤相当简单，但是过程中，还是遇到了几个问题:
+ 运行tar jxvf gcc-4.4.2.tar.bz2时，没有对当前目录的权限，导致一大堆的Can not open file错误 运行./configure 时，指定prefix的目录和源码的目录相同了，导致cannot compute suffix of object files: cannot compile。google了半天。 没有指定&amp;ndash;enable-language选项，整整编译了一个小时  参考： http://gcc.gnu.org/install/ http://xahlee.org/UnixResource_dir/_/ldpath.htm</description>
+    </item>
+    
+    <item>
+      <title>Qt3 学习笔记</title>
+      <link>https://zhubicen.github.io/posts/qt3-study/</link>
+      <pubDate>Mon, 07 Dec 2009 10:56:09 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/qt3-study/</guid>
+      <description>QT4已经是如今QT的主流版本，但是仍然有一些老的项目使用QT3。下面记录一下QT3的编译过程：
+下载源码： 官方提供的QT3源码可以在这里下载到：ftp://ftp.trolltech.no/qt/source/qt-x11-free-3.3.8b.tar.gz 但是其中并没有指明如何编译。SourceForge上有个Q../Free项目，提供了以下下载，方便编译 http://sourceforge.net/projects/qtwin/files/Unofficial%20Qtwin/qt-win-3.3.x-8/qt-3.3.x-p8.7z/download
+编译QT3 用MingW编译QT3是一个漫长的过程。详细请参考这里： http://qtwin.sourceforge.net/qt3-win32/compile-mingw.php
+Making an Application Debuggable The release version of an application doesn&#39;t contain any debugging symbols or other debugging information. During development it is useful to produce a debugging version of the application that has the relevant information. This is easily achieved by adding debug to the CONFIG variable in the project file.
+For example:
+CONFIG += qt debug HEADERS += hello.h SOURCES += hello.</description>
+    </item>
+    
+    <item>
+      <title>Unix Ipc 0</title>
+      <link>https://zhubicen.github.io/posts/unix-ipc-0/</link>
+      <pubDate>Thu, 03 Sep 2009 13:51:47 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/unix-ipc-0/</guid>
+      <description>两种UNIX标准：
+ POSIX，是由IEEE(Institute for Electrical and Electronic Engineers)制定的标准，现由ISO/IEC维护。Posix标准包括3个部分：Part1 和Part2分别被称为Posix.1和Posix.2 System API for C Language Shell and Utility System Administration (正在制定中。。。) X / O p e n是一个国际计算机制造商组织。它提出了一个7卷本可移植性指南X/Open Portability Guide （X / O p e n可移植性指南）第3版〔X／Open 1989〕，我们将其称之为X P G 3。后来又发布了&amp;quot;X/Open Single Unix Specification&amp;quot;后来被称称为Unix95。1997看又发布了Unix98。  另外要指出的是关于 System V， 曾经也被称为 AT&amp;amp;T System V，是Unix操作系统众多版本中的一支，另一支是BSD。它最初由 AT&amp;amp;T 开发，在1983年第一次发布。一共发行了4个 System V 的主要版本：版本1、2、3 和 4。System V Release 4，或者称为SVR4，是最成功的版本，成为一些UNIX共同特性的源头。System v的ipc是open group的单一unix规格版本2[unix 98]所要求的。因此在Unix进程间通信一书中，分别讲述了Posix IPC和System V IPC。
+Posix和System V分别支持不同的MessageQueue, Shared Memory和Semaphores. PIPEs，FIFO,Record Locking机制即不属于Posix标准，也不属于XPG标准。</description>
+    </item>
+    
+    <item>
+      <title>How to Install Samba Server</title>
+      <link>https://zhubicen.github.io/posts/how-to-install-samba-server/</link>
+      <pubDate>Thu, 25 Jan 2007 22:36:03 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/how-to-install-samba-server/</guid>
+      <description>apt-get install samba
+uncomment the command in /etc/samba/smb.conf
+Security = share
+add a file to share ,append a share node in smb.conf .and the folder should be 777
+在Ubuntu 6.10 Desktop和Windows XP之间设置文件共享
+在Ubuntu下打开“系统-系统管理-共享的文件夹”，进行相应的设置。在WinXP下打开Ubuntu的IP，可以看到文件夹，但是并不能够访问。 用如下命令修改smb.conf：
+sudo gedit /etc/samba/smb.conf
+将security=user那一行前的注释符&amp;rdquo;;&amp;ldquo;去掉，然后把user改为share，这样可以实现匿名访问。 再用如下命令重启samba：
+sudo /etc/init.d/samba restart
+在WinXP，可以访问文件夹了，但是只读，仍然无法写入。即使在Ubuntu的GUI下去掉了只读属性也是如此。 最后修改文件夹的权限：
+chmod 777 (文件夹名称)</description>
+    </item>
+    
+  </channel>
+</rss>

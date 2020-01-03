@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    
+    Windows X-Server 使用记录
+     | 阿碧 
+  </title>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.eb4797a608f467160f71b5cc518dffb9b3fef0edc95e6def8dc4033ba1888b8f414e3d1d3e6c9804ca3e6f125539d8af48b28dcecb4eafc5805bde0b3c8d6956.css' integrity='sha512-60eXpgj0ZxYPcbXMUY3/ubP&#43;8O3JXm3vjcQDO6GIi49BTj0dPmyYBMo&#43;bxJVOdivSLKNzstOr8WAW94LPI1pVg=='>
+  <link rel="canonical" href="https://zhubicen.github.io/posts/dev-memo/">
+  <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="阿碧">
+<meta name="description" content="ssh-host-config,ssh-user-config用来配置cygwin的ssh server. 完了之后中启动总是失败，查无果，无奈，，看到windows service的log后，发现问题了，原来是我的path中放入了一个cygwin1.dll。。这真是个个别情况。到网上查成了一种习惯，有的问题还是要自己查找原因。看LOG很重要。。 Cygrunsvr.exe可以操作Windows服务。
+如何引用setw, setfill等格式化操作符，而不用引用整个std.
+Cygwin下安装QT3后，发现qmake找不到，在/usr/lib/qt3/bin下找到了，运行qmake -makefile后，发现它以绝对路径的形式，生成了Makefile,所以运行make后可以找到uic, 等。 安装xserver,需要安装以下包。 xorg-server (required, the Cygwin/X X Server)
+ nit (required, scripts for starting the X server: xinit, startx, startwin (and a shortcut on the Start Menu to run it), startxdmcp.bat )
+  rg-docs (optional, man pages)
+  art-menu-icons (optional, adds icons for X Clients to the Start menu)
+ You may also select any X client programs you want to use, and any fonts you would like to have available.">
+
+<meta property="og:title" content="Windows X-Server 使用记录" />
+<meta property="og:description" content="ssh-host-config,ssh-user-config用来配置cygwin的ssh server. 完了之后中启动总是失败，查无果，无奈，，看到windows service的log后，发现问题了，原来是我的path中放入了一个cygwin1.dll。。这真是个个别情况。到网上查成了一种习惯，有的问题还是要自己查找原因。看LOG很重要。。 Cygrunsvr.exe可以操作Windows服务。
+如何引用setw, setfill等格式化操作符，而不用引用整个std.
+Cygwin下安装QT3后，发现qmake找不到，在/usr/lib/qt3/bin下找到了，运行qmake -makefile后，发现它以绝对路径的形式，生成了Makefile,所以运行make后可以找到uic, 等。 安装xserver,需要安装以下包。 xorg-server (required, the Cygwin/X X Server)
+ nit (required, scripts for starting the X server: xinit, startx, startwin (and a shortcut on the Start Menu to run it), startxdmcp.bat )
+  rg-docs (optional, man pages)
+  art-menu-icons (optional, adds icons for X Clients to the Start menu)
+ You may also select any X client programs you want to use, and any fonts you would like to have available." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhubicen.github.io/posts/dev-memo/" />
+<meta property="article:published_time" content="2010-12-23T20:02:24+08:00" />
+<meta property="article:modified_time" content="2010-12-23T20:02:24+08:00" />
+
+
+</head>
+<body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      <figure class="image">
+        <img alt="" class="is-rounded" src="https://www.gravatar.com/avatar/a7074f9fedfabb09fc4a6b6973c3f25f?s=128&d=identicon">
+      </figure>
+    </a>
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      quick start
+    </a>
+  </div>
+  
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/books/">
+        
+        Books
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/c&#43;&#43;/">
+        
+        C&#43;&#43;
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/chrome/">
+        
+        Chrome
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/css/">
+        
+        CSS
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/docker/">
+        
+        Docker
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/elasticsearch/">
+        
+        Elastic search
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/emacs/">
+        
+        Emacs
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/english/">
+        
+        English
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/git/">
+        
+        Git
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/golang/">
+        
+        Golang
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/java/">
+        
+        Java
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/javascript/">
+        
+        Java script
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/linux/">
+        
+        Linux
+        
+      </a>
+      
+    </div>
+    
+    <div class="navbar-end">
+      
+      <a class="navbar-item" href="mailto:zhubicen@gmail.com" target="_blank">
+        <span class="icon">
+          <img alt="email" src='https://zhubicen.github.io/icons/svg/email.svg'>
+        </span>
+      </a>
+      <a class="navbar-item" href="https://zhubicen.github.io/index.xml" target="_blank">
+        <span class="icon">
+          <img alt="rss" src='https://zhubicen.github.io/icons/svg/rss.svg'>
+        </span>
+      </a>
+      
+    </div>
+  </div>
+</nav>
+<section class="hero is-small is-info is-fullwidth">
+  <div class="hero-body">
+<div class="container">
+  <h1 class="title">
+    Windows X-Server 使用记录
+  </h1>
+  <h2 class="subtitle">
+    <time datetime='2010-12-23T20:02:24&#43;08:00'>
+      December 23, 2010
+    </time>
+    
+    <br>
+    
+    
+    
+    <a class="tag is-link" href="https://zhubicen.github.io/tags/linux/">Linux</a>
+    
+    
+    
+  </h2>
+</div>
+
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+<div class="content is-medium">
+  <p>ssh-host-config,ssh-user-config用来配置cygwin的ssh server.
+完了之后中启动总是失败，查无果，无奈，，看到windows service的log后，发现问题了，原来是我的path中放入了一个cygwin1.dll。。这真是个个别情况。到网上查成了一种习惯，有的问题还是要自己查找原因。看LOG很重要。。
+Cygrunsvr.exe可以操作Windows服务。</p>
+<p>如何引用setw, setfill等格式化操作符，而不用引用整个std.</p>
+<p>Cygwin下安装QT3后，发现qmake找不到，在/usr/lib/qt3/bin下找到了，运行qmake -makefile后，发现它以绝对路径的形式，生成了Makefile,所以运行make后可以找到uic, 等。
+安装xserver,需要安装以下包。
+xorg-server (required, the Cygwin/X X Server)</p>
+<blockquote>
+<p>nit (required, scripts for starting the X server: xinit, startx, startwin (and a shortcut on the Start Menu to run it), startxdmcp.bat )</p>
+</blockquote>
+<blockquote>
+<p>rg-docs (optional, man pages)</p>
+</blockquote>
+<blockquote>
+<p>art-menu-icons (optional, adds icons for X Clients to the Start menu)</p>
+</blockquote>
+<p>You may also select any X client programs you want to use, and any fonts you would like to have available.</p>
+<p><a href="http://x.cygwin.com/docs/ug/setup-cygwin-x-installing.html">http://x.cygwin.com/docs/ug/setup-cygwin-x-installing.html</a></p>
+<p>2010，3，4
+Boost的编译其实是相当简单，运行源码目录下的bootstrap以编译bjam。完了之后，使用bjam进行编译，比如：bjam &ndash;build-drit=D:tmp install
+这样的话，编译产生的临时文件就会放在D:tmp下，编译产生的结果即一个include,和一个lib将会放在C:Boost下。</p>
+<p>WTL 安装WTL80，将WTL80解压至c:wtl80目录。将c:wtl80appwizsetup80.js复制为setup90.js，用记事本打开setup90.js，打开编辑菜单中的替换命令，将8.0全部替换为9.0后保存。运行setup90.js即可将WTL80的应用程序向导安装至VS2008中。打末VS2008，选择Tools-&gt;Options-&gt;Projects and Solutions-&gt;VC++ Directories，在include中将c:wtl80include加入。
+setup80x.js对应于vs2008 express。。。Wizard是可以安装成功，但是问题是新版的 windows sdk中不包括ATL， 所以无法使用。当然你可以从其它地方拷贝。麻烦，，还是不弄了。。。
+Platform SDK是老版的提法。。现在的Windows SDK包括了Platform SDK和.net FrameWork SDK.</p>
+<p>ColorTheme使用
+首先下载 color-theme.el 1，然后把它放在你的加载路径里面，最后在你的 ~/.emacs 里面加上 (require &lsquo;color-theme) 就可以使用了。现在重新启动一 下 Emacs ，然后就可以用 M-x color-theme-select 来选择你喜欢的颜色主题 了，它会打开一个列表，在每个列表项目上回车会应用那个颜色主题，如果选上 了某个主题，按一下 d ，会出现类似：</p>
+<blockquote>
+<p>lor-theme-sitaramv-nt is an interactive compiled Lisp function in `color-theme.el&rsquo;. (color-theme-sitaramv-nt) Black foreground on white background. Includes faces for font-lock, widget, custom, speedbar. [back]
+的东西，其中那句 (color-theme-sitaramv-nt) 加入到你的 ~/.emacs 里面去， 就可以永久应用这个颜色主题了</p>
+</blockquote>
+<p>太赞了，Chrome 使用SSH(Socks5)代理的方法： 在Chrome 快捷方式属性的目标栏后面加参数&ndash;proxy-server=socks5://127.0.0.1:7070</p>
+<p>unified diff format统一差异格式
+一种标准的文件比较格式, 不同的行之前标上'+'或者&rsquo;-&lsquo;表示不同的文件, 新文件用'+'表示, 旧文件用&rsquo;-&lsquo;表示
+@@表示不同出现在哪一行</p>
+<p>diff -u 可以产生这种格式的补丁文件,它与diff -c命令产生的context diff不一样，后者更适合于大量修改的源代码之间的补丁.
+前者的好处在于便于人阅读，而且可以直接patch</p>
+<p>emacs高亮前行模式：hl-line-mode
+emacs折叠行命令：toggle-truncate-lines</p>
+<blockquote>
+<p>having a problem with Qt 3.3.2 on Windows XP using the MS Visual C++.net (2002) compiler. Anytime in my code where I try to select a character from a QString using the [] operator (such as: QChar temp = string[index]), I get the following compiler error: error C2666: &lsquo;QString::operator`[]&rsquo;&rsquo; : 3 overloads have similar conversions c:Qt3.3.2includeqstring.h(641): could be &lsquo;QCharRef QString::operator [](int)&rsquo; c:Qt3.3.2includeqstring.h(639): or &lsquo;QChar QString::operator [](int) const&rsquo; or &lsquo;built-in C++ operator[(const char *, unsigned int)&rsquo; while trying to match the argument list &lsquo;(QString, unsigned int)&rsquo; I don't believe I had this problem with Qt 3.3.1.I had this problem as well and didn't bother to report it to <a href="mailto:qt-bugs@trolltech.com">qt-bugs@trolltech.com</a> nor really investigate what was happening. I just worked around the problem.Instead of:QChar c = parse[i];try: QChar c = parse.operator[](i); Note that this problem affects Visual C++ 7.1 (aka 2003) as well. You may wish to follow up with qt-bugs.</p>
+</blockquote>
+<p>.bat中的set设置环境变量时，变量名和内容之间不能有空格，，，，这样是不对的，，set lib =</p>
+<p>生成vcproj文件：</p>
+<pre><code>qmake -project -t vcapp
+qmake
+</code></pre><p>或者：</p>
+<pre><code>qmake -project
+qmake -tp vc
+</code></pre><p>qt3的默认motif风格极其丑陋，yum install qt3-config后，运行qtconfig可进行调整。。
+sudo apt-get install libqt3-mt-dev
+yum install qt-devel
+<code>proxy server:port number proxy=http://mycache.mydomain.com:3128</code>
+cygcheck
+sudo apt-get install libqt3</p>
+<p>ecch $0
+chsh -s new_shell user</p>
+<p>Q_UINT32 QHostAddress::toIPv4Address () const
+Returns the IPv4 address as a number.
+For example, if the address is 127.0.0.1, the returned value is 2130706433 (i.e. 0x7f000001).</p>
+<p>This value is only valid when isIp4Addr() returns TRUE.</p>
+<p>See also toString().</p>
+<p>But inet_addr(&ldquo;127.0.0.1&rdquo;) returns 0x1000007f.</p>
+<p>174.36.30.71     <a href="http://www.dropbox.com">www.dropbox.com</a></p>
+<p>Tramp:</p>
+<p>Tramp 在windows下使用有些麻烦。
+首先需要先下载plink.exe 。</p>
+<p>Please try PuTTY (or the plink tool that comes with it). There is a
+Tramp method &ldquo;plink&rdquo;, so you only need to add the PuTTY directory to
+%PATH% and then C-x C-f /plink:user@host:/some/file RET.</p>
+
+</div>
+
+
+  </div>
+</section><footer class="footer">
+  <div class="content has-text-centered">
+    
+    
+    <p>
+      
+      <a href="https://github.com/orf/bare-hugo-theme" target="_blank">Bare Hugo theme.</a>
+      
+      
+    </p>
+    
+  </div>
+</footer>
+
+
+</body>
+</html>

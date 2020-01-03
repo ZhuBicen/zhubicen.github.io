@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>books on quick start</title>
+    <link>https://zhubicen.github.io/tags/books/</link>
+    <description>Recent content in books on quick start</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 30 Dec 2019 20:45:33 +0800</lastBuildDate>
+    
+	<atom:link href="https://zhubicen.github.io/tags/books/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>2019 Books</title>
+      <link>https://zhubicen.github.io/posts/2019-books/</link>
+      <pubDate>Mon, 30 Dec 2019 20:45:33 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/2019-books/</guid>
+      <description>2019 买的技术书籍
+   书名 阅读情况     编程珠玑（第二版 修订版）（Jon Bentley) 未读   Kubernetes in Action 中文版 (Marko Luksa) 读完，缺实践   Scikit-Learn 与 TensorFlow 机器学习使用指南（影印版）（Aurelien Geron） 书不错，读完，缺实践   CSS 揭秘 读完，内容不多，不成体系   云原生 Java (Josh Long) 90% ，书是好书，缺乏条理性   RabbitMQ in Action 80%，缺少实践   Redis In Action (Josiah L.) 50%   Netty In Action (Norman Maurer) 20%   JavaScript 高级程序设计（第三版） 去年读了电子版，今年纸质有翻了前半部分   高性能 MySQL 大部头，也就看个前言   数据库索引与优化 看了一会，看不进去   高性能 JavaScript 好书，值得一看   DOM 启蒙 二手书，残迹太多，影响阅读   Spring 微服务实战 非常好，看了多遍   Java 夜未眠 内容太老，随便翻了翻   精通 Spring 4.</description>
+    </item>
+    
+  </channel>
+</rss>

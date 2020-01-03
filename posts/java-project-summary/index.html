@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    
+    一个 Java 项目的总结
+     | 阿碧 
+  </title>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.eb4797a608f467160f71b5cc518dffb9b3fef0edc95e6def8dc4033ba1888b8f414e3d1d3e6c9804ca3e6f125539d8af48b28dcecb4eafc5805bde0b3c8d6956.css' integrity='sha512-60eXpgj0ZxYPcbXMUY3/ubP&#43;8O3JXm3vjcQDO6GIi49BTj0dPmyYBMo&#43;bxJVOdivSLKNzstOr8WAW94LPI1pVg=='>
+  <link rel="canonical" href="https://zhubicen.github.io/posts/java-project-summary/">
+  <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="阿碧">
+<meta name="description" content="又一次要搞一下 Java，每次都要装下 JDK，设置下环境变量，编译一个 HelloWorld来运行一下。下面再记录一次：
+  设置JAVA_HOME为JDK的根目录
+  把%JAVA_HOME%bin添加进path
+  设置classpath为 “.;%JAVA_HOME%/lib/dt.jar;%JAVA_HOME%/lib/tools.jar”
+  至此编译HelloWorld应该不成问题了。
+由于这是一个关于Webstruts2&#43;Hibernate&#43;Spring的项目
+首先我通读了 CoreJsp一书。最简单的JSP程序：
+A simple date example
+The time on the server is &lt;%= new java.util.Date() %&gt; 之后该书用了大量的篇幅讲解了JSP的标签用法及与ServerLet相关的一些概念。作为标准，JAVA Web程序的根目录下要有一个WEB-INF文件夹，The WEB-INF directory contains the web.xml file as well as two different directories: classes and lib. classes contains Servlet and utility classes needed by the application. lib contains JAR files that might contain Servlets, JavaBeans, and utility classes that might be useful to the application.">
+
+<meta property="og:title" content="一个 Java 项目的总结" />
+<meta property="og:description" content="又一次要搞一下 Java，每次都要装下 JDK，设置下环境变量，编译一个 HelloWorld来运行一下。下面再记录一次：
+  设置JAVA_HOME为JDK的根目录
+  把%JAVA_HOME%bin添加进path
+  设置classpath为 “.;%JAVA_HOME%/lib/dt.jar;%JAVA_HOME%/lib/tools.jar”
+  至此编译HelloWorld应该不成问题了。
+由于这是一个关于Webstruts2&#43;Hibernate&#43;Spring的项目
+首先我通读了 CoreJsp一书。最简单的JSP程序：
+A simple date example
+The time on the server is &lt;%= new java.util.Date() %&gt; 之后该书用了大量的篇幅讲解了JSP的标签用法及与ServerLet相关的一些概念。作为标准，JAVA Web程序的根目录下要有一个WEB-INF文件夹，The WEB-INF directory contains the web.xml file as well as two different directories: classes and lib. classes contains Servlet and utility classes needed by the application. lib contains JAR files that might contain Servlets, JavaBeans, and utility classes that might be useful to the application." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhubicen.github.io/posts/java-project-summary/" />
+<meta property="article:published_time" content="2009-08-26T17:42:31+08:00" />
+<meta property="article:modified_time" content="2009-08-26T17:42:31+08:00" />
+
+
+</head>
+<body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      <figure class="image">
+        <img alt="" class="is-rounded" src="https://www.gravatar.com/avatar/a7074f9fedfabb09fc4a6b6973c3f25f?s=128&d=identicon">
+      </figure>
+    </a>
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      quick start
+    </a>
+  </div>
+  
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/books/">
+        
+        Books
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/c&#43;&#43;/">
+        
+        C&#43;&#43;
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/chrome/">
+        
+        Chrome
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/css/">
+        
+        CSS
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/docker/">
+        
+        Docker
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/elasticsearch/">
+        
+        Elastic search
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/emacs/">
+        
+        Emacs
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/english/">
+        
+        English
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/git/">
+        
+        Git
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/golang/">
+        
+        Golang
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/java/">
+        
+        Java
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/javascript/">
+        
+        Java script
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/linux/">
+        
+        Linux
+        
+      </a>
+      
+    </div>
+    
+    <div class="navbar-end">
+      
+      <a class="navbar-item" href="mailto:zhubicen@gmail.com" target="_blank">
+        <span class="icon">
+          <img alt="email" src='https://zhubicen.github.io/icons/svg/email.svg'>
+        </span>
+      </a>
+      <a class="navbar-item" href="https://zhubicen.github.io/index.xml" target="_blank">
+        <span class="icon">
+          <img alt="rss" src='https://zhubicen.github.io/icons/svg/rss.svg'>
+        </span>
+      </a>
+      
+    </div>
+  </div>
+</nav>
+<section class="hero is-small is-info is-fullwidth">
+  <div class="hero-body">
+<div class="container">
+  <h1 class="title">
+    一个 Java 项目的总结
+  </h1>
+  <h2 class="subtitle">
+    <time datetime='2009-08-26T17:42:31&#43;08:00'>
+      August 26, 2009
+    </time>
+    
+    <br>
+    
+    
+    
+    <a class="tag is-link" href="https://zhubicen.github.io/tags/c&#43;&#43;/">C&#43;&#43;</a>
+    
+    
+    
+  </h2>
+</div>
+
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+<div class="content is-medium">
+  <p>又一次要搞一下 Java，每次都要装下 JDK，设置下环境变量，编译一个 HelloWorld来运行一下。下面再记录一次：</p>
+<ol>
+<li>
+<p>设置JAVA_HOME为JDK的根目录</p>
+</li>
+<li>
+<p>把%JAVA_HOME%bin添加进path</p>
+</li>
+<li>
+<p>设置classpath为 “.;%JAVA_HOME%/lib/dt.jar;%JAVA_HOME%/lib/tools.jar”</p>
+</li>
+</ol>
+<p>至此编译HelloWorld应该不成问题了。</p>
+<p>由于这是一个关于Web<code>struts2+Hibernate+Spring</code>的项目</p>
+<p>首先我通读了 CoreJsp一书。最简单的JSP程序：</p>
+<p>A simple date example</p>
+<pre><code>The time on the server is
+&lt;%= new java.util.Date() %&gt; 
+</code></pre><p>之后该书用了大量的篇幅讲解了JSP的标签用法及与ServerLet相关的一些概念。作为标准，JAVA Web程序的根目录下要有一个WEB-INF文件夹，The WEB-INF directory contains the web.xml file as well as two different directories: classes and lib. classes contains Servlet and utility classes needed by the application. lib contains JAR files that might contain Servlets, JavaBeans, and utility classes that might be useful to the application. The web.xml file, commonly known as the deployment descriptor, contains configuration and deployment information about the Web application. It can contain information about the application in general, such as MIME type mappings, error pages, session configuration, and security. It can contain information about definitions and mappings to both JSP pages and Servlets. Another type of information that can be contained within the deployment descriptor is Servlet context initialization parameters.</p>
+<p>然后就是研究一下struts2</p>
+<p>Your browser sends to the web server a request for the URL http://localhost:8080/tutorial/HelloWorld.action.</p>
+<ol>
+<li>The container receives from the web server a request for the resource HelloWorld.action. According to the settings loaded from the <a href="http://struts.apache.org/webxml.html">web.xml</a>, the container finds that all requests are being routed toorg.apache.struts2.dispatcher.FilterDispatcher, including the *.action requests. The FilterDispatcher is the entry point into the framework.</li>
+<li>The framework looks for an action mapping named &ldquo;HelloWorld&rdquo;, and it finds that this mapping corresponds to the class &ldquo;HelloWorld&rdquo;. The framework instantiates the Action and calls the Action's executemethod.</li>
+<li>The execute method sets the message and returns SUCCESS. The framework checks the action mapping to see what page to load if SUCCESS is returned. The framework tells the container to render as the response to the request, the resource HelloWorld.jsp.</li>
+<li>As the page HelloWorld.jsp is being processed, the  tag calls the getter getMessage of the HelloWorld Action, and the tag merges into the response the value of the message.</li>
+<li>A pure HMTL response is sent back to the browser.</li>
+</ol>
+<p>For detailed information on Struts 2 architecture see <a href="http://struts.apache.org/big-picture.html">Big Picture</a>.</p>
+<p>最后又看了Hibernate，和Spring的tutorial，对这些技术有了一些了解。</p>
+
+</div>
+
+
+  </div>
+</section><footer class="footer">
+  <div class="content has-text-centered">
+    
+    
+    <p>
+      
+      <a href="https://github.com/orf/bare-hugo-theme" target="_blank">Bare Hugo theme.</a>
+      
+      
+    </p>
+    
+  </div>
+</footer>
+
+
+</body>
+</html>

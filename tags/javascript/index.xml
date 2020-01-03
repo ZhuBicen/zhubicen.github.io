@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>JavaScript on quick start</title>
+    <link>https://zhubicen.github.io/tags/javascript/</link>
+    <description>Recent content in JavaScript on quick start</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 29 Dec 2019 09:26:02 +0800</lastBuildDate>
+    
+	<atom:link href="https://zhubicen.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>JavaScript 立即执行函数表达式 IIFE</title>
+      <link>https://zhubicen.github.io/posts/iife/</link>
+      <pubDate>Sun, 29 Dec 2019 09:26:02 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/iife/</guid>
+      <description>IIFE 是指： JavaScript Immediately-invoked Function Expressions。 也就是定义一个匿名函数，并且立刻调用它。
+比如：
+function() { console.log(&amp;quot;Hello World&amp;quot;); }() IFFE 在我们想缩小变量的作用域的时候非常有用，比如如下代码用来显示 Webpack 的打包进度，bar1 作为全局变量存在
+var bar1 = null; const handler = (percentage, message, ...args) =&amp;gt; { if (bar1 === null) { const cliProgress = require(&amp;#39;cli-progress&amp;#39;); bar1 = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic); bar1.start(100, 0); } bar1.update(percentage * 100); if (percentage * 100 &amp;gt;= 100) { bar1.stop(); } }; 使用 IIFE 可以改造为：
+const handler = (() =&amp;gt; { let progressBar = null; return (percentage, message, .</description>
+    </item>
+    
+    <item>
+      <title>JavaScript instance of</title>
+      <link>https://zhubicen.github.io/posts/instance-of/</link>
+      <pubDate>Sat, 21 Dec 2019 00:43:10 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/instance-of/</guid>
+      <description>The instanceof operator tests whether the prototype property of a constructor appears anywhere in the prototype chain of an object.
+ object instanceof constructor
+instance of 的语义是：检查右边的函数的原型，是否存在于操作符左边的原型链上。
+原型链 首先我们来理解一下原型链的意义：
+假定我们有 a, b 和 c 三个 object
+Object.setPrototypeOf(a, b); Object.setPrototypeOf(b, c); 上面的代码就把 b 设置为了 a 的原型， c 设置为 b 的原型，因此 a 的原型指向 b，b 的原型指向 c。因此每一个对象都可以有自己的原型，每一个原型也可以拥有自己的原型，以次类推形成一个原型链。
+a 在查找一个属性时，如果 a 本身没有此属性的情况下，会在他的原型对象上查找， 如果在原型 b 上还是没有找到，就到 b 的原型上查找。
+构造函数与原型 在 JavaScript 中，够造原型的方式有很多种，但是使用构造函数来创建函数，是最经典的方法。
+function C() { this.</description>
+    </item>
+    
+    <item>
+      <title>ES6 中的 const</title>
+      <link>https://zhubicen.github.io/posts/js-const/</link>
+      <pubDate>Tue, 17 Dec 2019 22:32:48 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/js-const/</guid>
+      <description>Java Script 中的 const 变量，在执行的过程中不能重新赋值，但是可以对原有值更改。
+比如：
+const constVar = {}; constVar.newProperty = &amp;#34;newValue&amp;#34;; 这个初看起来挺奇怪的，但是 C++ 其实也是如此。由于 JavaScript 中的变量是引用，所以那 C++ 中的引用进行对比的话，两者的语义是相近的，但是不完全一致
+如下代码是可以的：
+MyClass myObject; const MyClass&amp;amp; constObject = myObject; myObject.a = 1; 但是在C++ 中不可直接使用 const reference 来改变值的属性：
+MyClass myObject; const MyClass&amp;amp; constObject = myObject; constObject.a = 2;// 这样是不行的: expression must be a modifiable value </description>
+    </item>
+    
+    <item>
+      <title>一个关于闭包的直观理解</title>
+      <link>https://zhubicen.github.io/posts/js-closure/</link>
+      <pubDate>Tue, 17 Dec 2019 20:41:07 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/js-closure/</guid>
+      <description>Operationally, a closure is a record storing a function together with an environment.
+ 闭包的概念很抽象，但是我们可以很简单的阐述如何创建一个闭包：
+function outerFunction() { let outValue; function innterFunction() { outValue = &amp;#34;assigned by closure&amp;#34;;	}	return innerFunction; } closure1 = outerFunction(1) closure2 = outerFunction(2) 在以上的代码中，当我们调用 outerFunction() 时， 闭包就生成了。cloure1 和 clousre2 就是两个闭包，虽然它们指向同一个内部函数。但是却拥有各自的 outValue。 在我们这个例子中， 闭包环境中只有一个变量outValue。因此闭包就像一个魔法气泡一样，把与其相关的执行环境包裹了起来，因此各个闭包互相独立。
+由于 closure1 和 clousre2 各自拥有自己的状态outvalue，因此两者可以互不影响。
+举个🌰：
+在 DOM 编程中， closure1 和 cloure2 可以为两个不同按钮的 click 函数。这样两个按钮的状态可以互不影响，同时工作。
+比如，稍加变化后的代码，就可以用于记录两个按钮的点击次数
+&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;button type=&amp;#34;button&amp;#34; id=&amp;#34;button1&amp;#34;&amp;gt;Click Me!</description>
+    </item>
+    
+    <item>
+      <title>Vuetify Icon</title>
+      <link>https://zhubicen.github.io/posts/vuetify-icon/</link>
+      <pubDate>Sat, 07 Dec 2019 20:50:35 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/vuetify-icon/</guid>
+      <description>安装 Vuetify 的步骤
+ yarn global add @vue/cli vue create my-app vue add vuetify  第三步后， 会自动再 public/index.html 文件下添加字体，是默认的 material design icon
+因此再安装后，使用 v-icon 时，需要使用 mdi 前缀。比如： &amp;lt;v-icon&amp;gt;mdi-basketball&amp;lt;/v-icon&amp;gt;
+但是再使用一些文档中的例子的时候，比如从 codepen 中粘贴过来是，里面用的字体可能是不带 mdi 前缀的，因此需要按如下的步骤安装 material icon
+yarn add material-design-icons-iconfont -D 并在main.js ， index.js 或者 app.js 中，添加如下：
+import &#39;material-design-icons-iconfont/dist/material-design-icons.css&#39; Material design icon 和 Material icon 是不同的两套图标</description>
+    </item>
+    
+    <item>
+      <title>太老的 node 版本引起的问题</title>
+      <link>https://zhubicen.github.io/posts/too-old-npm/</link>
+      <pubDate>Thu, 30 Aug 2018 17:33:31 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/too-old-npm/</guid>
+      <description>今天被一个 redhat 镜像上的老版本的 node 和 npm 坑了（使用 yum install npm 安装的），npm -v (1.3.6), node -v(v0.10.48)。最新的版本是多少呢：
+这两者的版本差的太多了。导致了各种问题，比如：
+Cannot read property &#39;latest&#39; of undefined 网上搜到有些建议需要更新 npm，给出了命令，但是诡异的是使用 npm install npm -g 后，npm 就无法正常使用了，npm -v 都会导致错误，这个原因可能也是 node 的版本确实太低了。
+所以安装新版本 npm 后，一切问题都没有了。
+可以参考下面的页面，来安装较新版本的 npm:
+https://nodejs.org/en/download/package-manager/</description>
+    </item>
+    
+    <item>
+      <title>Javascript 学习笔记</title>
+      <link>https://zhubicen.github.io/posts/javascript-study/</link>
+      <pubDate>Fri, 05 Jun 2009 23:29:38 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/javascript-study/</guid>
+      <description>from http://www.howtocreate.co.uk/tutorials/javascript/
+定义变量 JS里变量的类型并不是非常重要，变量的类型可以在运行期改变。基础类型有，character，string，integer，float（or double)，boolean, function, object, array, undefined, null. Interger and float are grouped as ‘number’. Charater and string are grouped as string. array属于对象类型。
+变量的定义：
+var myFish = ‘A fish swam in the river’ 对象定义：
+var o1 = new Object(); var o2={myFirstProperty:1, myNextProperty:’hi’,etc}; 数组的使用：
+var nameOfArray = new Array(); var nameOfArray = new Array(&#39;content_of_first_cell&#39;,&#39;and_the_second&#39;,8,&#39;blah&#39;,&#39;etc&#39;); var nameOfArray = [&#39;content_of_first_cell&#39;,&#39;and_the_second&#39;,8,&#39;blah&#39;,&#39;etc&#39;]; 同时JavaScript可以定义多维数组： var nameOfArray = new Array(new Array(1,2,3,4),&#39;hello&#39;,[&#39;a&#39;,&#39;b&#39;,&#39;c&#39;]); 其它类型：Date,Image,Option,RegExp
+If at any time you refer to a variable that does not exist, you will cause an error.</description>
+    </item>
+    
+  </channel>
+</rss>

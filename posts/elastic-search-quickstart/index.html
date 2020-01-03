@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    
+    Elastic Search Quickstart
+     | 阿碧 
+  </title>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.eb4797a608f467160f71b5cc518dffb9b3fef0edc95e6def8dc4033ba1888b8f414e3d1d3e6c9804ca3e6f125539d8af48b28dcecb4eafc5805bde0b3c8d6956.css' integrity='sha512-60eXpgj0ZxYPcbXMUY3/ubP&#43;8O3JXm3vjcQDO6GIi49BTj0dPmyYBMo&#43;bxJVOdivSLKNzstOr8WAW94LPI1pVg=='>
+  <link rel="canonical" href="https://zhubicen.github.io/posts/elastic-search-quickstart/">
+  <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="阿碧">
+<meta name="description" content="Prerequisites What is Elasticsearch  high-performance RESTful search engine and document store  Start Elasticsearch On Windows: elastic‑search‑dir\bin\elasticsearch.bat
+Using cURL for REST commands Create an index $ curl ‑XPUT &quot;http://localhost:9200/music/&quot;
+Insert a document $ curl XPUT &quot;http://localhost:9200/music/songs/1&quot; ‑d &#39; { &quot;name&quot;: &quot;Deck the Halls&quot;, &quot;year&quot;: 1885, &quot;lyrics&quot;: &quot;Fa la la la la&quot; }&#39; View a document $ curl ‑XGET &quot;http://localhost:9200/music/songs/1&quot; Output:
+{&quot;_index&quot;:&quot;music&quot;,&quot;_type&quot;:&quot;songs&quot;,&quot;_id&quot;:&quot;1&quot;,&quot;_version&quot;:1,&quot;found&quot;:true,&quot;_source&quot;: { &quot;name&quot;: &quot;Deck the Halls&quot;, &quot;year&quot;: 1885, &quot;lyrics&quot;: &quot;Fa la la la la&quot; }} Update a document $ curl ‑XPUT &quot;http://localhost:9200/music/lyrics/1&quot; ‑d &#39;{ &quot;name&quot;: &quot;Deck the Halls&quot;, &quot;year&quot;: 1886, &quot;lyrics&quot;: &quot;Fa la la la la&quot; }&#39; Delete a document curl ‑XDELETE &quot;http://localhost:9200/music/lyrics/1&quot; Insert a document from a file  $ curl ‑XPUT &quot;http://localhost:9200/music/lyrics/2&quot; ‑d @caseyjones.">
+
+<meta property="og:title" content="Elastic Search Quickstart" />
+<meta property="og:description" content="Prerequisites What is Elasticsearch  high-performance RESTful search engine and document store  Start Elasticsearch On Windows: elastic‑search‑dir\bin\elasticsearch.bat
+Using cURL for REST commands Create an index $ curl ‑XPUT &quot;http://localhost:9200/music/&quot;
+Insert a document $ curl XPUT &quot;http://localhost:9200/music/songs/1&quot; ‑d &#39; { &quot;name&quot;: &quot;Deck the Halls&quot;, &quot;year&quot;: 1885, &quot;lyrics&quot;: &quot;Fa la la la la&quot; }&#39; View a document $ curl ‑XGET &quot;http://localhost:9200/music/songs/1&quot; Output:
+{&quot;_index&quot;:&quot;music&quot;,&quot;_type&quot;:&quot;songs&quot;,&quot;_id&quot;:&quot;1&quot;,&quot;_version&quot;:1,&quot;found&quot;:true,&quot;_source&quot;: { &quot;name&quot;: &quot;Deck the Halls&quot;, &quot;year&quot;: 1885, &quot;lyrics&quot;: &quot;Fa la la la la&quot; }} Update a document $ curl ‑XPUT &quot;http://localhost:9200/music/lyrics/1&quot; ‑d &#39;{ &quot;name&quot;: &quot;Deck the Halls&quot;, &quot;year&quot;: 1886, &quot;lyrics&quot;: &quot;Fa la la la la&quot; }&#39; Delete a document curl ‑XDELETE &quot;http://localhost:9200/music/lyrics/1&quot; Insert a document from a file  $ curl ‑XPUT &quot;http://localhost:9200/music/lyrics/2&quot; ‑d @caseyjones." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhubicen.github.io/posts/elastic-search-quickstart/" />
+<meta property="article:published_time" content="2019-01-23T21:08:24+08:00" />
+<meta property="article:modified_time" content="2019-01-23T21:08:24+08:00" />
+
+
+</head>
+<body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      <figure class="image">
+        <img alt="" class="is-rounded" src="https://www.gravatar.com/avatar/a7074f9fedfabb09fc4a6b6973c3f25f?s=128&d=identicon">
+      </figure>
+    </a>
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      quick start
+    </a>
+  </div>
+  
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/books/">
+        
+        Books
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/c&#43;&#43;/">
+        
+        C&#43;&#43;
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/chrome/">
+        
+        Chrome
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/css/">
+        
+        CSS
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/docker/">
+        
+        Docker
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/elasticsearch/">
+        
+        Elastic search
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/emacs/">
+        
+        Emacs
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/english/">
+        
+        English
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/git/">
+        
+        Git
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/golang/">
+        
+        Golang
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/java/">
+        
+        Java
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/javascript/">
+        
+        Java script
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/linux/">
+        
+        Linux
+        
+      </a>
+      
+    </div>
+    
+    <div class="navbar-end">
+      
+      <a class="navbar-item" href="mailto:zhubicen@gmail.com" target="_blank">
+        <span class="icon">
+          <img alt="email" src='https://zhubicen.github.io/icons/svg/email.svg'>
+        </span>
+      </a>
+      <a class="navbar-item" href="https://zhubicen.github.io/index.xml" target="_blank">
+        <span class="icon">
+          <img alt="rss" src='https://zhubicen.github.io/icons/svg/rss.svg'>
+        </span>
+      </a>
+      
+    </div>
+  </div>
+</nav>
+<section class="hero is-small is-info is-fullwidth">
+  <div class="hero-body">
+<div class="container">
+  <h1 class="title">
+    Elastic Search Quickstart
+  </h1>
+  <h2 class="subtitle">
+    <time datetime='2019-01-23T21:08:24&#43;08:00'>
+      January 23, 2019
+    </time>
+    
+    <br>
+    
+    
+    
+    <a class="tag is-link" href="https://zhubicen.github.io/tags/elasticsearch/">ElasticSearch</a>
+    
+    
+    
+  </h2>
+</div>
+
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+<div class="content is-medium">
+  <h1 id="prerequisites">Prerequisites</h1>
+<h2 id="what-is-elasticsearch">What is Elasticsearch</h2>
+<ul>
+<li>high-performance RESTful search engine and document store</li>
+</ul>
+<h2 id="start-elasticsearch">Start Elasticsearch</h2>
+<p>On Windows:
+<code>elastic‑search‑dir\bin\elasticsearch.bat</code></p>
+<h1 id="using-curl-for-rest-commands">Using cURL for REST commands</h1>
+<h2 id="create-an-index">Create an index</h2>
+<p><code>$ curl ‑XPUT &quot;http://localhost:9200/music/&quot;</code></p>
+<h2 id="insert-a-document">Insert a document</h2>
+<pre><code>$ curl XPUT &quot;http://localhost:9200/music/songs/1&quot; ‑d '
+{ &quot;name&quot;: &quot;Deck the Halls&quot;, &quot;year&quot;: 1885, &quot;lyrics&quot;: &quot;Fa la la la la&quot; }'
+</code></pre><h2 id="view-a-document">View a document</h2>
+<pre><code>$ curl ‑XGET &quot;http://localhost:9200/music/songs/1&quot;
+</code></pre><p>Output:</p>
+<pre><code>{&quot;_index&quot;:&quot;music&quot;,&quot;_type&quot;:&quot;songs&quot;,&quot;_id&quot;:&quot;1&quot;,&quot;_version&quot;:1,&quot;found&quot;:true,&quot;_source&quot;:
+{ &quot;name&quot;: &quot;Deck the Halls&quot;, &quot;year&quot;: 1885, &quot;lyrics&quot;: &quot;Fa la la la la&quot; }}
+</code></pre><h2 id="update-a-document">Update a document</h2>
+<pre><code>$ curl ‑XPUT &quot;http://localhost:9200/music/lyrics/1&quot; ‑d '{ &quot;name&quot;:
+&quot;Deck the Halls&quot;, &quot;year&quot;: 1886, &quot;lyrics&quot;: &quot;Fa la la la la&quot; }'
+</code></pre><h2 id="delete-a-document">Delete a document</h2>
+<pre><code>curl ‑XDELETE &quot;http://localhost:9200/music/lyrics/1&quot;
+</code></pre><h2 id="insert-a-document-from-a-file">Insert a document from a file</h2>
+<ul>
+<li><code>$ curl ‑XPUT &quot;http://localhost:9200/music/lyrics/2&quot; ‑d @caseyjones.json</code></li>
+</ul>
+<pre><code>{
+  &quot;artist&quot;: &quot;Wallace Saunders&quot;,
+  &quot;year&quot;: 1909,
+  &quot;styles&quot;: [&quot;traditional&quot;],
+  &quot;album&quot;: &quot;Unknown&quot;,
+  &quot;name&quot;: &quot;Ballad of Casey Jones&quot;,
+  &quot;lyrics&quot;: &quot;Come all you rounders if you want to hear
+The story of a brave engineer
+Casey Jones was the rounder's name....
+Come all you rounders if you want to hear
+The story of a brave engineer
+Casey Jones was the rounder's name
+On the six‑eight wheeler, boys, he won his fame
+The caller called Casey at half past four
+He kissed his wife at the station door
+He mounted to the cabin with the orders in his hand
+And he took his farewell trip to that promis'd land
+
+Chorus:
+Casey Jones‑‑mounted to his cabin
+Casey Jones‑‑with his orders in his hand
+Casey Jones‑‑mounted to his cabin
+And he took his... land&quot;
+}
+</code></pre><ul>
+<li><code>curl ‑XPUT &quot;http://localhost:9200/music/lyrics/3&quot; ‑d @walking.json</code></li>
+</ul>
+<pre><code>
+{
+  &quot;artist&quot;: &quot;Clarence Ashley&quot;,
+  &quot;year&quot;: 1920
+  &quot;name&quot;: &quot;Walking Boss&quot;,
+  &quot;styles&quot;: [&quot;folk&quot;,&quot;protest&quot;],
+  &quot;album&quot;: &quot;Traditional&quot;,
+  &quot;lyrics&quot;: &quot;Walkin' boss
+Walkin' boss
+Walkin' boss
+I don't belong to you
+
+I belong
+I belong
+I belong
+To that steel driving crew
+
+Well you work one day
+Work one day
+Work one day
+Then go lay around the shanty two&quot;
+}
+</code></pre><h2 id="search-the-rest-api">Search the REST API</h2>
+<p><code>curl ‑XGET &quot;http://localhost:9200/music/lyrics/_search?q=lyrics:'you'&quot;</code></p>
+<p>Response</p>
+<pre><code>(newline){&quot;took&quot;:107,&quot;timed_out&quot;:false,&quot;_shards&quot;:{&quot;total&quot;:5,&quot;successful&quot;:5,&quot;failed&quot;:0},&quot;hits&quot;:{&quot;total&quot;:2,&quot;max(newline)_score&quot;:0.15625,&quot;hits&quot;:[{&quot;_index&quot;:&quot;music&quot;,&quot;_type&quot;:&quot;songs&quot;,&quot;_id&quot;:&quot;2&quot;,&quot;_(newline)score&quot;:0.15625,&quot;_source&quot;:{&quot;artist&quot;: &quot;Wallace Saunders&quot;,&quot;year&quot;: 1909,&quot;styles&quot;:(newline)[&quot;traditional&quot;],&quot;album&quot;: &quot;Unknown&quot;,&quot;name&quot;: &quot;Ballad of Casey Jones&quot;,&quot;lyrics&quot;: &quot;Come all you rounders(newline)if you want to hear The story of a brave engineer Casey Jones was the rounder's name.... Come all(newline)you rounders if you want to hear The story of a brave engineer Casey Jones was the rounder's name(newline)On the six‑eight wheeler, boys, he won his fame The caller called Casey at half past four He kissed(newline)his wife at the station door He mounted to the cabin with the orders in his hand And he took his(newline)farewell trip to that promis'd land Chorus: Casey Jones‑‑mounted to his cabin Casey Jones‑‑with his(newline)orders in his hand Casey Jones‑‑mounted to his cabin And he took his... land&quot;(newline)}},{&quot;_index&quot;:&quot;music&quot;,&quot;_type&quot;:&quot;songs&quot;,&quot;_id&quot;:&quot;3&quot;,&quot;_score&quot;:0.06780553,&quot;_source&quot;:{&quot;artist&quot;: &quot;Clarence(newline)Ashley&quot;,&quot;year&quot;: 1920,&quot;name&quot;: &quot;Walking Boss&quot;,&quot;styles&quot;: [&quot;folk&quot;,&quot;protest&quot;],&quot;album&quot;:(newline)&quot;Traditional&quot;,&quot;lyrics&quot;: &quot;Walkin' boss Walkin' boss Walkin' boss I don't belong to you I belong I(newline)belong I belong To that steel driving crew Well you work one day Work one day Work one day Then go(newline)lay around the shanty two&quot;}}]}}
+
+</code></pre><h2 id="use-other-comparators">Use other comparators</h2>
+<p><code>curl ‑XGET &quot;http://localhost:9200/music/lyrics/_search?q=year:&lt;1900</code></p>
+<h2 id="restrict-fields">Restrict fields</h2>
+<p><code>curl ‑XGET &quot;http://localhost:9200/music/lyrics/_search?q=year:&gt;1900&amp;fields=year&quot;</code></p>
+<h2 id="examine-the-search-return-objects">Examine the search return objects</h2>
+<pre><code>{
+    &quot;took&quot;: 6,
+    &quot;timed_out&quot;: false,
+    &quot;_shards&quot;: {
+        &quot;total&quot;: 5,
+        &quot;successful&quot;: 5,
+        &quot;failed&quot;: 0
+    },
+    &quot;hits&quot;: {
+        &quot;total&quot;: 2,
+        &quot;max_score&quot;: 1.0,
+        &quot;hits&quot;: {
+            &quot;_index&quot;: &quot;music&quot;,
+            &quot;_type&quot;: &quot;lyrics&quot;,
+            &quot;_id&quot;: &quot;1&quot;,
+            &quot;_score&quot;: 1.0,
+            &quot;fields&quot;: {
+                &quot;year&quot;: 1920            
+        }
+        }, {
+            &quot;_index&quot;: &quot;music&quot;,
+            &quot;_type&quot;: &quot;lyrics&quot;,
+            &quot;_id&quot;: &quot;3&quot;,
+            &quot;_score&quot;: 1.0,
+            &quot;fields&quot;: {
+                &quot;year&quot;: 1909            }
+        }    
+    }
+}
+</code></pre><h2 id="use-the-json-query-dsl">Use the JSON query DSL</h2>
+<pre><code>{
+    &quot;query&quot; : {
+        &quot;match&quot; : {
+            &quot;album&quot; : &quot;Traditional&quot;
+        }
+    }
+}
+</code></pre><p><code>$ curl ‑XGET &quot;http://localhost:9200/music/lyrics/_search&quot; ‑d @query.json</code></p>
+<h1 id="java-api">Java API</h1>
+
+</div>
+
+
+  </div>
+</section><footer class="footer">
+  <div class="content has-text-centered">
+    
+    
+    <p>
+      
+      <a href="https://github.com/orf/bare-hugo-theme" target="_blank">Bare Hugo theme.</a>
+      
+      
+    </p>
+    
+  </div>
+</footer>
+
+
+</body>
+</html>

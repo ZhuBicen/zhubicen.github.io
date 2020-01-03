@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    
+    一个关于闭包的直观理解
+     | 阿碧 
+  </title>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.eb4797a608f467160f71b5cc518dffb9b3fef0edc95e6def8dc4033ba1888b8f414e3d1d3e6c9804ca3e6f125539d8af48b28dcecb4eafc5805bde0b3c8d6956.css' integrity='sha512-60eXpgj0ZxYPcbXMUY3/ubP&#43;8O3JXm3vjcQDO6GIi49BTj0dPmyYBMo&#43;bxJVOdivSLKNzstOr8WAW94LPI1pVg=='>
+  <link rel="canonical" href="https://zhubicen.github.io/posts/js-closure/">
+  <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="阿碧">
+<meta name="description" content="Operationally, a closure is a record storing a function together with an environment.
+ 闭包的概念很抽象，但是我们可以很简单的阐述如何创建一个闭包：
+function outerFunction() { let outValue; function innterFunction() { outValue = &#34;assigned by closure&#34;;	}	return innerFunction; } closure1 = outerFunction(1) closure2 = outerFunction(2) 在以上的代码中，当我们调用 outerFunction() 时， 闭包就生成了。cloure1 和 clousre2 就是两个闭包，虽然它们指向同一个内部函数。但是却拥有各自的 outValue。 在我们这个例子中， 闭包环境中只有一个变量outValue。因此闭包就像一个魔法气泡一样，把与其相关的执行环境包裹了起来，因此各个闭包互相独立。
+由于 closure1 和 clousre2 各自拥有自己的状态outvalue，因此两者可以互不影响。
+举个🌰：
+在 DOM 编程中， closure1 和 cloure2 可以为两个不同按钮的 click 函数。这样两个按钮的状态可以互不影响，同时工作。
+比如，稍加变化后的代码，就可以用于记录两个按钮的点击次数
+&lt;!DOCTYPE html&gt; &lt;html lang=&#34;en&#34;&gt; &lt;head&gt; &lt;/head&gt; &lt;body&gt; &lt;button type=&#34;button&#34; id=&#34;button1&#34;&gt;Click Me!">
+
+<meta property="og:title" content="一个关于闭包的直观理解" />
+<meta property="og:description" content="Operationally, a closure is a record storing a function together with an environment.
+ 闭包的概念很抽象，但是我们可以很简单的阐述如何创建一个闭包：
+function outerFunction() { let outValue; function innterFunction() { outValue = &#34;assigned by closure&#34;;	}	return innerFunction; } closure1 = outerFunction(1) closure2 = outerFunction(2) 在以上的代码中，当我们调用 outerFunction() 时， 闭包就生成了。cloure1 和 clousre2 就是两个闭包，虽然它们指向同一个内部函数。但是却拥有各自的 outValue。 在我们这个例子中， 闭包环境中只有一个变量outValue。因此闭包就像一个魔法气泡一样，把与其相关的执行环境包裹了起来，因此各个闭包互相独立。
+由于 closure1 和 clousre2 各自拥有自己的状态outvalue，因此两者可以互不影响。
+举个🌰：
+在 DOM 编程中， closure1 和 cloure2 可以为两个不同按钮的 click 函数。这样两个按钮的状态可以互不影响，同时工作。
+比如，稍加变化后的代码，就可以用于记录两个按钮的点击次数
+&lt;!DOCTYPE html&gt; &lt;html lang=&#34;en&#34;&gt; &lt;head&gt; &lt;/head&gt; &lt;body&gt; &lt;button type=&#34;button&#34; id=&#34;button1&#34;&gt;Click Me!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhubicen.github.io/posts/js-closure/" />
+<meta property="article:published_time" content="2019-12-17T20:41:07+08:00" />
+<meta property="article:modified_time" content="2019-12-17T20:41:07+08:00" />
+
+
+</head>
+<body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      <figure class="image">
+        <img alt="" class="is-rounded" src="https://www.gravatar.com/avatar/a7074f9fedfabb09fc4a6b6973c3f25f?s=128&d=identicon">
+      </figure>
+    </a>
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      quick start
+    </a>
+  </div>
+  
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/books/">
+        
+        Books
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/c&#43;&#43;/">
+        
+        C&#43;&#43;
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/chrome/">
+        
+        Chrome
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/css/">
+        
+        CSS
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/docker/">
+        
+        Docker
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/elasticsearch/">
+        
+        Elastic search
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/emacs/">
+        
+        Emacs
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/english/">
+        
+        English
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/git/">
+        
+        Git
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/golang/">
+        
+        Golang
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/java/">
+        
+        Java
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/javascript/">
+        
+        Java script
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/linux/">
+        
+        Linux
+        
+      </a>
+      
+    </div>
+    
+    <div class="navbar-end">
+      
+      <a class="navbar-item" href="mailto:zhubicen@gmail.com" target="_blank">
+        <span class="icon">
+          <img alt="email" src='https://zhubicen.github.io/icons/svg/email.svg'>
+        </span>
+      </a>
+      <a class="navbar-item" href="https://zhubicen.github.io/index.xml" target="_blank">
+        <span class="icon">
+          <img alt="rss" src='https://zhubicen.github.io/icons/svg/rss.svg'>
+        </span>
+      </a>
+      
+    </div>
+  </div>
+</nav>
+<section class="hero is-small is-info is-fullwidth">
+  <div class="hero-body">
+<div class="container">
+  <h1 class="title">
+    一个关于闭包的直观理解
+  </h1>
+  <h2 class="subtitle">
+    <time datetime='2019-12-17T20:41:07&#43;08:00'>
+      December 17, 2019
+    </time>
+    
+    <br>
+    
+    
+    
+    <a class="tag is-link" href="https://zhubicen.github.io/tags/javascript/">JavaScript</a>
+    
+    
+    
+  </h2>
+</div>
+
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+<div class="content is-medium">
+  <blockquote>
+<p>Operationally, a closure is a record storing a function together with an environment.</p>
+</blockquote>
+<p>闭包的概念很抽象，但是我们可以很简单的阐述如何创建一个闭包：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">outerFunction</span>() {
+	<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">outValue</span>;
+	<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">innterFunction</span>() {
+		<span style="color:#a6e22e">outValue</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;assigned by closure&#34;</span>;	
+	}	
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">innerFunction</span>;
+}
+<span style="color:#a6e22e">closure1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">outerFunction</span>(<span style="color:#ae81ff">1</span>)
+<span style="color:#a6e22e">closure2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">outerFunction</span>(<span style="color:#ae81ff">2</span>)
+</code></pre></div><p>在以上的代码中，当我们调用 <code>outerFunction()</code> 时， 闭包就生成了。<code>cloure1</code> 和 <code>clousre2</code> 就是两个闭包，虽然它们指向同一个内部函数。但是却拥有各自的 <code>outValue</code>。 在我们这个例子中， 闭包环境中只有一个变量<code>outValue</code>。因此闭包就像一个魔法气泡一样，把与其相关的执行环境包裹了起来，因此各个闭包互相独立。</p>
+<p>由于 <code>closure1</code> 和 <code>clousre2</code> 各自拥有自己的状态<code>outvalue</code>，因此两者可以互不影响。</p>
+<p>举个🌰：</p>
+<p>在 DOM 编程中， <code>closure1</code> 和 <code>cloure2</code> 可以为两个不同按钮的 <code>click</code> 函数。这样两个按钮的状态可以互不影响，同时工作。</p>
+<p>比如，稍加变化后的代码，就可以用于记录两个按钮的点击次数</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en&#34;</span>&gt;
+&lt;<span style="color:#f92672">head</span>&gt;
+&lt;/<span style="color:#f92672">head</span>&gt;
+&lt;<span style="color:#f92672">body</span>&gt;
+    &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;button&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;button1&#34;</span>&gt;Click Me!&lt;/<span style="color:#f92672">button</span>&gt;
+    &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;button&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;button2&#34;</span>&gt;Click Me!&lt;/<span style="color:#f92672">button</span>&gt;
+&lt;/<span style="color:#f92672">body</span>&gt;
+&lt;<span style="color:#f92672">script</span>&gt;
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">outerFunction</span>(<span style="color:#a6e22e">arg</span>) {
+	<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">outValue</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+	<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">innerFunction</span>() {
+        <span style="color:#a6e22e">outValue</span><span style="color:#f92672">++</span>;	
+        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;You clicked me &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">outValue</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;times!&#34;</span>);
+	}	
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">innerFunction</span>;
+}
+
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">closure1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">outerFunction</span>();
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">closure2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">outerFunction</span>();
+document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#34;button1&#34;</span>).<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#34;click&#34;</span>, <span style="color:#a6e22e">closure1</span>);
+document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#34;button2&#34;</span>).<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#34;click&#34;</span>, <span style="color:#a6e22e">closure2</span>);
+&lt;/<span style="color:#f92672">script</span>&gt;
+&lt;/<span style="color:#f92672">html</span>&gt;
+</code></pre></div><p>因此，闭包就是一个内部函数，加上与其相关的变量环境，这些内容像被一个魔法气泡包裹一样，这样就形成了一个闭包。</p>
+<p><img src="js-closure.assets/image-20191217214916028.png" alt="image-20191217214916028"></p>
+<p>参考：
+JavaScript 忍者编程第二版 5.2 节</p>
+
+</div>
+
+
+  </div>
+</section><footer class="footer">
+  <div class="content has-text-centered">
+    
+    
+    <p>
+      
+      <a href="https://github.com/orf/bare-hugo-theme" target="_blank">Bare Hugo theme.</a>
+      
+      
+    </p>
+    
+  </div>
+</footer>
+
+
+</body>
+</html>

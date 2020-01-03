@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>English on quick start</title>
+    <link>https://zhubicen.github.io/tags/english/</link>
+    <description>Recent content in English on quick start</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 10 Mar 2012 17:48:58 +0800</lastBuildDate>
+    
+	<atom:link href="https://zhubicen.github.io/tags/english/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title> 逆向法专用的英语复读机</title>
+      <link>https://zhubicen.github.io/posts/englisth-reverse/</link>
+      <pubDate>Sat, 10 Mar 2012 17:48:58 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/englisth-reverse/</guid>
+      <description>您不知道逆向法？你out了：D
+这个程序是专门为逆向学习英语而设计，界面极其简单，或者你根本不需要去观 看或留意这个界面，因为一切都可以使用热键进行操作。使你专注于听写。本程序没 有设计供编辑功能，编辑功能可以由专业的文件编辑工具来完成，比如我用 Emacs，当然你可以先择Micosoft Word, Ultra Edit, Notepad++
+Ling Repeater</description>
+    </item>
+    
+  </channel>
+</rss>

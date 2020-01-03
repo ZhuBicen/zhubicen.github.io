@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    
+    Docker Cheet Sheet
+     | 阿碧 
+  </title>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.eb4797a608f467160f71b5cc518dffb9b3fef0edc95e6def8dc4033ba1888b8f414e3d1d3e6c9804ca3e6f125539d8af48b28dcecb4eafc5805bde0b3c8d6956.css' integrity='sha512-60eXpgj0ZxYPcbXMUY3/ubP&#43;8O3JXm3vjcQDO6GIi49BTj0dPmyYBMo&#43;bxJVOdivSLKNzstOr8WAW94LPI1pVg=='>
+  <link rel="canonical" href="https://zhubicen.github.io/posts/docker-cheet-sheet/">
+  <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="阿碧">
+<meta name="description" content="Docker Docker commands Running a container image  docker run --name kubia-container -p 8080:8080 -d kubia  Run a container with bash  docker run --rm -ti ubuntu:latest /bin/bash  Remove if exist  docker run -ti --restart=always  Restart when failure To kill a container, run docker kill xxxcontainer-id Remove all containers, run docker rm $(docker ps -a -q) Remove all images, run docker rmi $(docker images -q -)">
+
+<meta property="og:title" content="Docker Cheet Sheet" />
+<meta property="og:description" content="Docker Docker commands Running a container image  docker run --name kubia-container -p 8080:8080 -d kubia  Run a container with bash  docker run --rm -ti ubuntu:latest /bin/bash  Remove if exist  docker run -ti --restart=always  Restart when failure To kill a container, run docker kill xxxcontainer-id Remove all containers, run docker rm $(docker ps -a -q) Remove all images, run docker rmi $(docker images -q -)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhubicen.github.io/posts/docker-cheet-sheet/" />
+<meta property="article:published_time" content="2019-08-24T21:06:20+08:00" />
+<meta property="article:modified_time" content="2019-08-24T21:06:20+08:00" />
+
+
+</head>
+<body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      <figure class="image">
+        <img alt="" class="is-rounded" src="https://www.gravatar.com/avatar/a7074f9fedfabb09fc4a6b6973c3f25f?s=128&d=identicon">
+      </figure>
+    </a>
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      quick start
+    </a>
+  </div>
+  
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/books/">
+        
+        Books
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/c&#43;&#43;/">
+        
+        C&#43;&#43;
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/chrome/">
+        
+        Chrome
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/css/">
+        
+        CSS
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/docker/">
+        
+        Docker
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/elasticsearch/">
+        
+        Elastic search
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/emacs/">
+        
+        Emacs
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/english/">
+        
+        English
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/git/">
+        
+        Git
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/golang/">
+        
+        Golang
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/java/">
+        
+        Java
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/javascript/">
+        
+        Java script
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/linux/">
+        
+        Linux
+        
+      </a>
+      
+    </div>
+    
+    <div class="navbar-end">
+      
+      <a class="navbar-item" href="mailto:zhubicen@gmail.com" target="_blank">
+        <span class="icon">
+          <img alt="email" src='https://zhubicen.github.io/icons/svg/email.svg'>
+        </span>
+      </a>
+      <a class="navbar-item" href="https://zhubicen.github.io/index.xml" target="_blank">
+        <span class="icon">
+          <img alt="rss" src='https://zhubicen.github.io/icons/svg/rss.svg'>
+        </span>
+      </a>
+      
+    </div>
+  </div>
+</nav>
+<section class="hero is-small is-info is-fullwidth">
+  <div class="hero-body">
+<div class="container">
+  <h1 class="title">
+    Docker Cheet Sheet
+  </h1>
+  <h2 class="subtitle">
+    <time datetime='2019-08-24T21:06:20&#43;08:00'>
+      August 24, 2019
+    </time>
+    
+    <br>
+    
+    
+    
+    <a class="tag is-link" href="https://zhubicen.github.io/tags/docker/">Docker</a>
+    
+    
+    
+  </h2>
+</div>
+
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+<div class="content is-medium">
+  <h1 id="docker">Docker</h1>
+<h2 id="docker-commands">Docker commands</h2>
+<h3 id="running-a-container-image">Running a container image</h3>
+<ul>
+<li><code>docker run --name kubia-container -p 8080:8080 -d kubia</code></li>
+</ul>
+<h3 id="run-a-container-with-bash">Run a container with bash</h3>
+<ul>
+<li><code>docker run --rm -ti ubuntu:latest /bin/bash</code></li>
+</ul>
+<h3 id="remove-if-exist">Remove if exist</h3>
+<ul>
+<li><code>docker run -ti --restart=always</code></li>
+</ul>
+<h3 id="restart-when-failure">Restart when failure</h3>
+<p>To kill a container, run <code>docker kill xxxcontainer-id</code>
+Remove all containers, run <code>docker rm $(docker ps -a -q)</code>
+Remove all images, run <code>docker rmi $(docker images -q -)</code></p>
+<ul>
+<li><code>-d</code> means detach</li>
+<li><code>--name</code> is the name of the container</li>
+<li><code>kubia</code> is the image name</li>
+</ul>
+<h3 id="stop-a-container">Stop a container</h3>
+<p><code>docker stop kubia-container</code></p>
+<h3 id="start-a-container">Start a container</h3>
+<p><code>docker start kubia-container</code></p>
+<h2 id="remove-a-container">Remove a container</h2>
+<p><code>docker rm kubia-container</code></p>
+<h3 id="list-all-the-containers">List all the containers</h3>
+<ul>
+<li><code>docker ps -a</code> show all the docker processes</li>
+<li><code>docker ps</code> show only the started processes</li>
+</ul>
+<h3 id="delete-all-the-stopped-containers">Delete all the stopped containers</h3>
+<p>before performing the removal command, you can get a list of all non-running (stopped) containers that will be removed using the following command:</p>
+<p><code>docker container ls -a --filter status=exited --filter status=created</code></p>
+<p>To remove all stopped containers use the docker container prune command:</p>
+<p><code>docker container prune</code></p>
+<h2 id="how-to-push-a-docker-image">How to push a docker image</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker login
+docker tag firstimage YOUR_DOCKERHUB_NAME/firstimage
+docker push YOUR_DOCKERHUB_NAME/firstimage
+</code></pre></div><h2 id="minikube">Minikube</h2>
+<p><code>minikube start --docker-env http_proxy=http://127.0.0.1:1080 --docker-env https_proxy=http://127.0.0.1:1080</code></p>
+<p><code>minikube start --docker-env http_proxy=http://127.0.0.1:1080 --docker-env https_proxy=https://127.0.0.1:1080</code></p>
+<p><a href="https://codefarm.me/2018/08/09/http-proxy-docker-minikube/">Minikube behind http proxy</a></p>
+<pre><code>minikube start --docker-env HTTP_PROXY=http://127.0.0.1:1080/ --docker-env HTTPS_PROXY=http://127.0.0.1:1080/ --docker-env NO_PROXY=index.docker.io,registry.hub.docker.com,
+ registry-1.docker.io,registry.docker-cn.com,
+ registry-mirror-cache-cn.oss-cn-shanghai.aliyuncs.com,
+ 192.168.99.100 --registry-mirror https://registry.docker-cn.com
+</code></pre><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+
+</div>
+
+
+  </div>
+</section><footer class="footer">
+  <div class="content has-text-centered">
+    
+    
+    <p>
+      
+      <a href="https://github.com/orf/bare-hugo-theme" target="_blank">Bare Hugo theme.</a>
+      
+      
+    </p>
+    
+  </div>
+</footer>
+
+
+</body>
+</html>

@@ -6,10 +6,132 @@
     <description>Recent content on quick start</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 13 Dec 2019 16:20:02 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 03 Jan 2020 13:15:41 +0800</lastBuildDate>
     
 	<atom:link href="https://zhubicen.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Docker 的代理设置</title>
+      <link>https://zhubicen.github.io/posts/docker-proxy/</link>
+      <pubDate>Fri, 03 Jan 2020 13:15:41 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/docker-proxy/</guid>
+      <description>docker 的代理有两部分，一个是docker client，一个是docker daemon：
+这里是 docker daemon 的设置：https://docs.docker.com/config/daemon/systemd/。 这里的配置主要是docker pull 时的网络访问。 主要是设置两个文件：
+ /etc/systemd/system/docker.service.d/http-proxy.conf  [Service] Environment=&amp;quot;HTTP_PROXY=http://proxy.example.com:80/&amp;quot; /etc/systemd/system/docker.service.d/https-proxy.conf  [Service] Environment=&amp;quot;HTTPS_PROXY=https://proxy.example.com:443/&amp;quot;  sudo systemctl daemon-reload
+  sudo systemctl restart docker
+  systemctl show --property=Environment docker
+   这里是 docker client 的设置，主要是用于 docker container 中的网络访问 在 ~/.docker/config.json 文件中：
+{ &amp;#34;proxies&amp;#34;: { &amp;#34;default&amp;#34;: { &amp;#34;httpProxy&amp;#34;: &amp;#34;http://127.0.0.1:3001&amp;#34;, &amp;#34;httpsProxy&amp;#34;: &amp;#34;http://127.0.0.1:3001&amp;#34;, &amp;#34;noProxy&amp;#34;: &amp;#34;*.test.example.com,.example2.com&amp;#34; } } } </description>
+    </item>
+    
+    <item>
+      <title>2019 Books</title>
+      <link>https://zhubicen.github.io/posts/2019-books/</link>
+      <pubDate>Mon, 30 Dec 2019 20:45:33 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/2019-books/</guid>
+      <description>2019 买的技术书籍
+   书名 阅读情况     编程珠玑（第二版 修订版）（Jon Bentley) 未读   Kubernetes in Action 中文版 (Marko Luksa) 读完，缺实践   Scikit-Learn 与 TensorFlow 机器学习使用指南（影印版）（Aurelien Geron） 书不错，读完，缺实践   CSS 揭秘 读完，内容不多，不成体系   云原生 Java (Josh Long) 90% ，书是好书，缺乏条理性   RabbitMQ in Action 80%，缺少实践   Redis In Action (Josiah L.) 50%   Netty In Action (Norman Maurer) 20%   JavaScript 高级程序设计（第三版） 去年读了电子版，今年纸质有翻了前半部分   高性能 MySQL 大部头，也就看个前言   数据库索引与优化 看了一会，看不进去   高性能 JavaScript 好书，值得一看   DOM 启蒙 二手书，残迹太多，影响阅读   Spring 微服务实战 非常好，看了多遍   Java 夜未眠 内容太老，随便翻了翻   精通 Spring 4.</description>
+    </item>
+    
+    <item>
+      <title>JavaScript 立即执行函数表达式 IIFE</title>
+      <link>https://zhubicen.github.io/posts/iife/</link>
+      <pubDate>Sun, 29 Dec 2019 09:26:02 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/iife/</guid>
+      <description>IIFE 是指： JavaScript Immediately-invoked Function Expressions。 也就是定义一个匿名函数，并且立刻调用它。
+比如：
+function() { console.log(&amp;quot;Hello World&amp;quot;); }() IFFE 在我们想缩小变量的作用域的时候非常有用，比如如下代码用来显示 Webpack 的打包进度，bar1 作为全局变量存在
+var bar1 = null; const handler = (percentage, message, ...args) =&amp;gt; { if (bar1 === null) { const cliProgress = require(&amp;#39;cli-progress&amp;#39;); bar1 = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic); bar1.start(100, 0); } bar1.update(percentage * 100); if (percentage * 100 &amp;gt;= 100) { bar1.stop(); } }; 使用 IIFE 可以改造为：
+const handler = (() =&amp;gt; { let progressBar = null; return (percentage, message, .</description>
+    </item>
+    
+    <item>
+      <title>Java Charset</title>
+      <link>https://zhubicen.github.io/posts/java-charset/</link>
+      <pubDate>Mon, 23 Dec 2019 11:32:30 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/java-charset/</guid>
+      <description>在给公司做抽奖程序的时候，做 了这么一个功能，从 csv 读取内容放到数据库，在 IDE 里测试的好好的。拿到命令行运行后，插入数据库就是乱码。
+后来发现是读取文本的内容的时候没有设置UTF8，但是为什么 IDE 是好的？IDE（包括 Eclipse 和 IntelliJ）里下直接就是 UTF8，所以不用设置Java IDE 包括 Eclipse 和 IDEA 默认的字符集都是 UTF-8，而系统本身的字符集（在使用命令行启动应用程序的时候），对于中文操作系统来说一般是 GBK，比如下面的代码，在 IDE 中运行的时候会打印 UTF-8，在 Windows 命令行运行的时候打印 GBK
+public class Application { public static void main(String[] args) throws InterruptedException { System.out.println(Charset.defaultCharset()); System.out.println(new OutputStreamWriter(new ByteArrayOutputStream()).getEncoding()); System.out.println(System.getProperty(&amp;#34;file.encoding&amp;#34;)); } } </description>
+    </item>
+    
+    <item>
+      <title>Git Submodule 教程</title>
+      <link>https://zhubicen.github.io/posts/git-submodules/</link>
+      <pubDate>Sun, 22 Dec 2019 14:32:54 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/git-submodules/</guid>
+      <description>为现有的仓库增加 submodule git submodule add (repository) (directory) 在执行了以上命令后，在 git 仓库的根目录下，会出现一个 .gitmodules，里面会记录当前添加的作为 submodule 的 git 仓库的地址。
+提交这个 .gitmodules 文件：
+git add .gitmodules git commit -m&amp;quot;add sumodule file&amp;quot; git push 经过以上的步骤，我们就把为我们的 git 仓库添加了一个 submodule
+clone 现有的包含 submodule 的仓库 重新clone 我们的仓库，会发现，里面只有一个空的目录。这是因为，默认情况下，git clone 不会把 submodule 同时 clone 下来。为了把submodule 也 clone 下来，需要运行一下的 submodule 指令
+git submodule init git submodule update // 也有可能 sumbodule 可能会包含其他的 git repo, 所以可以使用一下的命令 git submodule update --init --recursive submodule 也是一个普通的 repo，我们可以在目录中，执行log， status， checkout和branch</description>
+    </item>
+    
+    <item>
+      <title>Java Functional Interface</title>
+      <link>https://zhubicen.github.io/posts/runnable-lambda/</link>
+      <pubDate>Sun, 22 Dec 2019 01:06:03 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/runnable-lambda/</guid>
+      <description>请看如下的 Java 代码：
+class MyClass { public setCalback(Runnable doneCallback) { if (something is done) { doneCallback(); } } }; MyClass mc = new MyClass(); mc.setCallback(() -&amp;gt; { // do other things })  为什么 lambda 可以实现Runnable 接口？
+ Runnable 的代码如下， 可以看到他是一个函数式接口 FunctionalInterface，类似的函数是接口，在 Java中还有很多，比如 ActionLisener 和 Comparator
+package java.lang; @FunctionalInterface public interface Runnable { void run(); } 什么是函数是接口？ 函数式接口是一种只有一种方法的接口。具有相同签名的 lambda 函数可以转化为这种接口。
+ A functional interface is an interface that contains only one abstract method.</description>
+    </item>
+    
+    <item>
+      <title>JavaScript instance of</title>
+      <link>https://zhubicen.github.io/posts/instance-of/</link>
+      <pubDate>Sat, 21 Dec 2019 00:43:10 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/instance-of/</guid>
+      <description>The instanceof operator tests whether the prototype property of a constructor appears anywhere in the prototype chain of an object.
+ object instanceof constructor
+instance of 的语义是：检查右边的函数的原型，是否存在于操作符左边的原型链上。
+原型链 首先我们来理解一下原型链的意义：
+假定我们有 a, b 和 c 三个 object
+Object.setPrototypeOf(a, b); Object.setPrototypeOf(b, c); 上面的代码就把 b 设置为了 a 的原型， c 设置为 b 的原型，因此 a 的原型指向 b，b 的原型指向 c。因此每一个对象都可以有自己的原型，每一个原型也可以拥有自己的原型，以次类推形成一个原型链。
+a 在查找一个属性时，如果 a 本身没有此属性的情况下，会在他的原型对象上查找， 如果在原型 b 上还是没有找到，就到 b 的原型上查找。
+构造函数与原型 在 JavaScript 中，够造原型的方式有很多种，但是使用构造函数来创建函数，是最经典的方法。
+function C() { this.</description>
+    </item>
+    
+    <item>
+      <title>ES6 中的 const</title>
+      <link>https://zhubicen.github.io/posts/js-const/</link>
+      <pubDate>Tue, 17 Dec 2019 22:32:48 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/js-const/</guid>
+      <description>Java Script 中的 const 变量，在执行的过程中不能重新赋值，但是可以对原有值更改。
+比如：
+const constVar = {}; constVar.newProperty = &amp;#34;newValue&amp;#34;; 这个初看起来挺奇怪的，但是 C++ 其实也是如此。由于 JavaScript 中的变量是引用，所以那 C++ 中的引用进行对比的话，两者的语义是相近的，但是不完全一致
+如下代码是可以的：
+MyClass myObject; const MyClass&amp;amp; constObject = myObject; myObject.a = 1; 但是在C++ 中不可直接使用 const reference 来改变值的属性：
+MyClass myObject; const MyClass&amp;amp; constObject = myObject; constObject.a = 2;// 这样是不行的: expression must be a modifiable value </description>
+    </item>
+    
+    <item>
+      <title>一个关于闭包的直观理解</title>
+      <link>https://zhubicen.github.io/posts/js-closure/</link>
+      <pubDate>Tue, 17 Dec 2019 20:41:07 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/js-closure/</guid>
+      <description>Operationally, a closure is a record storing a function together with an environment.
+ 闭包的概念很抽象，但是我们可以很简单的阐述如何创建一个闭包：
+function outerFunction() { let outValue; function innterFunction() { outValue = &amp;#34;assigned by closure&amp;#34;;	}	return innerFunction; } closure1 = outerFunction(1) closure2 = outerFunction(2) 在以上的代码中，当我们调用 outerFunction() 时， 闭包就生成了。cloure1 和 clousre2 就是两个闭包，虽然它们指向同一个内部函数。但是却拥有各自的 outValue。 在我们这个例子中， 闭包环境中只有一个变量outValue。因此闭包就像一个魔法气泡一样，把与其相关的执行环境包裹了起来，因此各个闭包互相独立。
+由于 closure1 和 clousre2 各自拥有自己的状态outvalue，因此两者可以互不影响。
+举个🌰：
+在 DOM 编程中， closure1 和 cloure2 可以为两个不同按钮的 click 函数。这样两个按钮的状态可以互不影响，同时工作。
+比如，稍加变化后的代码，就可以用于记录两个按钮的点击次数
+&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;button type=&amp;#34;button&amp;#34; id=&amp;#34;button1&amp;#34;&amp;gt;Click Me!</description>
+    </item>
     
     <item>
       <title>A Wried Bug: 一个未捕获到的异常</title>
@@ -25,6 +147,20 @@
     </item>
     
     <item>
+      <title>Vuetify Icon</title>
+      <link>https://zhubicen.github.io/posts/vuetify-icon/</link>
+      <pubDate>Sat, 07 Dec 2019 20:50:35 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/vuetify-icon/</guid>
+      <description>安装 Vuetify 的步骤
+ yarn global add @vue/cli vue create my-app vue add vuetify  第三步后， 会自动再 public/index.html 文件下添加字体，是默认的 material design icon
+因此再安装后，使用 v-icon 时，需要使用 mdi 前缀。比如： &amp;lt;v-icon&amp;gt;mdi-basketball&amp;lt;/v-icon&amp;gt;
+但是再使用一些文档中的例子的时候，比如从 codepen 中粘贴过来是，里面用的字体可能是不带 mdi 前缀的，因此需要按如下的步骤安装 material icon
+yarn add material-design-icons-iconfont -D 并在main.js ， index.js 或者 app.js 中，添加如下：
+import &#39;material-design-icons-iconfont/dist/material-design-icons.css&#39; Material design icon 和 Material icon 是不同的两套图标</description>
+    </item>
+    
+    <item>
       <title>Spring Cloud Quickstart</title>
       <link>https://zhubicen.github.io/posts/spring-cloud-quickstart/</link>
       <pubDate>Wed, 27 Nov 2019 21:37:00 +0800</pubDate>
@@ -37,6 +173,143 @@
 Greeting 服务 Greeting 的配置文件如下：
 server: port: 9090 greeting: Hello 该服务提供如下接口：
 @RequestMapping(&amp;#34;/&amp;#34;) public String getGreeting(){ LOG.</description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43;17 Structure Binding</title>
+      <link>https://zhubicen.github.io/posts/c&#43;&#43;17-structure-binding/</link>
+      <pubDate>Mon, 23 Sep 2019 20:19:23 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/c&#43;&#43;17-structure-binding/</guid>
+      <description>什么是Structured Binding Structured binding 是 C++ 17 的一个新 feature, 他允许你绑定变量到实例或者构造列表中的元素。也可以这么说, 他允许开发人员同时声明多个变量, 并且有 tuple 或 struct 提供初始化值
+他的主要目的是使代码更加易读。 像引用一样，Structured Binding 是一个已经存在对象的别名; 与引用不同的是  Structed Binding 的类型可以不是引用
+在 C++ 17 中可以写出如下的代码：
+std::string func() { auto [succeeded, value] = get_some_pair(); return value; } Structed Binding 是如何工作的 编译器会把以上的代码翻译成如下的代码：
+std::string func() { auto e = get_some_pair(); auto&amp;amp; succeeded = e.first; auto&amp;amp; value = e.second; return value } Structured Binding 与 NVRO 由于 NRVO 不能用在 sub object 因此，从性能方面考虑，如下的代码相比性能较好：</description>
+    </item>
+    
+    <item>
+      <title>Docker Cheet Sheet</title>
+      <link>https://zhubicen.github.io/posts/docker-cheet-sheet/</link>
+      <pubDate>Sat, 24 Aug 2019 21:06:20 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/docker-cheet-sheet/</guid>
+      <description>Docker Docker commands Running a container image  docker run --name kubia-container -p 8080:8080 -d kubia  Run a container with bash  docker run --rm -ti ubuntu:latest /bin/bash  Remove if exist  docker run -ti --restart=always  Restart when failure To kill a container, run docker kill xxxcontainer-id Remove all containers, run docker rm $(docker ps -a -q) Remove all images, run docker rmi $(docker images -q -)</description>
+    </item>
+    
+    <item>
+      <title>Maven 中使用本地 jar 包</title>
+      <link>https://zhubicen.github.io/posts/mvn-use-local-jar/</link>
+      <pubDate>Tue, 20 Aug 2019 20:48:32 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/mvn-use-local-jar/</guid>
+      <description>你可以包含本地的 jar, 像下面一样:
+但是, 在使用 mvn package 时,这个 jar 不会被打包进去,除非使用下面的方式安装
+mvn install:install-file -Dfile=&amp;quot;C:\Users\xxx\lib\LoginRadius-1.0.jar&amp;quot; -DgroupId=LoginRadius -DartifactId=LoginRadius -Dversion=1.0 -Dpackaging=jar` https://stackoverflow.com/questions/19065666/how-to-include-system-dependencies-in-war-built-using-maven</description>
+    </item>
+    
+    <item>
+      <title>在 Docker 中开发 SpringBoot</title>
+      <link>https://zhubicen.github.io/posts/springboot-on-docker/</link>
+      <pubDate>Sat, 03 Aug 2019 20:46:59 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/springboot-on-docker/</guid>
+      <description>问题 在开发 SpringBoot 微服务的过程中，经常发生的情况是，需要使用 Windows 进行开发，但是微服务最终会部署在 Linux 上，因此而产生的的开发环境和生产环境的不一致，会导致上线后的一些问题
+解决办法 通过把源代码目录挂载到 Docker 中，并在 Doker 中，运行 mvn spring-boot:run，因为 Docker 和 Windows 共享相同的目录，所以 Docker 中的 maven 可以检测到代码的改动，自动重启 SpringBoot 服务
+ 假设你的 Spring 代码可以使用 mvn spring-boot:run 正常运行。为了使 Maven 可以检测到代码的改动以重启服务，请确保 pom.xml 里添加了依赖项：spring-boot-devtools 假设的你的代码目录在 C:\Project\springProject 中。请把下面命令中的目录自行替换为自己项目的目录 新建 Docker 目录，并在目录下新建文件 Dockerfile  FROMmaven:3.5.3-jdk-8-alpineWORKDIR/appCOPY pom.xml .RUN mvn dependency:go-offlineVOLUME/app/srcCMD [&amp;#34;mvn&amp;#34;, &amp;#34;spring-boot:run&amp;#34;] 进入 Docker 目录，编译生成 Docker Image docker build -t app:dev . 运行 Docker: docker run -v d:/Project/demo/src:/app/src app:dev  参考  https://medium.</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu Docker Timezone</title>
+      <link>https://zhubicen.github.io/posts/ubuntu-docker-timezone/</link>
+      <pubDate>Fri, 26 Jul 2019 10:45:18 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/ubuntu-docker-timezone/</guid>
+      <description>一般来讲如下方法就够了：
+RUN echo &amp;quot;Asia/Shanghai&amp;quot; &amp;gt; /etc/timezone RUN dpkg-reconfigure -f noninteractive tzdata 但是因为 Ubuntu 的 bug, 要添加一行 RUn rm -f /etc/localtime, 因此:
+RUN echo &amp;quot;Asia/Shanghai&amp;quot; &amp;gt; /etc/timezone RUN rm -f /etc/localtime RUN dpkg-reconfigure -f noninteractive tzdata 以上参考自：docker-timezone-in-ubuntu-16-04-image, 虽然原文只是针对 1604, 笔者亲测1804也是适用的</description>
+    </item>
+    
+    <item>
+      <title>Rocket MQ 的 Message Listener 收到重复的消息</title>
+      <link>https://zhubicen.github.io/posts/rocket-mq-duplicated/</link>
+      <pubDate>Tue, 23 Jul 2019 14:43:31 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/rocket-mq-duplicated/</guid>
+      <description>问题 Rocket MQ 的 MessageListener 每次都会收到同样的消息的两个副本，两个消息的 Message Id 是一样的
+解决办法 Message Id 是一样的说明是同一个消息，这是 Rocket MQ 的重试机制的现象。原因是在第一次处理此消息的时候，发生了异常（比如 NullPointerException），导致处理函数异常退出，因此没有返回 CONSUME_SUCCESS, 因此 Rocket MQ 会重新使用此消息回调消息处理函数。重试的次数应该是可以设定的。
+因此在消息回调函数使用 try catch 是有助于发现和调查此类问题的
+ consumer.registerMessageListener(new MessageListenerConcurrently() { @Override public ConsumeConcurrentlyStatus consumeMessage(List&amp;lt;MessageExt&amp;gt; msgs, ConsumeConcurrentlyContext context) { try { System.out.printf(&amp;quot;%s Receive New Messages: %s %n&amp;quot;, Thread.currentThread().getName(), msgs); // do something return ConsumeConcurrentlyStatus.CONSUME_SUCCESS; } catch(Exception e) { // logout the exception } } }); </description>
+    </item>
+    
+    <item>
+      <title>Elastic Search Quickstart</title>
+      <link>https://zhubicen.github.io/posts/elastic-search-quickstart/</link>
+      <pubDate>Wed, 23 Jan 2019 21:08:24 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/elastic-search-quickstart/</guid>
+      <description>Prerequisites What is Elasticsearch  high-performance RESTful search engine and document store  Start Elasticsearch On Windows: elastic‑search‑dir\bin\elasticsearch.bat
+Using cURL for REST commands Create an index $ curl ‑XPUT &amp;quot;http://localhost:9200/music/&amp;quot;
+Insert a document $ curl XPUT &amp;quot;http://localhost:9200/music/songs/1&amp;quot; ‑d &#39; { &amp;quot;name&amp;quot;: &amp;quot;Deck the Halls&amp;quot;, &amp;quot;year&amp;quot;: 1885, &amp;quot;lyrics&amp;quot;: &amp;quot;Fa la la la la&amp;quot; }&#39; View a document $ curl ‑XGET &amp;quot;http://localhost:9200/music/songs/1&amp;quot; Output:
+{&amp;quot;_index&amp;quot;:&amp;quot;music&amp;quot;,&amp;quot;_type&amp;quot;:&amp;quot;songs&amp;quot;,&amp;quot;_id&amp;quot;:&amp;quot;1&amp;quot;,&amp;quot;_version&amp;quot;:1,&amp;quot;found&amp;quot;:true,&amp;quot;_source&amp;quot;: { &amp;quot;name&amp;quot;: &amp;quot;Deck the Halls&amp;quot;, &amp;quot;year&amp;quot;: 1885, &amp;quot;lyrics&amp;quot;: &amp;quot;Fa la la la la&amp;quot; }} Update a document $ curl ‑XPUT &amp;quot;http://localhost:9200/music/lyrics/1&amp;quot; ‑d &#39;{ &amp;quot;name&amp;quot;: &amp;quot;Deck the Halls&amp;quot;, &amp;quot;year&amp;quot;: 1886, &amp;quot;lyrics&amp;quot;: &amp;quot;Fa la la la la&amp;quot; }&#39; Delete a document curl ‑XDELETE &amp;quot;http://localhost:9200/music/lyrics/1&amp;quot; Insert a document from a file  $ curl ‑XPUT &amp;quot;http://localhost:9200/music/lyrics/2&amp;quot; ‑d @caseyjones.</description>
+    </item>
+    
+    <item>
+      <title>太老的 node 版本引起的问题</title>
+      <link>https://zhubicen.github.io/posts/too-old-npm/</link>
+      <pubDate>Thu, 30 Aug 2018 17:33:31 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/too-old-npm/</guid>
+      <description>今天被一个 redhat 镜像上的老版本的 node 和 npm 坑了（使用 yum install npm 安装的），npm -v (1.3.6), node -v(v0.10.48)。最新的版本是多少呢：
+这两者的版本差的太多了。导致了各种问题，比如：
+Cannot read property &#39;latest&#39; of undefined 网上搜到有些建议需要更新 npm，给出了命令，但是诡异的是使用 npm install npm -g 后，npm 就无法正常使用了，npm -v 都会导致错误，这个原因可能也是 node 的版本确实太低了。
+所以安装新版本 npm 后，一切问题都没有了。
+可以参考下面的页面，来安装较新版本的 npm:
+https://nodejs.org/en/download/package-manager/</description>
+    </item>
+    
+    <item>
+      <title>Chrome Build Problem</title>
+      <link>https://zhubicen.github.io/posts/chrome-build-problem/</link>
+      <pubDate>Thu, 05 Apr 2018 10:30:44 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/chrome-build-problem/</guid>
+      <description>下载代码前最基本的代理设置：https://blog.csdn.net/siyu77/article/details/50916320 对于 ShadowSocks 代理 https_proxy 也要设置成 http://localhost:1080（注意代理的 url 没有s) gclient sync 失败的问题(Failed to fetch file gs://chromium-gn/a68b194afb05d6a6357cf2e2464136ed7723c305) 如下图，还需要设置 boto 代理
+建立 .poto 文件如下（文件名不重要）
+[Boto] proxy = localhost proxy_port = 1080 然后使用环境变量 NO_AUTH_BOTO_CONFIG 指向 boto 文件的位置 export NO_AUTH_BOTO_CONFIG=C:/path/to/.boto 来源： https://groups.google.com/a/chromium.org/forum/#!topic/chromium-packagers/0eE3oC3lBFw
+另外还有一个 Python Unicode 的问题：https://groups.google.com/a/chromium.org/forum/#!topic/chromium-dev/daWDn2cfSyA 目前（2018/4/5)还是需要手工的合并 Fix: 可能英文版的没有这个问题，所以这个 bug 一直没有合并
+另外我还遇到了执行 “gn gen --ide=vs out\Default” 出错的问题，原因是因为没有安装 10.0.15063 版本的 SDK.
+ &amp;quot;/Ic:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include&amp;quot; &amp;quot;/Ic:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt&amp;quot; &amp;quot;/Ic:\program files (x86)\windows kits\10\include\10.0.15063.0\shared&amp;quot; &amp;quot;/Ic:\program files (x86)\windows kits\10\include\10.</description>
+    </item>
+    
+    <item>
+      <title>使用 Eclipse 的 Restore from local history 功能恢复误删除的文件</title>
+      <link>https://zhubicen.github.io/posts/eclipse-restore-from-local/</link>
+      <pubDate>Thu, 01 Mar 2018 16:26:41 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/eclipse-restore-from-local/</guid>
+      <description>在软件开发的过程中，如果不小是删除了正在开发的文件，是个令个苦恼的事情
+在文件还没有添加到版本控制系统之前，使用一些命令，比如 git clean 删除了不在版本控制系统中的文件，这样会造成文件丢失。由于 Linux 文件系统本身的限制，rm 的文件是很难恢复的。
+但是如果你是使用 Eclipse 开发的，有一个后悔药可以使用：
+ Select Project Right Click Select Restore from local history in the context menu Select your files Click OK.  这样误删除的文件就可以恢复了
+另外使用
+git clean -fdx 之前，可以使用 dry run ,以确认哪些文件会被清理
+git clean -fdxn</description>
+    </item>
+    
+    <item>
+      <title>使用GYP生成MSVS工程文件~0</title>
+      <link>https://zhubicen.github.io/posts/gyp-0/</link>
+      <pubDate>Tue, 25 Mar 2014 01:22:18 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/gyp-0/</guid>
+      <description>GYP是Google出品的新一代C++构建系统，被广泛的用于Chrome的构建中。
+准备工作：
+ svn checkout http://gyp.googlecode.com/svn/trunk/ gyp-read-only 设置gyp-read-only目录到PATH set GYP_GENERATORS=msvs  由于GYP在windows下默认使用ninja来编译，所以要生成MSVS工程文件，需要设置GYP_GENERATOR为msvs。如果你安装了多个版本的Visual Studio，也可以指定MSVS的版本，比如 set GYP_MSVS_VERSION=2013，目前GYP支持的版本包括2008到2013的所有版本，包括express版，如果是express版在版本号后加e即可。比如2013e为Visual Studio 2013 express版。
+创建如下的GYP文件，program.gyp，
+{ &#39;targets&#39;: [ { &#39;target_name&#39;: &#39;program&#39;, &#39;type&#39;: &#39;executable&#39;, &#39;sources&#39;: [ &#39;program.cpp&#39;, ], }, ], } 运行如下命令，并确保当前目录下存在 program.cpp
+gyp --depth=. program.gyp 检查当前目录，会生成如下的文件， program.sln和program.vcxproj，使用 Visual Studio 打开 program.sln 即可。
+一般来说，使用MSVS创建的项目都会有Debug和Release两种模式，但是目前生成的项目文件只有一种Default配置，无法在里面设置断点。 下一篇文章解决此问题。</description>
     </item>
     
     <item>
@@ -96,12 +369,37 @@ Ling Repeater</description>
     </item>
     
     <item>
-      <title>一些好用的 Git Alias</title>
+      <title>收不到TaskbarButtonCreated消息</title>
+      <link>https://zhubicen.github.io/posts/taskbar-message/</link>
+      <pubDate>Sat, 03 Mar 2012 16:06:37 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/taskbar-message/</guid>
+      <description>一个WTL对话框小程序，想为其加上Win7特有的任务栏上的进度条功能，死活不行，注册消息 RegisterWindowMessage ( _T(&amp;quot;TaskbarButtonCreated&amp;quot;) );也是成功的，但是无论如何都收不到消息。
+重新用Wizard建立了一个最简单的小程序，发现是可以的。对比了半天，慢慢缩小问题的范围，折磨了几个小时，最后发现原来我的对话框有一个属性是，WS_EX_TOOLWINDOW, 所以把此属性去掉即可。
+diff -r fd2da7b96050 Ling/Ling.rc --- a/Ling/Ling.rc Sat Mar 03 13:57:18 2012 +0800 +++ b/Ling/Ling.rc Sat Mar 03 16:00:40 2012 +0800 @@ -89,7 +89,6 @@ LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL IDD_MAINDLG DIALOG 0, 0, 351, 28 STYLE DS_3DLOOK | DS_CENTER | DS_SHELLFONT | WS_BORDER | WS_VISIBLE | WS_POPUP | WS_SYSMENU -EXSTYLE WS_EX_TOOLWINDOW FONT 8, &amp;quot;Ms Shell Dlg&amp;quot; { CONTROL &amp;quot;退出&amp;quot;, IDOK, WC_BUTTON, WS_TABSTOP | WS_TABSTOP | BS_OWNERDRAW, 335, 0, 14, 14 diff -r fd2da7b96050 Ling/Release/Ling.</description>
+    </item>
+    
+    <item>
+      <title>Windows控制台上的UTF-8支持</title>
+      <link>https://zhubicen.github.io/posts/windows-console-char/</link>
+      <pubDate>Sat, 25 Feb 2012 14:10:55 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/windows-console-char/</guid>
+      <description>最近在学习Go语言，发现调用一些库函数失败后的返回字符串，都是一些乱码，觉得奇怪。所以写了一个最简单的程序来复现这个问题：
+func main(){ _, err := os.Open(&amp;quot;none-exist-file&amp;quot;) if err != nil{ fmt.Println(err) } } 编译运行一切都正常，但是输出是乱码： pen none-exist-file: 绯荤粺鎵句笉鍒版寚瀹氱殑鏂囦欢銆? 
+原因就是Go语言以UTF-8编码进行输出，而Windows控制台默认不支持UTF-8。解决方法就是更改code page， 使用命令 chcp，不加任何参数便显示当前的code page。把 ode page改为65001即可。另外还要把字体改为 Lucia Console。
+这样的更改会导致其它一些不使用utf-8编码的程序出现乱码。
+一些相关的link:
+ https://groups.google.com/forum/#!topic/golang-nuts/WhpWNhBRMFM/discussion https://groups.google.com/group/golang-nuts/browse_thread/thread/cf9727737e5b4a00/d0e9d4dc975e875b?lnk=gst&amp;amp;q=messy+code#d0e9d4dc975e875b http://hi.baidu.com/edeed/blog/item/2e99a14440bd8884b2b7dcb1.html http://blog.codingnow.com/2008/12/utf-8_replacement.html  </description>
+    </item>
+    
+    <item>
+      <title>git 常用配置</title>
       <link>https://zhubicen.github.io/posts/git-alias/</link>
       <pubDate>Fri, 16 Dec 2011 13:43:27 +0800</pubDate>
       
       <guid>https://zhubicen.github.io/posts/git-alias/</guid>
-      <description>比如, 从 svn 转到 git 的应该深有同感
+      <description>代理 git config --global https.proxy http://127.0.0.1:1080 git config --global https.proxy http://127.0.0.1:1080 git config --global --unset http.proxy git config --global --unset https.proxy 别名 比如, 从 svn 转到 git 的应该深有同感
 git config --global alias.co checkout git config --global alias.br branch git config --global alias.ci commit git config --global alias.st status git 常用操作示意图:</description>
     </item>
     
@@ -117,6 +415,355 @@ git config --global alias.co checkout git config --global alias.br branch git co
 action是输入的文本中有以&amp;rdquo;{{&amp;ldquo;和&amp;rdquo;}}&amp;ldquo;分隔起来的内容。 输入文本中除了action以外的所有内容都会原封不动的转换为输出
 在下面的一个最简单的例子中 ，{{.Count}}和{{.Material}}就是action。而 sweaters就是在执行这些action时所使用的参数。template执行后的输出到 stdout 中。
 type Inventory struct { Material string Count uint } sweaters := Inventory{&amp;#34;wool&amp;#34;, 17} tmpl, err := template.New(&amp;#34;test&amp;#34;).Parse(&amp;#34;{{.Count}} items are made of {{.Material}}&amp;#34;) if err != nil { panic(err) } err = tmpl.Execute(os.Stdout, sweaters) if err != nil { panic(err) } Action是什么？ go中定义了多种形式的action,比如{{pipeline}}, 或者{{ if pipeline}} T1 {{end}}。其中pipeline是由一系列的command组成，command之间可以使用管道 连接，command可以是一个参数或者函数调用。 下面这段代码的输出是&amp;quot;output&amp;rdquo;,原因是pipeline的输出是pipelin中最后一个 command的输出，</description>
+    </item>
+    
+    <item>
+      <title>Cygwin Gdb</title>
+      <link>https://zhubicen.github.io/posts/cygwin-gdb/</link>
+      <pubDate>Thu, 03 Mar 2011 00:07:42 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/cygwin-gdb/</guid>
+      <description>使用 ygwin 译出来的 序，无法运行，在命令行敲下文件名下，悄无声息的程序就反回了郁闷。加上g项，使用gdb加载，出现这个错误：
+db: unknown target exception 0xcxxxxxxx at 0xxxxxxxxxx.
+先查看了程序依赖的dll
+$ cygcheck.exe ./a.exe D:/tcplex/libssh2/a.exe C:/cygwin/bin/cygwin1.dll C:/WINDOWS/system32/ADVAPI32.DLL C:/WINDOWS/system32/KERNEL32.dll C:/WINDOWS/system32/ntdll.dll C:/WINDOWS/system32/RPCRT4.dll C:/WINDOWS/system32/Secur32.dll C:/cygwin/bin/cygssh2-1.dll C:/cygwin/bin/cyggcc_s-1.dll C:/cygwin/bin/cygcrypto-0.9.8.dll C:/cygwin/bin/cygz.dll C:/cygwin/bin/cygstdc++-6.dll &amp;gt; gdb ./a.exe (gdb) dll cygwin1.dll (gdb) break *&amp;amp;&amp;#39;dll::init&amp;#39; Breakpoint 1 at 0x61010270 (gdb) run 仍然是提示：nknown target exception
+所以怀疑是cygwin1.dll出了问题。回想最近刚使用新版的setup.exe更新过cygwin，是不是更新程序出了问题？
+重新运行cygwin setup.exe把base-cygwin reinstall就可以了。问题解决！</description>
+    </item>
+    
+    <item>
+      <title>Windows X-Server 使用记录</title>
+      <link>https://zhubicen.github.io/posts/dev-memo/</link>
+      <pubDate>Thu, 23 Dec 2010 20:02:24 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/dev-memo/</guid>
+      <description>ssh-host-config,ssh-user-config用来配置cygwin的ssh server. 完了之后中启动总是失败，查无果，无奈，，看到windows service的log后，发现问题了，原来是我的path中放入了一个cygwin1.dll。。这真是个个别情况。到网上查成了一种习惯，有的问题还是要自己查找原因。看LOG很重要。。 Cygrunsvr.exe可以操作Windows服务。
+如何引用setw, setfill等格式化操作符，而不用引用整个std.
+Cygwin下安装QT3后，发现qmake找不到，在/usr/lib/qt3/bin下找到了，运行qmake -makefile后，发现它以绝对路径的形式，生成了Makefile,所以运行make后可以找到uic, 等。 安装xserver,需要安装以下包。 xorg-server (required, the Cygwin/X X Server)
+ nit (required, scripts for starting the X server: xinit, startx, startwin (and a shortcut on the Start Menu to run it), startxdmcp.bat )
+  rg-docs (optional, man pages)
+  art-menu-icons (optional, adds icons for X Clients to the Start menu)
+ You may also select any X client programs you want to use, and any fonts you would like to have available.</description>
+    </item>
+    
+    <item>
+      <title>Compile Gcc4</title>
+      <link>https://zhubicen.github.io/posts/compile-gcc4/</link>
+      <pubDate>Tue, 12 Jan 2010 16:58:27 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/compile-gcc4/</guid>
+      <description>最新版本的GCC已经加入了部分C++0X的支持，所以决定自己动手安装最新版GCC
+准备工作 GCC的编译依赖于GMP和MPRF，如果要编译GMP的话，还要依赖于M4 M4可以这里下载：wget http://ftp.gnu.org/gnu/m4/m4-1.4.10.tar.bz2 gmp和mprf都可以在这里下载：ftp://gcc.gnu.org/pub/gcc/infrastructure 编译：
+ 下载gcc源代码。所有版本的gcc可以在这里下载到ftp://gcc.gnu.org/pub/gcc/releases/ tar jxvf gcc-4.4.2.tar.bz2 cd gcc-4.4.2 ./configure make make install  使用 假定新编译的gcc安装在/opt/gcc-4.4.2目录下。 /opt/gcc-4.42/bin/g++ -std=c++0x -lpthread HelloConcurencyWorld.cpp 导入新的C++库， export LD_LIBRARY_PATH=$LD_LIBRARY:/opt/gcc-4.4.2/lib 这样就可以运行编译后的C++程序了。
+void hello() { std::cout &amp;lt;&amp;lt; &amp;quot;Hello Concurrent Worldn&amp;quot;; } int main() { std::thread t(hello); t.join(); } 虽然步骤相当简单，但是过程中，还是遇到了几个问题:
+ 运行tar jxvf gcc-4.4.2.tar.bz2时，没有对当前目录的权限，导致一大堆的Can not open file错误 运行./configure 时，指定prefix的目录和源码的目录相同了，导致cannot compute suffix of object files: cannot compile。google了半天。 没有指定&amp;ndash;enable-language选项，整整编译了一个小时  参考： http://gcc.gnu.org/install/ http://xahlee.org/UnixResource_dir/_/ldpath.htm</description>
+    </item>
+    
+    <item>
+      <title>Qt3 学习笔记</title>
+      <link>https://zhubicen.github.io/posts/qt3-study/</link>
+      <pubDate>Mon, 07 Dec 2009 10:56:09 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/qt3-study/</guid>
+      <description>QT4已经是如今QT的主流版本，但是仍然有一些老的项目使用QT3。下面记录一下QT3的编译过程：
+下载源码： 官方提供的QT3源码可以在这里下载到：ftp://ftp.trolltech.no/qt/source/qt-x11-free-3.3.8b.tar.gz 但是其中并没有指明如何编译。SourceForge上有个Q../Free项目，提供了以下下载，方便编译 http://sourceforge.net/projects/qtwin/files/Unofficial%20Qtwin/qt-win-3.3.x-8/qt-3.3.x-p8.7z/download
+编译QT3 用MingW编译QT3是一个漫长的过程。详细请参考这里： http://qtwin.sourceforge.net/qt3-win32/compile-mingw.php
+Making an Application Debuggable The release version of an application doesn&#39;t contain any debugging symbols or other debugging information. During development it is useful to produce a debugging version of the application that has the relevant information. This is easily achieved by adding debug to the CONFIG variable in the project file.
+For example:
+CONFIG += qt debug HEADERS += hello.h SOURCES += hello.</description>
+    </item>
+    
+    <item>
+      <title>Unix Ipc 0</title>
+      <link>https://zhubicen.github.io/posts/unix-ipc-0/</link>
+      <pubDate>Thu, 03 Sep 2009 13:51:47 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/unix-ipc-0/</guid>
+      <description>两种UNIX标准：
+ POSIX，是由IEEE(Institute for Electrical and Electronic Engineers)制定的标准，现由ISO/IEC维护。Posix标准包括3个部分：Part1 和Part2分别被称为Posix.1和Posix.2 System API for C Language Shell and Utility System Administration (正在制定中。。。) X / O p e n是一个国际计算机制造商组织。它提出了一个7卷本可移植性指南X/Open Portability Guide （X / O p e n可移植性指南）第3版〔X／Open 1989〕，我们将其称之为X P G 3。后来又发布了&amp;quot;X/Open Single Unix Specification&amp;quot;后来被称称为Unix95。1997看又发布了Unix98。  另外要指出的是关于 System V， 曾经也被称为 AT&amp;amp;T System V，是Unix操作系统众多版本中的一支，另一支是BSD。它最初由 AT&amp;amp;T 开发，在1983年第一次发布。一共发行了4个 System V 的主要版本：版本1、2、3 和 4。System V Release 4，或者称为SVR4，是最成功的版本，成为一些UNIX共同特性的源头。System v的ipc是open group的单一unix规格版本2[unix 98]所要求的。因此在Unix进程间通信一书中，分别讲述了Posix IPC和System V IPC。
+Posix和System V分别支持不同的MessageQueue, Shared Memory和Semaphores. PIPEs，FIFO,Record Locking机制即不属于Posix标准，也不属于XPG标准。</description>
+    </item>
+    
+    <item>
+      <title>Com Internals Study</title>
+      <link>https://zhubicen.github.io/posts/com-internals-study/</link>
+      <pubDate>Tue, 01 Sep 2009 12:58:46 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/com-internals-study/</guid>
+      <description>COM技术内幕读书笔记
+第１章ＣＯＭ历史
+第２章接口（用Ｃ＋＋的纯抽象基类来实现ＣＯＭ接口）
+Ｑ１：什么是接口？
+DLL的接口就是它输出的那些函数，Ｃ＋＋类的接口就是则是该类的一个成员函数集。ＣＯＭ接口也涉及一组由组件实现并提供给客户使用的函数，是一个包含一个函数指针数组的内存结构。在Ｃ＋＋中可以用抽象基类（不是抽象函数）来实现接口，一个组件可以实现任意多的接口，Ｃ＋＋可以用抽象基类的多重继承来实现。
+以＝０标记的虚拟函数称为纯虚函数，仅包含纯虚函数的类称为纯抽象基类。
+标准调用约定与Ｃ调用约定（__stdcall 和__cdecl)固定参数的Win32API调用采用的都是__stdcall，可变参数调用采用__cdecl
+COM并没有要求一个Ｃ＋＋类同一个ＣＯＭ相对应。实际上一个组件可以由多个Ｃ＋＋类来实现。
+ＣＯＭ并没有要求实现某个接口的类必须从那个接口继承，这是因为客户并不需要了解ＣＯＭ组件的继承关系。对接口的继承只不是一种实现细节而已。
+Ｑ２虚拟函数表
+struct IX{
+virtual void __stdcall Fx1() = 0;
+virtual void __stdcall Fx2() = 0;
+virtual void __stdcall Fx3() = 0;
+virtual void __stdcall Fx4() = 0;
+}
+幸运的是，所有与Windows兼容的Ｃ＋＋编译器都能生成ＣＯＭ可以使用的正确的vtbl。
+Ｃ＋＋编译器为纯抽象基类所生成的内存结构同ＣＯＭ接口所要求的内存结构是相同的。
+ＣＯＭ需要所有的接口都支持三个函数，这三个函数必须是接口的vtbl中的前三个函数(用来做接口查询）。
+第３章，QueryInterface函数
+interface IUnkown
+{
+virtual HRESULT __stdcall QueryInterface(const IID&amp;amp; idd, void** ppv) = 0;
+virtual ULONG __stdcall AddRef() = 0;
+virtual ULONG __stdcall Release() = 0;
+};
+IUnkown* CreateInstance();</description>
+    </item>
+    
+    <item>
+      <title>Chrome扩展中的重要概念：Content Scripts</title>
+      <link>https://zhubicen.github.io/posts/chrome-content-script/</link>
+      <pubDate>Fri, 28 Aug 2009 17:47:39 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/chrome-content-script/</guid>
+      <description>If you want your extension to interact with web pages, you need a content script. 一直在关注如何做Chrome的扩展，Chrome如何支持扩展。以前就看过Turorial中的HelloWorld，觉得这么简单，能干些什么啊。今天看了nkGestures的源码，然后又重新看了一下Chrome Extension的开发文档，觉得Content Script的概念比较重要，在此把我的理解记录下。
+Chrome的扩展基本是基于Java Script的（当然可以通过其它方法调用C/C++代码），这样就为以后不同平台下的浏览器做好了准备，果然是Google。
+Chrome允许在打开窗口，TAB或其它事件的情况下执行扩展中的代码，这部分代码就叫做：Content Scripts。Content Scripts are JavaScript files that run in the context of web pages. By using the standard Document Object Model (DOM), they can read details of the web pages the browser visits, or make changes to them.同时，Content Scripts 可以通过Channel和Extension进行通讯。
+Content scripts can communicate with their parent extension using message passing.</description>
+    </item>
+    
+    <item>
+      <title>一个 Java 项目的总结</title>
+      <link>https://zhubicen.github.io/posts/java-project-summary/</link>
+      <pubDate>Wed, 26 Aug 2009 17:42:31 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/java-project-summary/</guid>
+      <description>又一次要搞一下 Java，每次都要装下 JDK，设置下环境变量，编译一个 HelloWorld来运行一下。下面再记录一次：
+  设置JAVA_HOME为JDK的根目录
+  把%JAVA_HOME%bin添加进path
+  设置classpath为 “.;%JAVA_HOME%/lib/dt.jar;%JAVA_HOME%/lib/tools.jar”
+  至此编译HelloWorld应该不成问题了。
+由于这是一个关于Webstruts2+Hibernate+Spring的项目
+首先我通读了 CoreJsp一书。最简单的JSP程序：
+A simple date example
+The time on the server is &amp;lt;%= new java.util.Date() %&amp;gt; 之后该书用了大量的篇幅讲解了JSP的标签用法及与ServerLet相关的一些概念。作为标准，JAVA Web程序的根目录下要有一个WEB-INF文件夹，The WEB-INF directory contains the web.xml file as well as two different directories: classes and lib. classes contains Servlet and utility classes needed by the application. lib contains JAR files that might contain Servlets, JavaBeans, and utility classes that might be useful to the application.</description>
+    </item>
+    
+    <item>
+      <title>CSS 项目心得</title>
+      <link>https://zhubicen.github.io/posts/css-summary/</link>
+      <pubDate>Tue, 25 Aug 2009 16:38:54 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/css-summary/</guid>
+      <description>接到一个任务，把现有的一个.NET做的网站外观及布局进行改版。以前没有做过此类工作，工作嘛，没有办法，只好来了。
+.NET之前还是有所了解的。因此我首先读了一本书[Beginning HTML with CSS and XHTML Modern Guide and Reference], 能过此书我了解了主要的HTML标签，以及各自的用途。然后通过这本书了解了最基本的CSS用法[Beginning.CSS.Web.Development.From.Novice.to.Professional]。之后又到网上搜索，买了一本经典的网站重构。这本书总体还行，能给读者一个高屋建瓴的把握。不过着实如网上所说，这本书前面大部分费话太多。最后又下载了[CSS禅意花园]和[CSS Mastery]了解了一下。
+CSS最核心的东西就是其“盒模型”，弄懂了这个，再加上布局的方法，一切皆可搞定。开发过程中我大量使用了google chrome。和其它同事交流时，他们说最的一个测试的浏览器才是google chrome，而我不是。我第一个拿它来测试，它启动迅速，又有很好用的”开发工具“（在页面上点右键-》审查元素，觉得这个开发工具超级强大[当然喜欢firefox的可以使用其开发工具Web Developer。IE下也有相应的工具，但是不太好用]。chrome上搞定之后，一般来说ie7,8和firefox都是没有问题的。比较容易出现在问题是，一些CSS的默认值是不一样的，所以最好指定一下，如果不指定，不同的浏览器会有不同的效果。最扯淡的是ie6，还好ie6的bug在网上有很多的讨论。去搜一搜一般都能搞定。IE6什么时候才会死啊？郁闷。
+还有一个经验是，要想把CSS写的完美，精炼，好的HTML代码是必须的。如果网页生成的HTML代码一堆混乱，我看着就头疼，看到烂代码，总是会去改后台代使其生成精炼的语义化的HTML。</description>
+    </item>
+    
+    <item>
+      <title>新C&#43;&#43;标准(C&#43;&#43;0x)将移除Concept，并推迟到2010年或之后</title>
+      <link>https://zhubicen.github.io/posts/c&#43;&#43;0x-concept/</link>
+      <pubDate>Wed, 15 Jul 2009 20:36:31 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/c&#43;&#43;0x-concept/</guid>
+      <description> http://www.h-online.com/open/C-0x-not-before-2010-and-without-concepts--/news/113840 http://www.ddj.com/cpp/218600111  </description>
+    </item>
+    
+    <item>
+      <title>解读 C&#43;&#43; 指针声明</title>
+      <link>https://zhubicen.github.io/posts/c&#43;&#43;pointer/</link>
+      <pubDate>Sat, 27 Jun 2009 10:33:33 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/c&#43;&#43;pointer/</guid>
+      <description>char *const cp ; // const pointer to char char const * pc ; // pointer to const char const char * pc2 ; // pointer to const char Some people find it helpful to read such declarations right to left. For example, &amp;quot;cp is a const pointer to a char&amp;quot; and &amp;quot;pc2 is a pointer to a char const .&amp;quot; 如何复杂的表达式声明，掌握了方法一样可以读出来。首先，()和[]具有比*更高的优先级。因此先读[]，读作 array of，读作pointer to。当然()具有最高的优先级，如果（）里没有内容类似 returntype ( function)()的，读作function。
+char (*(*x())[])()，从里面往外读 , x is a function returning pointer to D，读到这里可以进行一个简化， char(*D)[]()，继续读，D is array of function returning char。因此： function returning pointer to array[] of pointer to function returning char</description>
+    </item>
+    
+    <item>
+      <title>Windows Gcc</title>
+      <link>https://zhubicen.github.io/posts/windows-gcc/</link>
+      <pubDate>Sat, 06 Jun 2009 08:31:40 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/windows-gcc/</guid>
+      <description>Visual Studio 变得越来越大，其中附带了太多的与标准C++无关的东西，有时只是想些一个小的程序，却要启动一个又笨又重的IDE，实在是不方便。还有安装VS就要花相当的时间和相当的磁盘空间。
+除了VS我们还有很多其它的选择：MinGW，Cygwin，Dev cpp，CodeBlocks，MinW Studio。其中有一些是IDE。基于以下的原因，我选择了MinGW：
+1． 如侯捷所言，“在 console mode 中使用 C/C++ 编译器”
+2． MinGW是著名编译器GCC的Windows移植，所以所有在該编译器下的经验都可以，应用到Linux平台。于我而言，我已习惯了Linux下使用Makefile控制程序的编译过程，所以这些经验可以在Windows平台下得以使用。
+3． MinW中的MSYS可以很好的建立起类似Linux的Shell，这样几乎所有的Linux命令可以在Windows下得以应用。
+4． 和Cygwin不同，使用MinW编译后的可执行文件，不需要依赖于任何库文件就可以在Windows平台运行。而Cygwin需要依赖于Cygwin.dll
+接下来，让我们开始MinW的安装吧。这里是MinW的Getting Started。如果你E文不怎么好，请看以下的安装步骤：
+1． 在这里下载安装文件并运行，安装过程中有以下几个组件可供选择安装：
+A．MinGW base tools：这里包括MinGW的一些基础的二进制程序，和C编译器，以及平台API
+B． …Compiler，如果只要编译C++，就选g++编译器
+C． MinGW Make 是linux下Make的移植，建议选择
+提醒不要把安装路径选择到有空格的路径。
+2． 安装MSYS，点击此处下载。在安装的最后步骤将会执行MSYS的post install script。在这里请选择你所安装的MSYS的目录，这样mingw将会被挂载到/mingw。我们也就可以MSYS中使用gcc编译器了。如不清楚，请阅读安装后的ReadMe。
+打开MSYS，我们的编程的工作就可以在此展开了。</description>
+    </item>
+    
+    <item>
+      <title>Javascript 学习笔记</title>
+      <link>https://zhubicen.github.io/posts/javascript-study/</link>
+      <pubDate>Fri, 05 Jun 2009 23:29:38 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/javascript-study/</guid>
+      <description>from http://www.howtocreate.co.uk/tutorials/javascript/
+定义变量 JS里变量的类型并不是非常重要，变量的类型可以在运行期改变。基础类型有，character，string，integer，float（or double)，boolean, function, object, array, undefined, null. Interger and float are grouped as ‘number’. Charater and string are grouped as string. array属于对象类型。
+变量的定义：
+var myFish = ‘A fish swam in the river’ 对象定义：
+var o1 = new Object(); var o2={myFirstProperty:1, myNextProperty:’hi’,etc}; 数组的使用：
+var nameOfArray = new Array(); var nameOfArray = new Array(&#39;content_of_first_cell&#39;,&#39;and_the_second&#39;,8,&#39;blah&#39;,&#39;etc&#39;); var nameOfArray = [&#39;content_of_first_cell&#39;,&#39;and_the_second&#39;,8,&#39;blah&#39;,&#39;etc&#39;]; 同时JavaScript可以定义多维数组： var nameOfArray = new Array(new Array(1,2,3,4),&#39;hello&#39;,[&#39;a&#39;,&#39;b&#39;,&#39;c&#39;]); 其它类型：Date,Image,Option,RegExp
+If at any time you refer to a variable that does not exist, you will cause an error.</description>
+    </item>
+    
+    <item>
+      <title>Abstract Factory</title>
+      <link>https://zhubicen.github.io/posts/abstract-factory/</link>
+      <pubDate>Thu, 04 Jun 2009 20:23:51 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/abstract-factory/</guid>
+      <description>AF是一种对象创建型模式。
+对象创建型模式：将实例化委托给另一个对象。类创建型模式用继承来改变被初始化的类。
+在设计模式中提到：“AbstractFactory类通常用FactoryMethod实现，但也可以用Prototype实现。” AF模式侧重于产品的系列性，增加对某一产品的支持将比较困难。ＦＭ模式则没有此限制，ＦＭ又被称为虚构造函数。
+http://code.google.com/p/tcplex/source/browse/trunk/Design_Pattern/af.cpp
+#include &amp;lt;iostream&amp;gt;using namespace std; class MapSite { virtual void Enter() = 0; }; class Room:public MapSite { virtual void Enter(){ cout &amp;lt;&amp;lt; &amp;#34;Entering room!&amp;#34; &amp;lt;&amp;lt; endl; } }; class Door:public MapSite { virtual void Enter(){ cout &amp;lt;&amp;lt; &amp;#34;Entering door!&amp;#34; &amp;lt;&amp;lt; endl; } }; class Maze { public: Maze(); void AddRoom(Room*){} void AddDoor(Door*){} }; class MazeFactory { public: virtual Maze* MakeMaze()const{ return new Maze(); } virtual Room* MakeRoom()const{ return new Room(); } virtual Door* MakeDoor()const{ return new Door(); } }; class MazeGame { public: Maze* CreateMaze(MazeFactory&amp;amp; factory){ Maze* mz = factory.</description>
+    </item>
+    
+    <item>
+      <title>Programmer Unicode</title>
+      <link>https://zhubicen.github.io/posts/programmer-unicode/</link>
+      <pubDate>Thu, 04 Jun 2009 20:13:37 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/programmer-unicode/</guid>
+      <description>工作中时常接触到一些于编码相关的术语，比如ASCII，Unicode，UTF-8，UTF-16 ，UTF-32，在C++编程中经常会遇到char，wchar_t，std::string，std::wstring，std::cout，std::wcout，CString，TCHAR。这么多的术语到底有什么样的关系呢？本文试图理清这些概念，以及如何应用他们。
+ASCII与汉字国标 ASCII (American Standard Code for Information Interchange) 是美国标准信息交换码。它是一套基于拉丁字母的编码系统，主要用于显示英语和西欧语言。ASCII使用单字节进行存储，其中保留了最高位，因此可以存储128个字符，因此这种编码标准定义了33个控制字符和95个打印字符（包括空格）。
+GB 2312或GB 2312-80是一个简体中文字符集的中国国家标准，全称为《信息交换用汉字编码字符集·基本集》，又称为GB0。GB2312编码通行于中国大陆。中国大陆几乎所有的中文系统和国际化的软件都支持GB 2312。GB 2312的出现，基本满足了汉字的计算机处理需要，它所收录的汉字已经覆盖中国大陆99.75%的使用频率。对于人名、古汉语等方面出现的罕用字，GB 2312不能处理，因此出现了GBK。
+GBK是GB2312的一个扩展，使用了GB2312中未使用的一些代码点。微软在Win95中以Codepage936实现了GBK。后来国家相关部门又对GBK扩展形成了GBK1.0，它仅仅是GB 2312到GB 13000之间的过渡方案。
+GB 13000，中华人民共和国国家标准的国家标准代码之一，全称 GB 13000.1-93《信息技术 通用多八位编码字符集（UCS）第一部分：体系结构与基本多文种平面》。此标准等同采用国际标准化组织 ISO/IEC 10646.1:1993《信息技术 通用多八位编码字符集（UCS）第一部分：体系结构与基本多文种平面》。GB 13000的字符集包含20,902个汉字。
+GB 18030，全称：国家标准GB 18030-2005《信息技术 中文编码字符集》，是中华人民共和国现时最新的内码字集，是GB 18030-2000《信息技术 信息交换用汉字编码字符集 基本集的扩充》的修订版。与GB 2312-1980完全兼容，与GBK基本兼容，支持GB 13000及Unicode的全部统一汉字，共收录汉字70244个。GB 18030主要有以下特点：采用多字节编码，每个字可以由1个、2个或4个字节组成。编码空间庞大，最多可定义161万个字符。支持中国国内少数民族的文字，不需要动用造字区。
+Unicode 编码 通用字符集（Universal Character Set，UCS）是由ISO制定的编码方式，采用4字节编码。目前广泛应用的 Unicode 版本对应于 UCS-2，使用2字节的编码空间。UCS-2定义了字符和２字节编码的映射。这样理论上一共最多可以表示 216 即 65536个字符。基本满足各种语言的使用。实际上UCS-2尚未填满这16位的编码，保留了大量空间作为特殊使用或将来扩展。USC-2构成基本多文种平面（Basic Multilingual Plane，简称 BMP）。
+一个字符的 UCS编码（Unicode 编码）是确定的。但是在实际传输过程中，由于不同系统平台的设计不一定一致，以及出于节省空间的目的，对 Unicode 编码的实现方式有所不同。存储UCS定义编码的方式被称为Unicode转换格式（Unicode Translation Format，简称为 UTF）,UTF把字符的编码(code point)转化为字节流，根据转化方式的不同产生了UTF-8，UTF-16等。
+例如，如果一个仅包含基本7位ASCII字符的 Unicode 文件，如果每个字符都使用2字节的原 Unicode 编码传输，其第一字节的8位始终为0。这就造成了比较大的浪费。对于这种情况，可以使用 UTF-8 编码，这是一种变长编码，它将基本7位ASCII字符仍用7位编码表示，占用一个字节（首位补0）。而遇到与其他 Unicode 字符混合的情况，将按一定算法转换，每个字符使用1-3个字节编码，并利用首位为0或1进行识别。这样对以7位ASCII字符为主的西文文档就大大节省了编码长度（具体方案参见UTF-8）。</description>
+    </item>
+    
+    <item>
+      <title>Nmake Usage</title>
+      <link>https://zhubicen.github.io/posts/nmake-usage/</link>
+      <pubDate>Tue, 16 Dec 2008 20:11:21 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/nmake-usage/</guid>
+      <description>现在维护一个旧的支持多国语言的程序（使用vc6.0)，由于程序比较早，采用的方法也比较原始，因此每次要build一个语言的版本，就要改变一下编译的参数。比如，编译一个中文版的时候就要预定义：LAN_CHS，要编译韩文版的时候就要定义：LAN_KOR。这样来回的折腾实在是太麻烦了，我因此导出了该项目的makefile，通过增加一个参数的方式，可以指定要编译的语言版本，因此：nmake LAN=”CHS”就得到了一个中文版，nmake LAN=”KOR”就得到了一个韩文版：）
+为什么现在的vc2005, 2008不支持导出makefile了呢。当然我们有msbuild, devenv可以使用。
+nmake的参考在这里：http://msdn.microsoft.com/en-us/library/dd9y37ha(VS.80).aspx</description>
+    </item>
+    
+    <item>
+      <title>Cairo Study</title>
+      <link>https://zhubicen.github.io/posts/cairo-study/</link>
+      <pubDate>Sun, 23 Nov 2008 23:09:13 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/cairo-study/</guid>
+      <description>Cairo是一个支持多种输出设备的２Ｄ图形库。当前支持的输出目标（output target）包括：X Window System，Quartz，Win32，image buffers，PostScript，PDF，还有 SVG。
+下面研究一下Cairo的绘图模型，首先是该模型中最重要的三个概念：这三个概念对应于下图中的三层从上到下分别为：source，mask，destination。简单的思想就是Source会通过Mask的过滤从而画在我们的输出设备（destination）上。
+source是用来绘图的绘图板，或者笔，墨水，绘图的时候可以用来画线，填充。Source可以有以下四种：Colors，Gradients，Patterns和Images。
+ 最下面的destination，是一种surface，是要输出的设备，可以是窗口，或者一个PDF,SVG等等。因此我们要做的是使用“动词”构造一个合适的Mask。
+Mask被用作一个过滤器。Mask用来决定Source的哪些部分可以应用到destination上，哪些不可以用到destination上。
+所有的这三层会对应于一个Context。Context里面包含所有图形的状态数据（比如：线的宽度，颜色，surface to draw，还有其它，这就允许绘图函数使用少量的参数来绘图）。Mask层上不透明的部分可以应用到destination上，透明的地方刚不会。
+这些“动词”包括：Stroke和Fill。Stroke允许path附近的source通过mask。而fill允许path内部的元素通过mask。（The stroke operation draws the outlines of shapes and the fill operation fills the insides of shapes.）另外的动词还包括Paint，Mask和ShowText等。</description>
+    </item>
+    
+    <item>
+      <title>使用 Eclipse Cdt 重构 C&#43;&#43; 代码</title>
+      <link>https://zhubicen.github.io/posts/eclipse-cdt-refactor/</link>
+      <pubDate>Wed, 12 Nov 2008 23:04:07 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/eclipse-cdt-refactor/</guid>
+      <description>一年前用ＣＤＴ时还发现其经常会失反应，时至今日又试用了一下，发现已有很大改善。并且在其官网上可以下载到，专门为Ｃ＋＋程序员而打包的Eclipse，这样我们就不用再自己去配置插件了：）。虽然Eclipse有些笨重，但是相对安装一下就要近半个小时的ＶＳ而言，已然轻便多了。
+ＣＤＴ的重构主要由以下几个功能，相对对ＪＡＶＡ的支持，差远了。这可能是由于Ｃ＋＋本身的复杂性引起的。
+ Rename Extract Constant Extract Function Hide Method（这个我还末试用） Implement Method（这个是可以实现类的头文件里声明的函数，好像与继承无关。。） Generate Getter and Setter（这个功能对Ｃ＋＋啥用吧：），并且实现的也有点傻） </description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43; Typename</title>
+      <link>https://zhubicen.github.io/posts/c&#43;&#43;-typename/</link>
+      <pubDate>Mon, 18 Aug 2008 22:50:22 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/c&#43;&#43;-typename/</guid>
+      <description>#include&amp;lt;vector&amp;gt; #include&amp;lt;numeric&amp;gt; #include&amp;lt;iostream&amp;gt; using namespace std; template &amp;lt; class T&amp;gt; class xlist { private: //typename vector&amp;lt;T&amp;gt;::iterator iter; vector&amp;lt;T&amp;gt;::iterator iter; vector&amp;lt;T&amp;gt; vi; }; int main() { xlist&amp;lt;int&amp;gt; x; } Under vc8:
+1&amp;gt;c:\users\bzhu\documents\visual studio 2005\projects\t\t\t.cpp(9) : warning C4346: &amp;lsquo;std::vector::iterator&amp;rsquo; : dependent name is not a type 1&amp;gt; prefix with &amp;lsquo;typename&amp;rsquo; to indicate a type 1&amp;gt; c:\users\bzhu\documents\visual studio 2005\projects\t\t\t.cpp(11) : see reference to class template instantiation &amp;lsquo;xlist&amp;rsquo; being compiled 1&amp;gt;c:\users\bzhu\documents\visual studio 2005\projects\t\t\t.cpp(9) : error C2146: syntax error : missing &amp;lsquo;;&amp;rsquo; before identifier &amp;lsquo;iter&amp;rsquo; 1&amp;gt;c:\users\bzhu\documents\visual studio 2005\projects\t\t\t.</description>
+    </item>
+    
+    <item>
+      <title>How to Install Samba Server</title>
+      <link>https://zhubicen.github.io/posts/how-to-install-samba-server/</link>
+      <pubDate>Thu, 25 Jan 2007 22:36:03 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/how-to-install-samba-server/</guid>
+      <description>apt-get install samba
+uncomment the command in /etc/samba/smb.conf
+Security = share
+add a file to share ,append a share node in smb.conf .and the folder should be 777
+在Ubuntu 6.10 Desktop和Windows XP之间设置文件共享
+在Ubuntu下打开“系统-系统管理-共享的文件夹”，进行相应的设置。在WinXP下打开Ubuntu的IP，可以看到文件夹，但是并不能够访问。 用如下命令修改smb.conf：
+sudo gedit /etc/samba/smb.conf
+将security=user那一行前的注释符&amp;rdquo;;&amp;ldquo;去掉，然后把user改为share，这样可以实现匿名访问。 再用如下命令重启samba：
+sudo /etc/init.d/samba restart
+在WinXP，可以访问文件夹了，但是只读，仍然无法写入。即使在Ubuntu的GUI下去掉了只读属性也是如此。 最后修改文件夹的权限：
+chmod 777 (文件夹名称)</description>
+    </item>
+    
+    <item>
+      <title>Visual Assit</title>
+      <link>https://zhubicen.github.io/posts/visual-assit/</link>
+      <pubDate>Thu, 16 Nov 2006 23:01:37 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/visual-assit/</guid>
+      <description>新版的visual assist x 1540 可以支持一部分C++重構
+破解版可以在www.dl4all.com下載到,
+下載後只須把其中的VA_X.dll覆蓋原文件即可。
+以下为后来的添加:
+这是２年前在一家企业实习的时候写的，当时很依赖于ＶＣ＋＋于Visual Assist。而后转到Linux平台之后，就喜欢上了linux下的简单，明了。有人说Linux下的环境配置太过于复杂，而我却不以为然。我认为在Linux下一切明目了然，现在越来越不喜欢用大而笨重的Visual Studio了。喜欢上了Emacs+Gcc的简单易用，专注于设计与代码。
+这里的题目是重构，昨天试用了Eclipse+CDT,发现了其中有重构的功能啊，　有机会试用一下：）</description>
+    </item>
+    
+    <item>
+      <title>Heap Corruption</title>
+      <link>https://zhubicen.github.io/posts/heap-corruption/</link>
+      <pubDate>Fri, 10 Nov 2006 22:58:46 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/heap-corruption/</guid>
+      <description>昨天遇到一个HEAP CORRUPTION错误，花了好多的时间才找到原因，现总结如下，希望大家遇到同样的问题的时候，能迅速定位错误的代码。
+错误的现象是这样的：
+在程序的开始处我申请了一块内存，中间对其进行了一些操作，在程序结束处，释放内存的时候，引起错误：
+HEAP CORRUPTION DETECTED：after Normal block(#***) at 0x****.CRT detected that application wrote memory after end of heap buffer. 错误原因：
+以对内存操作的过程中，所写的地址超出了，所分配内存的边界
+解决办法：
+在可能出错的代码处，使用_CrtCheckMemory进行检测
+比如：
+ int* p = new int[2]; *(p+2) = 1; _ASSERTE( _CrtCheckMemory( ) ); </description>
+    </item>
+    
+    <item>
+      <title>如何遍历 multimap 中所有的 Key</title>
+      <link>https://zhubicen.github.io/posts/multimap-keys/</link>
+      <pubDate>Thu, 19 Oct 2006 21:50:15 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/multimap-keys/</guid>
+      <description>此文为当时自己在网上(百度知道, 捂脸)的一个提问
+typedef std::multimap&amp;lt;int ,std::string&amp;gt; MyMap; typedef std::set&amp;lt;int&amp;gt; MySet; void main() { MyMap map; MySet set; map.insert(std::make_pair(1,&amp;#34;12889898989&amp;#34;)); map.insert(std::make_pair(2,&amp;#34;343434323232&amp;#34;)); map.insert(std::make_pair(1,&amp;#34;2323232323&amp;#34;)); map.insert(std::make_pair(2,&amp;#34;2344423232323&amp;#34;)); ｝ 请问我如何才能做出一个循环，打印出multimap中的键为1和2呢
+google 以下, 此为答案:
+int main() { multimap&amp;lt;int,string&amp;gt; mm; mm.insert(make_pair(1, &amp;quot;a&amp;quot;)); mm.insert(make_pair(1, &amp;quot;lemon&amp;quot;)); mm.insert(make_pair(2, &amp;quot;peacock&amp;quot;)); mm.insert(make_pair(3, &amp;quot;angel&amp;quot;)); for( auto it = mm.begin(), end = mm.end(); it != end; it = mm.upper_bound(it-&amp;gt;first)) { cout &amp;lt;&amp;lt; it-&amp;gt;first &amp;lt;&amp;lt; &#39; &#39; &amp;lt;&amp;lt; it-&amp;gt;second &amp;lt;&amp;lt; endl; } return 0; } p = c.upper_bound(k) 的作用是:</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://zhubicen.github.io/posts/folder-created-from-st/file-created-from-stackedit/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/folder-created-from-st/file-created-from-stackedit/</guid>
+      <description>Just testing stackedit
+ Written with StackEdit.
+   </description>
     </item>
     
   </channel>

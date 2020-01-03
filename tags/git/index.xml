@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on quick start</title>
+    <link>https://zhubicen.github.io/tags/git/</link>
+    <description>Recent content in git on quick start</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 16 Dec 2011 13:43:27 +0800</lastBuildDate>
+    
+	<atom:link href="https://zhubicen.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>git 常用配置</title>
+      <link>https://zhubicen.github.io/posts/git-alias/</link>
+      <pubDate>Fri, 16 Dec 2011 13:43:27 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/git-alias/</guid>
+      <description>代理 git config --global https.proxy http://127.0.0.1:1080 git config --global https.proxy http://127.0.0.1:1080 git config --global --unset http.proxy git config --global --unset https.proxy 别名 比如, 从 svn 转到 git 的应该深有同感
+git config --global alias.co checkout git config --global alias.br branch git config --global alias.ci commit git config --global alias.st status git 常用操作示意图:</description>
+    </item>
+    
+  </channel>
+</rss>

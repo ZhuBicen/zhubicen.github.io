@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>golang on quick start</title>
+    <link>https://zhubicen.github.io/tags/golang/</link>
+    <description>Recent content in golang on quick start</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 02 Dec 2012 17:56:17 +0800</lastBuildDate>
+    
+	<atom:link href="https://zhubicen.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>一个基于 TCP 实现的 Golang Webserver</title>
+      <link>https://zhubicen.github.io/posts/golang-tcp-webserver/</link>
+      <pubDate>Sun, 02 Dec 2012 17:56:17 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/golang-tcp-webserver/</guid>
+      <description>这个小程序是从，HTTP: The Definitive Guide, A Minimal Perl Web Server 移植而来。
+package main import ( &amp;#34;fmt&amp;#34; &amp;#34;net&amp;#34; &amp;#34;bufio&amp;#34; ) func main() { ln, err := net.Listen(&amp;#34;tcp&amp;#34;, &amp;#34;:8080&amp;#34;) if err != nil { fmt.Println(err) return } for { conn, err := ln.Accept() if err != nil { fmt.Println(&amp;#34;Accept err= &amp;#34;, err) } fmt.Printf(&amp;#34; &amp;lt;&amp;lt;&amp;lt;Request From &amp;#39;%s&amp;#39;&amp;gt;&amp;gt;&amp;gt;\n&amp;#34;, conn.RemoteAddr()) rd := bufio.NewReader(conn) for { line, _, err := rd.ReadLine() if err != nil { fmt.</description>
+    </item>
+    
+    <item>
+      <title>HTTP Request 学习笔记</title>
+      <link>https://zhubicen.github.io/posts/golang-web-server-quickstart/</link>
+      <pubDate>Sat, 17 Mar 2012 17:30:07 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/golang-web-server-quickstart/</guid>
+      <description>当我们在浏览器中输入一个地址，或者点击一个链接时，浏览器就会向Web服务 器发送一个Http Request请求，在 Chrome 中可以使用 右键-&amp;gt;审查元 素-&amp;gt;Network来查看 Http Request，需要在打开此窗口的情况下，刷新页面。另 外还可以在地址栏中输入: chrome://net-internals/来查看 http request。 Request syntax 一个HTTP request由三个基础部分组成：
+ Request line HTTP headers Content 有三种 request headers： General Headers Request Headers Entity Headers  Request Headers和一种包含和一个特定的HTTP Request请求相关的信息，比如 User-Agent。
+General Headers中的内容理论上来说可以用在http request和http response中。
+Request Methods There are eight request methods in HTTP/1.1: GET, POST, PUT, DELETE, HEAD, TRACE, OPTIONS, and CONNECT.
+The Get Method A GET request traditionally contains no content and thus no entity headers.</description>
+    </item>
+    
+    <item>
+      <title>Windows控制台上的UTF-8支持</title>
+      <link>https://zhubicen.github.io/posts/windows-console-char/</link>
+      <pubDate>Sat, 25 Feb 2012 14:10:55 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/windows-console-char/</guid>
+      <description>最近在学习Go语言，发现调用一些库函数失败后的返回字符串，都是一些乱码，觉得奇怪。所以写了一个最简单的程序来复现这个问题：
+func main(){ _, err := os.Open(&amp;quot;none-exist-file&amp;quot;) if err != nil{ fmt.Println(err) } } 编译运行一切都正常，但是输出是乱码： pen none-exist-file: 绯荤粺鎵句笉鍒版寚瀹氱殑鏂囦欢銆? 
+原因就是Go语言以UTF-8编码进行输出，而Windows控制台默认不支持UTF-8。解决方法就是更改code page， 使用命令 chcp，不加任何参数便显示当前的code page。把 ode page改为65001即可。另外还要把字体改为 Lucia Console。
+这样的更改会导致其它一些不使用utf-8编码的程序出现乱码。
+一些相关的link:
+ https://groups.google.com/forum/#!topic/golang-nuts/WhpWNhBRMFM/discussion https://groups.google.com/group/golang-nuts/browse_thread/thread/cf9727737e5b4a00/d0e9d4dc975e875b?lnk=gst&amp;amp;q=messy+code#d0e9d4dc975e875b http://hi.baidu.com/edeed/blog/item/2e99a14440bd8884b2b7dcb1.html http://blog.codingnow.com/2008/12/utf-8_replacement.html  </description>
+    </item>
+    
+    <item>
+      <title>Golang Template</title>
+      <link>https://zhubicen.github.io/posts/golang-template/</link>
+      <pubDate>Thu, 08 Dec 2011 15:52:30 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/golang-template/</guid>
+      <description>这个 package 的目的是使用结构化的数据作为输入，来生成一些具有固定格式的 文本。从而结构化的数据可以转化为我们需要的文本。
+最简单的一个用法 生成一个template, 然后使用一个结构体变量，去替换template中的内容。 比如一个template中的内容如下，{{.NUmber}}, 如果使用一个结构体（该结构体有一个.Number成员）， {{.Number}}就会被，该变量的值就会替换。
+概念 template可以做什么？ template可以解析一些含有Action的UTF-8编码的文本或文件。并且借助一些参 数执行其中的action，以生成处理后的文件。其中使用的参数执行action所需要的。
+action是输入的文本中有以&amp;rdquo;{{&amp;ldquo;和&amp;rdquo;}}&amp;ldquo;分隔起来的内容。 输入文本中除了action以外的所有内容都会原封不动的转换为输出
+在下面的一个最简单的例子中 ，{{.Count}}和{{.Material}}就是action。而 sweaters就是在执行这些action时所使用的参数。template执行后的输出到 stdout 中。
+type Inventory struct { Material string Count uint } sweaters := Inventory{&amp;#34;wool&amp;#34;, 17} tmpl, err := template.New(&amp;#34;test&amp;#34;).Parse(&amp;#34;{{.Count}} items are made of {{.Material}}&amp;#34;) if err != nil { panic(err) } err = tmpl.Execute(os.Stdout, sweaters) if err != nil { panic(err) } Action是什么？ go中定义了多种形式的action,比如{{pipeline}}, 或者{{ if pipeline}} T1 {{end}}。其中pipeline是由一系列的command组成，command之间可以使用管道 连接，command可以是一个参数或者函数调用。 下面这段代码的输出是&amp;quot;output&amp;rdquo;,原因是pipeline的输出是pipelin中最后一个 command的输出，</description>
+    </item>
+    
+  </channel>
+</rss>
