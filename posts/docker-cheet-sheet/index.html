@@ -22,10 +22,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer">
 <meta name="author" content="阿碧">
+<<<<<<< HEAD
 <meta name="description" content="Docker Docker commands Running a container image  docker run --name kubia-container -p 8080:8080 -d kubia  Run a container with bash  docker run --rm -ti ubuntu:latest /bin/bash  Remove if exist  docker run -ti --restart=always  Restart when failure To kill a container, run docker kill xxxcontainer-id Remove all containers, run docker rm $(docker ps -a -q) Remove all images, run docker rmi $(docker images -q -)">
 
 <meta property="og:title" content="Docker Cheet Sheet" />
 <meta property="og:description" content="Docker Docker commands Running a container image  docker run --name kubia-container -p 8080:8080 -d kubia  Run a container with bash  docker run --rm -ti ubuntu:latest /bin/bash  Remove if exist  docker run -ti --restart=always  Restart when failure To kill a container, run docker kill xxxcontainer-id Remove all containers, run docker rm $(docker ps -a -q) Remove all images, run docker rmi $(docker images -q -)" />
+=======
+<meta name="description" content="Docker Docker commands Running a container image   docker run --name kubia-container -p 8080:8080 -d kubia
+Run a container with bash
+  docker run --rm -ti ubuntu:latest /bin/bash
+Remove if exist
+  docker run -ti --restart=always
+Restart when failure
+  To kill a container, run docker kill xxxcontainer-id
+Remove all containers, run docker rm $(docker ps -a -q)
+Remove all images, run docker rmi $(docker images -q -)">
+
+<meta property="og:title" content="Docker Cheet Sheet" />
+<meta property="og:description" content="Docker Docker commands Running a container image   docker run --name kubia-container -p 8080:8080 -d kubia
+Run a container with bash
+  docker run --rm -ti ubuntu:latest /bin/bash
+Remove if exist
+  docker run -ti --restart=always
+Restart when failure
+  To kill a container, run docker kill xxxcontainer-id
+Remove all containers, run docker rm $(docker ps -a -q)
+Remove all images, run docker rmi $(docker images -q -)" />
+>>>>>>> 8ea8c478c762c2fd3343957a4d8e17b1fd2e9767
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zhubicen.github.io/posts/docker-cheet-sheet/" />
 <meta property="article:published_time" content="2019-08-24T21:06:20+08:00" />
@@ -175,6 +198,7 @@
 <h2 id="docker-commands">Docker commands</h2>
 <h3 id="running-a-container-image">Running a container image</h3>
 <ul>
+<<<<<<< HEAD
 <li><code>docker run --name kubia-container -p 8080:8080 -d kubia</code></li>
 </ul>
 <h3 id="run-a-container-with-bash">Run a container with bash</h3>
@@ -189,6 +213,24 @@
 <p>To kill a container, run <code>docker kill xxxcontainer-id</code>
 Remove all containers, run <code>docker rm $(docker ps -a -q)</code>
 Remove all images, run <code>docker rmi $(docker images -q -)</code></p>
+=======
+<li>
+<p><code>docker run --name kubia-container -p 8080:8080 -d kubia</code></p>
+<p>Run a container with bash</p>
+</li>
+<li>
+<p><code>docker run --rm -ti ubuntu:latest /bin/bash</code></p>
+<p>Remove if exist</p>
+</li>
+<li>
+<p><code>docker run -ti --restart=always</code></p>
+<p>Restart when failure</p>
+</li>
+</ul>
+<p>To kill a container, run <code>docker kill xxxcontainer-id</code></p>
+<p>Remove all containers, run <code>docker rm $(docker ps -a -q)</code></p>
+<p>Remove all images, run <code>docker rmi $(docker images -q -)</code></p>
+>>>>>>> 8ea8c478c762c2fd3343957a4d8e17b1fd2e9767
 <ul>
 <li><code>-d</code> means detach</li>
 <li><code>--name</code> is the name of the container</li>

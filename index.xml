@@ -6,12 +6,17 @@
     <description>Recent content on quick start</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+<<<<<<< HEAD
     <lastBuildDate>Fri, 03 Jan 2020 13:15:41 +0800</lastBuildDate>
+=======
+    <lastBuildDate>Wed, 01 Jan 2020 18:58:36 +0800</lastBuildDate>
+>>>>>>> 8ea8c478c762c2fd3343957a4d8e17b1fd2e9767
     
 	<atom:link href="https://zhubicen.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+<<<<<<< HEAD
       <title>Docker 的代理设置</title>
       <link>https://zhubicen.github.io/posts/docker-proxy/</link>
       <pubDate>Fri, 03 Jan 2020 13:15:41 +0800</pubDate>
@@ -24,6 +29,25 @@
   systemctl show --property=Environment docker
    这里是 docker client 的设置，主要是用于 docker container 中的网络访问 在 ~/.docker/config.json 文件中：
 { &amp;#34;proxies&amp;#34;: { &amp;#34;default&amp;#34;: { &amp;#34;httpProxy&amp;#34;: &amp;#34;http://127.0.0.1:3001&amp;#34;, &amp;#34;httpsProxy&amp;#34;: &amp;#34;http://127.0.0.1:3001&amp;#34;, &amp;#34;noProxy&amp;#34;: &amp;#34;*.test.example.com,.example2.com&amp;#34; } } } </description>
+=======
+      <title>Chrome 不支持 Http Header Link</title>
+      <link>https://zhubicen.github.io/posts/httpheader-link/</link>
+      <pubDate>Wed, 01 Jan 2020 18:58:36 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/httpheader-link/</guid>
+      <description>除了在 HTML 文档中 使用 Link 来加载 CSS 外，其实还可以使用 HttpHeader 中的 Link 字段：
+Link: &amp;lt;/style.css&amp;gt;; rel=stylesheet;type=text/css 这个功能在一些不容易更改 html 内容的情况下，非常有用。可以通过 server 端，添加该 http header 来加载外部的 CSS，比如在 nginx 配置文件中使用如下 add_header 配置，就可以实现加载自定义的 CSS，从而达到定义 nginx 的 autoindex 页面外观的效果
+location / { root /Users/bzhu/quickstart; autoindex on; add_header Link &amp;#34;&amp;lt;/style.css&amp;gt;; rel=stylesheet;type=text/css&amp;#34;; } 加入 style.css 内容如下：
+a { color: red } 可以实现如下的效果，链接的颜色有默认的蓝色，变成了红色
+![image-20200101193742589](/Users/bzhu/Library/Application Support/typora-user-images/image-20200101193742589.png)
+同时可以观察到，浏览器加载了对应的 CSS：
+![image-20200101193710903](/Users/bzhu/Library/Application Support/typora-user-images/image-20200101193710903.png)
+遗憾的是Chrome 还不支持该功能：
+https://bugs.chromium.org/p/chromium/issues/detail?id=120104
+https://bugs.chromium.org/p/chromium/issues/detail?id=58456
+https://bugs.chromium.org/p/chromium/issues/detail?id=692359
+https://bugs.chromium.org/p/chromium/issues/detail?id=19237</description>
+>>>>>>> 8ea8c478c762c2fd3343957a4d8e17b1fd2e9767
     </item>
     
     <item>
@@ -50,6 +74,7 @@ const handler = (() =&amp;gt; { let progressBar = null; return (percentage, mess
     </item>
     
     <item>
+<<<<<<< HEAD
       <title>Java Charset</title>
       <link>https://zhubicen.github.io/posts/java-charset/</link>
       <pubDate>Mon, 23 Dec 2019 11:32:30 +0800</pubDate>
@@ -61,6 +86,8 @@ public class Application { public static void main(String[] args) throws Interru
     </item>
     
     <item>
+=======
+>>>>>>> 8ea8c478c762c2fd3343957a4d8e17b1fd2e9767
       <title>Git Submodule 教程</title>
       <link>https://zhubicen.github.io/posts/git-submodules/</link>
       <pubDate>Sun, 22 Dec 2019 14:32:54 +0800</pubDate>
@@ -194,7 +221,19 @@ std::string func() { auto e = get_some_pair(); auto&amp;amp; succeeded = e.first
       <pubDate>Sat, 24 Aug 2019 21:06:20 +0800</pubDate>
       
       <guid>https://zhubicen.github.io/posts/docker-cheet-sheet/</guid>
+<<<<<<< HEAD
       <description>Docker Docker commands Running a container image  docker run --name kubia-container -p 8080:8080 -d kubia  Run a container with bash  docker run --rm -ti ubuntu:latest /bin/bash  Remove if exist  docker run -ti --restart=always  Restart when failure To kill a container, run docker kill xxxcontainer-id Remove all containers, run docker rm $(docker ps -a -q) Remove all images, run docker rmi $(docker images -q -)</description>
+=======
+      <description>Docker Docker commands Running a container image   docker run --name kubia-container -p 8080:8080 -d kubia
+Run a container with bash
+  docker run --rm -ti ubuntu:latest /bin/bash
+Remove if exist
+  docker run -ti --restart=always
+Restart when failure
+  To kill a container, run docker kill xxxcontainer-id
+Remove all containers, run docker rm $(docker ps -a -q)
+Remove all images, run docker rmi $(docker images -q -)</description>
+>>>>>>> 8ea8c478c762c2fd3343957a4d8e17b1fd2e9767
     </item>
     
     <item>
@@ -755,6 +794,7 @@ google 以下, 此为答案:
 int main() { multimap&amp;lt;int,string&amp;gt; mm; mm.insert(make_pair(1, &amp;quot;a&amp;quot;)); mm.insert(make_pair(1, &amp;quot;lemon&amp;quot;)); mm.insert(make_pair(2, &amp;quot;peacock&amp;quot;)); mm.insert(make_pair(3, &amp;quot;angel&amp;quot;)); for( auto it = mm.begin(), end = mm.end(); it != end; it = mm.upper_bound(it-&amp;gt;first)) { cout &amp;lt;&amp;lt; it-&amp;gt;first &amp;lt;&amp;lt; &#39; &#39; &amp;lt;&amp;lt; it-&amp;gt;second &amp;lt;&amp;lt; endl; } return 0; } p = c.upper_bound(k) 的作用是:</description>
     </item>
     
+<<<<<<< HEAD
     <item>
       <title></title>
       <link>https://zhubicen.github.io/posts/folder-created-from-st/file-created-from-stackedit/</link>
@@ -766,5 +806,7 @@ int main() { multimap&amp;lt;int,string&amp;gt; mm; mm.insert(make_pair(1, &amp;
    </description>
     </item>
     
+=======
+>>>>>>> 8ea8c478c762c2fd3343957a4d8e17b1fd2e9767
   </channel>
 </rss>

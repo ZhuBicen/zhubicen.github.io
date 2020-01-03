@@ -6,12 +6,17 @@
     <description>Recent content in Java on quick start</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+<<<<<<< HEAD
     <lastBuildDate>Mon, 23 Dec 2019 11:32:30 +0800</lastBuildDate>
+=======
+    <lastBuildDate>Fri, 13 Dec 2019 16:20:02 +0800</lastBuildDate>
+>>>>>>> 8ea8c478c762c2fd3343957a4d8e17b1fd2e9767
     
 	<atom:link href="https://zhubicen.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+<<<<<<< HEAD
       <title>Java Charset</title>
       <link>https://zhubicen.github.io/posts/java-charset/</link>
       <pubDate>Mon, 23 Dec 2019 11:32:30 +0800</pubDate>
@@ -23,6 +28,8 @@ public class Application { public static void main(String[] args) throws Interru
     </item>
     
     <item>
+=======
+>>>>>>> 8ea8c478c762c2fd3343957a4d8e17b1fd2e9767
       <title>A Wried Bug: 一个未捕获到的异常</title>
       <link>https://zhubicen.github.io/posts/a-wried-bug/</link>
       <pubDate>Fri, 13 Dec 2019 16:20:02 +0800</pubDate>
