@@ -4,6 +4,7 @@ languageCode = "en-us"
 title = "quick start"
 theme = "bare" 
 
+
 [params]
 mainSections = ["posts"]
 author = "阿碧"
@@ -11,3 +12,12 @@ email = "zhubicen@gmail.com"
 description = 'C++/golang/Java/JavaScript developer'
 # Include the author name in the <title> of articles
 includeAuthorInTitle = true
+disableAttribution = true
+
+[[params.social]]
+icon = "github-circle"
+url = "https://github.com/zhubicen/"
+
+#[[params.social]]
+#icon = "weibo"
+#url = "https://weibo.com/u/2278143434"
