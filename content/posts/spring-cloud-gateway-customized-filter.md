@@ -15,7 +15,8 @@ Spring Cloud Gateway 的 URL 为： `http://localhost`,  Nginx URL 为 `http://l
 
 从以下浏览器日志可以看出，Nginx 返回了 301，重定向后的 URL 为：`Location: http://localhost:8080/content/`
 
-![image-20200116220322535](/Users/bzhu/Library/Application Support/typora-user-images/image-20200116220322535.png)
+![image-20200116233749097](spring-cloud-gateway-customized-filter.assets/image-20200116233749097.png)
+
 
 因此希望可以通过 gateway 的 Filter 把 `Location` 改为：`http://localhost/content/`。
 
@@ -49,7 +50,8 @@ spring:
             - RewriteLocationResponseHeader=AS_IN_REQUEST, Location, ,
 ```
 
-![image-20200116231053249](/Users/bzhu/Library/Application Support/typora-user-images/image-20200116231053249.png)
+![image-20200116233833694](spring-cloud-gateway-customized-filter.assets/image-20200116233833694.png)
+
 
 ## 方法三：自定义 Filter
 
@@ -66,9 +68,8 @@ spring:
             - MyFilter
 ```
 
+![image-20200116233850711](spring-cloud-gateway-customized-filter.assets/image-20200116233850711.png)
 
-
-![image-20200116231459519](/Users/bzhu/Library/Application Support/typora-user-images/image-20200116231459519.png)
 
 
 
