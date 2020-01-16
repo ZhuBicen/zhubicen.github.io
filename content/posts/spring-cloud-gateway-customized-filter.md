@@ -47,7 +47,6 @@ spring:
             - Path=/content/**
           filters:
             - RewriteLocationResponseHeader=AS_IN_REQUEST, Location, ,
-=AS_IN_REQUEST, Location, ,
 ```
 
 ![image-20200116231053249](/Users/bzhu/Library/Application Support/typora-user-images/image-20200116231053249.png)
