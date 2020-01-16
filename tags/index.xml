@@ -6,10 +6,19 @@
     <description>Recent content in Tags on quick start</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 03 Jan 2020 20:51:22 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 16 Jan 2020 21:22:24 +0800</lastBuildDate>
     
 	<atom:link href="https://zhubicen.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Spring Cloud</title>
+      <link>https://zhubicen.github.io/tags/spring-cloud/</link>
+      <pubDate>Thu, 16 Jan 2020 21:22:24 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/tags/spring-cloud/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Chrome</title>

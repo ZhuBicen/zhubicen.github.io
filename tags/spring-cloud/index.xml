@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Spring Cloud on quick start</title>
+    <link>https://zhubicen.github.io/tags/spring-cloud/</link>
+    <description>Recent content in Spring Cloud on quick start</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 16 Jan 2020 21:22:24 +0800</lastBuildDate>
+    
+	<atom:link href="https://zhubicen.github.io/tags/spring-cloud/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Spring Cloud Gateway 的重定向问题</title>
+      <link>https://zhubicen.github.io/posts/spring-cloud-gateway-customized-filter/</link>
+      <pubDate>Thu, 16 Jan 2020 21:22:24 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/spring-cloud-gateway-customized-filter/</guid>
+      <description>最近遇到这样一个问题，通过 Spring Cloud Gateway 访问 Nginx 的时候，在某些情况下Nginx 会重定向，但是问题是，不会重定向到 Spring Cloud Gateway 的 URL。
+Spring Cloud Gateway 的 URL 为： http://localhost, Nginx URL 为 http://localhost:8080。当访问 http://localhost/content 时，Gateway 会转而请求 http://localhost:8080/content ，这时，Nginx 会重定向到 http://localhost:8080/content/。这时候浏览器就直接指向了 Nginx，而不是 Gateway。
+从以下浏览器日志可以看出，Nginx 返回了 301，重定向后的 URL 为：Location: http://localhost:8080/content/
+![image-20200116220322535](/Users/bzhu/Library/Application Support/typora-user-images/image-20200116220322535.png)
+因此希望可以通过 gateway 的 Filter 把 Location 改为：http://localhost/content/。
+方法一：使用 PreserveHostHeader 这也是网上一些文章中建议的方法，在大部分情况下是可以工作的。但是对于 Nginx 似乎不起作用。
+PreserveHostHeader 告知 httpClient(Gateway 中负责转发的组件）使用原有的 Host，如果 Gateway 的后端（如Nginx）在 Redirect 时考虑 Request Host Header ，则有可能会影响最终的 Redirection URL。但是对于 Nginx 的，Request Host Header 并没有影响到 Redirection URL。</description>
+    </item>
+    
+  </channel>
+</rss>
