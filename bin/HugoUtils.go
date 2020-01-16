@@ -103,17 +103,17 @@ func moveAssets(assets string) {
 func main() {
 
 	allAssets = []string{}
-	err := filepath.Walk(".\\docs\\posts", processDir)
+	err := filepath.Walk("./docs/posts", processDir)
 
 	if err != nil {
 		fmt.Printf("error walking the path %q: %v\n", ".", err)
 	}
 
 	for _, assets := range allAssets {
-		markdownParentDir := assets[0:strings.LastIndex(assets, "\\")]
-		markdownFileNameDotAssets := assets[strings.LastIndex(assets, "\\"):]
+		markdownParentDir := assets[0:strings.LastIndex(assets, "/")]
+		markdownFileNameDotAssets := assets[strings.LastIndex(assets, "/"):]
 		markdownFileName := strings.TrimSuffix(markdownFileNameDotAssets, ".assets")
-		dst := markdownParentDir + "\\" + markdownFileName + "\\" + markdownFileNameDotAssets
+		dst := markdownParentDir + "/" + markdownFileName + "/" + markdownFileNameDotAssets
 
 		fmt.Println(assets, "=>", dst)
 
