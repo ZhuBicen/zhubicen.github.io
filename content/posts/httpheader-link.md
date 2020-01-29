@@ -31,11 +31,13 @@ a {
 
 可以实现如下的效果，链接的颜色有默认的蓝色，变成了红色
 
-![image-20200101193742589](/Users/bzhu/Library/Application Support/typora-user-images/image-20200101193742589.png)
+![image-20200129203152034](httpheader-link.assets/image-20200129203152034.png)
+
+
 
 同时可以观察到，浏览器加载了对应的 CSS：
 
-![image-20200101193710903](/Users/bzhu/Library/Application Support/typora-user-images/image-20200101193710903.png)
+![image-20200129203256324](httpheader-link.assets/image-20200129203256324.png)
 
 
 
