@@ -12,7 +12,7 @@ case "$(uname -s)" in
      echo 'Linux'
      ;;
 
-   CYGWIN*|MINGW32*|MSYS*)
+   CYGWIN*|MINGW32*|MSYS*|MINGW64*)
      echo 'MS Windows'
      ./bin/HugoUtils.exe       
      ;;
