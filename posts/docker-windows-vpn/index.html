@@ -9,13 +9,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>
     
-    Posts tagged with
-    
-    Docker
+    Docker Windows Vpn
      | 阿碧 
   </title>
   <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.eb4797a608f467160f71b5cc518dffb9b3fef0edc95e6def8dc4033ba1888b8f414e3d1d3e6c9804ca3e6f125539d8af48b28dcecb4eafc5805bde0b3c8d6956.css' integrity='sha512-60eXpgj0ZxYPcbXMUY3/ubP&#43;8O3JXm3vjcQDO6GIi49BTj0dPmyYBMo&#43;bxJVOdivSLKNzstOr8WAW94LPI1pVg=='>
-  <link rel="canonical" href="https://zhubicen.github.io/tags/docker/">
+  <link rel="canonical" href="https://zhubicen.github.io/posts/docker-windows-vpn/">
   <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
   <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -24,13 +22,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer">
 <meta name="author" content="阿碧">
-<meta name="description" content="C&#43;&#43;/golang/Java/JavaScript developer">
+<meta name="description" content="最近使用 Cisco VPN 在家工作，发现 Docker 共享磁盘（share drive） 的功能不工作，总是提示Firewall detected的错误。google 到了这是个通用的问题： https://github.com/docker/for-win/issues/360 。问题的根源是，Windows 的 Docker 使用 Samba 服务在 Host 和 Container 之间共享文件夹。由于 VPN router 的问题导致 SMB 服务失效。
+获赞最多的一个解决方案是，重新设置 Docker 的网络，笔者测试使用此方法后，Firewall detected 的错误没有了，但是挂载的目录中的文件都是空的。
+最终的解决服务是，使用最新版本的 Docker for Windows ，目前（2020-02-03）最新版本是： Docker Desktop Edge 2.1.7.0 ： https://docs.docker.com/docker-for-windows/edge-release-notes/#docker-desktop-community-2170">
 
-<meta property="og:title" content="Docker" />
-<meta property="og:description" content="C&#43;&#43;/golang/Java/JavaScript developer" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://zhubicen.github.io/tags/docker/" />
-<meta property="og:updated_time" content="2020-02-03T11:55:51+08:00" />
+<meta property="og:title" content="Docker Windows Vpn" />
+<meta property="og:description" content="最近使用 Cisco VPN 在家工作，发现 Docker 共享磁盘（share drive） 的功能不工作，总是提示Firewall detected的错误。google 到了这是个通用的问题： https://github.com/docker/for-win/issues/360 。问题的根源是，Windows 的 Docker 使用 Samba 服务在 Host 和 Container 之间共享文件夹。由于 VPN router 的问题导致 SMB 服务失效。
+获赞最多的一个解决方案是，重新设置 Docker 的网络，笔者测试使用此方法后，Firewall detected 的错误没有了，但是挂载的目录中的文件都是空的。
+最终的解决服务是，使用最新版本的 Docker for Windows ，目前（2020-02-03）最新版本是： Docker Desktop Edge 2.1.7.0 ： https://docs.docker.com/docker-for-windows/edge-release-notes/#docker-desktop-community-2170" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhubicen.github.io/posts/docker-windows-vpn/" />
+<meta property="article:published_time" content="2020-02-03T11:55:51+08:00" />
+<meta property="article:modified_time" content="2020-02-03T11:55:51+08:00" />
 
 
 </head>
@@ -160,46 +163,36 @@
 <section class="hero is-small is-info is-fullwidth">
   <div class="hero-body">
 <div class="container">
-  <article class="media">
-    <div class="media-content">
-      <h1 class="title">
-        Posts tagged with Docker
-      </h1>
-    </div>
-  </article>
+  <h1 class="title">
+    Docker Windows Vpn
+  </h1>
+  <h2 class="subtitle">
+    <time datetime='2020-02-03T11:55:51&#43;08:00'>
+      February 03, 2020
+    </time>
+    
+    <br>
+    
+    
+    
+    <a class="tag is-link" href="https://zhubicen.github.io/tags/docker/">Docker</a>
+    
+    
+    
+  </h2>
 </div>
 
   </div>
 </section>
 <section class="section">
   <div class="container">
-<div class="posts">
-  
-  <div class="post">
-    <div><a href="https://zhubicen.github.io/posts/docker-windows-vpn/" class="title is-size-5">Docker Windows Vpn</a></div>
-    <div class="subtitle is-6">February 03, 2020</div>
-  </div>
-  
-  <div class="post">
-    <div><a href="https://zhubicen.github.io/posts/docker-proxy/" class="title is-size-5">Docker 的代理设置</a></div>
-    <div class="subtitle is-6">January 03, 2020</div>
-  </div>
-  
-  <div class="post">
-    <div><a href="https://zhubicen.github.io/posts/docker-cheet-sheet/" class="title is-size-5">Docker Cheet Sheet</a></div>
-    <div class="subtitle is-6">August 24, 2019</div>
-  </div>
-  
-  <div class="post">
-    <div><a href="https://zhubicen.github.io/posts/springboot-on-docker/" class="title is-size-5">在 Docker 中开发 SpringBoot</a></div>
-    <div class="subtitle is-6">August 03, 2019</div>
-  </div>
-  
-  <div class="post">
-    <div><a href="https://zhubicen.github.io/posts/ubuntu-docker-timezone/" class="title is-size-5">Ubuntu Docker Timezone</a></div>
-    <div class="subtitle is-6">July 26, 2019</div>
-  </div>
-  
+<div class="content is-medium">
+  <p>最近使用 Cisco VPN 在家工作，发现 Docker 共享磁盘（share drive） 的功能不工作，总是提示<code>Firewall detected</code>的错误。google 到了这是个通用的问题： <a href="https://github.com/docker/for-win/issues/360">https://github.com/docker/for-win/issues/360</a> 。问题的根源是，Windows 的 Docker 使用 Samba 服务在 Host 和 Container 之间共享文件夹。由于 VPN router 的问题导致 SMB 服务失效。</p>
+<p><img src="docker-windows-vpn.assets/1580702379851.png" alt="1580702379851"></p>
+<p>获赞最多的一个解决方案是，重新设置 Docker 的网络，笔者测试使用此方法后，<code>Firewall detected</code> 的错误没有了，但是挂载的目录中的文件都是空的。</p>
+<p><img src="docker-windows-vpn.assets/1580703137423.png" alt="1580703137423"></p>
+<p>最终的解决服务是，使用最新版本的 Docker for Windows ，目前（2020-02-03）最新版本是：  <code>Docker Desktop Edge 2.1.7.0</code> ： <a href="https://docs.docker.com/docker-for-windows/edge-release-notes/#docker-desktop-community-2170">https://docs.docker.com/docker-for-windows/edge-release-notes/#docker-desktop-community-2170</a></p>
+
 </div>
 
 
