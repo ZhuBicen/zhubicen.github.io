@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    
+    linus torvalds 推荐的单链表删除元素的新方法
+     | 阿碧 
+  </title>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.eb4797a608f467160f71b5cc518dffb9b3fef0edc95e6def8dc4033ba1888b8f414e3d1d3e6c9804ca3e6f125539d8af48b28dcecb4eafc5805bde0b3c8d6956.css' integrity='sha512-60eXpgj0ZxYPcbXMUY3/ubP&#43;8O3JXm3vjcQDO6GIi49BTj0dPmyYBMo&#43;bxJVOdivSLKNzstOr8WAW94LPI1pVg=='>
+  <link rel="canonical" href="https://zhubicen.github.io/posts/remove-entry-in-single-linked-list/">
+  <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="阿碧">
+<meta name="description" content="常规手法 使用 walk 变量循环指向各个链表元素，直至查询到相关节点。同时使用prev保留当前元素的前一个节点。在查找到相关的节点后，使用 prev-&gt;next = entry-&gt;next, 删除指定节点。 这里有一个特殊情况，head 即是要删除的指定节点，因此需要判断prev是否为空，来处理此情况。 Linux Torvalds 推荐的方法将去除这一特殊处理
+void remove_list_entry(entry) { prev = NULL; walk = head; // walk the list to find the entry  while (walk != entry) { prev = walk; walk = walk-&gt;next; } // remove the entry by updating the head or previous entry  if (!prev) { head = entry-&gt;next; } else { prev-&gt;next = entry-&gt;next; } } 推荐手法 indirect 指针指向的是 next 指针的地址，对于head节点来说，指向的是 head的地址。因此indirect 在改算法中实际上扮演的是常规算法中prev的角色，只不过由于head变量的存在，是的 indirect所指向的指针不可能为空，因此避免了一个多余的条件判断。">
+
+<meta property="og:title" content="linus torvalds 推荐的单链表删除元素的新方法" />
+<meta property="og:description" content="常规手法 使用 walk 变量循环指向各个链表元素，直至查询到相关节点。同时使用prev保留当前元素的前一个节点。在查找到相关的节点后，使用 prev-&gt;next = entry-&gt;next, 删除指定节点。 这里有一个特殊情况，head 即是要删除的指定节点，因此需要判断prev是否为空，来处理此情况。 Linux Torvalds 推荐的方法将去除这一特殊处理
+void remove_list_entry(entry) { prev = NULL; walk = head; // walk the list to find the entry  while (walk != entry) { prev = walk; walk = walk-&gt;next; } // remove the entry by updating the head or previous entry  if (!prev) { head = entry-&gt;next; } else { prev-&gt;next = entry-&gt;next; } } 推荐手法 indirect 指针指向的是 next 指针的地址，对于head节点来说，指向的是 head的地址。因此indirect 在改算法中实际上扮演的是常规算法中prev的角色，只不过由于head变量的存在，是的 indirect所指向的指针不可能为空，因此避免了一个多余的条件判断。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhubicen.github.io/posts/remove-entry-in-single-linked-list/" />
+<meta property="article:published_time" content="2020-02-26T09:48:48+08:00" />
+<meta property="article:modified_time" content="2020-02-26T09:48:48+08:00" />
+
+
+</head>
+<body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      <figure class="image">
+        <img alt="" class="is-rounded" src="https://www.gravatar.com/avatar/a7074f9fedfabb09fc4a6b6973c3f25f?s=128&d=identicon">
+      </figure>
+    </a>
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      quick start
+    </a>
+  </div>
+  
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/books/">
+        
+        Books
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/c&#43;&#43;/">
+        
+        C&#43;&#43;
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/chrome/">
+        
+        Chrome
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/css/">
+        
+        CSS
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/docker/">
+        
+        Docker
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/elasticsearch/">
+        
+        Elastic search
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/emacs/">
+        
+        Emacs
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/english/">
+        
+        English
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/git/">
+        
+        Git
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/golang/">
+        
+        Golang
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/java/">
+        
+        Java
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/javascript/">
+        
+        Java script
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/linux/">
+        
+        Linux
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/spring-cloud/">
+        
+        Spring cloud
+        
+      </a>
+      
+    </div>
+    
+    <div class="navbar-end">
+      
+      <a class="navbar-item" href="https://github.com/zhubicen/" rel="noopener" target="_blank">
+        <span class="icon">
+          <img alt="github-circle" src='https://zhubicen.github.io/icons/svg/github-circle.svg'>
+        </span>
+      </a>
+      
+      <a class="navbar-item" href="mailto:zhubicen@gmail.com" target="_blank">
+        <span class="icon">
+          <img alt="email" src='https://zhubicen.github.io/icons/svg/email.svg'>
+        </span>
+      </a>
+      <a class="navbar-item" href="https://zhubicen.github.io/index.xml" target="_blank">
+        <span class="icon">
+          <img alt="rss" src='https://zhubicen.github.io/icons/svg/rss.svg'>
+        </span>
+      </a>
+      
+    </div>
+  </div>
+</nav>
+<section class="hero is-small is-info is-fullwidth">
+  <div class="hero-body">
+<div class="container">
+  <h1 class="title">
+    linus torvalds 推荐的单链表删除元素的新方法
+  </h1>
+  <h2 class="subtitle">
+    <time datetime='2020-02-26T09:48:48&#43;08:00'>
+      February 26, 2020
+    </time>
+    
+    <br>
+    
+    
+    
+    <a class="tag is-link" href="https://zhubicen.github.io/tags/c&#43;&#43;/">C&#43;&#43;</a>
+    
+    
+    
+  </h2>
+</div>
+
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+<div class="content is-medium">
+  <h1 id="heading">常规手法</h1>
+<p>使用 <code>walk</code> 变量循环指向各个链表元素，直至查询到相关节点。同时使用<code>prev</code>保留当前元素的前一个节点。在查找到相关的节点后，使用 <code>prev-&gt;next = entry-&gt;next</code>, 删除指定节点。
+这里有一个特殊情况，<code>head</code> 即是要删除的指定节点，因此需要判断<code>prev</code>是否为空，来处理此情况。 Linux Torvalds 推荐的方法将去除这一特殊处理</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">remove_list_entry</span>(entry) {
+  prev <span style="color:#f92672">=</span> NULL;
+  walk <span style="color:#f92672">=</span> head;
+ 
+  <span style="color:#75715e">// walk the list to find the entry
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">while</span> (walk <span style="color:#f92672">!</span><span style="color:#f92672">=</span> entry) {
+    prev <span style="color:#f92672">=</span> walk;
+    walk <span style="color:#f92672">=</span> walk<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;
+  }
+ 
+  <span style="color:#75715e">// remove the entry by updating the head or previous entry
+</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>prev) {
+      head <span style="color:#f92672">=</span> entry<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;
+   } <span style="color:#66d9ef">else</span> {
+      prev<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next <span style="color:#f92672">=</span> entry<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;
+   }
+}
+</code></pre></div><h2 id="heading-1">推荐手法</h2>
+<p><code>indirect</code> 指针指向的是 <code>next</code> 指针的地址，对于<code>head</code>节点来说，指向的是 <code>head</code>的地址。因此<code>indirect</code> 在改算法中实际上扮演的是常规算法中<code>prev</code>的角色，只不过由于<code>head</code>变量的存在，是的 <code>indirect</code>所指向的指针不可能为空，因此避免了一个多余的条件判断。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">remove_list_entry</span>(entry) {
+  <span style="color:#75715e">// The &#39;indirect&#39; pointer points to the *addres* of the thing we update
+</span><span style="color:#75715e"></span>  indirect <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>head;
+ 
+  <span style="color:#75715e">// walk the list, locate the thing that points to the entry we want to remove
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">while</span> ((<span style="color:#f92672">*</span>indirect) <span style="color:#f92672">!</span><span style="color:#f92672">=</span> entry) {
+     indirect <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>(<span style="color:#f92672">*</span>indirect)<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;
+  }
+ 
+  <span style="color:#75715e">// and then just remove it
+</span><span style="color:#75715e"></span>  <span style="color:#f92672">*</span>indirect <span style="color:#f92672">=</span> entry<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;
+}
+</code></pre></div><p><img src="remove-entry-in-single-linked-list.assets/1582683885013.png" alt="1582683885013"></p>
+<h2 id="heading-2">第三种手法</h2>
+<p>增加占位（Dummy）的<code>head</code>节点，使链表不为空</p>
+<pre><code>void remove_list_entry(entry)
+{
+    prev = &amp;dummy;
+    while (prev-&gt;next != entry){
+        prev = prev-&gt;next;
+    }
+    prev-&gt;next = entry-&gt;next;
+    return dummy.next;
+}
+</code></pre>
+</div>
+
+
+  </div>
+</section><footer class="footer">
+  <div class="content has-text-centered">
+    
+    
+    <p>
+      
+      
+    </p>
+    
+  </div>
+</footer>
+
+
+</body>
+</html>
