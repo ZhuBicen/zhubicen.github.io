@@ -3,27 +3,37 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://zhubicen.github.io/posts/java-iib/</loc>
+    <lastmod>2020-02-27T10:58:11+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zhubicen.github.io/tags/java/</loc>
+    <lastmod>2020-02-27T10:58:11+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zhubicen.github.io/posts/</loc>
+    <lastmod>2020-02-27T10:58:11+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zhubicen.github.io/</loc>
+    <lastmod>2020-02-27T10:58:11+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zhubicen.github.io/tags/</loc>
+    <lastmod>2020-02-27T10:58:11+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://zhubicen.github.io/tags/c&#43;&#43;/</loc>
     <lastmod>2020-02-26T09:48:48+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://zhubicen.github.io/posts/remove-entry-in-single-linked-list/</loc>
-    <lastmod>2020-02-26T09:48:48+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhubicen.github.io/posts/</loc>
-    <lastmod>2020-02-26T09:48:48+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhubicen.github.io/</loc>
-    <lastmod>2020-02-26T09:48:48+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhubicen.github.io/tags/</loc>
     <lastmod>2020-02-26T09:48:48+08:00</lastmod>
   </url>
   
@@ -85,11 +95,6 @@
   <url>
     <loc>https://zhubicen.github.io/posts/iife/</loc>
     <lastmod>2019-12-29T09:26:02+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhubicen.github.io/tags/java/</loc>
-    <lastmod>2019-12-23T11:32:30+08:00</lastmod>
   </url>
   
   <url>
