@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    
+    C&#43;&#43;20 学习笔记之 Lambda
+     | 阿碧 
+  </title>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.eb4797a608f467160f71b5cc518dffb9b3fef0edc95e6def8dc4033ba1888b8f414e3d1d3e6c9804ca3e6f125539d8af48b28dcecb4eafc5805bde0b3c8d6956.css' integrity='sha512-60eXpgj0ZxYPcbXMUY3/ubP&#43;8O3JXm3vjcQDO6GIi49BTj0dPmyYBMo&#43;bxJVOdivSLKNzstOr8WAW94LPI1pVg=='>
+  <link rel="canonical" href="https://zhubicen.github.io/posts/c&#43;&#43;20_allow_lamdba_capture_this/">
+  <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="阿碧">
+<meta name="description" content="背景 [&amp;]以引用的形式捕获所有的局部变量，包括 this
+[=]以值的形式捕获所有的局部变量，包括this
+这里就有点奇怪和不正常，因为 this 在两种情况下都可以被捕获，并且没有区别。
+[=, this] 在 C&#43;&#43;20 之前 [=, this] 是视为语法错误的，有些编译器视为 Warning。因为 [=] 已经包括 this 的捕获，所以不允许= 和 this 同时出现。
+C&#43;&#43;20 认为，this 对于显示化，和可读性比较友好，所以允许= 和 this 同时出现。
+ [=, this] 的理论形式为[=, &amp;*this]
+ 新增加的[=, this] 相当与显示的指定了 this
+文章显示：http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0806r2.html 在以后的演进中，将会逐步去除 [=] 对与 this 的隐式影响，即 [=] 不再捕获 this。
+个人感觉，对与 lambda 对于 this 和 *this 的 捕获已经相当复杂，又让我见识了 C&#43;&#43; 的复杂性
+相关的链接：  http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0409r2.html  https://docs.microsoft.com/en-us/cpp/cpp/lambda-expressions-in-cpp?view=vs-2019   struct S { void f(int i); }; void S::f(int i) { [&amp;, i]{}; // OK  [&amp;, &amp;i]{}; // ERROR: i preceded by &amp; when &amp; is the default  [=, this]{}; // Before C&#43;&#43;20: ERROR: this when = is the default  [=, *this]{ }; // OK: captures this by value.">
+
+<meta property="og:title" content="C&#43;&#43;20 学习笔记之 Lambda" />
+<meta property="og:description" content="背景 [&amp;]以引用的形式捕获所有的局部变量，包括 this
+[=]以值的形式捕获所有的局部变量，包括this
+这里就有点奇怪和不正常，因为 this 在两种情况下都可以被捕获，并且没有区别。
+[=, this] 在 C&#43;&#43;20 之前 [=, this] 是视为语法错误的，有些编译器视为 Warning。因为 [=] 已经包括 this 的捕获，所以不允许= 和 this 同时出现。
+C&#43;&#43;20 认为，this 对于显示化，和可读性比较友好，所以允许= 和 this 同时出现。
+ [=, this] 的理论形式为[=, &amp;*this]
+ 新增加的[=, this] 相当与显示的指定了 this
+文章显示：http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0806r2.html 在以后的演进中，将会逐步去除 [=] 对与 this 的隐式影响，即 [=] 不再捕获 this。
+个人感觉，对与 lambda 对于 this 和 *this 的 捕获已经相当复杂，又让我见识了 C&#43;&#43; 的复杂性
+相关的链接：  http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0409r2.html  https://docs.microsoft.com/en-us/cpp/cpp/lambda-expressions-in-cpp?view=vs-2019   struct S { void f(int i); }; void S::f(int i) { [&amp;, i]{}; // OK  [&amp;, &amp;i]{}; // ERROR: i preceded by &amp; when &amp; is the default  [=, this]{}; // Before C&#43;&#43;20: ERROR: this when = is the default  [=, *this]{ }; // OK: captures this by value." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhubicen.github.io/posts/c&#43;&#43;20_allow_lamdba_capture_this/" />
+<meta property="article:published_time" content="2020-03-03T17:12:17+08:00" />
+<meta property="article:modified_time" content="2020-03-03T17:12:17+08:00" />
+
+
+</head>
+<body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      <figure class="image">
+        <img alt="" class="is-rounded" src="https://www.gravatar.com/avatar/a7074f9fedfabb09fc4a6b6973c3f25f?s=128&d=identicon">
+      </figure>
+    </a>
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      quick start
+    </a>
+  </div>
+  
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/books/">
+        
+        Books
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/c&#43;&#43;/">
+        
+        C&#43;&#43;
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/c&#43;&#43;20/">
+        
+        C&#43;&#43;20
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/chrome/">
+        
+        Chrome
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/css/">
+        
+        CSS
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/docker/">
+        
+        Docker
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/elasticsearch/">
+        
+        Elastic search
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/emacs/">
+        
+        Emacs
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/english/">
+        
+        English
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/git/">
+        
+        Git
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/golang/">
+        
+        Golang
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/java/">
+        
+        Java
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/javascript/">
+        
+        Java script
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/linux/">
+        
+        Linux
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/spring-cloud/">
+        
+        Spring cloud
+        
+      </a>
+      
+    </div>
+    
+    <div class="navbar-end">
+      
+      <a class="navbar-item" href="https://github.com/zhubicen/" rel="noopener" target="_blank">
+        <span class="icon">
+          <img alt="github-circle" src='https://zhubicen.github.io/icons/svg/github-circle.svg'>
+        </span>
+      </a>
+      
+      <a class="navbar-item" href="mailto:zhubicen@gmail.com" target="_blank">
+        <span class="icon">
+          <img alt="email" src='https://zhubicen.github.io/icons/svg/email.svg'>
+        </span>
+      </a>
+      <a class="navbar-item" href="https://zhubicen.github.io/index.xml" target="_blank">
+        <span class="icon">
+          <img alt="rss" src='https://zhubicen.github.io/icons/svg/rss.svg'>
+        </span>
+      </a>
+      
+    </div>
+  </div>
+</nav>
+<section class="hero is-small is-info is-fullwidth">
+  <div class="hero-body">
+<div class="container">
+  <h1 class="title">
+    C&#43;&#43;20 学习笔记之 Lambda
+  </h1>
+  <h2 class="subtitle">
+    <time datetime='2020-03-03T17:12:17&#43;08:00'>
+      March 03, 2020
+    </time>
+    
+    <br>
+    
+    
+    
+    <a class="tag is-link" href="https://zhubicen.github.io/tags/c&#43;&#43;20/">C&#43;&#43;20</a>
+    
+    
+    
+  </h2>
+</div>
+
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+<div class="content is-medium">
+  <h1 id="heading">背景</h1>
+<p><code>[&amp;]</code>以引用的形式捕获所有的局部变量，包括 <code>this</code></p>
+<p><code>[=]</code>以值的形式捕获所有的局部变量，包括<code>this</code></p>
+<p>这里就有点奇怪和不正常，因为 <code>this</code> 在两种情况下都可以被捕获，并且没有区别。</p>
+<h1 id="-this"><code>[=, this]</code></h1>
+<p>在 C++20 之前 <code>[=, this]</code> 是视为语法错误的，有些编译器视为 Warning。因为 <code>[=]</code> 已经包括 <code>this</code> 的捕获，所以不允许<code>=</code> 和 <code>this</code> 同时出现。</p>
+<p>C++20 认为，<code>this</code> 对于显示化，和可读性比较友好，所以允许<code>=</code> 和 <code>this</code> 同时出现。</p>
+<blockquote>
+<p><code>[=, this]</code> 的理论形式为<code>[=, &amp;*this]</code></p>
+</blockquote>
+<p>新增加的<code>[=, this]</code> 相当与显示的指定了 <code>this</code></p>
+<p>文章显示：http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0806r2.html 在以后的演进中，将会逐步去除 <code>[=]</code> 对与 <code>this</code> 的隐式影响，即 <code>[=]</code> 不再捕获 <code>this</code>。</p>
+<p>个人感觉，对与 lambda 对于 <code>this</code> 和 <code>*this</code> 的 捕获已经相当复杂，又让我见识了 C++ 的复杂性</p>
+<h1 id="heading-1">相关的链接：</h1>
+<ol>
+<li><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0409r2.html">http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0409r2.html</a></li>
+</ol>
+<p><img src="c++20_allow_lamdba_capture_this.assets/1583228112256.png" alt="1583228112256"></p>
+<ol start="2">
+<li><a href="https://docs.microsoft.com/en-us/cpp/cpp/lambda-expressions-in-cpp?view=vs-2019">https://docs.microsoft.com/en-us/cpp/cpp/lambda-expressions-in-cpp?view=vs-2019</a></li>
+<li></li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">S</span> { <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">f</span>(<span style="color:#66d9ef">int</span> i); };
+
+<span style="color:#66d9ef">void</span> S<span style="color:#f92672">:</span><span style="color:#f92672">:</span>f(<span style="color:#66d9ef">int</span> i) {
+    [<span style="color:#f92672">&amp;</span>, i]{};      <span style="color:#75715e">// OK
+</span><span style="color:#75715e"></span>    [<span style="color:#f92672">&amp;</span>, <span style="color:#f92672">&amp;</span>i]{};     <span style="color:#75715e">// ERROR: i preceded by &amp; when &amp; is the default
+</span><span style="color:#75715e"></span>    [<span style="color:#f92672">=</span>, <span style="color:#66d9ef">this</span>]{};   <span style="color:#75715e">// Before C++20: ERROR: this when = is the default
+</span><span style="color:#75715e"></span>    [<span style="color:#f92672">=</span>, <span style="color:#f92672">*</span><span style="color:#66d9ef">this</span>]{ }; <span style="color:#75715e">// OK: captures this by value. See below.
+</span><span style="color:#75715e"></span>    [i, i]{};      <span style="color:#75715e">// ERROR: i repeated
+</span><span style="color:#75715e"></span>}
+</code></pre></div><ol start="4">
+<li><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0806r2.html">http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0806r2.html</a></li>
+</ol>
+
+</div>
+
+
+  </div>
+</section><footer class="footer">
+  <div class="content has-text-centered">
+    
+    
+    <p>
+      
+      
+    </p>
+    
+  </div>
+</footer>
+
+
+</body>
+</html>

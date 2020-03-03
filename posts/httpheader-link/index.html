@@ -26,9 +26,7 @@
 Link: &lt;/style.css&gt;; rel=stylesheet;type=text/css 这个功能在一些不容易更改 html 内容的情况下，非常有用。可以通过 server 端，添加该 http header 来加载外部的 CSS，比如在 nginx 配置文件中使用如下 add_header 配置，就可以实现加载自定义的 CSS，从而达到定义 nginx 的 autoindex 页面外观的效果
 location / { root /Users/bzhu/quickstart; autoindex on; add_header Link &#34;&lt;/style.css&gt;; rel=stylesheet;type=text/css&#34;; } 加入 style.css 内容如下：
 a { color: red } 可以实现如下的效果，链接的颜色有默认的蓝色，变成了红色
-![image-20200101193742589](/Users/bzhu/Library/Application Support/typora-user-images/image-20200101193742589.png)
 同时可以观察到，浏览器加载了对应的 CSS：
-![image-20200101193710903](/Users/bzhu/Library/Application Support/typora-user-images/image-20200101193710903.png)
 遗憾的是Chrome 还不支持该功能：
 https://bugs.chromium.org/p/chromium/issues/detail?id=120104
 https://bugs.chromium.org/p/chromium/issues/detail?id=58456
@@ -40,9 +38,7 @@ https://bugs.chromium.org/p/chromium/issues/detail?id=19237">
 Link: &lt;/style.css&gt;; rel=stylesheet;type=text/css 这个功能在一些不容易更改 html 内容的情况下，非常有用。可以通过 server 端，添加该 http header 来加载外部的 CSS，比如在 nginx 配置文件中使用如下 add_header 配置，就可以实现加载自定义的 CSS，从而达到定义 nginx 的 autoindex 页面外观的效果
 location / { root /Users/bzhu/quickstart; autoindex on; add_header Link &#34;&lt;/style.css&gt;; rel=stylesheet;type=text/css&#34;; } 加入 style.css 内容如下：
 a { color: red } 可以实现如下的效果，链接的颜色有默认的蓝色，变成了红色
-![image-20200101193742589](/Users/bzhu/Library/Application Support/typora-user-images/image-20200101193742589.png)
 同时可以观察到，浏览器加载了对应的 CSS：
-![image-20200101193710903](/Users/bzhu/Library/Application Support/typora-user-images/image-20200101193710903.png)
 遗憾的是Chrome 还不支持该功能：
 https://bugs.chromium.org/p/chromium/issues/detail?id=120104
 https://bugs.chromium.org/p/chromium/issues/detail?id=58456
@@ -79,6 +75,12 @@ https://bugs.chromium.org/p/chromium/issues/detail?id=19237" />
       <a class="navbar-item" href="https://zhubicen.github.io/tags/c&#43;&#43;/">
         
         C&#43;&#43;
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/c&#43;&#43;20/">
+        
+        C&#43;&#43;20
         
       </a>
       
@@ -218,9 +220,9 @@ https://bugs.chromium.org/p/chromium/issues/detail?id=19237" />
   <span style="color:#66d9ef">color</span>: <span style="color:#66d9ef">red</span>
 }
 </code></pre></div><p>可以实现如下的效果，链接的颜色有默认的蓝色，变成了红色</p>
-<p>![image-20200101193742589](/Users/bzhu/Library/Application Support/typora-user-images/image-20200101193742589.png)</p>
+<p><img src="httpheader-link.assets/image-20200129203152034.png" alt="image-20200129203152034"></p>
 <p>同时可以观察到，浏览器加载了对应的 CSS：</p>
-<p>![image-20200101193710903](/Users/bzhu/Library/Application Support/typora-user-images/image-20200101193710903.png)</p>
+<p><img src="httpheader-link.assets/image-20200129203256324.png" alt="image-20200129203256324"></p>
 <p>遗憾的是Chrome 还不支持该功能：</p>
 <p><a href="https://bugs.chromium.org/p/chromium/issues/detail?id=120104">https://bugs.chromium.org/p/chromium/issues/detail?id=120104</a></p>
 <p><a href="https://bugs.chromium.org/p/chromium/issues/detail?id=58456">https://bugs.chromium.org/p/chromium/issues/detail?id=58456</a></p>
