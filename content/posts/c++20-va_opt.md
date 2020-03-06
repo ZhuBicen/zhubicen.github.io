@@ -25,7 +25,7 @@ LOG("hello world");  // => printf("hello world,")
 #define LOG(msg, ...) printf(msg __VA_OPT__(,) __VA_ARGS__)
 ```
 
-`__VA_OPT__` 回根据 `__VA_ARGS_` 是否为空来决定 ** 逗号** 是否出现，因此可以解决`LOG("hello world")` 的调用问题。完整代码如下：
+`__VA_OPT__` 回根据 `__VA_ARGS_` 是否为空来决定 **逗号**  是否出现，因此可以解决`LOG("hello world")` 的调用问题。完整代码如下：
 
 ```c
 #include <stdio.h>
