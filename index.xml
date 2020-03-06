@@ -6,10 +6,24 @@
     <description>Recent content on quick start</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 03 Mar 2020 17:12:17 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 06 Mar 2020 10:20:50 +0800</lastBuildDate>
     
 	<atom:link href="https://zhubicen.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>C&#43;&#43;20 学习笔记之 VA_OPT</title>
+      <link>https://zhubicen.github.io/posts/c&#43;&#43;20-va_opt/</link>
+      <pubDate>Fri, 06 Mar 2020 10:20:50 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/c&#43;&#43;20-va_opt/</guid>
+      <description>VA_OPT 的特性与宏的可选参数(VA_ARGS)有关，经常配合起来使用，比如宏：
+#define LOG(msg, ...) printf(msg, __VA_ARGS__)LOG(&amp;#34;hello %d\n&amp;#34;, 0); // =&amp;gt; printf(&amp;#34;hello %d&amp;#34;, n) 如上对 LOG 宏的调用是没有问题的，但是如果我们想更灵活一点，如下的调用，就会出现问题：
+LOG(&amp;#34;hello world&amp;#34;); // =&amp;gt; printf(&amp;#34;hello world,&amp;#34;) 可以看倒展开后多了一个逗号，这样将会导致编译错误。
+现在就是VA_OPT 出场的时候了，LOG 宏可以做如下改造，以使逗号 变为可选
+#define LOG(msg, ...) printf(msg __VA_OPT__(,) __VA_ARGS__)__VA_OPT__ 回根据 __VA_ARGS_ 是否为空来决定 ** 逗号** 是否出现，因此可以解决LOG(&amp;quot;hello world&amp;quot;) 的调用问题。完整代码如下：
+#include &amp;lt;stdio.h&amp;gt;#define LOG(msg, ...) printf(msg __VA_OPT__(,) __VA_ARGS__)// #define LOG(msg, ...) printf(msg, __VA_ARGS__)  int main() { LOG(&amp;#34;hello world\n&amp;#34;); // =&amp;gt; printf(&amp;#34;hello world&amp;#34;)  LOG(&amp;#34;hello world\n&amp;#34;, ); // =&amp;gt; printf(&amp;#34;hello world&amp;#34;)  LOG(&amp;#34;hello %d\n&amp;#34;, 0); // =&amp;gt; printf(&amp;#34;hello %d&amp;#34;, n)  // printf(&amp;#34;Hello world&amp;#34;,);  return 0; } 代码已经放在 github 上： https://github.</description>
+    </item>
     
     <item>
       <title>C&#43;&#43;20 学习笔记之 Lambda</title>
