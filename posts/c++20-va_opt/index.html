@@ -26,7 +26,7 @@
 #define LOG(msg, ...) printf(msg, __VA_ARGS__)LOG(&#34;hello %d\n&#34;, 0); // =&gt; printf(&#34;hello %d&#34;, n) 如上对 LOG 宏的调用是没有问题的，但是如果我们想更灵活一点，如下的调用，就会出现问题：
 LOG(&#34;hello world&#34;); // =&gt; printf(&#34;hello world,&#34;) 可以看倒展开后多了一个逗号，这样将会导致编译错误。
 现在就是VA_OPT 出场的时候了，LOG 宏可以做如下改造，以使逗号 变为可选
-#define LOG(msg, ...) printf(msg __VA_OPT__(,) __VA_ARGS__)__VA_OPT__ 回根据 __VA_ARGS_ 是否为空来决定 ** 逗号** 是否出现，因此可以解决LOG(&quot;hello world&quot;) 的调用问题。完整代码如下：
+#define LOG(msg, ...) printf(msg __VA_OPT__(,) __VA_ARGS__)__VA_OPT__ 回根据 __VA_ARGS_ 是否为空来决定 逗号 是否出现，因此可以解决LOG(&quot;hello world&quot;) 的调用问题。完整代码如下：
 #include &lt;stdio.h&gt;#define LOG(msg, ...) printf(msg __VA_OPT__(,) __VA_ARGS__)// #define LOG(msg, ...) printf(msg, __VA_ARGS__)  int main() { LOG(&#34;hello world\n&#34;); // =&gt; printf(&#34;hello world&#34;)  LOG(&#34;hello world\n&#34;, ); // =&gt; printf(&#34;hello world&#34;)  LOG(&#34;hello %d\n&#34;, 0); // =&gt; printf(&#34;hello %d&#34;, n)  // printf(&#34;Hello world&#34;,);  return 0; } 代码已经放在 github 上： https://github.">
 
 <meta property="og:title" content="C&#43;&#43;20 学习笔记之 VA_OPT" />
@@ -34,7 +34,7 @@ LOG(&#34;hello world&#34;); // =&gt; printf(&#34;hello world,&#34;) 可以看倒
 #define LOG(msg, ...) printf(msg, __VA_ARGS__)LOG(&#34;hello %d\n&#34;, 0); // =&gt; printf(&#34;hello %d&#34;, n) 如上对 LOG 宏的调用是没有问题的，但是如果我们想更灵活一点，如下的调用，就会出现问题：
 LOG(&#34;hello world&#34;); // =&gt; printf(&#34;hello world,&#34;) 可以看倒展开后多了一个逗号，这样将会导致编译错误。
 现在就是VA_OPT 出场的时候了，LOG 宏可以做如下改造，以使逗号 变为可选
-#define LOG(msg, ...) printf(msg __VA_OPT__(,) __VA_ARGS__)__VA_OPT__ 回根据 __VA_ARGS_ 是否为空来决定 ** 逗号** 是否出现，因此可以解决LOG(&quot;hello world&quot;) 的调用问题。完整代码如下：
+#define LOG(msg, ...) printf(msg __VA_OPT__(,) __VA_ARGS__)__VA_OPT__ 回根据 __VA_ARGS_ 是否为空来决定 逗号 是否出现，因此可以解决LOG(&quot;hello world&quot;) 的调用问题。完整代码如下：
 #include &lt;stdio.h&gt;#define LOG(msg, ...) printf(msg __VA_OPT__(,) __VA_ARGS__)// #define LOG(msg, ...) printf(msg, __VA_ARGS__)  int main() { LOG(&#34;hello world\n&#34;); // =&gt; printf(&#34;hello world&#34;)  LOG(&#34;hello world\n&#34;, ); // =&gt; printf(&#34;hello world&#34;)  LOG(&#34;hello %d\n&#34;, 0); // =&gt; printf(&#34;hello %d&#34;, n)  // printf(&#34;Hello world&#34;,);  return 0; } 代码已经放在 github 上： https://github." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zhubicen.github.io/posts/c&#43;&#43;20-va_opt/" />
@@ -207,7 +207,7 @@ LOG(&#34;hello world&#34;); // =&gt; printf(&#34;hello world,&#34;) 可以看倒
 </span></code></pre></div><p>可以看倒展开后多了一个<strong>逗号</strong>，这样将会导致编译错误。</p>
 <p>现在就是<code>VA_OPT</code> 出场的时候了，<code>LOG</code> 宏可以做如下改造，以使<strong>逗号</strong> 变为可选</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#</span><span style="color:#75715e">define LOG(msg, ...) printf(msg __VA_OPT__(,) __VA_ARGS__)</span><span style="color:#75715e">
-</span></code></pre></div><p><code>__VA_OPT__</code> 回根据 <code>__VA_ARGS_</code> 是否为空来决定 ** 逗号** 是否出现，因此可以解决<code>LOG(&quot;hello world&quot;)</code> 的调用问题。完整代码如下：</p>
+</span></code></pre></div><p><code>__VA_OPT__</code> 回根据 <code>__VA_ARGS_</code> 是否为空来决定 <strong>逗号</strong>  是否出现，因此可以解决<code>LOG(&quot;hello world&quot;)</code> 的调用问题。完整代码如下：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#</span><span style="color:#75715e">include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
 </span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">define LOG(msg, ...) printf(msg __VA_OPT__(,) __VA_ARGS__)</span><span style="color:#75715e">
 </span><span style="color:#75715e"></span><span style="color:#75715e">// #define LOG(msg, ...) printf(msg, __VA_ARGS__)
