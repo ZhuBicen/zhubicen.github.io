@@ -9,11 +9,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>
     
-    Chrome 未请求 Favicon
+    MongoDB 的安装与配置
      | 阿碧 
   </title>
   <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.eb4797a608f467160f71b5cc518dffb9b3fef0edc95e6def8dc4033ba1888b8f414e3d1d3e6c9804ca3e6f125539d8af48b28dcecb4eafc5805bde0b3c8d6956.css' integrity='sha512-60eXpgj0ZxYPcbXMUY3/ubP&#43;8O3JXm3vjcQDO6GIi49BTj0dPmyYBMo&#43;bxJVOdivSLKNzstOr8WAW94LPI1pVg=='>
-  <link rel="canonical" href="https://zhubicen.github.io/posts/favicon/">
+  <link rel="canonical" href="https://zhubicen.github.io/posts/setup-mongo-server/">
   <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
   <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -22,18 +22,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer">
 <meta name="author" content="阿碧">
-<meta name="description" content="发现 Chrome 并不是每次都请求 favicon，硬性重新加载即可
-要为整个 Website 设定 Favicon 需要在文件服务器的根目录放置文件 favicon.ico， 以使 http://you.host.name/favicon.ico 可用。如果要为单个网页设定 Favicon， 可以在对应的 html 文件 head 中加入：
- &lt;head&gt; &lt;link rel=&quot;shortcut icon&quot; href=&quot;http://example.com/favicon.ico&quot; type=&quot;image/vnd.microsoft.icon&quot; /&gt; &lt;/head&gt; ">
+<meta name="description" content="安装 Mongo DB https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/
+创建文件 /etc/yum.repos.d/mongodb-org-4.2.repo，并输入一下内容：
+[mongodb-org-4.2] name=MongoDB Repository baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.2/x86_64/ gpgcheck=1 enabled=1 gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc 运行安装命令： yum install -y mongodb-org
+启动 Mongo DB 服务 systemctl start mongod.service # For CentOS 8/7 service mongod restart # For CentOS 6 Configure MongoDB to autostart on system boot.
+systemctl enable mongod.service # For CentOS 8/7 chkconfig mongod on # For CentOS 6 测试 Mongod DB 数据库 [root@tecadmin ~]# mongo &gt; use mydb; &gt; db.test.save( { a: 1 } ) &gt; db.">
 
-<meta property="og:title" content="Chrome 未请求 Favicon" />
-<meta property="og:description" content="发现 Chrome 并不是每次都请求 favicon，硬性重新加载即可
-要为整个 Website 设定 Favicon 需要在文件服务器的根目录放置文件 favicon.ico， 以使 http://you.host.name/favicon.ico 可用。如果要为单个网页设定 Favicon， 可以在对应的 html 文件 head 中加入：
- &lt;head&gt; &lt;link rel=&quot;shortcut icon&quot; href=&quot;http://example.com/favicon.ico&quot; type=&quot;image/vnd.microsoft.icon&quot; /&gt; &lt;/head&gt; " />
+<meta property="og:title" content="MongoDB 的安装与配置" />
+<meta property="og:description" content="安装 Mongo DB https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/
+创建文件 /etc/yum.repos.d/mongodb-org-4.2.repo，并输入一下内容：
+[mongodb-org-4.2] name=MongoDB Repository baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.2/x86_64/ gpgcheck=1 enabled=1 gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc 运行安装命令： yum install -y mongodb-org
+启动 Mongo DB 服务 systemctl start mongod.service # For CentOS 8/7 service mongod restart # For CentOS 6 Configure MongoDB to autostart on system boot.
+systemctl enable mongod.service # For CentOS 8/7 chkconfig mongod on # For CentOS 6 测试 Mongod DB 数据库 [root@tecadmin ~]# mongo &gt; use mydb; &gt; db.test.save( { a: 1 } ) &gt; db." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zhubicen.github.io/posts/favicon/" />
-<meta property="article:published_time" content="2020-01-03T20:51:22+08:00" />
-<meta property="article:modified_time" content="2020-01-03T20:51:22+08:00" />
+<meta property="og:url" content="https://zhubicen.github.io/posts/setup-mongo-server/" />
+<meta property="article:published_time" content="2020-03-11T13:45:58+08:00" />
+<meta property="article:modified_time" content="2020-03-11T13:45:58+08:00" />
 
 
 </head>
@@ -176,18 +180,18 @@
   <div class="hero-body">
 <div class="container">
   <h1 class="title">
-    Chrome 未请求 Favicon
+    MongoDB 的安装与配置
   </h1>
   <h2 class="subtitle">
-    <time datetime='2020-01-03T20:51:22&#43;08:00'>
-      January 03, 2020
+    <time datetime='2020-03-11T13:45:58&#43;08:00'>
+      March 11, 2020
     </time>
     
     <br>
     
     
     
-    <a class="tag is-link" href="https://zhubicen.github.io/tags/chrome/">Chrome</a>
+    <a class="tag is-link" href="https://zhubicen.github.io/tags/mongodb/">MongoDB</a>
     
     
     
@@ -199,14 +203,61 @@
 <section class="section">
   <div class="container">
 <div class="content is-medium">
-  <p>发现 Chrome 并不是每次都请求 favicon，硬性重新加载即可</p>
-<p><img src="favicon.assets/image-20200129202702377.png" alt="image-20200129202702377"></p>
-<p>要为整个 Website 设定 Favicon 需要在文件服务器的根目录放置文件 favicon.ico， 以使 <code>http://you.host.name/favicon.ico</code> 可用。如果要为单个网页设定 Favicon， 可以在对应的 html 文件 head 中加入：</p>
+  <h2 id="-mongo-db">安装 Mongo DB</h2>
+<p><a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/">https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/</a></p>
+<p>创建文件 <code>/etc/yum.repos.d/mongodb-org-4.2.repo</code>，并输入一下内容：</p>
+<pre><code>[mongodb-org-4.2]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.2/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc
+</code></pre><p>运行安装命令： <code>yum install -y mongodb-org</code></p>
+<h2 id="-mongo-db-">启动 Mongo DB 服务</h2>
+<pre><code>systemctl start mongod.service    # For CentOS 8/7 
+service mongod restart            # For CentOS 6 
+
+</code></pre><p>Configure MongoDB to autostart on system boot.</p>
+<pre><code>systemctl enable mongod.service    # For CentOS 8/7 
+chkconfig mongod on                # For CentOS 6 
+</code></pre><h2 id="-mongod-db-">测试 Mongod DB 数据库</h2>
+<pre><code>[root@tecadmin ~]#  mongo
+
+&gt; use mydb;
+
+&gt; db.test.save( { a: 1 } )
+
+&gt; db.test.find()
+
+  { &quot;_id&quot; : ObjectId(&quot;54fc2a4c71b56443ced99ba2&quot;), &quot;a&quot; : 1 }
+
+</code></pre><p>至目前为止，mongodb 还没有鉴权保护，你只能在本机使用 mongodb， 也不需要使用输入任何用户名密码。</p>
+<p>接下来我们可以启用用户验证，并从本机外访问 mongodb</p>
+<p>首先使用如下命令创建用户：</p>
+<pre><code>db.createUser({ user: 'root', pwd: 'letmein', roles: [ { role: &quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot; } ] });
+</code></pre><h2 id="heading">使用用户名密码连接</h2>
+<p>把 bindIp 从 <code>127.0.0.1</code> 改为 <code>0.0.0.0</code> 以启用从本机以外的连接， <code>security</code> 部分增加用户名密码的验证</p>
 <pre><code>
-&lt;head&gt;
-   &lt;link rel=&quot;shortcut icon&quot; href=&quot;http://example.com/favicon.ico&quot; type=&quot;image/vnd.microsoft.icon&quot; /&gt;
-&lt;/head&gt;
-</code></pre>
+# network interfaces
+net:
+  port: 27017
+  bindIp: 0.0.0.0  
+security:
+  authorization: enabled
+
+</code></pre><p>重启 mongodb 服务 <code>service mongod restart</code></p>
+<p>接下来就可以使用如下的命令连接 mongodb 了</p>
+<pre><code>mongo  -u root -p letmein
+</code></pre><p>你也可以从本机以外连接，使用 <code>--host</code> 选项指定 IP 即可</p>
+<pre><code>mongo --host yourip --port yourport -u root -p letmein
+</code></pre><h2 id="heading-1">备份与恢复</h2>
+<p>可以分别使用 <code>mongodump</code> 和 <code>mongorestore</code> 来备份和恢复mongo 数据</p>
+<pre><code>mongodump --host 10.109.3.110 --port 8080 -u mongo_user -p 123456 --authenticationDatabase techdebt -d techdebt
+
+mongoretore 
+</code></pre><h2 id="heading-2">客户端工具</h2>
+<p>推荐使用 <code>robo 3T</code></p>
+
 </div>
 
 

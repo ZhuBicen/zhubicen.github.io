@@ -6,10 +6,23 @@
     <description>Recent content on quick start</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 06 Mar 2020 10:20:50 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 11 Mar 2020 13:45:58 +0800</lastBuildDate>
     
 	<atom:link href="https://zhubicen.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>MongoDB 的安装与配置</title>
+      <link>https://zhubicen.github.io/posts/setup-mongo-server/</link>
+      <pubDate>Wed, 11 Mar 2020 13:45:58 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/setup-mongo-server/</guid>
+      <description>安装 Mongo DB https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/
+创建文件 /etc/yum.repos.d/mongodb-org-4.2.repo，并输入一下内容：
+[mongodb-org-4.2] name=MongoDB Repository baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.2/x86_64/ gpgcheck=1 enabled=1 gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc 运行安装命令： yum install -y mongodb-org
+启动 Mongo DB 服务 systemctl start mongod.service # For CentOS 8/7 service mongod restart # For CentOS 6 Configure MongoDB to autostart on system boot.
+systemctl enable mongod.service # For CentOS 8/7 chkconfig mongod on # For CentOS 6 测试 Mongod DB 数据库 [root@tecadmin ~]# mongo &amp;gt; use mydb; &amp;gt; db.test.save( { a: 1 } ) &amp;gt; db.</description>
+    </item>
     
     <item>
       <title>C&#43;&#43;20 学习笔记之 VA_OPT</title>
