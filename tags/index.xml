@@ -6,10 +6,28 @@
     <description>Recent content in Tags on quick start</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 11 Mar 2020 13:45:58 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 13 Mar 2020 16:09:17 +0800</lastBuildDate>
     
 	<atom:link href="https://zhubicen.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Java</title>
+      <link>https://zhubicen.github.io/tags/java/</link>
+      <pubDate>Fri, 13 Mar 2020 16:09:17 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MySQL</title>
+      <link>https://zhubicen.github.io/tags/mysql/</link>
+      <pubDate>Fri, 13 Mar 2020 16:09:17 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/tags/mysql/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>MongoDB</title>
@@ -26,15 +44,6 @@
       <pubDate>Fri, 06 Mar 2020 10:20:50 +0800</pubDate>
       
       <guid>https://zhubicen.github.io/tags/c&#43;&#43;20/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Java</title>
-      <link>https://zhubicen.github.io/tags/java/</link>
-      <pubDate>Thu, 27 Feb 2020 10:58:11 +0800</pubDate>
-      
-      <guid>https://zhubicen.github.io/tags/java/</guid>
       <description></description>
     </item>
     
