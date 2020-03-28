@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Spring on quick start</title>
+    <link>https://zhubicen.github.io/tags/spring/</link>
+    <description>Recent content in Spring on quick start</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 23 Mar 2020 21:06:06 +0800</lastBuildDate>
+    
+	<atom:link href="https://zhubicen.github.io/tags/spring/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>在 Spring Security 中使用 Token</title>
+      <link>https://zhubicen.github.io/posts/spring-security-with-token/</link>
+      <pubDate>Mon, 23 Mar 2020 21:06:06 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/spring-security-with-token/</guid>
+      <description>翻译来自于blog
+对于标准的 Web 应用来说 Spring Security 的默认行为使很方便使用的。它使用基于 cookie 的认证和会话（session）。另外，它还会自动地处理好 CSRF 令牌（避免中间人攻击）。在大部分情况下，你只需要为不同的 route 设定相应的授权，从相应的数据库中读取用户信息即可。
+另一方面，如果你只想创建一些 REST API 为外部的服务（SPA 或者移动应用）使用，你可能不需要 基于 Session 的安全。这正使 JWT（JSON Web Token) 的使用场景。所有的信息都存储在 token 中，基于此就可以创建无需 Session 的服务（Session-Less Server)。
+JWT 需要在每一个 HTTP 请求中携带，因此服务器可以使用 token 中携带的信息认证用户。至与如何携带 token可以有不同的选择。比如 使用 URL 参数 或者 Authorization header:
+Authorization: Bearer &amp;lt;token string&amp;gt; JWT 主要包括三个部分：
+ 头部 - 主要包括 token 的类型以及使用的 hash 算法 载荷- 主要包括关于用户的信息 签名- 签名用来验证 token 没有被更改过  Token 举例 放在 authorization header 中的 token 大概看起来是这个样子：</description>
+    </item>
+    
+  </channel>
+</rss>
