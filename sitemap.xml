@@ -3,27 +3,37 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://zhubicen.github.io/tags/c&#43;&#43;20/</loc>
+    <lastmod>2020-03-28T20:18:30+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zhubicen.github.io/posts/c&#43;&#43;20_designated_initializer/</loc>
+    <lastmod>2020-03-28T20:18:30+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zhubicen.github.io/posts/</loc>
+    <lastmod>2020-03-28T20:18:30+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zhubicen.github.io/</loc>
+    <lastmod>2020-03-28T20:18:30+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zhubicen.github.io/tags/</loc>
+    <lastmod>2020-03-28T20:18:30+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://zhubicen.github.io/tags/java/</loc>
     <lastmod>2020-03-23T21:06:06+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zhubicen.github.io/posts/</loc>
-    <lastmod>2020-03-23T21:06:06+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhubicen.github.io/</loc>
-    <lastmod>2020-03-23T21:06:06+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://zhubicen.github.io/tags/spring/</loc>
-    <lastmod>2020-03-23T21:06:06+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhubicen.github.io/tags/</loc>
     <lastmod>2020-03-23T21:06:06+08:00</lastmod>
   </url>
   
@@ -50,11 +60,6 @@
   <url>
     <loc>https://zhubicen.github.io/posts/setup-mongo-server/</loc>
     <lastmod>2020-03-11T13:45:58+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhubicen.github.io/tags/c&#43;&#43;20/</loc>
-    <lastmod>2020-03-06T10:20:50+08:00</lastmod>
   </url>
   
   <url>

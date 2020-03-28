@@ -6,10 +6,22 @@
     <description>Recent content in C&#43;&#43;20 on quick start</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 06 Mar 2020 10:20:50 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 28 Mar 2020 20:18:30 +0800</lastBuildDate>
     
 	<atom:link href="https://zhubicen.github.io/tags/c++20/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>C&#43;&#43;20 学习笔记之 designated initializer</title>
+      <link>https://zhubicen.github.io/posts/c&#43;&#43;20_designated_initializer/</link>
+      <pubDate>Sat, 28 Mar 2020 20:18:30 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/c&#43;&#43;20_designated_initializer/</guid>
+      <description>struct A { string a; int b = 42; int c = -1; }; A {.c=21}  会执行如下的步骤：
+ 初始化字符串 a 为空 初始化b 为 42 初始化c 为 21  指定的标识符需要使非静态的数据成员，并且需要和声明的顺序一致
+struct A { int x; int y; int z; }; A a{.y = 2, .x = 1}; // 这样使不行的，x 必须出现在 y 的前面 A b{.x = 1, .z = 2}; // OK y 将被初始化为 0 另外指定的初始化器还可以对 union 进行初始化，但是只允许指定其中一个标识符：
+union u { int a; const char* b; }; u f = { .</description>
+    </item>
     
     <item>
       <title>C&#43;&#43;20 学习笔记之 VA_OPT</title>
