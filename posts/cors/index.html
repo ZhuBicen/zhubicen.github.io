@@ -22,7 +22,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer">
 <meta name="author" content="阿碧">
-<meta name="description" content="背景 对于非简单请求 或者初次请求失败后，浏览器会使用 options 方法发起 `preflight request&rsquo;
+<meta name="description" content="对于非简单请求 或者初次请求失败后，浏览器会使用 options 方法发起 `preflight request&rsquo;
 preflight request 也就是通常所说的预检请求，如果预检请求失败，可能会出现如下的错误：
 Access to XMLHttpRequest at &#39;http://localhost:8080/security/&#39; from origin &#39;http://localhost:3000&#39; has been blocked by CORS policy: Response to preflight request doesn&#39;t pass access control check: No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource. preflight request 一般会包括一下几个信息：Access-Control-Request-Method 和 Access-Control-Request-Headers，以及一个 Origin 首部
 比如客户端在发起 DELETE 请求之前会发起如下的预检请求：
@@ -30,7 +30,7 @@ OPTIONS /resource/foo Access-Control-Request-Method: DELETE Access-Control-Reque
 HTTP/1.1 200 OK Content-Length: 0 Connection: keep-alive Access-Control-Allow-Origin: https://foo.">
 
 <meta property="og:title" content="CORS 和 Preflight Request" />
-<meta property="og:description" content="背景 对于非简单请求 或者初次请求失败后，浏览器会使用 options 方法发起 `preflight request&rsquo;
+<meta property="og:description" content="对于非简单请求 或者初次请求失败后，浏览器会使用 options 方法发起 `preflight request&rsquo;
 preflight request 也就是通常所说的预检请求，如果预检请求失败，可能会出现如下的错误：
 Access to XMLHttpRequest at &#39;http://localhost:8080/security/&#39; from origin &#39;http://localhost:3000&#39; has been blocked by CORS policy: Response to preflight request doesn&#39;t pass access control check: No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource. preflight request 一般会包括一下几个信息：Access-Control-Request-Method 和 Access-Control-Request-Headers，以及一个 Origin 首部
 比如客户端在发起 DELETE 请求之前会发起如下的预检请求：
@@ -217,8 +217,7 @@ HTTP/1.1 200 OK Content-Length: 0 Connection: keep-alive Access-Control-Allow-Or
 <section class="section">
   <div class="container">
 <div class="content is-medium">
-  <h2 id="heading">背景</h2>
-<p>对于<code>非简单请求</code> 或者初次请求失败后，浏览器会使用 <code>options</code> 方法发起 `preflight request&rsquo;</p>
+  <p>对于<code>非简单请求</code> 或者初次请求失败后，浏览器会使用 <code>options</code> 方法发起 `preflight request&rsquo;</p>
 <p><img src="cors.assets/1590472178900.png" alt="1590472178900"></p>
 <p><code>preflight request</code> 也就是通常所说的预检请求，如果预检请求失败，可能会出现如下的错误：</p>
 <pre><code>Access to XMLHttpRequest at 'http://localhost:8080/security/' from origin 'http://localhost:3000' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.
