@@ -1,8 +1,8 @@
 ---
 title: "React Hooks"
 date: 2020-05-28T11:06:17+08:00
-draft: true
-tags: []
+draft: false
+tags: [JavaScript]
 ---
 
 在这篇文章中，我们简单实践一下 react hooks，这个新特性从 React 16.8 中引入。
