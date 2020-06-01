@@ -6,10 +6,21 @@
     <description>Recent content on quick start</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 26 May 2020 13:28:26 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 28 May 2020 11:06:17 +0800</lastBuildDate>
     
 	<atom:link href="https://zhubicen.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>React Hooks</title>
+      <link>https://zhubicen.github.io/posts/react-hooks/</link>
+      <pubDate>Thu, 28 May 2020 11:06:17 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/react-hooks/</guid>
+      <description>在这篇文章中，我们简单实践一下 react hooks，这个新特性从 React 16.8 中引入。
+如下的代码实现了，一个文本框，让用户输入一个字符串并且输入回车后，存如了 SessionStorage
+import React, { Component } from &amp;#39;react&amp;#39;; import PropTypes from &amp;#34;prop-types&amp;#34; export default class TokenForm extends React.Component { static propTypes = { setToken: PropTypes.func.isRequired }; constructor(props) { super(props); this.state = { value: &amp;#39;&amp;#39; } } handleSubmit = event =&amp;gt; { event.preventDefault(); const { setToken } = this.props; const token = this.state.value; if (token) { setToken(token); } } handleChange = (event) =&amp;gt; { this.</description>
+    </item>
     
     <item>
       <title>CORS 和 Preflight Request</title>
