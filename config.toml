@@ -9,7 +9,7 @@ theme = "bare"
 mainSections = ["posts"]
 author = "阿碧"
 email = "zhubicen@gmail.com"
-description = 'C++/golang/Java/JavaScript developer'
+description = 'A programmer'
 # Include the author name in the <title> of articles
 includeAuthorInTitle = true
 disableAttribution = true
