@@ -6,10 +6,21 @@
     <description>Recent content in Posts on quick start</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 28 May 2020 11:06:17 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 08 Aug 2020 17:43:20 +0800</lastBuildDate>
     
 	<atom:link href="https://zhubicen.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>MariaDB 中的 JSON 数据类型</title>
+      <link>https://zhubicen.github.io/posts/mariadb-json/</link>
+      <pubDate>Sat, 08 Aug 2020 17:43:20 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/mariadb-json/</guid>
+      <description>Maria DB 从版本 10.2.7 开始支持 JSON 数据类型，所以可以创建 JSON 类型的列
+CREATE TABLE t (j JSON); DESC t; +-------+----------+------+-----+---------+-------+ | Field | Type | Null | Key | Default | Extra | +-------+----------+------+-----+---------+-------+ | j | longtext | YES | | NULL | | +-------+----------+------+-----+---------+-------+ 查看该 table，可以看到 j 列的类型为 longtext ，在 MariaDB 的实现中， JSON 类型为 longtext 类型的别名。
+MariaDB [test]&amp;gt; describe t; +-------+----------+------+-----+---------+-------+ | Field | Type | Null | Key | Default | Extra | +-------+----------+------+-----+---------+-------+ | j | longtext | YES | | NULL | | +-------+----------+------+-----+---------+-------+ 1 row in set (0.</description>
+    </item>
     
     <item>
       <title>React Hooks</title>
