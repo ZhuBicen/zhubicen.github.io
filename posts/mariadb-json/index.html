@@ -245,7 +245,7 @@ ERROR 4025 (23000): CONSTRAINT `products.attribute` failed for `test`.`products`
 +----+--------+-------+-------+---------------------+
 1 row in set (0.000 sec)
 </code></pre><h2 id="--json-">为  JSON 列建立索引</h2>
-<p>首先让我们在插入一条数据</p>
+<p>首先让我们再插入一条数据</p>
 <pre><code>MariaDB [test]&gt; INSERT INTO products VALUES(NULL, 'Pingpong', 18, 15, '{&quot;colour&quot;: &quot;red&quot;}');
 Query OK, 1 row affected (0.013 sec)
 
@@ -258,8 +258,7 @@ MariaDB [test]&gt; select * from products;
 +----+----------+-------+-------+---------------------+
 2 rows in set (0.000 sec)
 </code></pre><p>我们可以使用 color 属性，建立索引</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"> <span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">table</span> products <span style="color:#66d9ef">add</span> attr_color VARCHAR(<span style="color:#ae81ff">32</span>) <span style="color:#66d9ef">as</span> (JSON_VALUE(attribute, <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">$.colour</span><span style="color:#e6db74">&#39;</span>));
- 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"> <span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">table</span> products <span style="color:#66d9ef">add</span> attr_color VARCHAR(<span style="color:#ae81ff">32</span>) <span style="color:#66d9ef">as</span> (JSON_VALUE(attribute, <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">$.colour</span><span style="color:#e6db74">&#39;</span>)); 
  <span style="color:#66d9ef">create</span> <span style="color:#66d9ef">index</span> products_attr_color_ix <span style="color:#66d9ef">on</span> products(attr_color);
 </code></pre></div><p>可以使用 attr_color 查询：</p>
 <pre><code>MariaDB [test]&gt; SELECT * FROM products WHERE attr_color = 'red' or attr_color = 'white';
