@@ -6,10 +6,22 @@
     <description>Recent content on quick start</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 08 Aug 2020 17:43:20 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 24 Aug 2020 19:12:14 +0800</lastBuildDate>
     
 	<atom:link href="https://zhubicen.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Elasticsearch Windows Docker</title>
+      <link>https://zhubicen.github.io/posts/elasticsearch-windows-docker/</link>
+      <pubDate>Mon, 24 Aug 2020 19:12:14 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/elasticsearch-windows-docker/</guid>
+      <description>在 Windows 中使用 Elasticsearch 的 Docker Image 时出现了以下的错误：
+max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144] Google 后的方案是要在 Docker Host 中运行如下的命令：
+sysctl -w vm.max_map_count=262144 如果是在 Linux 中也就简单了，直接运行就行了。但是在 Windows 中，就需要在 Windows Docker Host 上运行以上命令。这就要借助与 WSL 命令
+ wsl -l desktop sysctl -w vm.max_map_count=262144  这是基于 WSL2 的机制，前提是Use the WSL2 based engine 已经被打开。否则的话，应该使用别的办法</description>
+    </item>
     
     <item>
       <title>MariaDB 中的 JSON 数据类型</title>
