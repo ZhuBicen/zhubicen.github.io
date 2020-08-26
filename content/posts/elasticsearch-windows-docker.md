@@ -19,7 +19,7 @@ sysctl -w vm.max_map_count=262144
 
 如果是在 Linux 中也就简单了，直接运行就行了。但是在 Windows 中，就需要在 Windows Docker Host 上运行以上命令。这就要借助与 WSL 命令
 
-1. `wsl -l desktop` 
+1. `wsl -d docker-desktop` 
 2. `sysctl -w vm.max_map_count=262144`
 
 这是基于 WSL2 的机制，前提是`Use the WSL2 based engine` 已经被打开。否则的话，应该使用别的办法
