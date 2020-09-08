@@ -6,13 +6,22 @@
     <description>Recent content in Tags on quick start</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 24 Aug 2020 19:12:14 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 08 Sep 2020 09:27:58 +0800</lastBuildDate>
     
 	<atom:link href="https://zhubicen.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Elasticsearch</title>
+      <title>Oauth2</title>
+      <link>https://zhubicen.github.io/tags/oauth2/</link>
+      <pubDate>Tue, 08 Sep 2020 09:27:58 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/tags/oauth2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ElasticSearch</title>
       <link>https://zhubicen.github.io/tags/elasticsearch/</link>
       <pubDate>Mon, 24 Aug 2020 19:12:14 +0800</pubDate>
       

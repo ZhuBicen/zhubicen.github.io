@@ -3,27 +3,37 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://zhubicen.github.io/tags/oauth2/</loc>
+    <lastmod>2020-09-08T09:27:58+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zhubicen.github.io/posts/</loc>
+    <lastmod>2020-09-08T09:27:58+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zhubicen.github.io/</loc>
+    <lastmod>2020-09-08T09:27:58+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zhubicen.github.io/tags/</loc>
+    <lastmod>2020-09-08T09:27:58+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zhubicen.github.io/posts/oauth2-github/</loc>
+    <lastmod>2020-09-08T09:27:58+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://zhubicen.github.io/tags/elasticsearch/</loc>
     <lastmod>2020-08-24T19:12:14+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://zhubicen.github.io/posts/elasticsearch-windows-docker/</loc>
-    <lastmod>2020-08-24T19:12:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhubicen.github.io/posts/</loc>
-    <lastmod>2020-08-24T19:12:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhubicen.github.io/</loc>
-    <lastmod>2020-08-24T19:12:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhubicen.github.io/tags/</loc>
     <lastmod>2020-08-24T19:12:14+08:00</lastmod>
   </url>
   
