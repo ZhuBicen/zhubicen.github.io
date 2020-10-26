@@ -6,10 +6,23 @@
     <description>Recent content in Posts on quick start</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 08 Sep 2020 09:27:58 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 19 Oct 2020 22:38:45 +0800</lastBuildDate>
     
 	<atom:link href="https://zhubicen.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>创建并使用 PostMan 测试 OAuth2 授权服务器</title>
+      <link>https://zhubicen.github.io/posts/sping-oauth2-authorization-server/</link>
+      <pubDate>Mon, 19 Oct 2020 22:38:45 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/sping-oauth2-authorization-server/</guid>
+      <description>在分布式系统中，授权系统是必不可少的，作为最流行的分布式系统架构之一的 Spring Cloud 提供了对 OAuth2 授权服务器的支持。
+Spring Cloud 对与 OAuth2 的支持都集成在 spring.security.oatuh2 包中，使用 Spring 开发 OAuth2 授权服务器，只需做三件事：
+使用 @EnableAuthorizationServer @RestController @EnableAuthorizationServer @SpringBootApplication public class OauthServerApplication { public static void main(String[] args) { SpringApplication.run(OauthServerApplication.class, args); } } 注册 Client 信息 通过 继承AuthorizationServerConfigurerAdapter 注册 Client 信息，要注册的信息包括：Client ID，Client Secret，授权模式，重定向 URL 以及权限范围。
+其中 client ID 和 Client Secret 用与 Client Authentication
+@Configuration public class Oauth2Config extends AuthorizationServerConfigurerAdapter { //...  @Override public void configure(ClientDetailsServiceConfigurer clients) throws Exception { clients.</description>
+    </item>
     
     <item>
       <title>使用 Postman 登录 Github Oauth2</title>

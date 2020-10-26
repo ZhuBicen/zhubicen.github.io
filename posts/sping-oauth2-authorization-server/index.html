@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    
+    创建并使用 PostMan 测试 OAuth2 授权服务器
+     | 阿碧 
+  </title>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.eb4797a608f467160f71b5cc518dffb9b3fef0edc95e6def8dc4033ba1888b8f414e3d1d3e6c9804ca3e6f125539d8af48b28dcecb4eafc5805bde0b3c8d6956.css' integrity='sha512-60eXpgj0ZxYPcbXMUY3/ubP&#43;8O3JXm3vjcQDO6GIi49BTj0dPmyYBMo&#43;bxJVOdivSLKNzstOr8WAW94LPI1pVg=='>
+  <link rel="canonical" href="https://zhubicen.github.io/posts/sping-oauth2-authorization-server/">
+  <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="阿碧">
+<meta name="description" content="在分布式系统中，授权系统是必不可少的，作为最流行的分布式系统架构之一的 Spring Cloud 提供了对 OAuth2 授权服务器的支持。
+Spring Cloud 对与 OAuth2 的支持都集成在 spring.security.oatuh2 包中，使用 Spring 开发 OAuth2 授权服务器，只需做三件事：
+使用 @EnableAuthorizationServer @RestController @EnableAuthorizationServer @SpringBootApplication public class OauthServerApplication { public static void main(String[] args) { SpringApplication.run(OauthServerApplication.class, args); } } 注册 Client 信息 通过 继承AuthorizationServerConfigurerAdapter 注册 Client 信息，要注册的信息包括：Client ID，Client Secret，授权模式，重定向 URL 以及权限范围。
+其中 client ID 和 Client Secret 用与 Client Authentication
+@Configuration public class Oauth2Config extends AuthorizationServerConfigurerAdapter { //...  @Override public void configure(ClientDetailsServiceConfigurer clients) throws Exception { clients.">
+
+<meta property="og:title" content="创建并使用 PostMan 测试 OAuth2 授权服务器" />
+<meta property="og:description" content="在分布式系统中，授权系统是必不可少的，作为最流行的分布式系统架构之一的 Spring Cloud 提供了对 OAuth2 授权服务器的支持。
+Spring Cloud 对与 OAuth2 的支持都集成在 spring.security.oatuh2 包中，使用 Spring 开发 OAuth2 授权服务器，只需做三件事：
+使用 @EnableAuthorizationServer @RestController @EnableAuthorizationServer @SpringBootApplication public class OauthServerApplication { public static void main(String[] args) { SpringApplication.run(OauthServerApplication.class, args); } } 注册 Client 信息 通过 继承AuthorizationServerConfigurerAdapter 注册 Client 信息，要注册的信息包括：Client ID，Client Secret，授权模式，重定向 URL 以及权限范围。
+其中 client ID 和 Client Secret 用与 Client Authentication
+@Configuration public class Oauth2Config extends AuthorizationServerConfigurerAdapter { //...  @Override public void configure(ClientDetailsServiceConfigurer clients) throws Exception { clients." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhubicen.github.io/posts/sping-oauth2-authorization-server/" />
+<meta property="article:published_time" content="2020-10-19T22:38:45+08:00" />
+<meta property="article:modified_time" content="2020-10-19T22:38:45+08:00" />
+
+
+</head>
+<body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      <figure class="image">
+        <img alt="" class="is-rounded" src="https://www.gravatar.com/avatar/a7074f9fedfabb09fc4a6b6973c3f25f?s=128&d=identicon">
+      </figure>
+    </a>
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      quick start
+    </a>
+  </div>
+  
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/books/">
+        
+        Books
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/c&#43;&#43;/">
+        
+        C&#43;&#43;
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/c&#43;&#43;20/">
+        
+        C&#43;&#43;20
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/chrome/">
+        
+        Chrome
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/css/">
+        
+        CSS
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/docker/">
+        
+        Docker
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/elasticsearch/">
+        
+        Elasticsearch
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/emacs/">
+        
+        Emacs
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/english/">
+        
+        English
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/git/">
+        
+        Git
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/golang/">
+        
+        Golang
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/java/">
+        
+        Java
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/javascript/">
+        
+        Java script
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/linux/">
+        
+        Linux
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/mongodb/">
+        
+        Mongo d b
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/mysql/">
+        
+        My s q l
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/oauth2/">
+        
+        Oauth2
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/spring/">
+        
+        Spring
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/spring-cloud/">
+        
+        Spring cloud
+        
+      </a>
+      
+    </div>
+    
+    <div class="navbar-end">
+      
+      <a class="navbar-item" href="https://github.com/zhubicen/" rel="noopener" target="_blank">
+        <span class="icon">
+          <img alt="github-circle" src='https://zhubicen.github.io/icons/svg/github-circle.svg'>
+        </span>
+      </a>
+      
+      <a class="navbar-item" href="mailto:zhubicen@gmail.com" target="_blank">
+        <span class="icon">
+          <img alt="email" src='https://zhubicen.github.io/icons/svg/email.svg'>
+        </span>
+      </a>
+      <a class="navbar-item" href="https://zhubicen.github.io/index.xml" target="_blank">
+        <span class="icon">
+          <img alt="rss" src='https://zhubicen.github.io/icons/svg/rss.svg'>
+        </span>
+      </a>
+      
+    </div>
+  </div>
+</nav>
+<section class="hero is-small is-info is-fullwidth">
+  <div class="hero-body">
+<div class="container">
+  <h1 class="title">
+    创建并使用 PostMan 测试 OAuth2 授权服务器
+  </h1>
+  <h2 class="subtitle">
+    <time datetime='2020-10-19T22:38:45&#43;08:00'>
+      October 19, 2020
+    </time>
+    
+    <br>
+    
+    
+    
+    <a class="tag is-link" href="https://zhubicen.github.io/tags/spring/">Spring</a>
+    
+    
+    
+    
+    <a class="tag is-link" href="https://zhubicen.github.io/tags/oauth2/">Oauth2</a>
+    
+    
+    
+  </h2>
+</div>
+
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+<div class="content is-medium">
+  <p>在分布式系统中，授权系统是必不可少的，作为最流行的分布式系统架构之一的 Spring Cloud 提供了对 OAuth2 授权服务器的支持。</p>
+<p>Spring Cloud 对与 OAuth2 的支持都集成在 <code>spring.security.oatuh2</code> 包中，使用 Spring 开发 OAuth2 授权服务器，只需做三件事：</p>
+<h2 id="-enableauthorizationserver">使用 <code>@EnableAuthorizationServer</code></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#a6e22e">@RestController</span>
+<span style="color:#a6e22e">@EnableAuthorizationServer</span>
+<span style="color:#a6e22e">@SpringBootApplication</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">OauthServerApplication</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[</span><span style="color:#f92672">]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+       	SpringApplication<span style="color:#f92672">.</span><span style="color:#a6e22e">run</span><span style="color:#f92672">(</span>OauthServerApplication<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span> args<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h2 id="-client-">注册 Client 信息</h2>
+<p>通过 继承<code>AuthorizationServerConfigurerAdapter</code> 注册 <code>Client</code> 信息，要注册的信息包括：Client ID，Client  Secret，授权模式，重定向 URL 以及权限范围。</p>
+<p>其中 client ID 和 Client Secret 用与 Client Authentication</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#a6e22e">@Configuration</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Oauth2Config</span> <span style="color:#66d9ef">extends</span> AuthorizationServerConfigurerAdapter <span style="color:#f92672">{</span>
+    <span style="color:#75715e">//...
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">configure</span><span style="color:#f92672">(</span>ClientDetailsServiceConfigurer clients<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Exception 	   <span style="color:#f92672">{</span>
+        clients<span style="color:#f92672">.</span><span style="color:#a6e22e">inMemory</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
+                <span style="color:#f92672">.</span><span style="color:#a6e22e">withClient</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;eagleeye&#34;</span><span style="color:#f92672">)</span>
+                <span style="color:#f92672">.</span><span style="color:#a6e22e">secret</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;{noop}thisissecret&#34;</span><span style="color:#f92672">)</span>
+                <span style="color:#f92672">.</span><span style="color:#a6e22e">authorizedGrantTypes</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;authorization_code&#34;</span><span style="color:#f92672">)</span>
+                <span style="color:#f92672">.</span><span style="color:#a6e22e">redirectUris</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;http://localhost:9090/callback&#34;</span><span style="color:#f92672">)</span>
+                <span style="color:#f92672">.</span><span style="color:#a6e22e">scopes</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;webclient&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;mobileclient&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#75715e">//...
+</span><span style="color:#75715e"></span><span style="color:#f92672">}</span>
+</code></pre></div><h2 id="-resource-owner--">配置 Resource Owner  的信息</h2>
+<p>在配置了 Client 的信息后，另外只需配置普通的 Authentication 用户信息就可以了</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java">    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">configure</span><span style="color:#f92672">(</span>AuthenticationManagerBuilder auth<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+        auth<span style="color:#f92672">.</span><span style="color:#a6e22e">inMemoryAuthentication</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
+            <span style="color:#f92672">.</span><span style="color:#a6e22e">withUser</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;user&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">password</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;{noop}password&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">roles</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;USER&#34;</span><span style="color:#f92672">)</span>
+            <span style="color:#f92672">.</span><span style="color:#a6e22e">and</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
+            <span style="color:#f92672">.</span><span style="color:#a6e22e">withUser</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;admin&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">password</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;{noop}password&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">roles</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;USER&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;ADMIN&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><h2 id="-rest-">提供 Rest 接口返回用户信息</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java">	<span style="color:#a6e22e">@RequestMapping</span><span style="color:#f92672">(</span>value <span style="color:#f92672">=</span> <span style="color:#f92672">{</span><span style="color:#e6db74">&#34;/user&#34;</span><span style="color:#f92672">}</span><span style="color:#f92672">,</span> produces<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;application/json&#34;</span><span style="color:#f92672">)</span>
+	<span style="color:#66d9ef">public</span> Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> Object<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">user</span><span style="color:#f92672">(</span>OAuth2Authentication user<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> Object<span style="color:#f92672">&gt;</span> userInfo <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+		userInfo<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>
+				<span style="color:#e6db74">&#34;user&#34;</span><span style="color:#f92672">,</span>
+				user<span style="color:#f92672">.</span><span style="color:#a6e22e">getUserAuthentication</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getPrincipal</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+		userInfo<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>
+				<span style="color:#e6db74">&#34;authorities&#34;</span><span style="color:#f92672">,</span>
+				AuthorityUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">authorityListToSet</span><span style="color:#f92672">(</span>user<span style="color:#f92672">.</span><span style="color:#a6e22e">getUserAuthentication</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getAuthorities</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+		<span style="color:#66d9ef">return</span> userInfo<span style="color:#f92672">;</span>
+	<span style="color:#f92672">}</span>
+</code></pre></div><h2 id="-oauth2-">测试 OAuth2 授权服务器</h2>
+<p>使用 Post Man 测试，创建一个 Request，在 <code>Authorization</code> 字段中选择 <code>OAuth 2.0</code>：</p>
+<p><img src="sping-oauth2-authorization-server.assets/image-20201024223552641.png" alt="image-20201024223552641"></p>
+<p>然后点击 <code>get access token</code> ，填入 OAuth2 相关的信息：</p>
+<p><img src="sping-oauth2-authorization-server.assets/image-20201024224954660.png" alt="image-20201024224954660"></p>
+<p>点击 <code> Request Token</code>， 会跳出 <code>Resource Owner</code> 的授权信息：</p>
+<p><img src="sping-oauth2-authorization-server.assets/image-20201024224519454.png" alt="image-20201024224519454"></p>
+<p>输入用户名： “user”，用户名：“password”，点击 “Sign in”</p>
+<p>就可以获取到 Access Token：</p>
+<p><img src="sping-oauth2-authorization-server.assets/image-20201024231829082.png" alt="image-20201024231829082"></p>
+<p>获取到 Access Token 后，就可以通过 Rest 接口获取用户的信息。点击 Use Token 按钮，请求 <code>/user</code> 就可以获取用户信息：</p>
+<p><img src="sping-oauth2-authorization-server.assets/image-20201024231905085.png" alt="image-20201024231905085"></p>
+<p>本文使用的相关代码在 <a href="!https://github.com/ZhuBicen/simple_oauth2/tree/master/oauth2-server">GitHub</a></p>
+<p>另外附上 OAuth2 服务器相关的资源：</p>
+<ol>
+<li><a href="!https://howtodoinjava.com/spring-boot2/oauth2-auth-server/Source">一个 OAuth2 授权服务器的例子：说明文档</a>，代码在 <a href="!https://github.com/lokeshgupta1981/SpringExamples/tree/master/oauth2">github</a></li>
+<li><a href="!https://medium.com/@rameez.s.shaikh/spring-boot-oauth2-authorization-code-grant-beb9b3b589f3">这篇文章讲述 OAuth2 的概念</a></li>
+<li><a href="!https://spring.io/guides/tutorials/spring-boot-oauth2/">Spring Boot 提供的 OAuth2 起步教程</a></li>
+<li><a href="!https://segmentfault.com/a/1190000012275317%EF%BC%8Chttps://www.cnblogs.com/hellxz/p/oauth2_oauthcode_pattern.html">OAuth2 授权码模式实现</a></li>
+<li><a href="!https://raymondhlee.wordpress.com/2014/12/21/implementing-oauth2-with-spring-security/">稍微有点老的文章</a></li>
+<li>[Spring  Security 和 Gateway](! <a href="https://spring.io/blog/2019/08/16/securing-services-with-spring-cloud-gateway">https://spring.io/blog/2019/08/16/securing-services-with-spring-cloud-gateway</a>)</li>
+<li><a href="!https://developer.okta.com/blog/2019/03/12/oauth2-spring-security-guide">有详细操作步骤的一个例子</a></li>
+</ol>
+
+</div>
+
+
+  </div>
+</section><footer class="footer">
+  <div class="content has-text-centered">
+    
+    
+    <p>
+      
+      
+    </p>
+    
+  </div>
+</footer>
+
+
+</body>
+</html>

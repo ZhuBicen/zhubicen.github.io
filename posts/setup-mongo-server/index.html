@@ -94,7 +94,7 @@ systemctl enable mongod.service # For CentOS 8/7 chkconfig mongod on # For CentO
       
       <a class="navbar-item" href="https://zhubicen.github.io/tags/elasticsearch/">
         
-        Elastic search
+        Elasticsearch
         
       </a>
       
@@ -268,12 +268,12 @@ security:
 <pre><code>mongo  -u root -p letmein
 </code></pre><p>你也可以从本机以外连接，使用 <code>--host</code> 选项指定 IP 即可</p>
 <pre><code>mongo --host yourip --port yourport -u root -p letmein
-</code></pre><h2 id="heading-1">备份与恢复</h2>
+</code></pre><h2 id="heading1">备份与恢复</h2>
 <p>可以分别使用 <code>mongodump</code> 和 <code>mongorestore</code> 来备份和恢复mongo 数据</p>
 <pre><code>mongodump --host 10.109.3.110 --port 8080 -u mongo_user -p 123456 --authenticationDatabase techdebt -d techdebt
 
 mongoretore 
-</code></pre><h2 id="heading-2">客户端工具</h2>
+</code></pre><h2 id="heading2">客户端工具</h2>
 <p>推荐使用 <code>robo 3T</code></p>
 
 </div>

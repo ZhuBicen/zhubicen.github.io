@@ -92,7 +92,7 @@
       
       <a class="navbar-item" href="https://zhubicen.github.io/tags/elasticsearch/">
         
-        Elastic search
+        Elasticsearch
         
       </a>
       
@@ -221,7 +221,7 @@
 <div class="content is-medium">
   <h2 id="heading">问题</h2>
 <p>Rocket MQ 的 MessageListener 每次都会收到同样的消息的两个副本，两个消息的 Message Id 是一样的</p>
-<h2 id="heading-1">解决办法</h2>
+<h2 id="heading1">解决办法</h2>
 <p>Message Id 是一样的说明是同一个消息，这是 Rocket MQ 的重试机制的现象。原因是在第一次处理此消息的时候，发生了异常（比如 NullPointerException），导致处理函数异常退出，因此没有返回 <code>CONSUME_SUCCESS</code>, 因此 Rocket MQ 会重新使用此消息回调消息处理函数。重试的次数应该是可以设定的。</p>
 <p>因此在消息回调函数使用 try catch 是有助于发现和调查此类问题的</p>
 <pre><code> consumer.registerMessageListener(new MessageListenerConcurrently() {
