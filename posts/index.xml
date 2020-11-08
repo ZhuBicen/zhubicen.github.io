@@ -12,16 +12,16 @@
     
     
     <item>
-      <title>创建并使用 PostMan 测试 OAuth2 授权服务器</title>
+      <title>使用 Spring 创建 OAuth2 授权服务器</title>
       <link>https://zhubicen.github.io/posts/sping-oauth2-authorization-server/</link>
       <pubDate>Mon, 19 Oct 2020 22:38:45 +0800</pubDate>
       
       <guid>https://zhubicen.github.io/posts/sping-oauth2-authorization-server/</guid>
-      <description>在分布式系统中，授权系统是必不可少的，作为最流行的分布式系统架构之一的 Spring Cloud 提供了对 OAuth2 授权服务器的支持。
-Spring Cloud 对与 OAuth2 的支持都集成在 spring.security.oatuh2 包中，使用 Spring 开发 OAuth2 授权服务器，只需做三件事：
-使用 @EnableAuthorizationServer @RestController @EnableAuthorizationServer @SpringBootApplication public class OauthServerApplication { public static void main(String[] args) { SpringApplication.run(OauthServerApplication.class, args); } } 注册 Client 信息 通过 继承AuthorizationServerConfigurerAdapter 注册 Client 信息，要注册的信息包括：Client ID，Client Secret，授权模式，重定向 URL 以及权限范围。
-其中 client ID 和 Client Secret 用与 Client Authentication
-@Configuration public class Oauth2Config extends AuthorizationServerConfigurerAdapter { //...  @Override public void configure(ClientDetailsServiceConfigurer clients) throws Exception { clients.</description>
+      <description>在分布式系统中，授权系统是必不可少的，作为最流行的分布式系统架构 Spring Cloud 提供了对 OAuth2 授权服务器（OAuth2 Provider）的支持。Spring 对与 OAuth2 Provider 的开发支持可以参看 官方文档。但是但是官方对与 OAuth2 Provider 的支持已经过时（Deprecated，但是仍然在发布安全更新），并独立到一个新的项目中：https://github.com/spring-projects-experimental/spring-authorization-server/，但是新的项目还在开发当中，没有正式发布。本文仍然基于老的开发方式进行讲解
+Spring Cloud 对与 OAuth2 的支持都集成在 spring.security.oatuh2 包中，使用 Spring 开发 OAuth2 授权服务器，主要需要四个步骤：
+1. 使用 @EnableAuthorizationServer 注解 该注解会启用 /oauth/authorization 和 /oauth/token 端点，用于获取授权码和 Token
+@RestController @EnableAuthorizationServer @SpringBootApplication public class OauthServerApplication { public static void main(String[] args) { SpringApplication.run(OauthServerApplication.class, args); } } 2. 注册 Client 信息 通过继承AuthorizationServerConfigurerAdapter 注册 Client 信息，要注册的信息包括：Client ID，Client Secret，授权模式，重定向 URL 以及权限范围。
+其中 client ID 和 Client Secret 用与 Client Authentication</description>
     </item>
     
     <item>
