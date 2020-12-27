@@ -2,7 +2,7 @@
 title: "CORS 和 Preflight Request"
 date: 2020-05-26T13:28:26+08:00
 draft: false
-tags: [JavaScript]
+tags: [JavaScript, Java]
 ---
 
 对于`非简单请求` 或者初次请求失败后，浏览器会使用 `options` 方法发起 `preflight request'

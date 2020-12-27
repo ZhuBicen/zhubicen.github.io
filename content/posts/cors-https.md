@@ -2,7 +2,7 @@
 title: "一个和 HTTPS  相关的 CORS 异常"
 date: 2020-12-27T13:34:51+08:00
 draft: false
-tags: [Java]
+tags: [Java, JavaScript]
 ---
 
 CORS 的配置在前后端分离的开发模式下非常的常见，因此也就比较熟悉了，但是今天，在各种 cors 配置没有变化的前提下，CORS  的错误又出现了（老实说，这个提示有一定的误导性，没有非常明确的指明问题的根本原因）
