@@ -9,11 +9,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>
     
-    Tags
-    
+    一个和 HTTPS  相关的 CORS 异常
+     | 阿碧 
   </title>
   <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.eb4797a608f467160f71b5cc518dffb9b3fef0edc95e6def8dc4033ba1888b8f414e3d1d3e6c9804ca3e6f125539d8af48b28dcecb4eafc5805bde0b3c8d6956.css' integrity='sha512-60eXpgj0ZxYPcbXMUY3/ubP&#43;8O3JXm3vjcQDO6GIi49BTj0dPmyYBMo&#43;bxJVOdivSLKNzstOr8WAW94LPI1pVg=='>
-  <link rel="canonical" href="https://zhubicen.github.io/tags/">
+  <link rel="canonical" href="https://zhubicen.github.io/posts/cors-https/">
   <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
   <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -22,13 +22,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer">
 <meta name="author" content="阿碧">
-<meta name="description" content="A programmer">
+<meta name="description" content="CORS 的配置在前后端分离的开发模式下非常的常见，因此也就比较熟悉了，但是今天，在各种 cors 配置没有变化的前提下，CORS 的错误又出现了（老实说，这个提示有一定的误导性，没有非常明确的指明问题的根本原因）
+CORS 的配置在前后端分离的开发模式下非常的常见，因此也就比较熟悉了，但是今天，在各种 CORS 配置没有变化的前提下，CORS 的错误又出现了（老实说，这个提示有一定的误导性，没有非常明确的指明问题的根本原因）
+虽然觉得 CORS 的配置不会出现问题，最近也没有做相关代码的改动，还是硬着头皮检查了一遍，又反复尝试了全局和局部的 CORS 配置，但是错误依旧
+再次检查浏览器请求历史（需要使用 all选项， 只是选择 XHR 不会看到 OPTIONS 请求）
+从上面的截图看，OPTIONS 返回 400，bad request ，并没有给出具体的原因，直到我手工试了 OPTIONS 请求后，才发现了问题所在，这里的错误提示就比较准确了，和 TLS 也就是 HTTPS 相关，终于想到我可能是不小心（因为最近启用了配置中心，造成了误操作）启用了 HTTPS 但是依然使用 HTTP 来请求">
 
-<meta property="og:title" content="Tags" />
-<meta property="og:description" content="A programmer" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://zhubicen.github.io/tags/" />
-<meta property="og:updated_time" content="2020-12-27T13:34:51+08:00" />
+<meta property="og:title" content="一个和 HTTPS  相关的 CORS 异常" />
+<meta property="og:description" content="CORS 的配置在前后端分离的开发模式下非常的常见，因此也就比较熟悉了，但是今天，在各种 cors 配置没有变化的前提下，CORS 的错误又出现了（老实说，这个提示有一定的误导性，没有非常明确的指明问题的根本原因）
+CORS 的配置在前后端分离的开发模式下非常的常见，因此也就比较熟悉了，但是今天，在各种 CORS 配置没有变化的前提下，CORS 的错误又出现了（老实说，这个提示有一定的误导性，没有非常明确的指明问题的根本原因）
+虽然觉得 CORS 的配置不会出现问题，最近也没有做相关代码的改动，还是硬着头皮检查了一遍，又反复尝试了全局和局部的 CORS 配置，但是错误依旧
+再次检查浏览器请求历史（需要使用 all选项， 只是选择 XHR 不会看到 OPTIONS 请求）
+从上面的截图看，OPTIONS 返回 400，bad request ，并没有给出具体的原因，直到我手工试了 OPTIONS 请求后，才发现了问题所在，这里的错误提示就比较准确了，和 TLS 也就是 HTTPS 相关，终于想到我可能是不小心（因为最近启用了配置中心，造成了误操作）启用了 HTTPS 但是依然使用 HTTP 来请求" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhubicen.github.io/posts/cors-https/" />
+<meta property="article:published_time" content="2020-12-27T13:34:51+08:00" />
+<meta property="article:modified_time" content="2020-12-27T13:34:51+08:00" />
 
 
 </head>
@@ -188,116 +197,39 @@
 <section class="hero is-small is-info is-fullwidth">
   <div class="hero-body">
 <div class="container">
-  <article class="media">
-    <div class="media-content">
-      <h1 class="title">
-        Posts tagged with 
-      </h1>
-    </div>
-  </article>
+  <h1 class="title">
+    一个和 HTTPS  相关的 CORS 异常
+  </h1>
+  <h2 class="subtitle">
+    <time datetime='2020-12-27T13:34:51&#43;08:00'>
+      December 27, 2020
+    </time>
+    
+    <br>
+    
+    
+    
+    <a class="tag is-link" href="https://zhubicen.github.io/tags/java/">Java</a>
+    
+    
+    
+  </h2>
 </div>
 
   </div>
 </section>
 <section class="section">
   <div class="container">
-<div class="posts">
-  
-  <div class="post">
-    <div><a href="https://zhubicen.github.io/tags/java/" class="title is-size-5">Java</a></div>
-    <div class="subtitle is-6">December 27, 2020</div>
-  </div>
-  
-  <div class="post">
-    <div><a href="https://zhubicen.github.io/tags/oauth2/" class="title is-size-5">Oauth2</a></div>
-    <div class="subtitle is-6">October 19, 2020</div>
-  </div>
-  
-  <div class="post">
-    <div><a href="https://zhubicen.github.io/tags/spring/" class="title is-size-5">Spring</a></div>
-    <div class="subtitle is-6">October 19, 2020</div>
-  </div>
-  
-  <div class="post">
-    <div><a href="https://zhubicen.github.io/tags/elasticsearch/" class="title is-size-5">ElasticSearch</a></div>
-    <div class="subtitle is-6">August 24, 2020</div>
-  </div>
-  
-  <div class="post">
-    <div><a href="https://zhubicen.github.io/tags/javascript/" class="title is-size-5">JavaScript</a></div>
-    <div class="subtitle is-6">May 28, 2020</div>
-  </div>
-  
-  <div class="post">
-    <div><a href="https://zhubicen.github.io/tags/c&#43;&#43;20/" class="title is-size-5">C&#43;&#43;20</a></div>
-    <div class="subtitle is-6">March 28, 2020</div>
-  </div>
-  
-  <div class="post">
-    <div><a href="https://zhubicen.github.io/tags/mysql/" class="title is-size-5">MySQL</a></div>
-    <div class="subtitle is-6">March 13, 2020</div>
-  </div>
-  
-  <div class="post">
-    <div><a href="https://zhubicen.github.io/tags/mongodb/" class="title is-size-5">MongoDB</a></div>
-    <div class="subtitle is-6">March 11, 2020</div>
-  </div>
-  
-  <div class="post">
-    <div><a href="https://zhubicen.github.io/tags/c&#43;&#43;/" class="title is-size-5">C&#43;&#43;</a></div>
-    <div class="subtitle is-6">February 26, 2020</div>
-  </div>
-  
-  <div class="post">
-    <div><a href="https://zhubicen.github.io/tags/docker/" class="title is-size-5">Docker</a></div>
-    <div class="subtitle is-6">February 03, 2020</div>
-  </div>
-  
-  <div class="post">
-    <div><a href="https://zhubicen.github.io/tags/spring-cloud/" class="title is-size-5">Spring Cloud</a></div>
-    <div class="subtitle is-6">January 16, 2020</div>
-  </div>
-  
-  <div class="post">
-    <div><a href="https://zhubicen.github.io/tags/chrome/" class="title is-size-5">Chrome</a></div>
-    <div class="subtitle is-6">January 03, 2020</div>
-  </div>
-  
-  <div class="post">
-    <div><a href="https://zhubicen.github.io/tags/books/" class="title is-size-5">books</a></div>
-    <div class="subtitle is-6">December 30, 2019</div>
-  </div>
-  
-  <div class="post">
-    <div><a href="https://zhubicen.github.io/tags/css/" class="title is-size-5">CSS</a></div>
-    <div class="subtitle is-6">December 07, 2019</div>
-  </div>
-  
-  <div class="post">
-    <div><a href="https://zhubicen.github.io/tags/linux/" class="title is-size-5">Linux</a></div>
-    <div class="subtitle is-6">March 01, 2018</div>
-  </div>
-  
-  <div class="post">
-    <div><a href="https://zhubicen.github.io/tags/golang/" class="title is-size-5">golang</a></div>
-    <div class="subtitle is-6">December 02, 2012</div>
-  </div>
-  
-  <div class="post">
-    <div><a href="https://zhubicen.github.io/tags/english/" class="title is-size-5">English</a></div>
-    <div class="subtitle is-6">March 10, 2012</div>
-  </div>
-  
-  <div class="post">
-    <div><a href="https://zhubicen.github.io/tags/emacs/" class="title is-size-5">emacs</a></div>
-    <div class="subtitle is-6">March 09, 2012</div>
-  </div>
-  
-  <div class="post">
-    <div><a href="https://zhubicen.github.io/tags/git/" class="title is-size-5">git</a></div>
-    <div class="subtitle is-6">December 16, 2011</div>
-  </div>
-  
+<div class="content is-medium">
+  <p>CORS 的配置在前后端分离的开发模式下非常的常见，因此也就比较熟悉了，但是今天，在各种 cors 配置没有变化的前提下，CORS  的错误又出现了（老实说，这个提示有一定的误导性，没有非常明确的指明问题的根本原因）</p>
+<p>CORS 的配置在前后端分离的开发模式下非常的常见，因此也就比较熟悉了，但是今天，在各种 CORS 配置没有变化的前提下，CORS 的错误又出现了（老实说，这个提示有一定的误导性，没有非常明确的指明问题的根本原因）</p>
+<p><img src="cors-https.assets/image-20201227134158357.png" alt="image-20201227134158357"></p>
+<p>虽然觉得 CORS 的配置不会出现问题，最近也没有做相关代码的改动，还是硬着头皮检查了一遍，又反复尝试了全局和局部的 CORS 配置，但是错误依旧</p>
+<p>再次检查浏览器请求历史（需要使用 all选项， 只是选择 XHR  不会看到 OPTIONS 请求）</p>
+<p><img src="cors-https.assets/image-20201227134907651.png" alt="image-20201227134907651"></p>
+<p>从上面的截图看，OPTIONS 返回 400，bad request ，并没有给出具体的原因，直到我手工试了 OPTIONS 请求后，才发现了问题所在，这里的错误提示就比较准确了，和 TLS 也就是 HTTPS 相关，终于想到我可能是不小心（因为最近启用了配置中心，造成了误操作）启用了 HTTPS 但是依然使用 HTTP 来请求</p>
+<p><img src="cors-https.assets/image-20201227134924325.png" alt="image-20201227134924325"></p>
+
 </div>
 
 
