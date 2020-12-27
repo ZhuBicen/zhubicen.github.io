@@ -5,7 +5,7 @@ draft: false
 tags: [Spring, OAuth2]
 ---
 
-在分布式系统中，授权系统是必不可少的，作为最流行的分布式系统架构 Spring Cloud 提供了对 OAuth2 授权服务器（OAuth2 Provider）的支持。Spring 对与 OAuth2 Provider 的开发支持可以参看 [官方文档](!https://projects.spring.io/spring-security-oauth/docs/oauth2.html)。但是但是官方对与 OAuth2 Provider 的支持已经过时（Deprecated，但是仍然在发布安全更新），并独立到一个新的项目中：https://github.com/spring-projects-experimental/spring-authorization-server/，但是新的项目还在开发当中，没有正式发布。本文仍然基于老的开发方式进行讲解
+在分布式系统中，授权系统是必不可少的，作为最流行的分布式系统架构 Spring Cloud 提供了对 OAuth2 授权服务器（OAuth2 Provider）的支持。Spring 对与 OAuth2 Provider 的开发支持可以参看 [官方文档](https://projects.spring.io/spring-security-oauth/docs/oauth2.html)。但是但是官方对与 OAuth2 Provider 的支持已经过时（Deprecated，但是仍然在发布安全更新），并独立到一个新的项目中：https://github.com/spring-projects-experimental/spring-authorization-server/，但是新的项目还在开发当中，没有正式发布。本文仍然基于老的开发方式进行讲解
 
 Spring Cloud 对与 OAuth2 的支持都集成在 `spring.security.oatuh2` 包中，使用 Spring 开发 OAuth2 授权服务器，主要需要四个步骤：
 
@@ -76,7 +76,7 @@ public class Oauth2Config extends AuthorizationServerConfigurerAdapter {
 	}
 ```
 
-完整的项目代码放在了 [GitHub](!https://github.com/ZhuBicen/simple_oauth2/tree/master/oauth2-server)上，下面来测试授权服务器：
+完整的项目代码放在了 [GitHub](https://github.com/ZhuBicen/simple_oauth2/tree/master/oauth2-server)上，下面来测试授权服务器：
 
 ## 测试 OAuth2 授权服务器
 
@@ -105,11 +105,11 @@ public class Oauth2Config extends AuthorizationServerConfigurerAdapter {
 
 另外附上 OAuth2 服务器相关的资源：
 
-1. [一个 OAuth2 授权服务器的例子：说明文档](!https://howtodoinjava.com/spring-boot2/oauth2-auth-server/Source )，代码在 [github](!https://github.com/lokeshgupta1981/SpringExamples/tree/master/oauth2)
-2. [这篇文章讲述 OAuth2 的概念](!https://medium.com/@rameez.s.shaikh/spring-boot-oauth2-authorization-code-grant-beb9b3b589f3)
-3. [Spring Boot 提供的 OAuth2 起步教程](!https://spring.io/guides/tutorials/spring-boot-oauth2/)
-4. [OAuth2 授权码模式实现](!https://segmentfault.com/a/1190000012275317，https://www.cnblogs.com/hellxz/p/oauth2_oauthcode_pattern.html)
-5. [稍微有点老的文章](!https://raymondhlee.wordpress.com/2014/12/21/implementing-oauth2-with-spring-security/)
-6. [Spring  Security 和 Gateway](! https://spring.io/blog/2019/08/16/securing-services-with-spring-cloud-gateway)
-7. [有详细操作步骤的一个例子](!https://developer.okta.com/blog/2019/03/12/oauth2-spring-security-guide)
+1. [一个 OAuth2 授权服务器的例子：说明文档](https://howtodoinjava.com/spring-boot2/oauth2-auth-server/Source )，代码在 [github](https://github.com/lokeshgupta1981/SpringExamples/tree/master/oauth2)
+2. [这篇文章讲述 OAuth2 的概念](https://medium.com/@rameez.s.shaikh/spring-boot-oauth2-authorization-code-grant-beb9b3b589f3)
+3. [Spring Boot 提供的 OAuth2 起步教程](https://spring.io/guides/tutorials/spring-boot-oauth2/)
+4. [OAuth2 授权码模式实现](https://segmentfault.com/a/1190000012275317，https://www.cnblogs.com/hellxz/p/oauth2_oauthcode_pattern.html)
+5. [稍微有点老的文章](https://raymondhlee.wordpress.com/2014/12/21/implementing-oauth2-with-spring-security/)
+6. [Spring  Security 和 Gateway](https://spring.io/blog/2019/08/16/securing-services-with-spring-cloud-gateway)
+7. [有详细操作步骤的一个例子](https://developer.okta.com/blog/2019/03/12/oauth2-spring-security-guide)
 
