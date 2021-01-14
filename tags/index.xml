@@ -6,10 +6,19 @@
     <description>Recent content in Tags on quick start</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 27 Dec 2020 13:34:51 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 14 Jan 2021 21:34:39 +0800</lastBuildDate>
     
 	<atom:link href="https://zhubicen.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>git</title>
+      <link>https://zhubicen.github.io/tags/git/</link>
+      <pubDate>Thu, 14 Jan 2021 21:34:39 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/tags/git/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Java</title>
@@ -17,6 +26,15 @@
       <pubDate>Sun, 27 Dec 2020 13:34:51 +0800</pubDate>
       
       <guid>https://zhubicen.github.io/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>JavaScript</title>
+      <link>https://zhubicen.github.io/tags/javascript/</link>
+      <pubDate>Sun, 27 Dec 2020 13:34:51 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/tags/javascript/</guid>
       <description></description>
     </item>
     
@@ -39,20 +57,11 @@
     </item>
     
     <item>
-      <title>ElasticSearch</title>
+      <title>Elasticsearch</title>
       <link>https://zhubicen.github.io/tags/elasticsearch/</link>
       <pubDate>Mon, 24 Aug 2020 19:12:14 +0800</pubDate>
       
       <guid>https://zhubicen.github.io/tags/elasticsearch/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>JavaScript</title>
-      <link>https://zhubicen.github.io/tags/javascript/</link>
-      <pubDate>Thu, 28 May 2020 11:06:17 +0800</pubDate>
-      
-      <guid>https://zhubicen.github.io/tags/javascript/</guid>
       <description></description>
     </item>
     
@@ -170,15 +179,6 @@
       <pubDate>Fri, 09 Mar 2012 17:52:27 +0800</pubDate>
       
       <guid>https://zhubicen.github.io/tags/emacs/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>git</title>
-      <link>https://zhubicen.github.io/tags/git/</link>
-      <pubDate>Fri, 16 Dec 2011 13:43:27 +0800</pubDate>
-      
-      <guid>https://zhubicen.github.io/tags/git/</guid>
       <description></description>
     </item>
     
