@@ -29,3 +29,6 @@ git stash // Just in case you have local changes that would be dropped if you do
 git fetch
 git reset —-hard origin/this_other_branch
 ```
+
+https://medium.com/@catalinaturlea/clean-git-history-a-step-by-step-guide-eefc0ad8696d
+
