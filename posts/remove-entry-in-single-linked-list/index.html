@@ -88,7 +88,7 @@ void remove_list_entry(entry) { prev = NULL; walk = head; // walk the list to fi
       
       <a class="navbar-item" href="https://zhubicen.github.io/tags/elasticsearch/">
         
-        Elasticsearch
+        Elastic search
         
       </a>
       
@@ -148,7 +148,7 @@ void remove_list_entry(entry) { prev = NULL; walk = head; // walk the list to fi
       
       <a class="navbar-item" href="https://zhubicen.github.io/tags/oauth2/">
         
-        O auth2
+        Oauth2
         
       </a>
       
@@ -161,6 +161,12 @@ void remove_list_entry(entry) { prev = NULL; walk = head; // walk the list to fi
       <a class="navbar-item" href="https://zhubicen.github.io/tags/spring-cloud/">
         
         Spring cloud
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/sprint-cloud/">
+        
+        Sprint cloud
         
       </a>
       
@@ -235,7 +241,7 @@ void remove_list_entry(entry) { prev = NULL; walk = head; // walk the list to fi
       prev<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next <span style="color:#f92672">=</span> entry<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;
    }
 }
-</code></pre></div><h2 id="heading1">推荐手法</h2>
+</code></pre></div><h2 id="heading-1">推荐手法</h2>
 <p><code>indirect</code> 指针指向的是 <code>next</code> 指针的地址，对于<code>head</code>节点来说，指向的是 <code>head</code>的地址。因此<code>indirect</code> 在改算法中实际上扮演的是常规算法中<code>prev</code>的角色，只不过由于<code>head</code>变量的存在，是的 <code>indirect</code>所指向的指针不可能为空，因此避免了一个多余的条件判断。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">remove_list_entry</span>(entry) {
   <span style="color:#75715e">// The &#39;indirect&#39; pointer points to the *addres* of the thing we update
@@ -250,7 +256,7 @@ void remove_list_entry(entry) { prev = NULL; walk = head; // walk the list to fi
 </span><span style="color:#75715e"></span>  <span style="color:#f92672">*</span>indirect <span style="color:#f92672">=</span> entry<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;
 }
 </code></pre></div><p><img src="remove-entry-in-single-linked-list.assets/1582683885013.png" alt="1582683885013"></p>
-<h2 id="heading2">第三种手法</h2>
+<h2 id="heading-2">第三种手法</h2>
 <p>增加占位（Dummy）的<code>head</code>节点，使链表不为空</p>
 <pre><code>void remove_list_entry(entry)
 {

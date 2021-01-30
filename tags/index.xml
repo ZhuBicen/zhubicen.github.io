@@ -6,10 +6,28 @@
     <description>Recent content in Tags on quick start</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 14 Jan 2021 21:34:39 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 30 Jan 2021 11:00:53 +0800</lastBuildDate>
     
 	<atom:link href="https://zhubicen.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Spring</title>
+      <link>https://zhubicen.github.io/tags/spring/</link>
+      <pubDate>Sat, 30 Jan 2021 11:00:53 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/tags/spring/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sprint Cloud</title>
+      <link>https://zhubicen.github.io/tags/sprint-cloud/</link>
+      <pubDate>Sat, 30 Jan 2021 11:00:53 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/tags/sprint-cloud/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>git</title>
@@ -39,7 +57,7 @@
     </item>
     
     <item>
-      <title>OAuth2</title>
+      <title>Oauth2</title>
       <link>https://zhubicen.github.io/tags/oauth2/</link>
       <pubDate>Mon, 19 Oct 2020 22:38:45 +0800</pubDate>
       
@@ -48,16 +66,7 @@
     </item>
     
     <item>
-      <title>Spring</title>
-      <link>https://zhubicen.github.io/tags/spring/</link>
-      <pubDate>Mon, 19 Oct 2020 22:38:45 +0800</pubDate>
-      
-      <guid>https://zhubicen.github.io/tags/spring/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Elasticsearch</title>
+      <title>ElasticSearch</title>
       <link>https://zhubicen.github.io/tags/elasticsearch/</link>
       <pubDate>Mon, 24 Aug 2020 19:12:14 +0800</pubDate>
       

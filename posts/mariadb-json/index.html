@@ -90,7 +90,7 @@ MariaDB [test]&gt; describe t; &#43;-------&#43;----------&#43;------&#43;-----&
       
       <a class="navbar-item" href="https://zhubicen.github.io/tags/elasticsearch/">
         
-        Elasticsearch
+        Elastic search
         
       </a>
       
@@ -150,7 +150,7 @@ MariaDB [test]&gt; describe t; &#43;-------&#43;----------&#43;------&#43;-----&
       
       <a class="navbar-item" href="https://zhubicen.github.io/tags/oauth2/">
         
-        O auth2
+        Oauth2
         
       </a>
       
@@ -163,6 +163,12 @@ MariaDB [test]&gt; describe t; &#43;-------&#43;----------&#43;------&#43;-----&
       <a class="navbar-item" href="https://zhubicen.github.io/tags/spring-cloud/">
         
         Spring cloud
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/sprint-cloud/">
+        
+        Sprint cloud
         
       </a>
       
@@ -275,7 +281,7 @@ MariaDB [test]&gt; select * from products;
 |  3 | Pingpong | 18.00 |    15 | {&quot;colour&quot;: &quot;red&quot;}   | red        |
 +----+----------+-------+-------+---------------------+------------+
 2 rows in set (0.001 sec)
-</code></pre><h2 id="-json-1">更新 JSON 数据</h2>
+</code></pre><h2 id="-json--1">更新 JSON 数据</h2>
 <pre><code>MariaDB [test]&gt; update products set attribute = JSON_REPLACE(attribute, '$.colour', 'green') where name = 'Pingpong';
 Query OK, 1 row affected (0.019 sec)
 Rows matched: 1  Changed: 1  Warnings: 0

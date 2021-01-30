@@ -6,10 +6,22 @@
     <description>Recent content on quick start</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 14 Jan 2021 21:34:39 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 30 Jan 2021 11:00:53 +0800</lastBuildDate>
     
 	<atom:link href="https://zhubicen.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Sprint Cloud Gateway</title>
+      <link>https://zhubicen.github.io/posts/gateway/</link>
+      <pubDate>Sat, 30 Jan 2021 11:00:53 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/gateway/</guid>
+      <description>最近有这么一个需求，使用 Spring CLoud Gateway 把以 /exchange/ 开头的请求转发到一个服务器，以 /reservation/ 开头的请求转发到另外一个服务器，很自然的使用下面的配置文件：
+spring: cloud: gateway: routes: - id: exchange uri: http://localhost:8002/ predicates: - Path=/exchange/** - id: reservation uri: http://localhost:8003/ predicates: - Path=/reservation/** 这里直接 hardcode 了相关的 URL（包括 IP 和端口），测试没有问题。由于项目中还用了 NACOS 作为服务注册于发现中心，因此不能直接 Hardcode URL，需要使用 Load Balance 的方式。根据自己的印象改成了下面这样：
+spring: cloud: gateway: routes: - id: exchange uri: lb://localhost:8002/ predicates: - Path=/exchange/** - id: reservation uri: lb://localhost:8003/ predicates: - Path=/reservation/** 上面的配置文件犯了两个错误，一个是没有使用服务名，服务名是注册在服务发现中心的名字，另一个是使用了端口号，gateway 使用服务名获取对应服务的IP和端口，所以这里是不需要端口号的，因此正确的配置文件如下，exchange 和 reservation 都是服务名：
+spring: cloud: gateway: routes: - id: exchange uri: lb://exchange predicates: - Path=/exchange/** - id: reservation uri: lb://reservation predicates: - Path=/reservation/** </description>
+    </item>
     
     <item>
       <title>Gitlab Merge Request 的三个选项</title>
@@ -21,7 +33,7 @@
  选项 1 (merge commit)，只有源分支会被测试，因此 master 上有被破坏的风险。 选项 2 (Merge commit with semi-linear history)，除了测试源分支外，还会测试合并后的节点，因此 master 分支会比较安全，但是会浪费比较多的测试时间，同时开发人员需要进行 rebase。 选项 3 (Fast-Forward merge) 的测试策略和第一第二是一样的  选项 2 和选项 3 只是生成的 commit history 会不同
 以下的三个图，分别对应上面的三个选项生成的 commit history
 选项 1 为 gitlab 的默认选项，选项 2 和选项 3 一般会要求开发人员 rebase，在 gitlab 上做了 merge request 的 rebase 后，如果还需要进一部在本地编辑。如果在本地分支 git pull 后会产生一个新的 merge commit 并可能会产生冲突。这个问题可以如下解决：
-git checkout this_other_branch git stash // Just in case you have local changes that would be dropped if you dont stash them git fetch git reset —-hard origin/this_other_branch https://medium.</description>
+git checkout this_other_branch git stash // Just in case you have local changes that would be dropped if you dont stash them git fetch git reset —-hard origin/this_other_branch </description>
     </item>
     
     <item>
