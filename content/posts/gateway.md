@@ -1,8 +1,8 @@
 ---
-title: "Sprint Cloud Gateway"
+title: "Sprint Cloud Gateway 与 NACOS 集成时出现的一个问题"
 date: 2021-01-30T11:00:53+08:00
 draft: false
-tags: [Spring, Sprint Cloud]
+tags: [Spring, Sprint Cloud, NACOS]
 ---
 
 最近有这么一个需求，使用 Spring CLoud Gateway 把以 `/exchange/` 开头的请求转发到一个服务器，以 `/reservation/` 开头的请求转发到另外一个服务器，很自然的使用下面的配置文件：

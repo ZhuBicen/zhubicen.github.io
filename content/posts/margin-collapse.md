@@ -39,7 +39,7 @@ tags: [CSS]
 ```
 可以看到，在 P 元素上设置的上边距竟然跑到了外层的 DIV 外层
 
-![image-20210206143811430](margin-collapse.assets/image-20210206143811430.png)
+![image-20210206143811430](margin-collapse.assets/20210206143811430.png)
 
 如果要避免此种的情况的发生，只需要在 外层元素（比如 Sidebar) 上加上 border（或者 padding) 即可解决：
 
@@ -72,5 +72,6 @@ tags: [CSS]
 
 效果如下，可以看到在 P 的上部，sidebar 的内部已经出现了 10px 的边距
 
-![image-20210206144337261](margin-collapse.assets/image-20210206144337261.png)
+![image-20210206144337261](margin-collapse.assets/20210206144337261.png)
 
+那么问题来了，为什么会有外边距折叠（ margin-collapse）呢，[这篇文章](https://medium.com/@joseph0crick/margin-collapse-in-css-what-why-and-how-328c10e37ca0)给出了一定的解释
