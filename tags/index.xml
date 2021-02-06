@@ -6,10 +6,19 @@
     <description>Recent content in Tags on quick start</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 30 Jan 2021 11:00:53 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 06 Feb 2021 14:26:26 +0800</lastBuildDate>
     
 	<atom:link href="https://zhubicen.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>CSS</title>
+      <link>https://zhubicen.github.io/tags/css/</link>
+      <pubDate>Sat, 06 Feb 2021 14:26:26 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/tags/css/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Spring</title>
@@ -66,7 +75,7 @@
     </item>
     
     <item>
-      <title>ElasticSearch</title>
+      <title>Elasticsearch</title>
       <link>https://zhubicen.github.io/tags/elasticsearch/</link>
       <pubDate>Mon, 24 Aug 2020 19:12:14 +0800</pubDate>
       
@@ -143,15 +152,6 @@
       <pubDate>Mon, 30 Dec 2019 20:45:33 +0800</pubDate>
       
       <guid>https://zhubicen.github.io/tags/books/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>CSS</title>
-      <link>https://zhubicen.github.io/tags/css/</link>
-      <pubDate>Sat, 07 Dec 2019 20:50:35 +0800</pubDate>
-      
-      <guid>https://zhubicen.github.io/tags/css/</guid>
       <description></description>
     </item>
     
