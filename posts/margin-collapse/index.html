@@ -100,7 +100,7 @@
       
       <a class="navbar-item" href="https://zhubicen.github.io/tags/elasticsearch/">
         
-        Elasticsearch
+        Elastic search
         
       </a>
       
@@ -266,7 +266,7 @@
 &lt;/<span style="color:#f92672">body</span>&gt;
 &lt;/<span style="color:#f92672">html</span>&gt;
 </code></pre></div><p>可以看到，在 P 元素上设置的上边距竟然跑到了外层的 DIV 外层</p>
-<p><img src="margin-collapse.assets/image-20210206143811430.png" alt="image-20210206143811430"></p>
+<p><img src="margin-collapse.assets/20210206143811430.png" alt="image-20210206143811430"></p>
 <p>如果要避免此种的情况的发生，只需要在 外层元素（比如 Sidebar) 上加上 border（或者 padding) 即可解决：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
 &lt;<span style="color:#f92672">html</span>&gt;
@@ -293,7 +293,7 @@
 
 
 </code></pre></div><p>效果如下，可以看到在 P 的上部，sidebar 的内部已经出现了 10px 的边距</p>
-<p><img src="margin-collapse.assets/image-20210206144337261.png" alt="image-20210206144337261"></p>
+<p><img src="margin-collapse.assets/20210206144337261.png" alt="image-20210206144337261"></p>
 <p>那么问题来了，为什么会有外边距折叠（ margin-collapse）呢，<a href="https://medium.com/@joseph0crick/margin-collapse-in-css-what-why-and-how-328c10e37ca0">这篇文章</a>给出了一定的解释</p>
 
 </div>
