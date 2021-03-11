@@ -6,10 +6,22 @@
     <description>Recent content on quick start</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 06 Feb 2021 14:26:26 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 11 Mar 2021 09:58:22 +0800</lastBuildDate>
     
 	<atom:link href="https://zhubicen.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>一些小问题记录</title>
+      <link>https://zhubicen.github.io/posts/nacos-http-usage/</link>
+      <pubDate>Thu, 11 Mar 2021 09:58:22 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/nacos-http-usage/</guid>
+      <description>如何从 nacos 获取指定 namespace 下的一个配置 http://yournacoshost:8848/nacos/v1/cs/configs?dataId=security.conf&amp;amp;group=DEFAULT_GROUP&amp;amp;tenant=yournamespace
+在找到文档之前一直尝试 namespace=yournamespace，这里有个概念不一致的地方，这里有叫tenant了
+更多的 open-api 的接口在这里
+在 git bash 中可以使用 ssh key 操作 git，但是 tortoise git 不行 设置 tortoise git 使用默认的 ssh.exe就没问题了 docker pull 提示 Unsupported docker v1 repository request docker pull xxx-docker-prod-local.artifactory-hz1.int.net.xxx.com/xxx-web:test Trying to pull repository xxx-docker-prod-local.artifactory-hz1.int.net.xxx.com/xxx-web ... Pulling repository xxx-docker-prod-local.artifactory-hz1.int.net.xxx.com/xxx-web Error: Status 400 trying to pull repository onelab-web: &amp;quot;{\n \&amp;quot;errors\&amp;quot; : [ {\n \&amp;quot;status\&amp;quot; : 400,\n \&amp;quot;message\&amp;quot; : \&amp;quot;Unsupported docker v1 repository request for &#39;xxx-docker-prod-local&#39;\&amp;quot;\n } ]\n}&amp;quot; 看似 Docker 版本的问题，其实不是，只是没有登录😂。 登录就好，docker login xxx-docker-prod-local.</description>
+    </item>
     
     <item>
       <title>外边距折叠</title>

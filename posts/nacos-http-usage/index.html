@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    
+    一些小问题记录
+     | 阿碧 
+  </title>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.eb4797a608f467160f71b5cc518dffb9b3fef0edc95e6def8dc4033ba1888b8f414e3d1d3e6c9804ca3e6f125539d8af48b28dcecb4eafc5805bde0b3c8d6956.css' integrity='sha512-60eXpgj0ZxYPcbXMUY3/ubP&#43;8O3JXm3vjcQDO6GIi49BTj0dPmyYBMo&#43;bxJVOdivSLKNzstOr8WAW94LPI1pVg=='>
+  <link rel="canonical" href="https://zhubicen.github.io/posts/nacos-http-usage/">
+  <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="阿碧">
+<meta name="description" content="如何从 nacos 获取指定 namespace 下的一个配置 http://yournacoshost:8848/nacos/v1/cs/configs?dataId=security.conf&amp;group=DEFAULT_GROUP&amp;tenant=yournamespace
+在找到文档之前一直尝试 namespace=yournamespace，这里有个概念不一致的地方，这里有叫tenant了
+更多的 open-api 的接口在这里
+在 git bash 中可以使用 ssh key 操作 git，但是 tortoise git 不行 设置 tortoise git 使用默认的 ssh.exe就没问题了 docker pull 提示 Unsupported docker v1 repository request docker pull xxx-docker-prod-local.artifactory-hz1.int.net.xxx.com/xxx-web:test Trying to pull repository xxx-docker-prod-local.artifactory-hz1.int.net.xxx.com/xxx-web ... Pulling repository xxx-docker-prod-local.artifactory-hz1.int.net.xxx.com/xxx-web Error: Status 400 trying to pull repository onelab-web: &quot;{\n \&quot;errors\&quot; : [ {\n \&quot;status\&quot; : 400,\n \&quot;message\&quot; : \&quot;Unsupported docker v1 repository request for &#39;xxx-docker-prod-local&#39;\&quot;\n } ]\n}&quot; 看似 Docker 版本的问题，其实不是，只是没有登录😂。 登录就好，docker login xxx-docker-prod-local.">
+
+<meta property="og:title" content="一些小问题记录" />
+<meta property="og:description" content="如何从 nacos 获取指定 namespace 下的一个配置 http://yournacoshost:8848/nacos/v1/cs/configs?dataId=security.conf&amp;group=DEFAULT_GROUP&amp;tenant=yournamespace
+在找到文档之前一直尝试 namespace=yournamespace，这里有个概念不一致的地方，这里有叫tenant了
+更多的 open-api 的接口在这里
+在 git bash 中可以使用 ssh key 操作 git，但是 tortoise git 不行 设置 tortoise git 使用默认的 ssh.exe就没问题了 docker pull 提示 Unsupported docker v1 repository request docker pull xxx-docker-prod-local.artifactory-hz1.int.net.xxx.com/xxx-web:test Trying to pull repository xxx-docker-prod-local.artifactory-hz1.int.net.xxx.com/xxx-web ... Pulling repository xxx-docker-prod-local.artifactory-hz1.int.net.xxx.com/xxx-web Error: Status 400 trying to pull repository onelab-web: &quot;{\n \&quot;errors\&quot; : [ {\n \&quot;status\&quot; : 400,\n \&quot;message\&quot; : \&quot;Unsupported docker v1 repository request for &#39;xxx-docker-prod-local&#39;\&quot;\n } ]\n}&quot; 看似 Docker 版本的问题，其实不是，只是没有登录😂。 登录就好，docker login xxx-docker-prod-local." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhubicen.github.io/posts/nacos-http-usage/" />
+<meta property="article:published_time" content="2021-03-11T09:58:22+08:00" />
+<meta property="article:modified_time" content="2021-03-11T09:58:22+08:00" />
+
+
+</head>
+<body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      <figure class="image">
+        <img alt="" class="is-rounded" src="https://www.gravatar.com/avatar/a7074f9fedfabb09fc4a6b6973c3f25f?s=128&d=identicon">
+      </figure>
+    </a>
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      quick start
+    </a>
+  </div>
+  
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/books/">
+        
+        Books
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/c&#43;&#43;/">
+        
+        C&#43;&#43;
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/c&#43;&#43;20/">
+        
+        C&#43;&#43;20
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/chrome/">
+        
+        Chrome
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/css/">
+        
+        CSS
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/docker/">
+        
+        Docker
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/elasticsearch/">
+        
+        Elastic search
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/emacs/">
+        
+        Emacs
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/english/">
+        
+        English
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/git/">
+        
+        Git
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/golang/">
+        
+        Golang
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/java/">
+        
+        Java
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/javascript/">
+        
+        Java script
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/linux/">
+        
+        Linux
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/mongodb/">
+        
+        Mongo d b
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/mysql/">
+        
+        My s q l
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/nacos/">
+        
+        NACOS
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/oauth2/">
+        
+        Oauth2
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/spring/">
+        
+        Spring
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/spring-cloud/">
+        
+        Spring cloud
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/sprint-cloud/">
+        
+        Sprint cloud
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/%E5%B0%8F%E9%97%AE%E9%A2%98/">
+        
+        小问题
+        
+      </a>
+      
+    </div>
+    
+    <div class="navbar-end">
+      
+      <a class="navbar-item" href="https://github.com/zhubicen/" rel="noopener" target="_blank">
+        <span class="icon">
+          <img alt="github-circle" src='https://zhubicen.github.io/icons/svg/github-circle.svg'>
+        </span>
+      </a>
+      
+      <a class="navbar-item" href="mailto:zhubicen@gmail.com" target="_blank">
+        <span class="icon">
+          <img alt="email" src='https://zhubicen.github.io/icons/svg/email.svg'>
+        </span>
+      </a>
+      <a class="navbar-item" href="https://zhubicen.github.io/index.xml" target="_blank">
+        <span class="icon">
+          <img alt="rss" src='https://zhubicen.github.io/icons/svg/rss.svg'>
+        </span>
+      </a>
+      
+    </div>
+  </div>
+</nav>
+<section class="hero is-small is-info is-fullwidth">
+  <div class="hero-body">
+<div class="container">
+  <h1 class="title">
+    一些小问题记录
+  </h1>
+  <h2 class="subtitle">
+    <time datetime='2021-03-11T09:58:22&#43;08:00'>
+      March 11, 2021
+    </time>
+    
+    <br>
+    
+    
+    
+    
+    
+  </h2>
+</div>
+
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+<div class="content is-medium">
+  <h2 id="-nacos--namespace-">如何从 nacos 获取指定 namespace 下的一个配置</h2>
+<p><code>http://yournacoshost:8848/nacos/v1/cs/configs?dataId=security.conf&amp;group=DEFAULT_GROUP&amp;tenant=yournamespace</code></p>
+<p>在找到文档之前一直尝试 <code>namespace=yournamespace</code>，这里有个概念不一致的地方，这里有叫<code>tenant</code>了</p>
+<p>更多的 open-api 的接口在<a href="!https://nacos.io/zh-cn/docs/open-api.html">这里</a></p>
+<h2 id="-git-bash--ssh-key--git-tortoise-git-">在 git bash 中可以使用 ssh key 操作 git，但是 tortoise git 不行</h2>
+<p>设置 tortoise git 使用默认的 ssh.exe就没问题了
+<img src="nacos-http-usage.assets/clip_image001.png" alt="tortoise git settings"></p>
+<h2 id="docker-pull--unsupported-docker-v1-repository-request">docker pull 提示 <code>Unsupported docker v1 repository request</code></h2>
+<pre><code>docker pull xxx-docker-prod-local.artifactory-hz1.int.net.xxx.com/xxx-web:test
+Trying to pull repository xxx-docker-prod-local.artifactory-hz1.int.net.xxx.com/xxx-web ...
+Pulling repository xxx-docker-prod-local.artifactory-hz1.int.net.xxx.com/xxx-web
+Error: Status 400 trying to pull repository onelab-web: &quot;{\n  \&quot;errors\&quot; : [ {\n    \&quot;status\&quot; : 400,\n    \&quot;message\&quot; : \&quot;Unsupported docker v1 repository request for 'xxx-docker-prod-local'\&quot;\n  } ]\n}&quot;
+</code></pre><p>看似 Docker 版本的问题，其实不是，只是没有登录😂。 登录就好，<code>docker login xxx-docker-prod-local.artifactory-hz1.int.net.xxx.com</code></p>
+<h2 id="-sed-">使用 sed 替换文件中的字符串</h2>
+<p>使用 <code>-i</code> 选项： <code>sed -i 's/STRING_TO_REPLACE/STRING_TO_REPLACE_IT/g' filename</code></p>
+<h2 id="linux-">Linux 查看占用端口的进程</h2>
+<p><code>lsof -i:8080</code></p>
+<h2 id="-flex-">在一个 flex 容器中，如何使最后一个子对象有对齐</h2>
+<p><code>float: right</code> 是不能用的，因为 <code>float</code> 不能用在 <code>flex-level</code> 的对象上。可以这么做：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css">.<span style="color:#a6e22e">parent</span> {
+	<span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">flex</span>;
+}
+.<span style="color:#a6e22e">child</span> {
+	<span style="color:#66d9ef">margin-left</span>: <span style="color:#66d9ef">auto</span>;
+	<span style="color:#66d9ef">order</span>: <span style="color:#ae81ff">2</span>;
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;parent&#39;</span>&gt;
+	&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;child&#39;</span>&gt; ignore parent&lt;/<span style="color:#f92672">div</span>&gt;
+	&lt;<span style="color:#f92672">div</span>&gt;another child&lt;/<span style="color:#f92672">div</span>&gt;
+&lt;/<span style="color:#f92672">div</span>&gt;
+</code></pre></div><p><a href="!https://css-tricks.com/snippets/css/a-guide-to-flexbox/">更多关于 flex 布局的内容</a></p>
+
+</div>
+
+
+  </div>
+</section><footer class="footer">
+  <div class="content has-text-centered">
+    
+    
+    <p>
+      
+      
+    </p>
+    
+  </div>
+</footer>
+
+
+</body>
+</html>
