@@ -14,7 +14,7 @@ case "$(uname -s)" in
 
    CYGWIN*|MINGW32*|MSYS*|MINGW64*)
      echo 'MS Windows'
-     ./bin/HugoUtils.exe       
+     go run ./bin/HugoUtils.go       
      ;;
 
 

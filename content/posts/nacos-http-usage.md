@@ -14,7 +14,7 @@ tags: [小问题]
 
 ## 在 git bash 中可以使用 ssh key 操作 git，但是 tortoise git 不行
 设置 tortoise git 使用默认的 ssh.exe就没问题了
-![tortoise git settings](nacos-http-usage.assets/clip_image001.png)
+![tortoise git settings](nacos-http-usage.assets/image001.png)
 
 ## docker pull 提示 `Unsupported docker v1 repository request`
 ```
