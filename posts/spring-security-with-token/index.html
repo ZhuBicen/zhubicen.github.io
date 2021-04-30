@@ -279,7 +279,7 @@ Authorization: Bearer &lt;token string&gt; JWT 主要包括三个部分：
 }
 </code></pre></div><h2 id="heading">应用举例</h2>
 <p>在接下来的例子中，我们将创建两个 Rest API， 一个API 是对所用用户开放，另一个私有的 API 仅仅对授权用户开放</p>
-<p>我们使用 <a href="https://start.spring.io/">start.spring.io</a> 来生成应用程序框架，同时选择使用<code>Spring Security</code> <code>Spring Web</code> 依赖。其他的依赖你可以依据需要来选择</p>
+<p>我们使用 <a href="https://start.spring.io/">start.spring.io</a> 来生成应用程序框架，同时选择使用<code>Spring Security` </code>Spring Web` 依赖。其他的依赖你可以依据需要来选择</p>
 <p><img src="spring-security-with-token.assets/image-20200328120010808.png" alt="image-20200328120010808"></p>
 <p>JJWT 提供了Java 对JWT 的支持，因此我们需要吧如下的依赖添加到 pom.xml 中</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;dependency</span><span style="color:#f92672">&gt;</span>
@@ -435,7 +435,7 @@ Authorization: Bearer &lt;token string&gt; JWT 主要包括三个部分：
         response<span style="color:#f92672">.</span><span style="color:#a6e22e">addHeader</span><span style="color:#f92672">(</span>SecurityConstants<span style="color:#f92672">.</span><span style="color:#a6e22e">TOKEN_HEADER</span><span style="color:#f92672">,</span> SecurityConstants<span style="color:#f92672">.</span><span style="color:#a6e22e">TOKEN_PREFIX</span> <span style="color:#f92672">+</span> token<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
-</code></pre></div><h2 id="heading-1">安全配置</h2>
+</code></pre></div><h2 id="heading1">安全配置</h2>
 <p>最后我们需要对 Spring Security 本身进行配置。配置都很简单，我们仅仅需要设置很少的细节：</p>
 <ul>
 <li>密码编码：我们使用了 bcypt</li>
@@ -484,7 +484,7 @@ Authorization: Bearer &lt;token string&gt; JWT 主要包括三个部分：
         <span style="color:#66d9ef">return</span> source<span style="color:#f92672">;</span>
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
-</code></pre></div><h2 id="heading-2">测试</h2>
+</code></pre></div><h2 id="heading2">测试</h2>
 <p>请求公开的 API</p>
 <pre><code>POST http://localhost:8080/api/authenticate?username=user&amp;password=password
 HTTP/1.1 200 
@@ -541,7 +541,7 @@ Date: Sun, 13 Jan 2019 12:27:25 GMT
 }
 
 Response code: 403; Time: 28ms; Content length: 125 bytes
-</code></pre><h2 id="heading-3">结论</h2>
+</code></pre><h2 id="heading3">结论</h2>
 <p>本文的目标是演示如何在 Spring Security 中使用 JWT。这个例子可以使用在你的产品中。另外，在本文中我没有想更深入的探讨 token 的刷新，验证等，或许在后面的文章中将会探讨这些主题</p>
 <p>本文涉及的所有的代码都存放在： <a href="https://github.com/keysh/jwt-security">github 仓库</a></p>
 
