@@ -1,27 +1,9 @@
-cd docs
-git pull origin master
+cd docs || exit 1
+git pull origin master || exit 1
 cd ..
-Hugo
-case "$(uname -s)" in
-   Darwin)
-       echo 'Mac OS X'
-       ./bin/HugoUtils
-     ;;
+./bin/hugo || exit
 
-   Linux)
-     echo 'Linux'
-     ;;
-
-   CYGWIN*|MINGW32*|MSYS*|MINGW64*)
-     echo 'MS Windows'
-     go run ./bin/HugoUtils.go       
-     ;;
-
-
-   *)
-     echo 'Other OS' 
-     ;;
-esac
+go run ./bin/HugoUtils.go || exit 1       
 
 cd docs
 git add *
