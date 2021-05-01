@@ -4,6 +4,7 @@
 
 
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,23 +13,22 @@
     MySQL Timestamp 的时区问题
      | 阿碧 
   </title>
-  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.eb4797a608f467160f71b5cc518dffb9b3fef0edc95e6def8dc4033ba1888b8f414e3d1d3e6c9804ca3e6f125539d8af48b28dcecb4eafc5805bde0b3c8d6956.css' integrity='sha512-60eXpgj0ZxYPcbXMUY3/ubP&#43;8O3JXm3vjcQDO6GIi49BTj0dPmyYBMo&#43;bxJVOdivSLKNzstOr8WAW94LPI1pVg=='>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.d07c1b4f3b7f0e2423ed31c8a7b552418fbe9c9293d0ef36ffdd8c7b91d3cf3bc63b5ecb6d35524034b1057ecea9c26cb0eb255aeb4a4c20572e1754a073247e.css' integrity='sha512-0HwbTzt/DiQj7THIp7VSQY&#43;&#43;nJKT0O82/92Me5HTzzvGO17LbTVSQDSxBX7OqcJssOslWutKTCBXLhdUoHMkfg=='>
   <link rel="canonical" href="https://zhubicen.github.io/posts/mysql-timezone/">
   <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
-  <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="chrome=1">
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="referrer" content="no-referrer">
-<meta name="author" content="阿碧">
-<meta name="description" content="把项目的 Spring Boot 从1.3.5 升级到了 2.2.5，发现一个问题，从数据库里读取的时间都变了。直接使用数据库客户端读取出来的是对的，但是 Java JDBC 读出来的，总是差了几个小时：
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  <meta name="author" content="阿碧">
+  <meta name="description" content="把项目的 Spring Boot 从1.3.5 升级到了 2.2.5，发现一个问题，从数据库里读取的时间都变了。直接使用数据库客户端读取出来的是对的，但是 Java JDBC 读出来的，总是差了几个小时：
 为了简单复现问题，用了一小段代码复现，问题：
 jdbcTemplate.queryForObject(&#34;SELECT * FROM run WHERE run.id=1&#34;, null, (rs, row) -&gt; { System.out.println(rs.getTimestamp(&#34;startTime&#34;)); return &#34;&#34;; }); 直接使用数据库客户端（heidiSQL）读取出来的是： 2020-03-13 15:03:08， 但是 Java 代码读取出来的是： 2020-03-14 04:03:08，相差了 13 个小时
 直接使用 SQL ： SELECT startTime, UNIX_TIMESTAMP(startTime) FROM run WHERE run.sid=6034742;， 查看到的 UNIX_TIMESTAMP 是： 1584082988， 其对应的时间 是：2020-03-13 07:03:08，转化为 GMT&#43;8 即为：2020-03-13 15:03:08， 这也就是我说的数据库客户端读取出来的时间。 由此看来，MYSQL 写如数据库的时间(timestamp)是按 UTC 写入的，文档 确实是这么写的
  MySQL converts TIMESTAMP values from the current time zone to UTC for storage, and back from UTC to the current time zone for retrieval.">
 
-<meta property="og:title" content="MySQL Timestamp 的时区问题" />
+  <meta property="og:title" content="MySQL Timestamp 的时区问题" />
 <meta property="og:description" content="把项目的 Spring Boot 从1.3.5 升级到了 2.2.5，发现一个问题，从数据库里读取的时间都变了。直接使用数据库客户端读取出来的是对的，但是 Java JDBC 读出来的，总是差了几个小时：
 为了简单复现问题，用了一小段代码复现，问题：
 jdbcTemplate.queryForObject(&#34;SELECT * FROM run WHERE run.id=1&#34;, null, (rs, row) -&gt; { System.out.println(rs.getTimestamp(&#34;startTime&#34;)); return &#34;&#34;; }); 直接使用数据库客户端（heidiSQL）读取出来的是： 2020-03-13 15:03:08， 但是 Java 代码读取出来的是： 2020-03-14 04:03:08，相差了 13 个小时
@@ -38,7 +38,6 @@ jdbcTemplate.queryForObject(&#34;SELECT * FROM run WHERE run.id=1&#34;, null, (r
 <meta property="og:url" content="https://zhubicen.github.io/posts/mysql-timezone/" />
 <meta property="article:published_time" content="2020-03-13T16:09:17+08:00" />
 <meta property="article:modified_time" content="2020-03-13T16:09:17+08:00" />
-
 
 </head>
 <body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
@@ -148,7 +147,7 @@ jdbcTemplate.queryForObject(&#34;SELECT * FROM run WHERE run.id=1&#34;, null, (r
       
       <a class="navbar-item" href="https://zhubicen.github.io/tags/mysql/">
         
-        My s q l
+        My sql
         
       </a>
       
@@ -192,17 +191,13 @@ jdbcTemplate.queryForObject(&#34;SELECT * FROM run WHERE run.id=1&#34;, null, (r
     
     <div class="navbar-end">
       
-      <a class="navbar-item" href="https://github.com/zhubicen/" rel="noopener" target="_blank">
-        <span class="icon">
-          <img alt="github-circle" src='https://zhubicen.github.io/icons/svg/github-circle.svg'>
-        </span>
-      </a>
       
       <a class="navbar-item" href="mailto:zhubicen@gmail.com" target="_blank">
         <span class="icon">
           <img alt="email" src='https://zhubicen.github.io/icons/svg/email.svg'>
         </span>
       </a>
+      
       <a class="navbar-item" href="https://zhubicen.github.io/index.xml" target="_blank">
         <span class="icon">
           <img alt="rss" src='https://zhubicen.github.io/icons/svg/rss.svg'>
@@ -212,8 +207,10 @@ jdbcTemplate.queryForObject(&#34;SELECT * FROM run WHERE run.id=1&#34;, null, (r
     </div>
   </div>
 </nav>
-<section class="hero is-small is-info is-fullwidth">
-  <div class="hero-body">
+
+  <section>
+    <section class='hero is-small is-info is-fullwidth'>
+      <div class="hero-body">
 <div class="container">
   <h1 class="title">
     MySQL Timestamp 的时区问题
@@ -239,17 +236,17 @@ jdbcTemplate.queryForObject(&#34;SELECT * FROM run WHERE run.id=1&#34;, null, (r
   </h2>
 </div>
 
-  </div>
-</section>
-<section class="section">
-  <div class="container">
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
 <div class="content is-medium">
   <p>把项目的 Spring Boot 从1.3.5 升级到了 2.2.5，发现一个问题，从数据库里读取的时间都变了。直接使用数据库客户端读取出来的是对的，但是 Java JDBC 读出来的，总是差了几个小时：</p>
 <p>为了简单复现问题，用了一小段代码复现，问题：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java">jdbcTemplate<span style="color:#f92672">.</span><span style="color:#a6e22e">queryForObject</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;SELECT * FROM run WHERE run.id=1&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">,</span> <span style="color:#f92672">(</span>rs<span style="color:#f92672">,</span> row<span style="color:#f92672">)</span> <span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
-			System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>rs<span style="color:#f92672">.</span><span style="color:#a6e22e">getTimestamp</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;startTime&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java">jdbcTemplate<span style="color:#f92672">.</span><span style="color:#a6e22e">queryForObject</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;SELECT * FROM run WHERE run.id=1&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">,</span> <span style="color:#f92672">(</span>rs<span style="color:#f92672">,</span> row<span style="color:#f92672">)</span> <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">{</span>
+			System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>rs<span style="color:#f92672">.</span><span style="color:#a6e22e">getTimestamp</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;startTime&#34;</span><span style="color:#f92672">));</span>
 			<span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">;</span>
-<span style="color:#f92672">}</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">});</span>
 </code></pre></div><p>直接使用数据库客户端（heidiSQL）读取出来的是： 2020-03-13 15:03:08， 但是 Java 代码读取出来的是： 2020-03-14 04:03:08，相差了 13 个小时</p>
 <p>直接使用 SQL ： <code>SELECT startTime, UNIX_TIMESTAMP(startTime) FROM run WHERE run.sid=6034742;</code>， 查看到的 UNIX_TIMESTAMP 是： 1584082988， 其对应的时间 是：2020-03-13 07:03:08，转化为 GMT+8 即为：2020-03-13 15:03:08， 这也就是我说的数据库客户端读取出来的时间。 由此看来，MYSQL 写如数据库的时间(timestamp)是按 UTC 写入的，<a href="https://dev.mysql.com/doc/refman/8.0/en/datetime.html">文档</a> 确实是这么写的</p>
 <blockquote>
@@ -271,8 +268,9 @@ Since version: 3.0.2
 </div>
 
 
-  </div>
-</section><footer class="footer">
+      </div>
+    </section>
+  </section><footer class="footer">
   <div class="content has-text-centered">
     
     

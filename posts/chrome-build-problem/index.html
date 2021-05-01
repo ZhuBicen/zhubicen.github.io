@@ -4,6 +4,7 @@
 
 
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,24 +13,23 @@
     Chrome Build Problem
      | 阿碧 
   </title>
-  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.eb4797a608f467160f71b5cc518dffb9b3fef0edc95e6def8dc4033ba1888b8f414e3d1d3e6c9804ca3e6f125539d8af48b28dcecb4eafc5805bde0b3c8d6956.css' integrity='sha512-60eXpgj0ZxYPcbXMUY3/ubP&#43;8O3JXm3vjcQDO6GIi49BTj0dPmyYBMo&#43;bxJVOdivSLKNzstOr8WAW94LPI1pVg=='>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.d07c1b4f3b7f0e2423ed31c8a7b552418fbe9c9293d0ef36ffdd8c7b91d3cf3bc63b5ecb6d35524034b1057ecea9c26cb0eb255aeb4a4c20572e1754a073247e.css' integrity='sha512-0HwbTzt/DiQj7THIp7VSQY&#43;&#43;nJKT0O82/92Me5HTzzvGO17LbTVSQDSxBX7OqcJssOslWutKTCBXLhdUoHMkfg=='>
   <link rel="canonical" href="https://zhubicen.github.io/posts/chrome-build-problem/">
   <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
-  <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="chrome=1">
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="referrer" content="no-referrer">
-<meta name="author" content="阿碧">
-<meta name="description" content="下载代码前最基本的代理设置：https://blog.csdn.net/siyu77/article/details/50916320 对于 ShadowSocks 代理 https_proxy 也要设置成 http://localhost:1080（注意代理的 url 没有s) gclient sync 失败的问题(Failed to fetch file gs://chromium-gn/a68b194afb05d6a6357cf2e2464136ed7723c305) 如下图，还需要设置 boto 代理
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  <meta name="author" content="阿碧">
+  <meta name="description" content="下载代码前最基本的代理设置：https://blog.csdn.net/siyu77/article/details/50916320 对于 ShadowSocks 代理 https_proxy 也要设置成 http://localhost:1080（注意代理的 url 没有s) gclient sync 失败的问题(Failed to fetch file gs://chromium-gn/a68b194afb05d6a6357cf2e2464136ed7723c305) 如下图，还需要设置 boto 代理
 建立 .poto 文件如下（文件名不重要）
 [Boto] proxy = localhost proxy_port = 1080 然后使用环境变量 NO_AUTH_BOTO_CONFIG 指向 boto 文件的位置 export NO_AUTH_BOTO_CONFIG=C:/path/to/.boto 来源： https://groups.google.com/a/chromium.org/forum/#!topic/chromium-packagers/0eE3oC3lBFw
 另外还有一个 Python Unicode 的问题：https://groups.google.com/a/chromium.org/forum/#!topic/chromium-dev/daWDn2cfSyA 目前（2018/4/5)还是需要手工的合并 Fix: 可能英文版的没有这个问题，所以这个 bug 一直没有合并
 另外我还遇到了执行 “gn gen --ide=vs out\Default” 出错的问题，原因是因为没有安装 10.0.15063 版本的 SDK.
  &quot;/Ic:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include&quot; &quot;/Ic:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt&quot; &quot;/Ic:\program files (x86)\windows kits\10\include\10.0.15063.0\shared&quot; &quot;/Ic:\program files (x86)\windows kits\10\include\10.">
 
-<meta property="og:title" content="Chrome Build Problem" />
+  <meta property="og:title" content="Chrome Build Problem" />
 <meta property="og:description" content="下载代码前最基本的代理设置：https://blog.csdn.net/siyu77/article/details/50916320 对于 ShadowSocks 代理 https_proxy 也要设置成 http://localhost:1080（注意代理的 url 没有s) gclient sync 失败的问题(Failed to fetch file gs://chromium-gn/a68b194afb05d6a6357cf2e2464136ed7723c305) 如下图，还需要设置 boto 代理
 建立 .poto 文件如下（文件名不重要）
 [Boto] proxy = localhost proxy_port = 1080 然后使用环境变量 NO_AUTH_BOTO_CONFIG 指向 boto 文件的位置 export NO_AUTH_BOTO_CONFIG=C:/path/to/.boto 来源： https://groups.google.com/a/chromium.org/forum/#!topic/chromium-packagers/0eE3oC3lBFw
@@ -40,7 +40,6 @@
 <meta property="og:url" content="https://zhubicen.github.io/posts/chrome-build-problem/" />
 <meta property="article:published_time" content="2018-04-05T10:30:44+08:00" />
 <meta property="article:modified_time" content="2018-04-05T10:30:44+08:00" />
-
 
 </head>
 <body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
@@ -150,7 +149,7 @@
       
       <a class="navbar-item" href="https://zhubicen.github.io/tags/mysql/">
         
-        My s q l
+        My sql
         
       </a>
       
@@ -194,17 +193,13 @@
     
     <div class="navbar-end">
       
-      <a class="navbar-item" href="https://github.com/zhubicen/" rel="noopener" target="_blank">
-        <span class="icon">
-          <img alt="github-circle" src='https://zhubicen.github.io/icons/svg/github-circle.svg'>
-        </span>
-      </a>
       
       <a class="navbar-item" href="mailto:zhubicen@gmail.com" target="_blank">
         <span class="icon">
           <img alt="email" src='https://zhubicen.github.io/icons/svg/email.svg'>
         </span>
       </a>
+      
       <a class="navbar-item" href="https://zhubicen.github.io/index.xml" target="_blank">
         <span class="icon">
           <img alt="rss" src='https://zhubicen.github.io/icons/svg/rss.svg'>
@@ -214,8 +209,10 @@
     </div>
   </div>
 </nav>
-<section class="hero is-small is-info is-fullwidth">
-  <div class="hero-body">
+
+  <section>
+    <section class='hero is-small is-info is-fullwidth'>
+      <div class="hero-body">
 <div class="container">
   <h1 class="title">
     Chrome Build Problem
@@ -241,10 +238,10 @@
   </h2>
 </div>
 
-  </div>
-</section>
-<section class="section">
-  <div class="container">
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
 <div class="content is-medium">
   <p>下载代码前最基本的代理设置：https://blog.csdn.net/siyu77/article/details/50916320
 对于 ShadowSocks 代理 https_proxy 也要设置成  http://localhost:1080（注意代理的 url 没有s)
@@ -255,7 +252,7 @@ gclient sync 失败的问题(Failed to fetch file gs://chromium-gn/a68b194afb05d
  proxy_port = 1080 
 </code></pre><p>然后使用环境变量 NO_AUTH_BOTO_CONFIG 指向 boto 文件的位置
 <code>export NO_AUTH_BOTO_CONFIG=C:/path/to/.boto</code>
-来源： <a href="https://groups.google.com/a/chromium.org/forum/#">https://groups.google.com/a/chromium.org/forum/#</a>!topic/chromium-packagers/0eE3oC3lBFw</p>
+来源： <a href="https://groups.google.com/a/chromium.org/forum/#!topic/chromium-packagers/0eE3oC3lBFw">https://groups.google.com/a/chromium.org/forum/#!topic/chromium-packagers/0eE3oC3lBFw</a></p>
 <p>另外还有一个 Python Unicode 的问题：https://groups.google.com/a/chromium.org/forum/#!topic/chromium-dev/daWDn2cfSyA
 目前（2018/4/5)还是需要手工的合并 Fix:
 可能英文版的没有这个问题，所以这个 bug 一直没有合并</p>
@@ -274,8 +271,9 @@ You must have the version 10.0.15063 Windows 10 SDK installed. This can be insta
 </div>
 
 
-  </div>
-</section><footer class="footer">
+      </div>
+    </section>
+  </section><footer class="footer">
   <div class="content has-text-centered">
     
     

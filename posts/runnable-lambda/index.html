@@ -4,6 +4,7 @@
 
 
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,23 +13,22 @@
     Java Functional Interface
      | 阿碧 
   </title>
-  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.eb4797a608f467160f71b5cc518dffb9b3fef0edc95e6def8dc4033ba1888b8f414e3d1d3e6c9804ca3e6f125539d8af48b28dcecb4eafc5805bde0b3c8d6956.css' integrity='sha512-60eXpgj0ZxYPcbXMUY3/ubP&#43;8O3JXm3vjcQDO6GIi49BTj0dPmyYBMo&#43;bxJVOdivSLKNzstOr8WAW94LPI1pVg=='>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.d07c1b4f3b7f0e2423ed31c8a7b552418fbe9c9293d0ef36ffdd8c7b91d3cf3bc63b5ecb6d35524034b1057ecea9c26cb0eb255aeb4a4c20572e1754a073247e.css' integrity='sha512-0HwbTzt/DiQj7THIp7VSQY&#43;&#43;nJKT0O82/92Me5HTzzvGO17LbTVSQDSxBX7OqcJssOslWutKTCBXLhdUoHMkfg=='>
   <link rel="canonical" href="https://zhubicen.github.io/posts/runnable-lambda/">
   <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
-  <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="chrome=1">
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="referrer" content="no-referrer">
-<meta name="author" content="阿碧">
-<meta name="description" content="请看如下的 Java 代码：
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  <meta name="author" content="阿碧">
+  <meta name="description" content="请看如下的 Java 代码：
 class MyClass { public setCalback(Runnable doneCallback) { if (something is done) { doneCallback(); } } }; MyClass mc = new MyClass(); mc.setCallback(() -&gt; { // do other things })  为什么 lambda 可以实现Runnable 接口？
  Runnable 的代码如下， 可以看到他是一个函数式接口 FunctionalInterface，类似的函数是接口，在 Java中还有很多，比如 ActionLisener 和 Comparator
 package java.lang; @FunctionalInterface public interface Runnable { void run(); } 什么是函数是接口？ 函数式接口是一种只有一种方法的接口。具有相同签名的 lambda 函数可以转化为这种接口。
  A functional interface is an interface that contains only one abstract method.">
 
-<meta property="og:title" content="Java Functional Interface" />
+  <meta property="og:title" content="Java Functional Interface" />
 <meta property="og:description" content="请看如下的 Java 代码：
 class MyClass { public setCalback(Runnable doneCallback) { if (something is done) { doneCallback(); } } }; MyClass mc = new MyClass(); mc.setCallback(() -&gt; { // do other things })  为什么 lambda 可以实现Runnable 接口？
  Runnable 的代码如下， 可以看到他是一个函数式接口 FunctionalInterface，类似的函数是接口，在 Java中还有很多，比如 ActionLisener 和 Comparator
@@ -38,7 +38,6 @@ package java.lang; @FunctionalInterface public interface Runnable { void run(); 
 <meta property="og:url" content="https://zhubicen.github.io/posts/runnable-lambda/" />
 <meta property="article:published_time" content="2019-12-22T01:06:03+08:00" />
 <meta property="article:modified_time" content="2019-12-22T01:06:03+08:00" />
-
 
 </head>
 <body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
@@ -148,7 +147,7 @@ package java.lang; @FunctionalInterface public interface Runnable { void run(); 
       
       <a class="navbar-item" href="https://zhubicen.github.io/tags/mysql/">
         
-        My s q l
+        My sql
         
       </a>
       
@@ -192,17 +191,13 @@ package java.lang; @FunctionalInterface public interface Runnable { void run(); 
     
     <div class="navbar-end">
       
-      <a class="navbar-item" href="https://github.com/zhubicen/" rel="noopener" target="_blank">
-        <span class="icon">
-          <img alt="github-circle" src='https://zhubicen.github.io/icons/svg/github-circle.svg'>
-        </span>
-      </a>
       
       <a class="navbar-item" href="mailto:zhubicen@gmail.com" target="_blank">
         <span class="icon">
           <img alt="email" src='https://zhubicen.github.io/icons/svg/email.svg'>
         </span>
       </a>
+      
       <a class="navbar-item" href="https://zhubicen.github.io/index.xml" target="_blank">
         <span class="icon">
           <img alt="rss" src='https://zhubicen.github.io/icons/svg/rss.svg'>
@@ -212,8 +207,10 @@ package java.lang; @FunctionalInterface public interface Runnable { void run(); 
     </div>
   </div>
 </nav>
-<section class="hero is-small is-info is-fullwidth">
-  <div class="hero-body">
+
+  <section>
+    <section class='hero is-small is-info is-fullwidth'>
+      <div class="hero-body">
 <div class="container">
   <h1 class="title">
     Java Functional Interface
@@ -226,23 +223,23 @@ package java.lang; @FunctionalInterface public interface Runnable { void run(); 
   </h2>
 </div>
 
-  </div>
-</section>
-<section class="section">
-  <div class="container">
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
 <div class="content is-medium">
   <p>请看如下的 Java 代码：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyClass</span> <span style="color:#f92672">{</span>
 <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">setCalback</span><span style="color:#f92672">(</span>Runnable doneCallback<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
 		<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>something is done<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-			doneCallback<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+			doneCallback<span style="color:#f92672">();</span>
 		<span style="color:#f92672">}</span>
 	<span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span><span style="color:#f92672">;</span>
-MyClass mc <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MyClass<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-mc<span style="color:#f92672">.</span><span style="color:#a6e22e">setCallback</span><span style="color:#f92672">(</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
+<span style="color:#f92672">};</span>
+MyClass mc <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MyClass<span style="color:#f92672">();</span>
+mc<span style="color:#f92672">.</span><span style="color:#a6e22e">setCallback</span><span style="color:#f92672">(()</span> <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">{</span>
 	<span style="color:#75715e">// do other things
-</span><span style="color:#75715e"></span><span style="color:#f92672">}</span><span style="color:#f92672">)</span>
+</span><span style="color:#75715e"></span><span style="color:#f92672">})</span>
 </code></pre></div><blockquote>
 <p>为什么 <code>lambda</code> 可以实现<code>Runnable</code> 接口？</p>
 </blockquote>
@@ -251,9 +248,9 @@ mc<span style="color:#f92672">.</span><span style="color:#a6e22e">setCallback</s
 
 <span style="color:#a6e22e">@FunctionalInterface</span>
 <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Runnable</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span><span style="color:#f92672">();</span>
 <span style="color:#f92672">}</span>
-</code></pre></div><h2 id="heading">什么是函数是接口？</h2>
+</code></pre></div><h2 id="什么是函数是接口">什么是函数是接口？</h2>
 <p>函数式接口是一种只有一种方法的接口。具有相同签名的 <code>lambda</code> 函数可以转化为这种接口。</p>
 <blockquote>
 <p>A functional interface is an interface that contains only one abstract method. They can have only one functionality to exhibit. From Java 8 onwards, lambda expressions can be used to represent the instance of a functional interface. A functional interface can have any number of default methods. Runnable, ActionListener, Comparable are some of the examples of functional interfaces.</p>
@@ -262,8 +259,9 @@ mc<span style="color:#f92672">.</span><span style="color:#a6e22e">setCallback</s
 </div>
 
 
-  </div>
-</section><footer class="footer">
+      </div>
+    </section>
+  </section><footer class="footer">
   <div class="content has-text-centered">
     
     

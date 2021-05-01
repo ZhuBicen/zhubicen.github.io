@@ -6,10 +6,19 @@
     <description>Recent content in Posts on quick start</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 27 Apr 2021 22:21:31 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 01 May 2021 00:09:31 +0800</lastBuildDate>
     
 	<atom:link href="https://zhubicen.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>My First Post</title>
+      <link>https://zhubicen.github.io/posts/my-first-post/</link>
+      <pubDate>Sat, 01 May 2021 00:09:31 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/my-first-post/</guid>
+      <description>test test2 </description>
+    </item>
     
     <item>
       <title>来，写个 bug  -- 读未初始化的内存</title>
@@ -18,7 +27,7 @@
       
       <guid>https://zhubicen.github.io/posts/letswriteabug/</guid>
       <description>此为《深入理解计算机系统》一书上的示例程序，matvec 函数分配了内存，但是未初始化内存的值，因此 y 指向的内存的值是不确定的。在此段小程序中问题是显而易见的，在大型软件系统中可以能借助与 Valgrind 来检测
-#include &amp;lt;stdlib.h&amp;gt;#include &amp;lt;stdio.h&amp;gt;#define COUNT 3 int* matvec(int A[][COUNT], int* x, int n) { int i, j; int* y = (int*)malloc(n * sizeof(int)); for (int i = 0; i &amp;lt; n; i++) { for (int j = 0; j &amp;lt; n; j++) { y[i] += A[i][j] * x[j]; } } return y; } void main() { int a[COUNT][COUNT] = { {0, 1, 2}, {2, 3, 4}, {4, 5, 6} }; int x[3] = {1, 2, 3}; int* y = matvec(a, x, 3); for (int i = 0; i &amp;lt; COUNT; i++) { printf(&amp;#34;%d &amp;#34;, y[i]); } free(y); } 让我们试试使用 Valgrind，注意 Valgrind 只能检测出使用了未初始化的内存，并且对外部环境造成影响的情况。如果把第 26 行的 去掉 ，则 Valgrind 不会检测出任何问题</description>
+#include &amp;lt;stdlib.h&amp;gt;#include &amp;lt;stdio.h&amp;gt;#define COUNT 3  int* matvec(int A[][COUNT], int* x, int n) { int i, j; int* y = (int*)malloc(n * sizeof(int)); for (int i = 0; i &amp;lt; n; i++) { for (int j = 0; j &amp;lt; n; j++) { y[i] += A[i][j] * x[j]; } } return y; } void main() { int a[COUNT][COUNT] = { {0, 1, 2}, {2, 3, 4}, {4, 5, 6} }; int x[3] = {1, 2, 3}; int* y = matvec(a, x, 3); for (int i = 0; i &amp;lt; COUNT; i++) { printf(&amp;#34;%d &amp;#34;, y[i]); } free(y); } 让我们试试使用 Valgrind，注意 Valgrind 只能检测出使用了未初始化的内存，并且对外部环境造成影响的情况。如果把第 26 行的 去掉 ，则 Valgrind 不会检测出任何问题</description>
     </item>
     
     <item>
@@ -236,11 +245,11 @@ systemctl enable mongod.service # For CentOS 8/7 chkconfig mongod on # For CentO
       
       <guid>https://zhubicen.github.io/posts/c&#43;&#43;20-va_opt/</guid>
       <description>VA_OPT 的特性与宏的可选参数(VA_ARGS)有关，经常配合起来使用，比如宏：
-#define LOG(msg, ...) printf(msg, __VA_ARGS__)LOG(&amp;#34;hello %d\n&amp;#34;, 0); // =&amp;gt; printf(&amp;#34;hello %d&amp;#34;, n) 如上对 LOG 宏的调用是没有问题的，但是如果我们想更灵活一点，如下的调用，就会出现问题：
+#define LOG(msg, ...) printf(msg, __VA_ARGS__) LOG(&amp;#34;hello %d\n&amp;#34;, 0); // =&amp;gt; printf(&amp;#34;hello %d&amp;#34;, n) 如上对 LOG 宏的调用是没有问题的，但是如果我们想更灵活一点，如下的调用，就会出现问题：
 LOG(&amp;#34;hello world&amp;#34;); // =&amp;gt; printf(&amp;#34;hello world,&amp;#34;) 可以看倒展开后多了一个逗号，这样将会导致编译错误。
 现在就是VA_OPT 出场的时候了，LOG 宏可以做如下改造，以使逗号 变为可选
-#define LOG(msg, ...) printf(msg __VA_OPT__(,) __VA_ARGS__)__VA_OPT__ 回根据 __VA_ARGS_ 是否为空来决定 逗号 是否出现，因此可以解决LOG(&amp;quot;hello world&amp;quot;) 的调用问题。完整代码如下：
-#include &amp;lt;stdio.h&amp;gt;#define LOG(msg, ...) printf(msg __VA_OPT__(,) __VA_ARGS__)// #define LOG(msg, ...) printf(msg, __VA_ARGS__)  int main() { LOG(&amp;#34;hello world\n&amp;#34;); // =&amp;gt; printf(&amp;#34;hello world&amp;#34;)  LOG(&amp;#34;hello world\n&amp;#34;, ); // =&amp;gt; printf(&amp;#34;hello world&amp;#34;)  LOG(&amp;#34;hello %d\n&amp;#34;, 0); // =&amp;gt; printf(&amp;#34;hello %d&amp;#34;, n)  // printf(&amp;#34;Hello world&amp;#34;,);  return 0; } 代码已经放在 github 上： https://github.</description>
+#define LOG(msg, ...) printf(msg __VA_OPT__(,) __VA_ARGS__) __VA_OPT__ 回根据 __VA_ARGS_ 是否为空来决定 逗号 是否出现，因此可以解决LOG(&amp;quot;hello world&amp;quot;) 的调用问题。完整代码如下：
+#include &amp;lt;stdio.h&amp;gt;#define LOG(msg, ...) printf(msg __VA_OPT__(,) __VA_ARGS__) // #define LOG(msg, ...) printf(msg, __VA_ARGS__)  int main() { LOG(&amp;#34;hello world\n&amp;#34;); // =&amp;gt; printf(&amp;#34;hello world&amp;#34;)  LOG(&amp;#34;hello world\n&amp;#34;, ); // =&amp;gt; printf(&amp;#34;hello world&amp;#34;)  LOG(&amp;#34;hello %d\n&amp;#34;, 0); // =&amp;gt; printf(&amp;#34;hello %d&amp;#34;, n)  // printf(&amp;#34;Hello world&amp;#34;,);  return 0; } 代码已经放在 github 上： https://github.</description>
     </item>
     
     <item>
@@ -793,7 +802,7 @@ void hello() { std::cout &amp;lt;&amp;lt; &amp;quot;Hello Concurrent Worldn&amp;
       <description>QT4已经是如今QT的主流版本，但是仍然有一些老的项目使用QT3。下面记录一下QT3的编译过程：
 下载源码： 官方提供的QT3源码可以在这里下载到：ftp://ftp.trolltech.no/qt/source/qt-x11-free-3.3.8b.tar.gz 但是其中并没有指明如何编译。SourceForge上有个Q../Free项目，提供了以下下载，方便编译 http://sourceforge.net/projects/qtwin/files/Unofficial%20Qtwin/qt-win-3.3.x-8/qt-3.3.x-p8.7z/download
 编译QT3 用MingW编译QT3是一个漫长的过程。详细请参考这里： http://qtwin.sourceforge.net/qt3-win32/compile-mingw.php
-Making an Application Debuggable The release version of an application doesn&#39;t contain any debugging symbols or other debugging information. During development it is useful to produce a debugging version of the application that has the relevant information. This is easily achieved by adding debug to the CONFIG variable in the project file.
+Making an Application Debuggable The release version of an application doesn&amp;rsquo;t contain any debugging symbols or other debugging information. During development it is useful to produce a debugging version of the application that has the relevant information. This is easily achieved by adding debug to the CONFIG variable in the project file.
 For example:
 CONFIG += qt debug HEADERS += hello.h SOURCES += hello.</description>
     </item>

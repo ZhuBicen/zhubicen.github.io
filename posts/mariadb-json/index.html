@@ -4,6 +4,7 @@
 
 
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,21 +13,20 @@
     MariaDB 中的 JSON 数据类型
      | 阿碧 
   </title>
-  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.eb4797a608f467160f71b5cc518dffb9b3fef0edc95e6def8dc4033ba1888b8f414e3d1d3e6c9804ca3e6f125539d8af48b28dcecb4eafc5805bde0b3c8d6956.css' integrity='sha512-60eXpgj0ZxYPcbXMUY3/ubP&#43;8O3JXm3vjcQDO6GIi49BTj0dPmyYBMo&#43;bxJVOdivSLKNzstOr8WAW94LPI1pVg=='>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.d07c1b4f3b7f0e2423ed31c8a7b552418fbe9c9293d0ef36ffdd8c7b91d3cf3bc63b5ecb6d35524034b1057ecea9c26cb0eb255aeb4a4c20572e1754a073247e.css' integrity='sha512-0HwbTzt/DiQj7THIp7VSQY&#43;&#43;nJKT0O82/92Me5HTzzvGO17LbTVSQDSxBX7OqcJssOslWutKTCBXLhdUoHMkfg=='>
   <link rel="canonical" href="https://zhubicen.github.io/posts/mariadb-json/">
   <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
-  <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="chrome=1">
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="referrer" content="no-referrer">
-<meta name="author" content="阿碧">
-<meta name="description" content="Maria DB 从版本 10.2.7 开始支持 JSON 数据类型，所以可以创建 JSON 类型的列
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  <meta name="author" content="阿碧">
+  <meta name="description" content="Maria DB 从版本 10.2.7 开始支持 JSON 数据类型，所以可以创建 JSON 类型的列
 CREATE TABLE t (j JSON); DESC t; &#43;-------&#43;----------&#43;------&#43;-----&#43;---------&#43;-------&#43; | Field | Type | Null | Key | Default | Extra | &#43;-------&#43;----------&#43;------&#43;-----&#43;---------&#43;-------&#43; | j | longtext | YES | | NULL | | &#43;-------&#43;----------&#43;------&#43;-----&#43;---------&#43;-------&#43; 查看该 table，可以看到 j 列的类型为 longtext ，在 MariaDB 的实现中， JSON 类型为 longtext 类型的别名。
 MariaDB [test]&gt; describe t; &#43;-------&#43;----------&#43;------&#43;-----&#43;---------&#43;-------&#43; | Field | Type | Null | Key | Default | Extra | &#43;-------&#43;----------&#43;------&#43;-----&#43;---------&#43;-------&#43; | j | longtext | YES | | NULL | | &#43;-------&#43;----------&#43;------&#43;-----&#43;---------&#43;-------&#43; 1 row in set (0.">
 
-<meta property="og:title" content="MariaDB 中的 JSON 数据类型" />
+  <meta property="og:title" content="MariaDB 中的 JSON 数据类型" />
 <meta property="og:description" content="Maria DB 从版本 10.2.7 开始支持 JSON 数据类型，所以可以创建 JSON 类型的列
 CREATE TABLE t (j JSON); DESC t; &#43;-------&#43;----------&#43;------&#43;-----&#43;---------&#43;-------&#43; | Field | Type | Null | Key | Default | Extra | &#43;-------&#43;----------&#43;------&#43;-----&#43;---------&#43;-------&#43; | j | longtext | YES | | NULL | | &#43;-------&#43;----------&#43;------&#43;-----&#43;---------&#43;-------&#43; 查看该 table，可以看到 j 列的类型为 longtext ，在 MariaDB 的实现中， JSON 类型为 longtext 类型的别名。
 MariaDB [test]&gt; describe t; &#43;-------&#43;----------&#43;------&#43;-----&#43;---------&#43;-------&#43; | Field | Type | Null | Key | Default | Extra | &#43;-------&#43;----------&#43;------&#43;-----&#43;---------&#43;-------&#43; | j | longtext | YES | | NULL | | &#43;-------&#43;----------&#43;------&#43;-----&#43;---------&#43;-------&#43; 1 row in set (0." />
@@ -34,7 +34,6 @@ MariaDB [test]&gt; describe t; &#43;-------&#43;----------&#43;------&#43;-----&
 <meta property="og:url" content="https://zhubicen.github.io/posts/mariadb-json/" />
 <meta property="article:published_time" content="2020-08-08T17:43:20+08:00" />
 <meta property="article:modified_time" content="2020-08-08T17:43:20+08:00" />
-
 
 </head>
 <body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
@@ -144,7 +143,7 @@ MariaDB [test]&gt; describe t; &#43;-------&#43;----------&#43;------&#43;-----&
       
       <a class="navbar-item" href="https://zhubicen.github.io/tags/mysql/">
         
-        My s q l
+        My sql
         
       </a>
       
@@ -188,17 +187,13 @@ MariaDB [test]&gt; describe t; &#43;-------&#43;----------&#43;------&#43;-----&
     
     <div class="navbar-end">
       
-      <a class="navbar-item" href="https://github.com/zhubicen/" rel="noopener" target="_blank">
-        <span class="icon">
-          <img alt="github-circle" src='https://zhubicen.github.io/icons/svg/github-circle.svg'>
-        </span>
-      </a>
       
       <a class="navbar-item" href="mailto:zhubicen@gmail.com" target="_blank">
         <span class="icon">
           <img alt="email" src='https://zhubicen.github.io/icons/svg/email.svg'>
         </span>
       </a>
+      
       <a class="navbar-item" href="https://zhubicen.github.io/index.xml" target="_blank">
         <span class="icon">
           <img alt="rss" src='https://zhubicen.github.io/icons/svg/rss.svg'>
@@ -208,8 +203,10 @@ MariaDB [test]&gt; describe t; &#43;-------&#43;----------&#43;------&#43;-----&
     </div>
   </div>
 </nav>
-<section class="hero is-small is-info is-fullwidth">
-  <div class="hero-body">
+
+  <section>
+    <section class='hero is-small is-info is-fullwidth'>
+      <div class="hero-body">
 <div class="container">
   <h1 class="title">
     MariaDB 中的 JSON 数据类型
@@ -222,10 +219,10 @@ MariaDB [test]&gt; describe t; &#43;-------&#43;----------&#43;------&#43;-----&
   </h2>
 </div>
 
-  </div>
-</section>
-<section class="section">
-  <div class="container">
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
 <div class="content is-medium">
   <p>Maria DB 从版本 10.2.7 开始支持 JSON 数据类型，所以可以创建 JSON 类型的列</p>
 <pre><code>CREATE TABLE t (j JSON);
@@ -248,15 +245,15 @@ DESC t;
 <pre><code>MariaDB [test]&gt; insert into t values ('invalide');
 ERROR 4025 (23000): CONSTRAINT `t.j` failed for `test`.`t`
 </code></pre><p>在较低的版本上我们也可以使用 <code>JSON_VALID</code> 进行限制</p>
-<h2 id="--json--">创建含有  JSON  类型的表格</h2>
+<h2 id="创建含有--json--类型的表格">创建含有  JSON  类型的表格</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> products(id INTEGER <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> AUTO_INCREMENT,
  name VARCHAR(<span style="color:#ae81ff">255</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
  price DECIMAL(<span style="color:#ae81ff">9</span>,<span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
  stock INTEGER <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
  attribute JSON,
  <span style="color:#66d9ef">CHECK</span> (JSON_VALID(attribute)));
-</code></pre></div><h2 id="-json-">插入 JSON 数据</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> products <span style="color:#66d9ef">VALUES</span>(<span style="color:#66d9ef">NULL</span>, <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Blouse</span><span style="color:#e6db74">&#39;</span>, <span style="color:#ae81ff">17</span>, <span style="color:#ae81ff">15</span>, <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{&#34;colour&#34;: &#34;white&#34;}</span><span style="color:#e6db74">&#39;</span>);
+</code></pre></div><h2 id="插入-json-数据">插入 JSON 数据</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> products <span style="color:#66d9ef">VALUES</span>(<span style="color:#66d9ef">NULL</span>, <span style="color:#e6db74">&#39;Blouse&#39;</span>, <span style="color:#ae81ff">17</span>, <span style="color:#ae81ff">15</span>, <span style="color:#e6db74">&#39;{&#34;colour&#34;: &#34;white&#34;}&#39;</span>);
 </code></pre></div><p>如果插入错误格式（比如少了一个引号）的数据将会引起错误：</p>
 <pre><code>MariaDB [test]&gt; INSERT INTO products VALUES(NULL, 'Blouse', 17, 15, '{&quot;colour&quot;: &quot;white}');
 ERROR 4025 (23000): CONSTRAINT `products.attribute` failed for `test`.`products`
@@ -268,7 +265,7 @@ ERROR 4025 (23000): CONSTRAINT `products.attribute` failed for `test`.`products`
 |  1 | Blouse | 17.00 |    15 | {&quot;colour&quot;: &quot;white&quot;} |
 +----+--------+-------+-------+---------------------+
 1 row in set (0.000 sec)
-</code></pre><h2 id="--json-">为  JSON 列建立索引</h2>
+</code></pre><h2 id="为--json-列建立索引">为  JSON 列建立索引</h2>
 <p>首先让我们再插入一条数据</p>
 <pre><code>MariaDB [test]&gt; INSERT INTO products VALUES(NULL, 'Pingpong', 18, 15, '{&quot;colour&quot;: &quot;red&quot;}');
 Query OK, 1 row affected (0.013 sec)
@@ -282,7 +279,7 @@ MariaDB [test]&gt; select * from products;
 +----+----------+-------+-------+---------------------+
 2 rows in set (0.000 sec)
 </code></pre><p>我们可以使用 color 属性，建立索引</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"> <span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">table</span> products <span style="color:#66d9ef">add</span> attr_color VARCHAR(<span style="color:#ae81ff">32</span>) <span style="color:#66d9ef">as</span> (JSON_VALUE(attribute, <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">$.colour</span><span style="color:#e6db74">&#39;</span>)); 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"> <span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">table</span> products <span style="color:#66d9ef">add</span> attr_color VARCHAR(<span style="color:#ae81ff">32</span>) <span style="color:#66d9ef">as</span> (JSON_VALUE(attribute, <span style="color:#e6db74">&#39;$.colour&#39;</span>)); 
  <span style="color:#66d9ef">create</span> <span style="color:#66d9ef">index</span> products_attr_color_ix <span style="color:#66d9ef">on</span> products(attr_color);
 </code></pre></div><p>可以使用 attr_color 查询：</p>
 <pre><code>MariaDB [test]&gt; SELECT * FROM products WHERE attr_color = 'red' or attr_color = 'white';
@@ -293,7 +290,7 @@ MariaDB [test]&gt; select * from products;
 |  3 | Pingpong | 18.00 |    15 | {&quot;colour&quot;: &quot;red&quot;}   | red        |
 +----+----------+-------+-------+---------------------+------------+
 2 rows in set (0.001 sec)
-</code></pre><h2 id="-json-1">更新 JSON 数据</h2>
+</code></pre><h2 id="更新-json-数据">更新 JSON 数据</h2>
 <pre><code>MariaDB [test]&gt; update products set attribute = JSON_REPLACE(attribute, '$.colour', 'green') where name = 'Pingpong';
 Query OK, 1 row affected (0.019 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
@@ -306,7 +303,7 @@ MariaDB [test]&gt; select * from products;
 |  3 | Pingpong | 18.00 |    15 | {&quot;colour&quot;: &quot;green&quot;} | green      |
 +----+----------+-------+-------+---------------------+------------+
 2 rows in set (0.001 sec)
-</code></pre><h2 id="json-">JSON 函数</h2>
+</code></pre><h2 id="json-函数">JSON 函数</h2>
 <p>此外，除上面用到的 <code>JSON_REPLACE</code>  以外，MariaDB 还提供了20多个函数，可以用于操作 JSON 数据，</p>
 <p>JSON_REMOVE： 用来删除 JSON 中的某个字段，或者数组中的某个元素</p>
 <pre><code>SELECT JSON_REMOVE('{&quot;A&quot;: 1, &quot;B&quot;: 2, &quot;C&quot;: {&quot;D&quot;: 3}}', '$.C');
@@ -360,8 +357,9 @@ MariaDB [test]&gt; select JSON_EXTRACT(@json, '$.name');
 </div>
 
 
-  </div>
-</section><footer class="footer">
+      </div>
+    </section>
+  </section><footer class="footer">
   <div class="content has-text-centered">
     
     

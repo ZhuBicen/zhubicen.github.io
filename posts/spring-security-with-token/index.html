@@ -4,6 +4,7 @@
 
 
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,24 +13,23 @@
     在 Spring Security 中使用 Token
      | 阿碧 
   </title>
-  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.eb4797a608f467160f71b5cc518dffb9b3fef0edc95e6def8dc4033ba1888b8f414e3d1d3e6c9804ca3e6f125539d8af48b28dcecb4eafc5805bde0b3c8d6956.css' integrity='sha512-60eXpgj0ZxYPcbXMUY3/ubP&#43;8O3JXm3vjcQDO6GIi49BTj0dPmyYBMo&#43;bxJVOdivSLKNzstOr8WAW94LPI1pVg=='>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.d07c1b4f3b7f0e2423ed31c8a7b552418fbe9c9293d0ef36ffdd8c7b91d3cf3bc63b5ecb6d35524034b1057ecea9c26cb0eb255aeb4a4c20572e1754a073247e.css' integrity='sha512-0HwbTzt/DiQj7THIp7VSQY&#43;&#43;nJKT0O82/92Me5HTzzvGO17LbTVSQDSxBX7OqcJssOslWutKTCBXLhdUoHMkfg=='>
   <link rel="canonical" href="https://zhubicen.github.io/posts/spring-security-with-token/">
   <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
-  <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="chrome=1">
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="referrer" content="no-referrer">
-<meta name="author" content="阿碧">
-<meta name="description" content="翻译来自于blog
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  <meta name="author" content="阿碧">
+  <meta name="description" content="翻译来自于blog
 对于标准的 Web 应用来说 Spring Security 的默认行为使很方便使用的。它使用基于 cookie 的认证和会话（session）。另外，它还会自动地处理好 CSRF 令牌（避免中间人攻击）。在大部分情况下，你只需要为不同的 route 设定相应的授权，从相应的数据库中读取用户信息即可。
 另一方面，如果你只想创建一些 REST API 为外部的服务（SPA 或者移动应用）使用，你可能不需要 基于 Session 的安全。这正使 JWT（JSON Web Token) 的使用场景。所有的信息都存储在 token 中，基于此就可以创建无需 Session 的服务（Session-Less Server)。
 JWT 需要在每一个 HTTP 请求中携带，因此服务器可以使用 token 中携带的信息认证用户。至与如何携带 token可以有不同的选择。比如 使用 URL 参数 或者 Authorization header:
 Authorization: Bearer &lt;token string&gt; JWT 主要包括三个部分：
  头部 - 主要包括 token 的类型以及使用的 hash 算法 载荷- 主要包括关于用户的信息 签名- 签名用来验证 token 没有被更改过  Token 举例 放在 authorization header 中的 token 大概看起来是这个样子：">
 
-<meta property="og:title" content="在 Spring Security 中使用 Token" />
+  <meta property="og:title" content="在 Spring Security 中使用 Token" />
 <meta property="og:description" content="翻译来自于blog
 对于标准的 Web 应用来说 Spring Security 的默认行为使很方便使用的。它使用基于 cookie 的认证和会话（session）。另外，它还会自动地处理好 CSRF 令牌（避免中间人攻击）。在大部分情况下，你只需要为不同的 route 设定相应的授权，从相应的数据库中读取用户信息即可。
 另一方面，如果你只想创建一些 REST API 为外部的服务（SPA 或者移动应用）使用，你可能不需要 基于 Session 的安全。这正使 JWT（JSON Web Token) 的使用场景。所有的信息都存储在 token 中，基于此就可以创建无需 Session 的服务（Session-Less Server)。
@@ -40,7 +40,6 @@ Authorization: Bearer &lt;token string&gt; JWT 主要包括三个部分：
 <meta property="og:url" content="https://zhubicen.github.io/posts/spring-security-with-token/" />
 <meta property="article:published_time" content="2020-03-23T21:06:06+08:00" />
 <meta property="article:modified_time" content="2020-03-23T21:06:06+08:00" />
-
 
 </head>
 <body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
@@ -150,7 +149,7 @@ Authorization: Bearer &lt;token string&gt; JWT 主要包括三个部分：
       
       <a class="navbar-item" href="https://zhubicen.github.io/tags/mysql/">
         
-        My s q l
+        My sql
         
       </a>
       
@@ -194,17 +193,13 @@ Authorization: Bearer &lt;token string&gt; JWT 主要包括三个部分：
     
     <div class="navbar-end">
       
-      <a class="navbar-item" href="https://github.com/zhubicen/" rel="noopener" target="_blank">
-        <span class="icon">
-          <img alt="github-circle" src='https://zhubicen.github.io/icons/svg/github-circle.svg'>
-        </span>
-      </a>
       
       <a class="navbar-item" href="mailto:zhubicen@gmail.com" target="_blank">
         <span class="icon">
           <img alt="email" src='https://zhubicen.github.io/icons/svg/email.svg'>
         </span>
       </a>
+      
       <a class="navbar-item" href="https://zhubicen.github.io/index.xml" target="_blank">
         <span class="icon">
           <img alt="rss" src='https://zhubicen.github.io/icons/svg/rss.svg'>
@@ -214,8 +209,10 @@ Authorization: Bearer &lt;token string&gt; JWT 主要包括三个部分：
     </div>
   </div>
 </nav>
-<section class="hero is-small is-info is-fullwidth">
-  <div class="hero-body">
+
+  <section>
+    <section class='hero is-small is-info is-fullwidth'>
+      <div class="hero-body">
 <div class="container">
   <h1 class="title">
     在 Spring Security 中使用 Token
@@ -241,10 +238,10 @@ Authorization: Bearer &lt;token string&gt; JWT 主要包括三个部分：
   </h2>
 </div>
 
-  </div>
-</section>
-<section class="section">
-  <div class="container">
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
 <div class="content is-medium">
   <p>翻译来自于<a href="https://jakublesko.com/spring-security-with-jwt/"><em>blog</em></a></p>
 <p>对于标准的 Web 应用来说 Spring Security 的默认行为使很方便使用的。它使用基于 cookie 的认证和会话（session）。另外，它还会自动地处理好 CSRF 令牌（避免中间人攻击）。在大部分情况下，你只需要为不同的 route 设定相应的授权，从相应的数据库中读取用户信息即可。</p>
@@ -257,7 +254,7 @@ Authorization: Bearer &lt;token string&gt; JWT 主要包括三个部分：
 <li>载荷- 主要包括关于用户的信息</li>
 <li>签名- 签名用来验证 token 没有被更改过</li>
 </ol>
-<h2 id="token-">Token 举例</h2>
+<h2 id="token-举例">Token 举例</h2>
 <p>放在 <code>authorization header</code> 中的 token 大概看起来是这个样子：</p>
 <pre><code>Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJzZWN1cmUtYXBpIiwiYXVkIjoic2VjdXJlLWFwcCIsInN1YiI6InVzZXIiLCJleHAiOjE1NDgyNDI1ODksInJvbCI6WyJST0xFX1VTRVIiXX0.GzUPUWStRofrWI9Ctfv2h-XofGZwcOog9swtuqg1vSkA8kDWLcY3InVgmct7rq4ZU3lxI6CGupNgSazypHoFOA
 
@@ -277,27 +274,27 @@ Authorization: Bearer &lt;token string&gt; JWT 主要包括三个部分：
     <span style="color:#e6db74">&#34;ROLE_USER&#34;</span>
   ]
 }
-</code></pre></div><h2 id="heading">应用举例</h2>
+</code></pre></div><h2 id="应用举例">应用举例</h2>
 <p>在接下来的例子中，我们将创建两个 Rest API， 一个API 是对所用用户开放，另一个私有的 API 仅仅对授权用户开放</p>
-<p>我们使用 <a href="https://start.spring.io/">start.spring.io</a> 来生成应用程序框架，同时选择使用<code>Spring Security` </code>Spring Web` 依赖。其他的依赖你可以依据需要来选择</p>
+<p>我们使用 <a href="https://start.spring.io/">start.spring.io</a> 来生成应用程序框架，同时选择使用<code>Spring Security</code> <code>Spring Web</code> 依赖。其他的依赖你可以依据需要来选择</p>
 <p><img src="spring-security-with-token.assets/image-20200328120010808.png" alt="image-20200328120010808"></p>
 <p>JJWT 提供了Java 对JWT 的支持，因此我们需要吧如下的依赖添加到 pom.xml 中</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;dependency</span><span style="color:#f92672">&gt;</span>
-    <span style="color:#f92672">&lt;groupId</span><span style="color:#f92672">&gt;</span>io.jsonwebtoken<span style="color:#f92672">&lt;/groupId&gt;</span>
-    <span style="color:#f92672">&lt;artifactId</span><span style="color:#f92672">&gt;</span>jjwt-api<span style="color:#f92672">&lt;/artifactId&gt;</span>
-    <span style="color:#f92672">&lt;version</span><span style="color:#f92672">&gt;</span>0.10.5<span style="color:#f92672">&lt;/version&gt;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;dependency&gt;</span>
+    <span style="color:#f92672">&lt;groupId&gt;</span>io.jsonwebtoken<span style="color:#f92672">&lt;/groupId&gt;</span>
+    <span style="color:#f92672">&lt;artifactId&gt;</span>jjwt-api<span style="color:#f92672">&lt;/artifactId&gt;</span>
+    <span style="color:#f92672">&lt;version&gt;</span>0.10.5<span style="color:#f92672">&lt;/version&gt;</span>
 <span style="color:#f92672">&lt;/dependency&gt;</span>
-<span style="color:#f92672">&lt;dependency</span><span style="color:#f92672">&gt;</span>
-    <span style="color:#f92672">&lt;groupId</span><span style="color:#f92672">&gt;</span>io.jsonwebtoken<span style="color:#f92672">&lt;/groupId&gt;</span>
-    <span style="color:#f92672">&lt;artifactId</span><span style="color:#f92672">&gt;</span>jjwt-impl<span style="color:#f92672">&lt;/artifactId&gt;</span>
-    <span style="color:#f92672">&lt;version</span><span style="color:#f92672">&gt;</span>0.10.5<span style="color:#f92672">&lt;/version&gt;</span>
-    <span style="color:#f92672">&lt;scope</span><span style="color:#f92672">&gt;</span>runtime<span style="color:#f92672">&lt;/scope&gt;</span>
+<span style="color:#f92672">&lt;dependency&gt;</span>
+    <span style="color:#f92672">&lt;groupId&gt;</span>io.jsonwebtoken<span style="color:#f92672">&lt;/groupId&gt;</span>
+    <span style="color:#f92672">&lt;artifactId&gt;</span>jjwt-impl<span style="color:#f92672">&lt;/artifactId&gt;</span>
+    <span style="color:#f92672">&lt;version&gt;</span>0.10.5<span style="color:#f92672">&lt;/version&gt;</span>
+    <span style="color:#f92672">&lt;scope&gt;</span>runtime<span style="color:#f92672">&lt;/scope&gt;</span>
 <span style="color:#f92672">&lt;/dependency&gt;</span>
-<span style="color:#f92672">&lt;dependency</span><span style="color:#f92672">&gt;</span>
-    <span style="color:#f92672">&lt;groupId</span><span style="color:#f92672">&gt;</span>io.jsonwebtoken<span style="color:#f92672">&lt;/groupId&gt;</span>
-    <span style="color:#f92672">&lt;artifactId</span><span style="color:#f92672">&gt;</span>jjwt-jackson<span style="color:#f92672">&lt;/artifactId&gt;</span>
-    <span style="color:#f92672">&lt;version</span><span style="color:#f92672">&gt;</span>0.10.5<span style="color:#f92672">&lt;/version&gt;</span>
-    <span style="color:#f92672">&lt;scope</span><span style="color:#f92672">&gt;</span>runtime<span style="color:#f92672">&lt;/scope&gt;</span>
+<span style="color:#f92672">&lt;dependency&gt;</span>
+    <span style="color:#f92672">&lt;groupId&gt;</span>io.jsonwebtoken<span style="color:#f92672">&lt;/groupId&gt;</span>
+    <span style="color:#f92672">&lt;artifactId&gt;</span>jjwt-jackson<span style="color:#f92672">&lt;/artifactId&gt;</span>
+    <span style="color:#f92672">&lt;version&gt;</span>0.10.5<span style="color:#f92672">&lt;/version&gt;</span>
+    <span style="color:#f92672">&lt;scope&gt;</span>runtime<span style="color:#f92672">&lt;/scope&gt;</span>
 <span style="color:#f92672">&lt;/dependency&gt;</span>
 </code></pre></div><h2 id="controllers">Controllers</h2>
 <p>在我们例子中的 Controller 将会尽可能的简单。它们将会简单的返回一个消息 或者 在用户没有授权的情况下仅仅返回 403 的错误码</p>
@@ -306,7 +303,7 @@ Authorization: Bearer &lt;token string&gt; JWT 主要包括三个部分：
 <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PublicController</span> <span style="color:#f92672">{</span>
 
     <span style="color:#a6e22e">@GetMapping</span>
-    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getMessage</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getMessage</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
         <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Hello from public API controller&#34;</span><span style="color:#f92672">;</span>
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
@@ -315,7 +312,7 @@ Authorization: Bearer &lt;token string&gt; JWT 主要包括三个部分：
 <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PrivateController</span> <span style="color:#f92672">{</span>
 
     <span style="color:#a6e22e">@GetMapping</span>
-    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getMessage</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getMessage</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
         <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Hello from private API controller&#34;</span><span style="color:#f92672">;</span>
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
@@ -339,8 +336,8 @@ Authorization: Bearer &lt;token string&gt; JWT 主要包括三个部分：
     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> String TOKEN_ISSUER <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;secure-api&#34;</span><span style="color:#f92672">;</span>
     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> String TOKEN_AUDIENCE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;secure-app&#34;</span><span style="color:#f92672">;</span>
 
-    <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">SecurityConstants</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> IllegalStateException<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Cannot create instance of static util class&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">SecurityConstants</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> IllegalStateException<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Cannot create instance of static util class&#34;</span><span style="color:#f92672">);</span>
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
 </code></pre></div><p>第一个 filter 用来对用户鉴权（Authentication），它使用URL参数提供的用户名和密码调用<code>authentication manager</code> 来验证</p>
@@ -352,41 +349,41 @@ Authorization: Bearer &lt;token string&gt; JWT 主要包括三个部分：
     <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">JwtAuthenticationFilter</span><span style="color:#f92672">(</span>AuthenticationManager authenticationManager<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
         <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">authenticationManager</span> <span style="color:#f92672">=</span> authenticationManager<span style="color:#f92672">;</span>
 
-        setFilterProcessesUrl<span style="color:#f92672">(</span>SecurityConstants<span style="color:#f92672">.</span><span style="color:#a6e22e">AUTH_LOGIN_URL</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        setFilterProcessesUrl<span style="color:#f92672">(</span>SecurityConstants<span style="color:#f92672">.</span><span style="color:#a6e22e">AUTH_LOGIN_URL</span><span style="color:#f92672">);</span>
     <span style="color:#f92672">}</span>
 
     <span style="color:#a6e22e">@Override</span>
     <span style="color:#66d9ef">public</span> Authentication <span style="color:#a6e22e">attemptAuthentication</span><span style="color:#f92672">(</span>HttpServletRequest request<span style="color:#f92672">,</span> HttpServletResponse response<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        var username <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getParameter</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;username&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-        var password <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getParameter</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;password&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-        var authenticationToken <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> UsernamePasswordAuthenticationToken<span style="color:#f92672">(</span>username<span style="color:#f92672">,</span> password<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        var username <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getParameter</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;username&#34;</span><span style="color:#f92672">);</span>
+        var password <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getParameter</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;password&#34;</span><span style="color:#f92672">);</span>
+        var authenticationToken <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> UsernamePasswordAuthenticationToken<span style="color:#f92672">(</span>username<span style="color:#f92672">,</span> password<span style="color:#f92672">);</span>
 
-        <span style="color:#66d9ef">return</span> authenticationManager<span style="color:#f92672">.</span><span style="color:#a6e22e">authenticate</span><span style="color:#f92672">(</span>authenticationToken<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">return</span> authenticationManager<span style="color:#f92672">.</span><span style="color:#a6e22e">authenticate</span><span style="color:#f92672">(</span>authenticationToken<span style="color:#f92672">);</span>
     <span style="color:#f92672">}</span>
 
     <span style="color:#a6e22e">@Override</span>
     <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">successfulAuthentication</span><span style="color:#f92672">(</span>HttpServletRequest request<span style="color:#f92672">,</span> HttpServletResponse response<span style="color:#f92672">,</span>
                                             FilterChain filterChain<span style="color:#f92672">,</span> Authentication authentication<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        var user <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#f92672">(</span>User<span style="color:#f92672">)</span> authentication<span style="color:#f92672">.</span><span style="color:#a6e22e">getPrincipal</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        var user <span style="color:#f92672">=</span> <span style="color:#f92672">((</span>User<span style="color:#f92672">)</span> authentication<span style="color:#f92672">.</span><span style="color:#a6e22e">getPrincipal</span><span style="color:#f92672">());</span>
 
-        var roles <span style="color:#f92672">=</span> user<span style="color:#f92672">.</span><span style="color:#a6e22e">getAuthorities</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
-            <span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
-            <span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span>GrantedAuthority<span style="color:#f92672">:</span><span style="color:#f92672">:</span>getAuthority<span style="color:#f92672">)</span>
-            <span style="color:#f92672">.</span><span style="color:#a6e22e">collect</span><span style="color:#f92672">(</span>Collectors<span style="color:#f92672">.</span><span style="color:#a6e22e">toList</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        var roles <span style="color:#f92672">=</span> user<span style="color:#f92672">.</span><span style="color:#a6e22e">getAuthorities</span><span style="color:#f92672">()</span>
+            <span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">()</span>
+            <span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span>GrantedAuthority<span style="color:#f92672">::</span>getAuthority<span style="color:#f92672">)</span>
+            <span style="color:#f92672">.</span><span style="color:#a6e22e">collect</span><span style="color:#f92672">(</span>Collectors<span style="color:#f92672">.</span><span style="color:#a6e22e">toList</span><span style="color:#f92672">());</span>
 
-        var signingKey <span style="color:#f92672">=</span> SecurityConstants<span style="color:#f92672">.</span><span style="color:#a6e22e">JWT_SECRET</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getBytes</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        var signingKey <span style="color:#f92672">=</span> SecurityConstants<span style="color:#f92672">.</span><span style="color:#a6e22e">JWT_SECRET</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getBytes</span><span style="color:#f92672">();</span>
 
-        var token <span style="color:#f92672">=</span> Jwts<span style="color:#f92672">.</span><span style="color:#a6e22e">builder</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
-            <span style="color:#f92672">.</span><span style="color:#a6e22e">signWith</span><span style="color:#f92672">(</span>Keys<span style="color:#f92672">.</span><span style="color:#a6e22e">hmacShaKeyFor</span><span style="color:#f92672">(</span>signingKey<span style="color:#f92672">)</span><span style="color:#f92672">,</span> SignatureAlgorithm<span style="color:#f92672">.</span><span style="color:#a6e22e">HS512</span><span style="color:#f92672">)</span>
+        var token <span style="color:#f92672">=</span> Jwts<span style="color:#f92672">.</span><span style="color:#a6e22e">builder</span><span style="color:#f92672">()</span>
+            <span style="color:#f92672">.</span><span style="color:#a6e22e">signWith</span><span style="color:#f92672">(</span>Keys<span style="color:#f92672">.</span><span style="color:#a6e22e">hmacShaKeyFor</span><span style="color:#f92672">(</span>signingKey<span style="color:#f92672">),</span> SignatureAlgorithm<span style="color:#f92672">.</span><span style="color:#a6e22e">HS512</span><span style="color:#f92672">)</span>
             <span style="color:#f92672">.</span><span style="color:#a6e22e">setHeaderParam</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;typ&#34;</span><span style="color:#f92672">,</span> SecurityConstants<span style="color:#f92672">.</span><span style="color:#a6e22e">TOKEN_TYPE</span><span style="color:#f92672">)</span>
             <span style="color:#f92672">.</span><span style="color:#a6e22e">setIssuer</span><span style="color:#f92672">(</span>SecurityConstants<span style="color:#f92672">.</span><span style="color:#a6e22e">TOKEN_ISSUER</span><span style="color:#f92672">)</span>
             <span style="color:#f92672">.</span><span style="color:#a6e22e">setAudience</span><span style="color:#f92672">(</span>SecurityConstants<span style="color:#f92672">.</span><span style="color:#a6e22e">TOKEN_AUDIENCE</span><span style="color:#f92672">)</span>
-            <span style="color:#f92672">.</span><span style="color:#a6e22e">setSubject</span><span style="color:#f92672">(</span>user<span style="color:#f92672">.</span><span style="color:#a6e22e">getUsername</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span>
-            <span style="color:#f92672">.</span><span style="color:#a6e22e">setExpiration</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Date<span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">currentTimeMillis</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">+</span> 864000000<span style="color:#f92672">)</span><span style="color:#f92672">)</span>
+            <span style="color:#f92672">.</span><span style="color:#a6e22e">setSubject</span><span style="color:#f92672">(</span>user<span style="color:#f92672">.</span><span style="color:#a6e22e">getUsername</span><span style="color:#f92672">())</span>
+            <span style="color:#f92672">.</span><span style="color:#a6e22e">setExpiration</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Date<span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">currentTimeMillis</span><span style="color:#f92672">()</span> <span style="color:#f92672">+</span> 864000000<span style="color:#f92672">))</span>
             <span style="color:#f92672">.</span><span style="color:#a6e22e">claim</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;rol&#34;</span><span style="color:#f92672">,</span> roles<span style="color:#f92672">)</span>
-            <span style="color:#f92672">.</span><span style="color:#a6e22e">compact</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">.</span><span style="color:#a6e22e">compact</span><span style="color:#f92672">();</span>
 
-        response<span style="color:#f92672">.</span><span style="color:#a6e22e">addHeader</span><span style="color:#f92672">(</span>SecurityConstants<span style="color:#f92672">.</span><span style="color:#a6e22e">TOKEN_HEADER</span><span style="color:#f92672">,</span> SecurityConstants<span style="color:#f92672">.</span><span style="color:#a6e22e">TOKEN_PREFIX</span> <span style="color:#f92672">+</span> token<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        response<span style="color:#f92672">.</span><span style="color:#a6e22e">addHeader</span><span style="color:#f92672">(</span>SecurityConstants<span style="color:#f92672">.</span><span style="color:#a6e22e">TOKEN_HEADER</span><span style="color:#f92672">,</span> SecurityConstants<span style="color:#f92672">.</span><span style="color:#a6e22e">TOKEN_PREFIX</span> <span style="color:#f92672">+</span> token<span style="color:#f92672">);</span>
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
 </code></pre></div><p>第二个 Filter 将会拦截所有的 HTTP 请求，并且检查 <code>Authorization header</code> 中的 token 是否正确。比如 token 是否过期或者签名是否正确</p>
@@ -398,44 +395,44 @@ Authorization: Bearer &lt;token string&gt; JWT 主要包括三个部分：
     <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">JwtAuthenticationFilter</span><span style="color:#f92672">(</span>AuthenticationManager authenticationManager<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
         <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">authenticationManager</span> <span style="color:#f92672">=</span> authenticationManager<span style="color:#f92672">;</span>
 
-        setFilterProcessesUrl<span style="color:#f92672">(</span>SecurityConstants<span style="color:#f92672">.</span><span style="color:#a6e22e">AUTH_LOGIN_URL</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        setFilterProcessesUrl<span style="color:#f92672">(</span>SecurityConstants<span style="color:#f92672">.</span><span style="color:#a6e22e">AUTH_LOGIN_URL</span><span style="color:#f92672">);</span>
     <span style="color:#f92672">}</span>
 
     <span style="color:#a6e22e">@Override</span>
     <span style="color:#66d9ef">public</span> Authentication <span style="color:#a6e22e">attemptAuthentication</span><span style="color:#f92672">(</span>HttpServletRequest request<span style="color:#f92672">,</span> HttpServletResponse response<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        var username <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getParameter</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;username&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-        var password <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getParameter</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;password&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-        var authenticationToken <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> UsernamePasswordAuthenticationToken<span style="color:#f92672">(</span>username<span style="color:#f92672">,</span> password<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        var username <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getParameter</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;username&#34;</span><span style="color:#f92672">);</span>
+        var password <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getParameter</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;password&#34;</span><span style="color:#f92672">);</span>
+        var authenticationToken <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> UsernamePasswordAuthenticationToken<span style="color:#f92672">(</span>username<span style="color:#f92672">,</span> password<span style="color:#f92672">);</span>
 
-        <span style="color:#66d9ef">return</span> authenticationManager<span style="color:#f92672">.</span><span style="color:#a6e22e">authenticate</span><span style="color:#f92672">(</span>authenticationToken<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">return</span> authenticationManager<span style="color:#f92672">.</span><span style="color:#a6e22e">authenticate</span><span style="color:#f92672">(</span>authenticationToken<span style="color:#f92672">);</span>
     <span style="color:#f92672">}</span>
 
     <span style="color:#a6e22e">@Override</span>
     <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">successfulAuthentication</span><span style="color:#f92672">(</span>HttpServletRequest request<span style="color:#f92672">,</span> HttpServletResponse response<span style="color:#f92672">,</span>
                                             FilterChain filterChain<span style="color:#f92672">,</span> Authentication authentication<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        var user <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#f92672">(</span>User<span style="color:#f92672">)</span> authentication<span style="color:#f92672">.</span><span style="color:#a6e22e">getPrincipal</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        var user <span style="color:#f92672">=</span> <span style="color:#f92672">((</span>User<span style="color:#f92672">)</span> authentication<span style="color:#f92672">.</span><span style="color:#a6e22e">getPrincipal</span><span style="color:#f92672">());</span>
 
-        var roles <span style="color:#f92672">=</span> user<span style="color:#f92672">.</span><span style="color:#a6e22e">getAuthorities</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
-            <span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
-            <span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span>GrantedAuthority<span style="color:#f92672">:</span><span style="color:#f92672">:</span>getAuthority<span style="color:#f92672">)</span>
-            <span style="color:#f92672">.</span><span style="color:#a6e22e">collect</span><span style="color:#f92672">(</span>Collectors<span style="color:#f92672">.</span><span style="color:#a6e22e">toList</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        var roles <span style="color:#f92672">=</span> user<span style="color:#f92672">.</span><span style="color:#a6e22e">getAuthorities</span><span style="color:#f92672">()</span>
+            <span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">()</span>
+            <span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span>GrantedAuthority<span style="color:#f92672">::</span>getAuthority<span style="color:#f92672">)</span>
+            <span style="color:#f92672">.</span><span style="color:#a6e22e">collect</span><span style="color:#f92672">(</span>Collectors<span style="color:#f92672">.</span><span style="color:#a6e22e">toList</span><span style="color:#f92672">());</span>
 
-        var signingKey <span style="color:#f92672">=</span> SecurityConstants<span style="color:#f92672">.</span><span style="color:#a6e22e">JWT_SECRET</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getBytes</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        var signingKey <span style="color:#f92672">=</span> SecurityConstants<span style="color:#f92672">.</span><span style="color:#a6e22e">JWT_SECRET</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getBytes</span><span style="color:#f92672">();</span>
 
-        var token <span style="color:#f92672">=</span> Jwts<span style="color:#f92672">.</span><span style="color:#a6e22e">builder</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
-            <span style="color:#f92672">.</span><span style="color:#a6e22e">signWith</span><span style="color:#f92672">(</span>Keys<span style="color:#f92672">.</span><span style="color:#a6e22e">hmacShaKeyFor</span><span style="color:#f92672">(</span>signingKey<span style="color:#f92672">)</span><span style="color:#f92672">,</span> SignatureAlgorithm<span style="color:#f92672">.</span><span style="color:#a6e22e">HS512</span><span style="color:#f92672">)</span>
+        var token <span style="color:#f92672">=</span> Jwts<span style="color:#f92672">.</span><span style="color:#a6e22e">builder</span><span style="color:#f92672">()</span>
+            <span style="color:#f92672">.</span><span style="color:#a6e22e">signWith</span><span style="color:#f92672">(</span>Keys<span style="color:#f92672">.</span><span style="color:#a6e22e">hmacShaKeyFor</span><span style="color:#f92672">(</span>signingKey<span style="color:#f92672">),</span> SignatureAlgorithm<span style="color:#f92672">.</span><span style="color:#a6e22e">HS512</span><span style="color:#f92672">)</span>
             <span style="color:#f92672">.</span><span style="color:#a6e22e">setHeaderParam</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;typ&#34;</span><span style="color:#f92672">,</span> SecurityConstants<span style="color:#f92672">.</span><span style="color:#a6e22e">TOKEN_TYPE</span><span style="color:#f92672">)</span>
             <span style="color:#f92672">.</span><span style="color:#a6e22e">setIssuer</span><span style="color:#f92672">(</span>SecurityConstants<span style="color:#f92672">.</span><span style="color:#a6e22e">TOKEN_ISSUER</span><span style="color:#f92672">)</span>
             <span style="color:#f92672">.</span><span style="color:#a6e22e">setAudience</span><span style="color:#f92672">(</span>SecurityConstants<span style="color:#f92672">.</span><span style="color:#a6e22e">TOKEN_AUDIENCE</span><span style="color:#f92672">)</span>
-            <span style="color:#f92672">.</span><span style="color:#a6e22e">setSubject</span><span style="color:#f92672">(</span>user<span style="color:#f92672">.</span><span style="color:#a6e22e">getUsername</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span>
-            <span style="color:#f92672">.</span><span style="color:#a6e22e">setExpiration</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Date<span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">currentTimeMillis</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">+</span> 864000000<span style="color:#f92672">)</span><span style="color:#f92672">)</span>
+            <span style="color:#f92672">.</span><span style="color:#a6e22e">setSubject</span><span style="color:#f92672">(</span>user<span style="color:#f92672">.</span><span style="color:#a6e22e">getUsername</span><span style="color:#f92672">())</span>
+            <span style="color:#f92672">.</span><span style="color:#a6e22e">setExpiration</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Date<span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">currentTimeMillis</span><span style="color:#f92672">()</span> <span style="color:#f92672">+</span> 864000000<span style="color:#f92672">))</span>
             <span style="color:#f92672">.</span><span style="color:#a6e22e">claim</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;rol&#34;</span><span style="color:#f92672">,</span> roles<span style="color:#f92672">)</span>
-            <span style="color:#f92672">.</span><span style="color:#a6e22e">compact</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">.</span><span style="color:#a6e22e">compact</span><span style="color:#f92672">();</span>
 
-        response<span style="color:#f92672">.</span><span style="color:#a6e22e">addHeader</span><span style="color:#f92672">(</span>SecurityConstants<span style="color:#f92672">.</span><span style="color:#a6e22e">TOKEN_HEADER</span><span style="color:#f92672">,</span> SecurityConstants<span style="color:#f92672">.</span><span style="color:#a6e22e">TOKEN_PREFIX</span> <span style="color:#f92672">+</span> token<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        response<span style="color:#f92672">.</span><span style="color:#a6e22e">addHeader</span><span style="color:#f92672">(</span>SecurityConstants<span style="color:#f92672">.</span><span style="color:#a6e22e">TOKEN_HEADER</span><span style="color:#f92672">,</span> SecurityConstants<span style="color:#f92672">.</span><span style="color:#a6e22e">TOKEN_PREFIX</span> <span style="color:#f92672">+</span> token<span style="color:#f92672">);</span>
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
-</code></pre></div><h2 id="heading1">安全配置</h2>
+</code></pre></div><h2 id="安全配置">安全配置</h2>
 <p>最后我们需要对 Spring Security 本身进行配置。配置都很简单，我们仅仅需要设置很少的细节：</p>
 <ul>
 <li>密码编码：我们使用了 bcypt</li>
@@ -451,40 +448,40 @@ Authorization: Bearer &lt;token string&gt; JWT 主要包括三个部分：
 
     <span style="color:#a6e22e">@Override</span>
     <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">configure</span><span style="color:#f92672">(</span>HttpSecurity http<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
-        http<span style="color:#f92672">.</span><span style="color:#a6e22e">cors</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">and</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
-            <span style="color:#f92672">.</span><span style="color:#a6e22e">csrf</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">disable</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
-            <span style="color:#f92672">.</span><span style="color:#a6e22e">authorizeRequests</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
-            <span style="color:#f92672">.</span><span style="color:#a6e22e">antMatchers</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/api/public&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">permitAll</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
-            <span style="color:#f92672">.</span><span style="color:#a6e22e">anyRequest</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">authenticated</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
-            <span style="color:#f92672">.</span><span style="color:#a6e22e">and</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
-            <span style="color:#f92672">.</span><span style="color:#a6e22e">addFilter</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> JwtAuthenticationFilter<span style="color:#f92672">(</span>authenticationManager<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span>
-            <span style="color:#f92672">.</span><span style="color:#a6e22e">addFilter</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> JwtAuthorizationFilter<span style="color:#f92672">(</span>authenticationManager<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span>
-            <span style="color:#f92672">.</span><span style="color:#a6e22e">sessionManagement</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
-            <span style="color:#f92672">.</span><span style="color:#a6e22e">sessionCreationPolicy</span><span style="color:#f92672">(</span>SessionCreationPolicy<span style="color:#f92672">.</span><span style="color:#a6e22e">STATELESS</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        http<span style="color:#f92672">.</span><span style="color:#a6e22e">cors</span><span style="color:#f92672">().</span><span style="color:#a6e22e">and</span><span style="color:#f92672">()</span>
+            <span style="color:#f92672">.</span><span style="color:#a6e22e">csrf</span><span style="color:#f92672">().</span><span style="color:#a6e22e">disable</span><span style="color:#f92672">()</span>
+            <span style="color:#f92672">.</span><span style="color:#a6e22e">authorizeRequests</span><span style="color:#f92672">()</span>
+            <span style="color:#f92672">.</span><span style="color:#a6e22e">antMatchers</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/api/public&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">permitAll</span><span style="color:#f92672">()</span>
+            <span style="color:#f92672">.</span><span style="color:#a6e22e">anyRequest</span><span style="color:#f92672">().</span><span style="color:#a6e22e">authenticated</span><span style="color:#f92672">()</span>
+            <span style="color:#f92672">.</span><span style="color:#a6e22e">and</span><span style="color:#f92672">()</span>
+            <span style="color:#f92672">.</span><span style="color:#a6e22e">addFilter</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> JwtAuthenticationFilter<span style="color:#f92672">(</span>authenticationManager<span style="color:#f92672">()))</span>
+            <span style="color:#f92672">.</span><span style="color:#a6e22e">addFilter</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> JwtAuthorizationFilter<span style="color:#f92672">(</span>authenticationManager<span style="color:#f92672">()))</span>
+            <span style="color:#f92672">.</span><span style="color:#a6e22e">sessionManagement</span><span style="color:#f92672">()</span>
+            <span style="color:#f92672">.</span><span style="color:#a6e22e">sessionCreationPolicy</span><span style="color:#f92672">(</span>SessionCreationPolicy<span style="color:#f92672">.</span><span style="color:#a6e22e">STATELESS</span><span style="color:#f92672">);</span>
     <span style="color:#f92672">}</span>
 
     <span style="color:#a6e22e">@Override</span>
     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">configure</span><span style="color:#f92672">(</span>AuthenticationManagerBuilder auth<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
-        auth<span style="color:#f92672">.</span><span style="color:#a6e22e">inMemoryAuthentication</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
+        auth<span style="color:#f92672">.</span><span style="color:#a6e22e">inMemoryAuthentication</span><span style="color:#f92672">()</span>
             <span style="color:#f92672">.</span><span style="color:#a6e22e">withUser</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;user&#34;</span><span style="color:#f92672">)</span>
-            <span style="color:#f92672">.</span><span style="color:#a6e22e">password</span><span style="color:#f92672">(</span>passwordEncoder<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">encode</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;password&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span>
-            <span style="color:#f92672">.</span><span style="color:#a6e22e">authorities</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;ROLE_USER&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">.</span><span style="color:#a6e22e">password</span><span style="color:#f92672">(</span>passwordEncoder<span style="color:#f92672">().</span><span style="color:#a6e22e">encode</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;password&#34;</span><span style="color:#f92672">))</span>
+            <span style="color:#f92672">.</span><span style="color:#a6e22e">authorities</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;ROLE_USER&#34;</span><span style="color:#f92672">);</span>
     <span style="color:#f92672">}</span>
 
     <span style="color:#a6e22e">@Bean</span>
-    <span style="color:#66d9ef">public</span> PasswordEncoder <span style="color:#a6e22e">passwordEncoder</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> BCryptPasswordEncoder<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">public</span> PasswordEncoder <span style="color:#a6e22e">passwordEncoder</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> BCryptPasswordEncoder<span style="color:#f92672">();</span>
     <span style="color:#f92672">}</span>
 
     <span style="color:#a6e22e">@Bean</span>
-    <span style="color:#66d9ef">public</span> CorsConfigurationSource <span style="color:#a6e22e">corsConfigurationSource</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">final</span> UrlBasedCorsConfigurationSource source <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> UrlBasedCorsConfigurationSource<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-        source<span style="color:#f92672">.</span><span style="color:#a6e22e">registerCorsConfiguration</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/**&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> CorsConfiguration<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">applyPermitDefaultValues</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">public</span> CorsConfigurationSource <span style="color:#a6e22e">corsConfigurationSource</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">final</span> UrlBasedCorsConfigurationSource source <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> UrlBasedCorsConfigurationSource<span style="color:#f92672">();</span>
+        source<span style="color:#f92672">.</span><span style="color:#a6e22e">registerCorsConfiguration</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/**&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> CorsConfiguration<span style="color:#f92672">().</span><span style="color:#a6e22e">applyPermitDefaultValues</span><span style="color:#f92672">());</span>
 
         <span style="color:#66d9ef">return</span> source<span style="color:#f92672">;</span>
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
-</code></pre></div><h2 id="heading2">测试</h2>
+</code></pre></div><h2 id="测试">测试</h2>
 <p>请求公开的 API</p>
 <pre><code>POST http://localhost:8080/api/authenticate?username=user&amp;password=password
 HTTP/1.1 200 
@@ -541,15 +538,16 @@ Date: Sun, 13 Jan 2019 12:27:25 GMT
 }
 
 Response code: 403; Time: 28ms; Content length: 125 bytes
-</code></pre><h2 id="heading3">结论</h2>
+</code></pre><h2 id="结论">结论</h2>
 <p>本文的目标是演示如何在 Spring Security 中使用 JWT。这个例子可以使用在你的产品中。另外，在本文中我没有想更深入的探讨 token 的刷新，验证等，或许在后面的文章中将会探讨这些主题</p>
 <p>本文涉及的所有的代码都存放在： <a href="https://github.com/keysh/jwt-security">github 仓库</a></p>
 
 </div>
 
 
-  </div>
-</section><footer class="footer">
+      </div>
+    </section>
+  </section><footer class="footer">
   <div class="content has-text-centered">
     
     

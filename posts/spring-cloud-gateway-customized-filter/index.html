@@ -4,6 +4,7 @@
 
 
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,24 +13,23 @@
     Spring Cloud Gateway 的重定向问题
      | 阿碧 
   </title>
-  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.eb4797a608f467160f71b5cc518dffb9b3fef0edc95e6def8dc4033ba1888b8f414e3d1d3e6c9804ca3e6f125539d8af48b28dcecb4eafc5805bde0b3c8d6956.css' integrity='sha512-60eXpgj0ZxYPcbXMUY3/ubP&#43;8O3JXm3vjcQDO6GIi49BTj0dPmyYBMo&#43;bxJVOdivSLKNzstOr8WAW94LPI1pVg=='>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.d07c1b4f3b7f0e2423ed31c8a7b552418fbe9c9293d0ef36ffdd8c7b91d3cf3bc63b5ecb6d35524034b1057ecea9c26cb0eb255aeb4a4c20572e1754a073247e.css' integrity='sha512-0HwbTzt/DiQj7THIp7VSQY&#43;&#43;nJKT0O82/92Me5HTzzvGO17LbTVSQDSxBX7OqcJssOslWutKTCBXLhdUoHMkfg=='>
   <link rel="canonical" href="https://zhubicen.github.io/posts/spring-cloud-gateway-customized-filter/">
   <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
-  <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="chrome=1">
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="referrer" content="no-referrer">
-<meta name="author" content="阿碧">
-<meta name="description" content="最近遇到这样一个问题，通过 Spring Cloud Gateway 访问 Nginx 的时候，在某些情况下Nginx 会重定向，但是问题是，不会重定向到 Spring Cloud Gateway 的 URL。
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  <meta name="author" content="阿碧">
+  <meta name="description" content="最近遇到这样一个问题，通过 Spring Cloud Gateway 访问 Nginx 的时候，在某些情况下Nginx 会重定向，但是问题是，不会重定向到 Spring Cloud Gateway 的 URL。
 Spring Cloud Gateway 的 URL 为： http://localhost, Nginx URL 为 http://localhost:8080。当访问 http://localhost/content 时，Gateway 会转而请求 http://localhost:8080/content ，这时，Nginx 会重定向到 http://localhost:8080/content/。这时候浏览器就直接指向了 Nginx，而不是 Gateway。
 从以下浏览器日志可以看出，Nginx 返回了 301，重定向后的 URL 为：Location: http://localhost:8080/content/
 因此希望可以通过 gateway 的 Filter 把 Location 改为：http://localhost/content/。
 方法一：使用 PreserveHostHeader 这也是网上一些文章中建议的方法，在大部分情况下是可以工作的。但是对于 Nginx 似乎不起作用。
 PreserveHostHeader 告知 httpClient(Gateway 中负责转发的组件）使用原有的 Host，如果 Gateway 的后端（如Nginx）在 Redirect 时考虑 Request Host Header ，则有可能会影响最终的 Redirection URL。但是对于 Nginx 的，Request Host Header 并没有影响到 Redirection URL。">
 
-<meta property="og:title" content="Spring Cloud Gateway 的重定向问题" />
+  <meta property="og:title" content="Spring Cloud Gateway 的重定向问题" />
 <meta property="og:description" content="最近遇到这样一个问题，通过 Spring Cloud Gateway 访问 Nginx 的时候，在某些情况下Nginx 会重定向，但是问题是，不会重定向到 Spring Cloud Gateway 的 URL。
 Spring Cloud Gateway 的 URL 为： http://localhost, Nginx URL 为 http://localhost:8080。当访问 http://localhost/content 时，Gateway 会转而请求 http://localhost:8080/content ，这时，Nginx 会重定向到 http://localhost:8080/content/。这时候浏览器就直接指向了 Nginx，而不是 Gateway。
 从以下浏览器日志可以看出，Nginx 返回了 301，重定向后的 URL 为：Location: http://localhost:8080/content/
@@ -40,7 +40,6 @@ PreserveHostHeader 告知 httpClient(Gateway 中负责转发的组件）使用�
 <meta property="og:url" content="https://zhubicen.github.io/posts/spring-cloud-gateway-customized-filter/" />
 <meta property="article:published_time" content="2020-01-16T21:22:24+08:00" />
 <meta property="article:modified_time" content="2020-01-16T21:22:24+08:00" />
-
 
 </head>
 <body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
@@ -150,7 +149,7 @@ PreserveHostHeader 告知 httpClient(Gateway 中负责转发的组件）使用�
       
       <a class="navbar-item" href="https://zhubicen.github.io/tags/mysql/">
         
-        My s q l
+        My sql
         
       </a>
       
@@ -194,17 +193,13 @@ PreserveHostHeader 告知 httpClient(Gateway 中负责转发的组件）使用�
     
     <div class="navbar-end">
       
-      <a class="navbar-item" href="https://github.com/zhubicen/" rel="noopener" target="_blank">
-        <span class="icon">
-          <img alt="github-circle" src='https://zhubicen.github.io/icons/svg/github-circle.svg'>
-        </span>
-      </a>
       
       <a class="navbar-item" href="mailto:zhubicen@gmail.com" target="_blank">
         <span class="icon">
           <img alt="email" src='https://zhubicen.github.io/icons/svg/email.svg'>
         </span>
       </a>
+      
       <a class="navbar-item" href="https://zhubicen.github.io/index.xml" target="_blank">
         <span class="icon">
           <img alt="rss" src='https://zhubicen.github.io/icons/svg/rss.svg'>
@@ -214,8 +209,10 @@ PreserveHostHeader 告知 httpClient(Gateway 中负责转发的组件）使用�
     </div>
   </div>
 </nav>
-<section class="hero is-small is-info is-fullwidth">
-  <div class="hero-body">
+
+  <section>
+    <section class='hero is-small is-info is-fullwidth'>
+      <div class="hero-body">
 <div class="container">
   <h1 class="title">
     Spring Cloud Gateway 的重定向问题
@@ -236,46 +233,46 @@ PreserveHostHeader 告知 httpClient(Gateway 中负责转发的组件）使用�
   </h2>
 </div>
 
-  </div>
-</section>
-<section class="section">
-  <div class="container">
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
 <div class="content is-medium">
   <p>最近遇到这样一个问题，通过 Spring Cloud Gateway 访问 Nginx  的时候，在某些情况下Nginx 会重定向，但是问题是，不会重定向到 Spring Cloud Gateway 的 URL。</p>
 <p>Spring Cloud Gateway 的 URL 为： <code>http://localhost</code>,  Nginx URL 为 <code>http://localhost:8080</code>。当访问 <code>http://localhost/content</code> 时，Gateway 会转而请求 <code>http://localhost:8080/content</code> ，这时，Nginx 会重定向到 <code>http://localhost:8080/content/</code>。这时候浏览器就直接指向了 Nginx，而不是 Gateway。</p>
 <p>从以下浏览器日志可以看出，Nginx 返回了 301，重定向后的 URL 为：<code>Location: http://localhost:8080/content/</code></p>
 <p><img src="spring-cloud-gateway-customized-filter.assets/image-20200116233749097.png" alt="image-20200116233749097"></p>
 <p>因此希望可以通过 gateway 的 Filter 把 <code>Location</code> 改为：<code>http://localhost/content/</code>。</p>
-<h2 id="-preservehostheader">方法一：使用 <code>PreserveHostHeader</code></h2>
+<h2 id="方法一使用-preservehostheader">方法一：使用 <code>PreserveHostHeader</code></h2>
 <p>这也是网上一些文章中建议的方法，在大部分情况下是可以工作的。但是对于 Nginx  似乎不起作用。</p>
 <p><code>PreserveHostHeader</code> 告知 <code>httpClient</code>(Gateway 中负责转发的组件）使用原有的 Host，如果 Gateway 的后端（如Nginx）在 <code>Redirect</code> 时考虑 <code>Request Host Header</code> ，则有可能会影响最终的 <code>Redirection</code> URL。但是对于 Nginx 的，<code>Request Host Header</code> 并没有影响到 <code>Redirection</code> URL。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">spring:
-  cloud:
-    gateway:
-      routes:
-      - id: preserve_host_route
-        uri: https://example.org
-        filters:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">spring</span>:
+  <span style="color:#66d9ef">cloud</span>:
+    <span style="color:#66d9ef">gateway</span>:
+      <span style="color:#66d9ef">routes</span>:
+      - <span style="color:#66d9ef">id</span>: preserve_host_route
+        <span style="color:#66d9ef">uri</span>: https://example.org
+        <span style="color:#66d9ef">filters</span>:
         - PreserveHostHeader
-</code></pre></div><h2 id="-filter-preservehostheader">方法二：使用 Filter <code>PreserveHostHeader</code></h2>
+</code></pre></div><h2 id="方法二使用-filter-preservehostheader">方法二：使用 Filter <code>PreserveHostHeader</code></h2>
 <p>除了 <code>PreserveHostHeader</code> 外，<code>Spring Cloud Gateway 2.2.3</code> 提供了新的 Filter： <code>RewriteLocationResponseHeader</code>。可以如下配置：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">      routes:
-        - id: content
-          uri: http://localhost:<span style="color:#ae81ff">8080</span>
-          predicates:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">      <span style="color:#66d9ef">routes</span>:
+        - <span style="color:#66d9ef">id</span>: content
+          <span style="color:#66d9ef">uri</span>: http://localhost:<span style="color:#ae81ff">8080</span>
+          <span style="color:#66d9ef">predicates</span>:
             - Path=/content/<span style="color:#75715e">**</span>
-          filters:
+          <span style="color:#66d9ef">filters</span>:
             - RewriteLocationResponseHeader=AS_IN_REQUEST, Location, ,
 </code></pre></div><p><img src="spring-cloud-gateway-customized-filter.assets/image-20200116233833694.png" alt="image-20200116233833694"></p>
-<h2 id="-filter">方法三：自定义 Filter</h2>
+<h2 id="方法三自定义-filter">方法三：自定义 Filter</h2>
 <p>对于旧版的 Gateway，可以使用自定义的 Filter Workaround 这个问题。Filter 的原理如下：
 尝试删除 <code>Location</code> 中的 Host 部分呢，把 <code>http://localhost:8080/content/</code> 转变为 <code>/content/</code>。 这样<code>Location</code> 就变为：<code>/content/</code>,这样浏览器就会使用，原有的 Host 做重定向，从而指向：<code>http://localhost/content/</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">      routes:
-        - id: content
-          uri: http://localhost:<span style="color:#ae81ff">8080</span>
-          predicates:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">      <span style="color:#66d9ef">routes</span>:
+        - <span style="color:#66d9ef">id</span>: content
+          <span style="color:#66d9ef">uri</span>: http://localhost:<span style="color:#ae81ff">8080</span>
+          <span style="color:#66d9ef">predicates</span>:
             - Path=/content/<span style="color:#75715e">**</span>
-          filters:
+          <span style="color:#66d9ef">filters</span>:
             - MyFilter
 </code></pre></div><p><img src="spring-cloud-gateway-customized-filter.assets/image-20200116233850711.png" alt="image-20200116233850711"></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#f92672">import</span> org.slf4j.Logger<span style="color:#f92672">;</span>
@@ -293,10 +290,10 @@ PreserveHostHeader 告知 httpClient(Gateway 中负责转发的组件）使用�
 
 <span style="color:#a6e22e">@Component</span>
 <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RedirectWaFilter</span> <span style="color:#66d9ef">extends</span> AbstractGatewayFilterFactory<span style="color:#f92672">&lt;</span>RedirectWaFilter<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">private</span> Logger logger <span style="color:#f92672">=</span> LoggerFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">getLogger</span><span style="color:#f92672">(</span>RedirectWaFilter<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> Logger logger <span style="color:#f92672">=</span> LoggerFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">getLogger</span><span style="color:#f92672">(</span>RedirectWaFilter<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
 
-    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">RedirectWaFilter</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">super</span><span style="color:#f92672">(</span>Config<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">RedirectWaFilter</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">super</span><span style="color:#f92672">(</span>Config<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
     <span style="color:#f92672">}</span>
 
     <span style="color:#a6e22e">@SuppressWarnings</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;unused&#34;</span><span style="color:#f92672">)</span>
@@ -308,29 +305,29 @@ PreserveHostHeader 告知 httpClient(Gateway 中负责转发的组件）使用�
 
     <span style="color:#a6e22e">@SuppressWarnings</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;unused&#34;</span><span style="color:#f92672">)</span>
     <span style="color:#66d9ef">private</span> Mono<span style="color:#f92672">&lt;</span>Void<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">onError</span><span style="color:#f92672">(</span>ServerWebExchange exchange<span style="color:#f92672">,</span> String err<span style="color:#f92672">,</span> HttpStatus httpStatus<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        ServerHttpResponse response <span style="color:#f92672">=</span> exchange<span style="color:#f92672">.</span><span style="color:#a6e22e">getResponse</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-        response<span style="color:#f92672">.</span><span style="color:#a6e22e">setStatusCode</span><span style="color:#f92672">(</span>httpStatus<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">return</span> response<span style="color:#f92672">.</span><span style="color:#a6e22e">setComplete</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        ServerHttpResponse response <span style="color:#f92672">=</span> exchange<span style="color:#f92672">.</span><span style="color:#a6e22e">getResponse</span><span style="color:#f92672">();</span>
+        response<span style="color:#f92672">.</span><span style="color:#a6e22e">setStatusCode</span><span style="color:#f92672">(</span>httpStatus<span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">return</span> response<span style="color:#f92672">.</span><span style="color:#a6e22e">setComplete</span><span style="color:#f92672">();</span>
     <span style="color:#f92672">}</span>
 
     <span style="color:#a6e22e">@Override</span>
     <span style="color:#66d9ef">public</span> GatewayFilter <span style="color:#a6e22e">apply</span><span style="color:#f92672">(</span>Config config<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span>exchange<span style="color:#f92672">,</span> chain<span style="color:#f92672">)</span> <span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span> chain<span style="color:#f92672">.</span><span style="color:#a6e22e">filter</span><span style="color:#f92672">(</span>exchange<span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">then</span><span style="color:#f92672">(</span>Mono<span style="color:#f92672">.</span><span style="color:#a6e22e">defer</span><span style="color:#f92672">(</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span><span style="color:#f92672">!</span>exchange<span style="color:#f92672">.</span><span style="color:#a6e22e">getResponse</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">isCommitted</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;status code: &#34;</span> <span style="color:#f92672">+</span> exchange<span style="color:#f92672">.</span><span style="color:#a6e22e">getResponse</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getStatusCode</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>exchange<span style="color:#f92672">.</span><span style="color:#a6e22e">getResponse</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getStatusCode</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">is3xxRedirection</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span>exchange<span style="color:#f92672">,</span> chain<span style="color:#f92672">)</span> <span style="color:#f92672">-&gt;</span> chain<span style="color:#f92672">.</span><span style="color:#a6e22e">filter</span><span style="color:#f92672">(</span>exchange<span style="color:#f92672">).</span><span style="color:#a6e22e">then</span><span style="color:#f92672">(</span>Mono<span style="color:#f92672">.</span><span style="color:#a6e22e">defer</span><span style="color:#f92672">(()</span> <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>exchange<span style="color:#f92672">.</span><span style="color:#a6e22e">getResponse</span><span style="color:#f92672">().</span><span style="color:#a6e22e">isCommitted</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;status code: &#34;</span> <span style="color:#f92672">+</span> exchange<span style="color:#f92672">.</span><span style="color:#a6e22e">getResponse</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getStatusCode</span><span style="color:#f92672">());</span>
+                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>exchange<span style="color:#f92672">.</span><span style="color:#a6e22e">getResponse</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getStatusCode</span><span style="color:#f92672">().</span><span style="color:#a6e22e">is3xxRedirection</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
                     String locationPath <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">;</span>
                     <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
-                        locationPath <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> URL<span style="color:#f92672">(</span>exchange<span style="color:#f92672">.</span><span style="color:#a6e22e">getResponse</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getHeaders</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;location&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>0<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getPath</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-                        exchange<span style="color:#f92672">.</span><span style="color:#a6e22e">getResponse</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getHeaders</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;location&#34;</span><span style="color:#f92672">,</span>  locationPath<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+                        locationPath <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> URL<span style="color:#f92672">(</span>exchange<span style="color:#f92672">.</span><span style="color:#a6e22e">getResponse</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getHeaders</span><span style="color:#f92672">().</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;location&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>0<span style="color:#f92672">)).</span><span style="color:#a6e22e">getPath</span><span style="color:#f92672">();</span>
+                        exchange<span style="color:#f92672">.</span><span style="color:#a6e22e">getResponse</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getHeaders</span><span style="color:#f92672">().</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;location&#34;</span><span style="color:#f92672">,</span>  locationPath<span style="color:#f92672">);</span>
                     <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>MalformedURLException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                        e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+                        e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
                     <span style="color:#f92672">}</span>
-                    <span style="color:#66d9ef">return</span> exchange<span style="color:#f92672">.</span><span style="color:#a6e22e">getResponse</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">setComplete</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+                    <span style="color:#66d9ef">return</span> exchange<span style="color:#f92672">.</span><span style="color:#a6e22e">getResponse</span><span style="color:#f92672">().</span><span style="color:#a6e22e">setComplete</span><span style="color:#f92672">();</span>
                 <span style="color:#f92672">}</span>
             <span style="color:#f92672">}</span>
-            <span style="color:#66d9ef">return</span> Mono<span style="color:#f92672">.</span><span style="color:#a6e22e">empty</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-        <span style="color:#f92672">}</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            <span style="color:#66d9ef">return</span> Mono<span style="color:#f92672">.</span><span style="color:#a6e22e">empty</span><span style="color:#f92672">();</span>
+        <span style="color:#f92672">}));</span>
     <span style="color:#f92672">}</span>
 
     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Config</span> <span style="color:#f92672">{</span>
@@ -341,8 +338,9 @@ PreserveHostHeader 告知 httpClient(Gateway 中负责转发的组件）使用�
 </div>
 
 
-  </div>
-</section><footer class="footer">
+      </div>
+    </section>
+  </section><footer class="footer">
   <div class="content has-text-centered">
     
     

@@ -4,6 +4,7 @@
 
 
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,23 +13,22 @@
     MongoDB 的安装与配置
      | 阿碧 
   </title>
-  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.eb4797a608f467160f71b5cc518dffb9b3fef0edc95e6def8dc4033ba1888b8f414e3d1d3e6c9804ca3e6f125539d8af48b28dcecb4eafc5805bde0b3c8d6956.css' integrity='sha512-60eXpgj0ZxYPcbXMUY3/ubP&#43;8O3JXm3vjcQDO6GIi49BTj0dPmyYBMo&#43;bxJVOdivSLKNzstOr8WAW94LPI1pVg=='>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.d07c1b4f3b7f0e2423ed31c8a7b552418fbe9c9293d0ef36ffdd8c7b91d3cf3bc63b5ecb6d35524034b1057ecea9c26cb0eb255aeb4a4c20572e1754a073247e.css' integrity='sha512-0HwbTzt/DiQj7THIp7VSQY&#43;&#43;nJKT0O82/92Me5HTzzvGO17LbTVSQDSxBX7OqcJssOslWutKTCBXLhdUoHMkfg=='>
   <link rel="canonical" href="https://zhubicen.github.io/posts/setup-mongo-server/">
   <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
-  <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="chrome=1">
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="referrer" content="no-referrer">
-<meta name="author" content="阿碧">
-<meta name="description" content="安装 Mongo DB https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  <meta name="author" content="阿碧">
+  <meta name="description" content="安装 Mongo DB https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/
 创建文件 /etc/yum.repos.d/mongodb-org-4.2.repo，并输入一下内容：
 [mongodb-org-4.2] name=MongoDB Repository baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.2/x86_64/ gpgcheck=1 enabled=1 gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc 运行安装命令： yum install -y mongodb-org
 启动 Mongo DB 服务 systemctl start mongod.service # For CentOS 8/7 service mongod restart # For CentOS 6 Configure MongoDB to autostart on system boot.
 systemctl enable mongod.service # For CentOS 8/7 chkconfig mongod on # For CentOS 6 测试 Mongod DB 数据库 [root@tecadmin ~]# mongo &gt; use mydb; &gt; db.test.save( { a: 1 } ) &gt; db.">
 
-<meta property="og:title" content="MongoDB 的安装与配置" />
+  <meta property="og:title" content="MongoDB 的安装与配置" />
 <meta property="og:description" content="安装 Mongo DB https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/
 创建文件 /etc/yum.repos.d/mongodb-org-4.2.repo，并输入一下内容：
 [mongodb-org-4.2] name=MongoDB Repository baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.2/x86_64/ gpgcheck=1 enabled=1 gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc 运行安装命令： yum install -y mongodb-org
@@ -38,7 +38,6 @@ systemctl enable mongod.service # For CentOS 8/7 chkconfig mongod on # For CentO
 <meta property="og:url" content="https://zhubicen.github.io/posts/setup-mongo-server/" />
 <meta property="article:published_time" content="2020-03-11T13:45:58+08:00" />
 <meta property="article:modified_time" content="2020-03-11T13:45:58+08:00" />
-
 
 </head>
 <body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
@@ -148,7 +147,7 @@ systemctl enable mongod.service # For CentOS 8/7 chkconfig mongod on # For CentO
       
       <a class="navbar-item" href="https://zhubicen.github.io/tags/mysql/">
         
-        My s q l
+        My sql
         
       </a>
       
@@ -192,17 +191,13 @@ systemctl enable mongod.service # For CentOS 8/7 chkconfig mongod on # For CentO
     
     <div class="navbar-end">
       
-      <a class="navbar-item" href="https://github.com/zhubicen/" rel="noopener" target="_blank">
-        <span class="icon">
-          <img alt="github-circle" src='https://zhubicen.github.io/icons/svg/github-circle.svg'>
-        </span>
-      </a>
       
       <a class="navbar-item" href="mailto:zhubicen@gmail.com" target="_blank">
         <span class="icon">
           <img alt="email" src='https://zhubicen.github.io/icons/svg/email.svg'>
         </span>
       </a>
+      
       <a class="navbar-item" href="https://zhubicen.github.io/index.xml" target="_blank">
         <span class="icon">
           <img alt="rss" src='https://zhubicen.github.io/icons/svg/rss.svg'>
@@ -212,8 +207,10 @@ systemctl enable mongod.service # For CentOS 8/7 chkconfig mongod on # For CentO
     </div>
   </div>
 </nav>
-<section class="hero is-small is-info is-fullwidth">
-  <div class="hero-body">
+
+  <section>
+    <section class='hero is-small is-info is-fullwidth'>
+      <div class="hero-body">
 <div class="container">
   <h1 class="title">
     MongoDB 的安装与配置
@@ -234,12 +231,12 @@ systemctl enable mongod.service # For CentOS 8/7 chkconfig mongod on # For CentO
   </h2>
 </div>
 
-  </div>
-</section>
-<section class="section">
-  <div class="container">
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
 <div class="content is-medium">
-  <h2 id="-mongo-db">安装 Mongo DB</h2>
+  <h2 id="安装-mongo-db">安装 Mongo DB</h2>
 <p><a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/">https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/</a></p>
 <p>创建文件 <code>/etc/yum.repos.d/mongodb-org-4.2.repo</code>，并输入一下内容：</p>
 <pre><code>[mongodb-org-4.2]
@@ -249,14 +246,14 @@ gpgcheck=1
 enabled=1
 gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc
 </code></pre><p>运行安装命令： <code>yum install -y mongodb-org</code></p>
-<h2 id="-mongo-db-">启动 Mongo DB 服务</h2>
+<h2 id="启动-mongo-db-服务">启动 Mongo DB 服务</h2>
 <pre><code>systemctl start mongod.service    # For CentOS 8/7 
 service mongod restart            # For CentOS 6 
 
 </code></pre><p>Configure MongoDB to autostart on system boot.</p>
 <pre><code>systemctl enable mongod.service    # For CentOS 8/7 
 chkconfig mongod on                # For CentOS 6 
-</code></pre><h2 id="-mongod-db-">测试 Mongod DB 数据库</h2>
+</code></pre><h2 id="测试-mongod-db-数据库">测试 Mongod DB 数据库</h2>
 <pre><code>[root@tecadmin ~]#  mongo
 
 &gt; use mydb;
@@ -271,7 +268,7 @@ chkconfig mongod on                # For CentOS 6
 <p>接下来我们可以启用用户验证，并从本机外访问 mongodb</p>
 <p>首先使用如下命令创建用户：</p>
 <pre><code>db.createUser({ user: 'root', pwd: 'letmein', roles: [ { role: &quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot; } ] });
-</code></pre><h2 id="heading">使用用户名密码连接</h2>
+</code></pre><h2 id="使用用户名密码连接">使用用户名密码连接</h2>
 <p>把 bindIp 从 <code>127.0.0.1</code> 改为 <code>0.0.0.0</code> 以启用从本机以外的连接， <code>security</code> 部分增加用户名密码的验证</p>
 <pre><code>
 # network interfaces
@@ -286,19 +283,20 @@ security:
 <pre><code>mongo  -u root -p letmein
 </code></pre><p>你也可以从本机以外连接，使用 <code>--host</code> 选项指定 IP 即可</p>
 <pre><code>mongo --host yourip --port yourport -u root -p letmein
-</code></pre><h2 id="heading1">备份与恢复</h2>
+</code></pre><h2 id="备份与恢复">备份与恢复</h2>
 <p>可以分别使用 <code>mongodump</code> 和 <code>mongorestore</code> 来备份和恢复mongo 数据</p>
 <pre><code>mongodump --host 10.109.3.110 --port 8080 -u mongo_user -p 123456 --authenticationDatabase techdebt -d techdebt
 
 mongoretore 
-</code></pre><h2 id="heading2">客户端工具</h2>
+</code></pre><h2 id="客户端工具">客户端工具</h2>
 <p>推荐使用 <code>robo 3T</code></p>
 
 </div>
 
 
-  </div>
-</section><footer class="footer">
+      </div>
+    </section>
+  </section><footer class="footer">
   <div class="content has-text-centered">
     
     

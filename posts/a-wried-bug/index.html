@@ -4,6 +4,7 @@
 
 
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,23 +13,22 @@
     A Wried Bug: 一个未捕获到的异常
      | 阿碧 
   </title>
-  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.eb4797a608f467160f71b5cc518dffb9b3fef0edc95e6def8dc4033ba1888b8f414e3d1d3e6c9804ca3e6f125539d8af48b28dcecb4eafc5805bde0b3c8d6956.css' integrity='sha512-60eXpgj0ZxYPcbXMUY3/ubP&#43;8O3JXm3vjcQDO6GIi49BTj0dPmyYBMo&#43;bxJVOdivSLKNzstOr8WAW94LPI1pVg=='>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.d07c1b4f3b7f0e2423ed31c8a7b552418fbe9c9293d0ef36ffdd8c7b91d3cf3bc63b5ecb6d35524034b1057ecea9c26cb0eb255aeb4a4c20572e1754a073247e.css' integrity='sha512-0HwbTzt/DiQj7THIp7VSQY&#43;&#43;nJKT0O82/92Me5HTzzvGO17LbTVSQDSxBX7OqcJssOslWutKTCBXLhdUoHMkfg=='>
   <link rel="canonical" href="https://zhubicen.github.io/posts/a-wried-bug/">
   <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
-  <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="chrome=1">
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="referrer" content="no-referrer">
-<meta name="author" content="阿碧">
-<meta name="description" content="今天本来是 TB 的，大部分同时都去爬山了。最近腿总是有点不舒服，所以就和同事 Mihi 一起回了公司
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  <meta name="author" content="阿碧">
+  <meta name="description" content="今天本来是 TB 的，大部分同时都去爬山了。最近腿总是有点不舒服，所以就和同事 Mihi 一起回了公司
 到了公司发现有同事在催我 Coverity 的事情了，我就立刻动手准备在 SVN 上把 trunk.xml 改掉。在改掉前还没有忘记先 svn update 一把，顺便瞄了一眼，老付把旧的项目的 xml 文件删除掉了。心想删掉也好，其实早该删除掉了。更新完成后就把我的改动更新上去，提交了，一切正常
 去茶水间倒了杯水，刚坐下。Mihi 通过 Jabber 找我，描述的问题是这样的： 发布了一个最新的 taskgenerator， 发现有问题，就 revert binary， revert 问题后发现问题还是有，很奇怪
 我赶紧放下手中的活，去看了看， task generateor 出问题的话，整个 CDE 就挂了。看了一下错误是这样的：
 15:11:20 INFO - Running done from 10.109.2.107, sid is: 4728798, msg id:C0A8001F109E08EFB8463BE83EAB0003 15:11:21 INFO - Running done from 10.109.2.107, sid is: 4728798, msg id:C0A8001F109E08EFB8463BE83EAB0003 15:11:21 RunningDoneMsgListner.java:90 ERROR - Abnormal running status, sid: 4728798, status: 1 从现象上看是，同一个错误打印了两遍：“Running done from &ldquo;，并且两遍的 message Id 是一样的，我说这个错误我碰到过，应该是 consuemMessage 函数里出现了异常，导致消息没有处理成功，所以出现了第二次处理">
 
-<meta property="og:title" content="A Wried Bug: 一个未捕获到的异常" />
+  <meta property="og:title" content="A Wried Bug: 一个未捕获到的异常" />
 <meta property="og:description" content="今天本来是 TB 的，大部分同时都去爬山了。最近腿总是有点不舒服，所以就和同事 Mihi 一起回了公司
 到了公司发现有同事在催我 Coverity 的事情了，我就立刻动手准备在 SVN 上把 trunk.xml 改掉。在改掉前还没有忘记先 svn update 一把，顺便瞄了一眼，老付把旧的项目的 xml 文件删除掉了。心想删掉也好，其实早该删除掉了。更新完成后就把我的改动更新上去，提交了，一切正常
 去茶水间倒了杯水，刚坐下。Mihi 通过 Jabber 找我，描述的问题是这样的： 发布了一个最新的 taskgenerator， 发现有问题，就 revert binary， revert 问题后发现问题还是有，很奇怪
@@ -38,7 +38,6 @@
 <meta property="og:url" content="https://zhubicen.github.io/posts/a-wried-bug/" />
 <meta property="article:published_time" content="2019-12-13T16:20:02+08:00" />
 <meta property="article:modified_time" content="2019-12-13T16:20:02+08:00" />
-
 
 </head>
 <body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
@@ -148,7 +147,7 @@
       
       <a class="navbar-item" href="https://zhubicen.github.io/tags/mysql/">
         
-        My s q l
+        My sql
         
       </a>
       
@@ -192,17 +191,13 @@
     
     <div class="navbar-end">
       
-      <a class="navbar-item" href="https://github.com/zhubicen/" rel="noopener" target="_blank">
-        <span class="icon">
-          <img alt="github-circle" src='https://zhubicen.github.io/icons/svg/github-circle.svg'>
-        </span>
-      </a>
       
       <a class="navbar-item" href="mailto:zhubicen@gmail.com" target="_blank">
         <span class="icon">
           <img alt="email" src='https://zhubicen.github.io/icons/svg/email.svg'>
         </span>
       </a>
+      
       <a class="navbar-item" href="https://zhubicen.github.io/index.xml" target="_blank">
         <span class="icon">
           <img alt="rss" src='https://zhubicen.github.io/icons/svg/rss.svg'>
@@ -212,8 +207,10 @@
     </div>
   </div>
 </nav>
-<section class="hero is-small is-info is-fullwidth">
-  <div class="hero-body">
+
+  <section>
+    <section class='hero is-small is-info is-fullwidth'>
+      <div class="hero-body">
 <div class="container">
   <h1 class="title">
     A Wried Bug: 一个未捕获到的异常
@@ -234,10 +231,10 @@
   </h2>
 </div>
 
-  </div>
-</section>
-<section class="section">
-  <div class="container">
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
 <div class="content is-medium">
   <p>今天本来是 TB 的，大部分同时都去爬山了。最近腿总是有点不舒服，所以就和同事 Mihi 一起回了公司</p>
 <p>到了公司发现有同事在催我 Coverity 的事情了，我就立刻动手准备在 SVN 上把 trunk.xml 改掉。在改掉前还没有忘记先 <code>svn update</code> 一把，顺便瞄了一眼，老付把旧的项目的 xml 文件删除掉了。心想删掉也好，其实早该删除掉了。更新完成后就把我的改动更新上去，提交了，一切正常</p>
@@ -251,13 +248,13 @@
 <p>赶紧去看了下代码，发现几乎整个 <code>consumeMessage</code> 的代码都被 <code>try catch</code> 包裹住的，但是 catch 出的 log 打印确是没有打印，顿时感觉到没有思路。<code>consumeMessage</code> 长这样：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"> <span style="color:#a6e22e">@Override</span>
  <span style="color:#66d9ef">public</span> ConsumeOrderlyStatus <span style="color:#a6e22e">consumeMessage</span><span style="color:#f92672">(</span>List<span style="color:#f92672">&lt;</span>MessageExt<span style="color:#f92672">&gt;</span> msgs<span style="color:#f92672">,</span> ConsumeOrderlyContext context<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-  MessageExt msg <span style="color:#f92672">=</span> msgs<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>0<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-  String tags <span style="color:#f92672">=</span> msg<span style="color:#f92672">.</span><span style="color:#a6e22e">getTags</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+  MessageExt msg <span style="color:#f92672">=</span> msgs<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>0<span style="color:#f92672">);</span>
+  String tags <span style="color:#f92672">=</span> msg<span style="color:#f92672">.</span><span style="color:#a6e22e">getTags</span><span style="color:#f92672">();</span>
   <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
    <span style="color:#75715e">//....
 </span><span style="color:#75715e"></span>   <span style="color:#66d9ef">return</span> ConsumeOrderlyStatus<span style="color:#f92672">.</span><span style="color:#a6e22e">SUCCESS</span><span style="color:#f92672">;</span>
   <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>Exception exception<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-   logger<span style="color:#f92672">.</span><span style="color:#a6e22e">error</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Exception occured:&#34;</span><span style="color:#f92672">,</span> exception<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+   logger<span style="color:#f92672">.</span><span style="color:#a6e22e">error</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Exception occured:&#34;</span><span style="color:#f92672">,</span> exception<span style="color:#f92672">);</span>
    <span style="color:#66d9ef">throw</span> exception<span style="color:#f92672">;</span>
   <span style="color:#f92672">}</span>
  <span style="color:#f92672">}</span>
@@ -277,9 +274,9 @@
 <p>这还不是事情的全部，当我打开 <code>JDom2Helper.getConfigXml</code> 中的代码是这样的：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> Document <span style="color:#a6e22e">fromFile</span><span style="color:#f92672">(</span><span style="color:#66d9ef">final</span> File file<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
      <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">return</span> fromInputStream<span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> FileInputStream<span style="color:#f92672">(</span>file<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            <span style="color:#66d9ef">return</span> fromInputStream<span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> FileInputStream<span style="color:#f92672">(</span>file<span style="color:#f92672">));</span>
         <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>FileNotFoundException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
         <span style="color:#f92672">}</span>
      <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
 </code></pre></div><p>明明就是在返回空前打印出了异常，而在我们查问题的时候，只记得看 log 了。没有看 std::err，我去哭一会</p>
@@ -315,8 +312,9 @@
 </div>
 
 
-  </div>
-</section><footer class="footer">
+      </div>
+    </section>
+  </section><footer class="footer">
   <div class="content has-text-centered">
     
     

@@ -4,6 +4,7 @@
 
 
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,21 +13,20 @@
     在 Docker 中开发 SpringBoot
      | 阿碧 
   </title>
-  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.eb4797a608f467160f71b5cc518dffb9b3fef0edc95e6def8dc4033ba1888b8f414e3d1d3e6c9804ca3e6f125539d8af48b28dcecb4eafc5805bde0b3c8d6956.css' integrity='sha512-60eXpgj0ZxYPcbXMUY3/ubP&#43;8O3JXm3vjcQDO6GIi49BTj0dPmyYBMo&#43;bxJVOdivSLKNzstOr8WAW94LPI1pVg=='>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.d07c1b4f3b7f0e2423ed31c8a7b552418fbe9c9293d0ef36ffdd8c7b91d3cf3bc63b5ecb6d35524034b1057ecea9c26cb0eb255aeb4a4c20572e1754a073247e.css' integrity='sha512-0HwbTzt/DiQj7THIp7VSQY&#43;&#43;nJKT0O82/92Me5HTzzvGO17LbTVSQDSxBX7OqcJssOslWutKTCBXLhdUoHMkfg=='>
   <link rel="canonical" href="https://zhubicen.github.io/posts/springboot-on-docker/">
   <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
-  <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="chrome=1">
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="referrer" content="no-referrer">
-<meta name="author" content="阿碧">
-<meta name="description" content="问题 在开发 SpringBoot 微服务的过程中，经常发生的情况是，需要使用 Windows 进行开发，但是微服务最终会部署在 Linux 上，因此而产生的的开发环境和生产环境的不一致，会导致上线后的一些问题
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  <meta name="author" content="阿碧">
+  <meta name="description" content="问题 在开发 SpringBoot 微服务的过程中，经常发生的情况是，需要使用 Windows 进行开发，但是微服务最终会部署在 Linux 上，因此而产生的的开发环境和生产环境的不一致，会导致上线后的一些问题
 解决办法 通过把源代码目录挂载到 Docker 中，并在 Doker 中，运行 mvn spring-boot:run，因为 Docker 和 Windows 共享相同的目录，所以 Docker 中的 maven 可以检测到代码的改动，自动重启 SpringBoot 服务
  假设你的 Spring 代码可以使用 mvn spring-boot:run 正常运行。为了使 Maven 可以检测到代码的改动以重启服务，请确保 pom.xml 里添加了依赖项：spring-boot-devtools 假设的你的代码目录在 C:\Project\springProject 中。请把下面命令中的目录自行替换为自己项目的目录 新建 Docker 目录，并在目录下新建文件 Dockerfile  FROMmaven:3.5.3-jdk-8-alpineWORKDIR/appCOPY pom.xml .RUN mvn dependency:go-offlineVOLUME/app/srcCMD [&#34;mvn&#34;, &#34;spring-boot:run&#34;] 进入 Docker 目录，编译生成 Docker Image docker build -t app:dev . 运行 Docker: docker run -v d:/Project/demo/src:/app/src app:dev  参考  https://medium.">
 
-<meta property="og:title" content="在 Docker 中开发 SpringBoot" />
+  <meta property="og:title" content="在 Docker 中开发 SpringBoot" />
 <meta property="og:description" content="问题 在开发 SpringBoot 微服务的过程中，经常发生的情况是，需要使用 Windows 进行开发，但是微服务最终会部署在 Linux 上，因此而产生的的开发环境和生产环境的不一致，会导致上线后的一些问题
 解决办法 通过把源代码目录挂载到 Docker 中，并在 Doker 中，运行 mvn spring-boot:run，因为 Docker 和 Windows 共享相同的目录，所以 Docker 中的 maven 可以检测到代码的改动，自动重启 SpringBoot 服务
  假设你的 Spring 代码可以使用 mvn spring-boot:run 正常运行。为了使 Maven 可以检测到代码的改动以重启服务，请确保 pom.xml 里添加了依赖项：spring-boot-devtools 假设的你的代码目录在 C:\Project\springProject 中。请把下面命令中的目录自行替换为自己项目的目录 新建 Docker 目录，并在目录下新建文件 Dockerfile  FROMmaven:3.5.3-jdk-8-alpineWORKDIR/appCOPY pom.xml .RUN mvn dependency:go-offlineVOLUME/app/srcCMD [&#34;mvn&#34;, &#34;spring-boot:run&#34;] 进入 Docker 目录，编译生成 Docker Image docker build -t app:dev . 运行 Docker: docker run -v d:/Project/demo/src:/app/src app:dev  参考  https://medium." />
@@ -34,7 +34,6 @@
 <meta property="og:url" content="https://zhubicen.github.io/posts/springboot-on-docker/" />
 <meta property="article:published_time" content="2019-08-03T20:46:59+08:00" />
 <meta property="article:modified_time" content="2019-08-03T20:46:59+08:00" />
-
 
 </head>
 <body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
@@ -144,7 +143,7 @@
       
       <a class="navbar-item" href="https://zhubicen.github.io/tags/mysql/">
         
-        My s q l
+        My sql
         
       </a>
       
@@ -188,17 +187,13 @@
     
     <div class="navbar-end">
       
-      <a class="navbar-item" href="https://github.com/zhubicen/" rel="noopener" target="_blank">
-        <span class="icon">
-          <img alt="github-circle" src='https://zhubicen.github.io/icons/svg/github-circle.svg'>
-        </span>
-      </a>
       
       <a class="navbar-item" href="mailto:zhubicen@gmail.com" target="_blank">
         <span class="icon">
           <img alt="email" src='https://zhubicen.github.io/icons/svg/email.svg'>
         </span>
       </a>
+      
       <a class="navbar-item" href="https://zhubicen.github.io/index.xml" target="_blank">
         <span class="icon">
           <img alt="rss" src='https://zhubicen.github.io/icons/svg/rss.svg'>
@@ -208,8 +203,10 @@
     </div>
   </div>
 </nav>
-<section class="hero is-small is-info is-fullwidth">
-  <div class="hero-body">
+
+  <section>
+    <section class='hero is-small is-info is-fullwidth'>
+      <div class="hero-body">
 <div class="container">
   <h1 class="title">
     在 Docker 中开发 SpringBoot
@@ -235,14 +232,14 @@
   </h2>
 </div>
 
-  </div>
-</section>
-<section class="section">
-  <div class="container">
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
 <div class="content is-medium">
-  <h2 id="heading">问题</h2>
+  <h2 id="问题">问题</h2>
 <p>在开发 SpringBoot 微服务的过程中，经常发生的情况是，需要使用 Windows 进行开发，但是微服务最终会部署在 Linux 上，因此而产生的的开发环境和生产环境的不一致，会导致上线后的一些问题</p>
-<h2 id="heading1">解决办法</h2>
+<h2 id="解决办法">解决办法</h2>
 <p>通过把源代码目录挂载到 Docker 中，并在 Doker 中，运行 <code>mvn spring-boot:run</code>，因为 Docker 和 Windows 共享相同的目录，所以 Docker 中的 maven 可以检测到代码的改动，自动重启 SpringBoot 服务</p>
 <ul>
 <li>假设你的 Spring 代码可以使用 <code>mvn spring-boot:run</code> 正常运行。为了使 Maven 可以检测到代码的改动以重启服务，请确保 <code>pom.xml</code> 里添加了依赖项：<code>spring-boot-devtools</code></li>
@@ -259,7 +256,7 @@
 <li>进入 Docker 目录，编译生成 Docker Image <code>docker build -t app:dev .</code></li>
 <li>运行 Docker: <code>docker run -v d:/Project/demo/src:/app/src app:dev</code></li>
 </ul>
-<h2 id="heading2">参考</h2>
+<h2 id="参考">参考</h2>
 <ol>
 <li><a href="https://medium.com/@nieldw/caching-maven-dependencies-in-a-docker-build-dca6ca7ad612">https://medium.com/@nieldw/caching-maven-dependencies-in-a-docker-build-dca6ca7ad612</a></li>
 <li><a href="https://hub.docker.com/_/maven">https://hub.docker.com/_/maven</a></li>
@@ -268,8 +265,9 @@
 </div>
 
 
-  </div>
-</section><footer class="footer">
+      </div>
+    </section>
+  </section><footer class="footer">
   <div class="content has-text-centered">
     
     
