@@ -14,9 +14,9 @@ description = 'A programmer'
 includeAuthorInTitle = true
 disableAttribution = true
 
-[[params.social]]
-icon = "github-circle"
-url = "https://github.com/zhubicen/"
+# [[params.social]]
+# icon = "github-circle"
+# url = "https://github.com/zhubicen/"
 
 #[[params.social]]
 #icon = "weibo"
