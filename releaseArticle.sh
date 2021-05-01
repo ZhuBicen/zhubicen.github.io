@@ -1,7 +1,7 @@
 cd docs || exit 1
 git pull origin master || exit 1
 cd ..
-./bin/hugo || exit
+hugo || exit
 
 go run ./bin/HugoUtils.go || exit 1       
 
