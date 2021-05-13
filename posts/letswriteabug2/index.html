@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    
+    来，写个 bug  -- 间接引用坏指针
+     | 阿碧 
+  </title>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.d07c1b4f3b7f0e2423ed31c8a7b552418fbe9c9293d0ef36ffdd8c7b91d3cf3bc63b5ecb6d35524034b1057ecea9c26cb0eb255aeb4a4c20572e1754a073247e.css' integrity='sha512-0HwbTzt/DiQj7THIp7VSQY&#43;&#43;nJKT0O82/92Me5HTzzvGO17LbTVSQDSxBX7OqcJssOslWutKTCBXLhdUoHMkfg=='>
+  <link rel="canonical" href="https://zhubicen.github.io/posts/letswriteabug2/">
+  <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  <meta name="author" content="阿碧">
+  <meta name="description" content="在进程的虚拟地址空间中有较大的洞，没有映射到任何有意义的数据。如果我们试图引用一个指向这些洞的指针，那么操作系统就会以段异常 (Segmentation Fault) 中止我们的程序。而且，虚拟存储器的某些区域是只读的。试图写这些区域也将会以保护异常中止这个程序。
+Segmentation fault 是由于访问了“不属于”自己的内存引起的。这时一种机制用来阻止程序进入一种内存被破坏并且很难调试的状态。当程序遭遇了 Segmentation fault 时，你就知道你的程序访问了已经被释放的内存，或者“只读”的内存
+最典型的情况是访问了空指针
+int *p = NULL; *p = 1; 另外一种情况是访问了“只读” 的内存
+char *str = &#34;Foo&#34;; // Compiler marks the constant string as read-only *str = &#39;b&#39;; // Which means this is illegal and results in a segfault 还有指向不存在的对象的悬空指针(Dangling Point)，像这样：
+char *p = NULL; { char c; p = &amp;c; } // Now p is dangling 指针 p 悬空因为它指向了变量 c ，而 c 在过了作用域后已经被析构了。在出了作用域后如果使用 p （比如: *p = &lsquo;A&rsquo;) 也会造成 Segmentation fault">
+
+  <meta property="og:title" content="来，写个 bug  -- 间接引用坏指针" />
+<meta property="og:description" content="在进程的虚拟地址空间中有较大的洞，没有映射到任何有意义的数据。如果我们试图引用一个指向这些洞的指针，那么操作系统就会以段异常 (Segmentation Fault) 中止我们的程序。而且，虚拟存储器的某些区域是只读的。试图写这些区域也将会以保护异常中止这个程序。
+Segmentation fault 是由于访问了“不属于”自己的内存引起的。这时一种机制用来阻止程序进入一种内存被破坏并且很难调试的状态。当程序遭遇了 Segmentation fault 时，你就知道你的程序访问了已经被释放的内存，或者“只读”的内存
+最典型的情况是访问了空指针
+int *p = NULL; *p = 1; 另外一种情况是访问了“只读” 的内存
+char *str = &#34;Foo&#34;; // Compiler marks the constant string as read-only *str = &#39;b&#39;; // Which means this is illegal and results in a segfault 还有指向不存在的对象的悬空指针(Dangling Point)，像这样：
+char *p = NULL; { char c; p = &amp;c; } // Now p is dangling 指针 p 悬空因为它指向了变量 c ，而 c 在过了作用域后已经被析构了。在出了作用域后如果使用 p （比如: *p = &lsquo;A&rsquo;) 也会造成 Segmentation fault" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhubicen.github.io/posts/letswriteabug2/" />
+<meta property="article:published_time" content="2021-05-13T21:53:51+08:00" />
+<meta property="article:modified_time" content="2021-05-13T21:53:51+08:00" />
+
+</head>
+<body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      <figure class="image">
+        <img alt="" class="is-rounded" src="https://www.gravatar.com/avatar/a7074f9fedfabb09fc4a6b6973c3f25f?s=128&d=identicon">
+      </figure>
+    </a>
+    <a class="navbar-item" href="https://zhubicen.github.io/">
+      quick start
+    </a>
+  </div>
+  
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/books/">
+        
+        Books
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/c&#43;&#43;/">
+        
+        C&#43;&#43;
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/c&#43;&#43;20/">
+        
+        C&#43;&#43;20
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/chrome/">
+        
+        Chrome
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/css/">
+        
+        CSS
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/docker/">
+        
+        Docker
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/elasticsearch/">
+        
+        Elastic search
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/emacs/">
+        
+        Emacs
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/english/">
+        
+        English
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/git/">
+        
+        Git
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/golang/">
+        
+        Golang
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/java/">
+        
+        Java
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/javascript/">
+        
+        Java script
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/linux/">
+        
+        Linux
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/mongodb/">
+        
+        Mongo d b
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/mysql/">
+        
+        My sql
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/nacos/">
+        
+        NACOS
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/oauth2/">
+        
+        Oauth2
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/spring/">
+        
+        Spring
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/spring-cloud/">
+        
+        Spring cloud
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/sprint-cloud/">
+        
+        Sprint cloud
+        
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/tags/%E5%B0%8F%E9%97%AE%E9%A2%98/">
+        
+        小问题
+        
+      </a>
+      
+    </div>
+    
+    <div class="navbar-end">
+      
+      
+      <a class="navbar-item" href="mailto:zhubicen@gmail.com" target="_blank">
+        <span class="icon">
+          <img alt="email" src='https://zhubicen.github.io/icons/svg/email.svg'>
+        </span>
+      </a>
+      
+      <a class="navbar-item" href="https://zhubicen.github.io/index.xml" target="_blank">
+        <span class="icon">
+          <img alt="rss" src='https://zhubicen.github.io/icons/svg/rss.svg'>
+        </span>
+      </a>
+      
+    </div>
+  </div>
+</nav>
+
+  <section>
+    <section class='hero is-small is-info is-fullwidth'>
+      <div class="hero-body">
+<div class="container">
+  <h1 class="title">
+    来，写个 bug  -- 间接引用坏指针
+  </h1>
+  <h2 class="subtitle">
+    <time datetime='2021-05-13T21:53:51&#43;08:00'>
+      May 13, 2021
+    </time>
+    
+  </h2>
+</div>
+
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+<div class="content is-medium">
+  <p>在进程的虚拟地址空间中有较大的洞，没有映射到任何有意义的数据。如果我们试图引用一个指向这些洞的指针，那么操作系统就会以段异常 (Segmentation Fault) 中止我们的程序。而且，虚拟存储器的某些区域是只读的。试图写这些区域也将会以保护异常中止这个程序。</p>
+<p>Segmentation fault 是由于访问了“不属于”自己的内存引起的。这时一种机制用来阻止程序进入一种内存被破坏并且很难调试的状态。当程序遭遇了 Segmentation fault 时，你就知道你的程序访问了已经被释放的内存，或者“只读”的内存</p>
+<p>最典型的情况是访问了空指针</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>p <span style="color:#f92672">=</span> NULL;
+<span style="color:#f92672">*</span>p <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</code></pre></div><p>另外一种情况是访问了“只读” 的内存</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Foo&#34;</span>; <span style="color:#75715e">// Compiler marks the constant string as read-only
+</span><span style="color:#75715e"></span><span style="color:#f92672">*</span>str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;b&#39;</span>; <span style="color:#75715e">// Which means this is illegal and results in a segfault
+</span></code></pre></div><p>还有指向不存在的对象的悬空指针(Dangling Point)，像这样：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>p <span style="color:#f92672">=</span> NULL;
+{
+    <span style="color:#66d9ef">char</span> c;
+    p <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>c;
+}
+<span style="color:#75715e">// Now p is dangling
+</span></code></pre></div><p>指针 p 悬空因为它指向了变量 c ，而 c 在过了作用域后已经被析构了。在出了作用域后如果使用 p （比如: *p = &lsquo;A&rsquo;) 也会造成 Segmentation fault</p>
+<p>参考：<a href="https://stackoverflow.com/questions/2346806/what-is-a-segmentation-fault">https://stackoverflow.com/questions/2346806/what-is-a-segmentation-fault</a></p>
+
+</div>
+
+
+      </div>
+    </section>
+  </section><footer class="footer">
+  <div class="content has-text-centered">
+    
+    
+    <p>
+      
+      
+    </p>
+    
+  </div>
+</footer>
+
+
+</body>
+</html>
