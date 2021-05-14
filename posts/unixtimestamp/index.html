@@ -10,11 +10,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>
     
-    Java Functional Interface
+    unix timestamp 和时区的关系
      | 阿碧 
   </title>
   <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.d07c1b4f3b7f0e2423ed31c8a7b552418fbe9c9293d0ef36ffdd8c7b91d3cf3bc63b5ecb6d35524034b1057ecea9c26cb0eb255aeb4a4c20572e1754a073247e.css' integrity='sha512-0HwbTzt/DiQj7THIp7VSQY&#43;&#43;nJKT0O82/92Me5HTzzvGO17LbTVSQDSxBX7OqcJssOslWutKTCBXLhdUoHMkfg=='>
-  <link rel="canonical" href="https://zhubicen.github.io/posts/runnable-lambda/">
+  <link rel="canonical" href="https://zhubicen.github.io/posts/unixtimestamp/">
   <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   <meta name="HandheldFriendly" content="True">
@@ -22,22 +22,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="referrer" content="no-referrer">
   <meta name="author" content="阿碧">
-  <meta name="description" content="请看如下的 Java 代码：
-class MyClass { public setCalback(Runnable doneCallback) { if (something is done) { doneCallback(); } } }; MyClass mc = new MyClass(); mc.setCallback(() -&gt; { // do other things })  为什么 lambda 可以实现Runnable 接口？
- Runnable 的代码如下， 可以看到他是一个函数式接口 FunctionalInterface，类似的函数是接口，在 Java中还有很多，比如 ActionLisener 和 Comparator
-package java.lang; @FunctionalInterface public interface Runnable { void run(); } 什么是函数是接口？ 函数式接口是一种只有一种方法的接口。具有相同签名的 lambda 函数可以转化为这种接口。
- A functional interface is an interface that contains only one abstract method.">
+  <meta name="description" content="UNIX timestamp 是和时区无关的，它指的是自从 UTC 1970年1月1号开始计数经过的秒数（或者毫秒数）。
+比如对于 UNIX timestamp 1620994708，它相当于：
+ GMT 时间： Fri May 14 2021 12:18:28 GMT&#43;0000 中国标准时间：Fri May 14 2021 20:18:28 GMT&#43;0800 (中国标准时间)  最近遇到一个 bug 是这样的情况，从数据库中 Select 出一组数据，每一个记录中有一个 Datetime 字段，从着一组数据中找出日期最新的字段并把它转成 UNIX timestamp 存入数据库。数据库的时区为中国标准时间: GMT&#43;0800。以上所说的这段逻辑是在 Java 中实现的，程序运行在 Docker 上，但是由于在把 Datetime 转化为 timestamp 的过程中使用了系统的默认时区 GMT&#43;0000，因此在数据库中使用 FROM UNIXTIMESTAMP() 转化为 Datetime 时就和原本的 Datetime 多加了8小时
+假定从数据库获得的时间是 2021/05/14 12:18:28 ，这时的时区是 GMT &#43;0800，但是如果以时区 GMT&#43;0000 去转化为 UNIX timestamp 的话，会转化为 1620994708，在使用 GMT &#43;800 把此 UNIXTIMESTAMP 转化为 UNIX timestamp 时，就会变为 2021/05/14 20:18:28。这样就相差了 8 个小时">
 
-  <meta property="og:title" content="Java Functional Interface" />
-<meta property="og:description" content="请看如下的 Java 代码：
-class MyClass { public setCalback(Runnable doneCallback) { if (something is done) { doneCallback(); } } }; MyClass mc = new MyClass(); mc.setCallback(() -&gt; { // do other things })  为什么 lambda 可以实现Runnable 接口？
- Runnable 的代码如下， 可以看到他是一个函数式接口 FunctionalInterface，类似的函数是接口，在 Java中还有很多，比如 ActionLisener 和 Comparator
-package java.lang; @FunctionalInterface public interface Runnable { void run(); } 什么是函数是接口？ 函数式接口是一种只有一种方法的接口。具有相同签名的 lambda 函数可以转化为这种接口。
- A functional interface is an interface that contains only one abstract method." />
+  <meta property="og:title" content="unix timestamp 和时区的关系" />
+<meta property="og:description" content="UNIX timestamp 是和时区无关的，它指的是自从 UTC 1970年1月1号开始计数经过的秒数（或者毫秒数）。
+比如对于 UNIX timestamp 1620994708，它相当于：
+ GMT 时间： Fri May 14 2021 12:18:28 GMT&#43;0000 中国标准时间：Fri May 14 2021 20:18:28 GMT&#43;0800 (中国标准时间)  最近遇到一个 bug 是这样的情况，从数据库中 Select 出一组数据，每一个记录中有一个 Datetime 字段，从着一组数据中找出日期最新的字段并把它转成 UNIX timestamp 存入数据库。数据库的时区为中国标准时间: GMT&#43;0800。以上所说的这段逻辑是在 Java 中实现的，程序运行在 Docker 上，但是由于在把 Datetime 转化为 timestamp 的过程中使用了系统的默认时区 GMT&#43;0000，因此在数据库中使用 FROM UNIXTIMESTAMP() 转化为 Datetime 时就和原本的 Datetime 多加了8小时
+假定从数据库获得的时间是 2021/05/14 12:18:28 ，这时的时区是 GMT &#43;0800，但是如果以时区 GMT&#43;0000 去转化为 UNIX timestamp 的话，会转化为 1620994708，在使用 GMT &#43;800 把此 UNIXTIMESTAMP 转化为 UNIX timestamp 时，就会变为 2021/05/14 20:18:28。这样就相差了 8 个小时" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zhubicen.github.io/posts/runnable-lambda/" />
-<meta property="article:published_time" content="2019-12-22T01:06:03+08:00" />
-<meta property="article:modified_time" content="2019-12-22T01:06:03+08:00" />
+<meta property="og:url" content="https://zhubicen.github.io/posts/unixtimestamp/" />
+<meta property="article:published_time" content="2021-05-14T20:39:50+08:00" />
+<meta property="article:modified_time" content="2021-05-14T20:39:50+08:00" />
 
 </head>
 <body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
@@ -219,12 +217,20 @@ package java.lang; @FunctionalInterface public interface Runnable { void run(); 
       <div class="hero-body">
 <div class="container">
   <h1 class="title">
-    Java Functional Interface
+    unix timestamp 和时区的关系
   </h1>
   <h2 class="subtitle">
-    <time datetime='2019-12-22T01:06:03&#43;08:00'>
-      December 22, 2019
+    <time datetime='2021-05-14T20:39:50&#43;08:00'>
+      May 14, 2021
     </time>
+    
+    <br>
+    
+    
+    
+    <a class="tag is-link" href="https://zhubicen.github.io/tags/unix/">unix</a>
+    
+    
     
   </h2>
 </div>
@@ -234,33 +240,16 @@ package java.lang; @FunctionalInterface public interface Runnable { void run(); 
     <section class="section">
       <div class="container">
 <div class="content is-medium">
-  <p>请看如下的 Java 代码：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyClass</span> <span style="color:#f92672">{</span>
-<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">setCalback</span><span style="color:#f92672">(</span>Runnable doneCallback<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-		<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>something is done<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-			doneCallback<span style="color:#f92672">();</span>
-		<span style="color:#f92672">}</span>
-	<span style="color:#f92672">}</span>
-<span style="color:#f92672">};</span>
-MyClass mc <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MyClass<span style="color:#f92672">();</span>
-mc<span style="color:#f92672">.</span><span style="color:#a6e22e">setCallback</span><span style="color:#f92672">(()</span> <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">{</span>
-	<span style="color:#75715e">// do other things
-</span><span style="color:#75715e"></span><span style="color:#f92672">})</span>
-</code></pre></div><blockquote>
-<p>为什么 <code>lambda</code> 可以实现<code>Runnable</code> 接口？</p>
-</blockquote>
-<p><code>Runnable</code> 的代码如下， 可以看到他是一个函数式接口 <code>FunctionalInterface</code>，类似的函数是接口，在 Java中还有很多，比如 <code>ActionLisener</code> 和 <code>Comparator</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#f92672">package</span> java.lang<span style="color:#f92672">;</span>
-
-<span style="color:#a6e22e">@FunctionalInterface</span>
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Runnable</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span><span style="color:#f92672">();</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><h2 id="什么是函数是接口">什么是函数是接口？</h2>
-<p>函数式接口是一种只有一种方法的接口。具有相同签名的 <code>lambda</code> 函数可以转化为这种接口。</p>
-<blockquote>
-<p>A functional interface is an interface that contains only one abstract method. They can have only one functionality to exhibit. From Java 8 onwards, lambda expressions can be used to represent the instance of a functional interface. A functional interface can have any number of default methods. Runnable, ActionListener, Comparable are some of the examples of functional interfaces.</p>
-</blockquote>
+  <p>UNIX timestamp 是和时区无关的，它指的是自从 UTC 1970年1月1号开始计数经过的秒数（或者毫秒数）。</p>
+<p>比如对于 UNIX timestamp 1620994708，它相当于：</p>
+<ul>
+<li>GMT 时间： Fri May 14 2021 12:18:28 GMT+0000</li>
+<li>中国标准时间：Fri May 14 2021 20:18:28 GMT+0800 (中国标准时间)</li>
+</ul>
+<p>最近遇到一个 bug 是这样的情况，从数据库中 Select 出一组数据，每一个记录中有一个 Datetime 字段，从着一组数据中找出日期最新的字段并把它转成 UNIX timestamp 存入数据库。数据库的时区为中国标准时间: GMT+0800。以上所说的这段逻辑是在 Java 中实现的，程序运行在 Docker 上，但是由于在把 Datetime 转化为 timestamp 的过程中使用了系统的默认时区 GMT+0000，因此在数据库中使用 <code>FROM UNIXTIMESTAMP()</code> 转化为 Datetime 时就和原本的 Datetime 多加了8小时</p>
+<p>假定从数据库获得的时间是 2021/05/14 12:18:28 ，这时的时区是 GMT +0800，但是如果以时区 GMT+0000 去转化为 UNIX timestamp 的话，会转化为 1620994708，在使用 GMT +800 把此 UNIXTIMESTAMP 转化为 UNIX timestamp 时，就会变为 2021/05/14 20:18:28。这样就相差了 8 个小时</p>
+<p>因此在把 Datetime 转化为 UNIX timestamp 时一定要使用正确的时区</p>
+<p><img src="unixtimestamp.assets/Image.png" alt="Image"></p>
 
 </div>
 
