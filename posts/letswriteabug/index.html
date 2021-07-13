@@ -13,7 +13,7 @@
     来，写个 bug  -- 读未初始化的内存
      | 阿碧 
   </title>
-  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.d07c1b4f3b7f0e2423ed31c8a7b552418fbe9c9293d0ef36ffdd8c7b91d3cf3bc63b5ecb6d35524034b1057ecea9c26cb0eb255aeb4a4c20572e1754a073247e.css' integrity='sha512-0HwbTzt/DiQj7THIp7VSQY&#43;&#43;nJKT0O82/92Me5HTzzvGO17LbTVSQDSxBX7OqcJssOslWutKTCBXLhdUoHMkfg=='>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.93355167a8783f17d2d032164c86cf0431660c9ae8da42ace2c85c4935e23faded78076536367be532a1852e3f87cfb935f8815d8c8a7b823cd33b027b0ad102.css' integrity='sha512-kzVRZ6h4PxfS0DIWTIbPBDFmDJro2kKs4shcSTXiP63teAdlNjZ75TKhhS4/h8&#43;5NfiBXYyKe4I80zsCewrRAg=='>
   <link rel="canonical" href="https://zhubicen.github.io/posts/letswriteabug/">
   <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -29,9 +29,10 @@
 <meta property="og:description" content="此为《深入理解计算机系统》一书上的示例程序，matvec 函数分配了内存，但是未初始化内存的值，因此 y 指向的内存的值是不确定的。在此段小程序中问题是显而易见的，在大型软件系统中可以能借助与 Valgrind 来检测
 #include &lt;stdlib.h&gt;#include &lt;stdio.h&gt;#define COUNT 3  int* matvec(int A[][COUNT], int* x, int n) { int i, j; int* y = (int*)malloc(n * sizeof(int)); for (int i = 0; i &lt; n; i&#43;&#43;) { for (int j = 0; j &lt; n; j&#43;&#43;) { y[i] &#43;= A[i][j] * x[j]; } } return y; } void main() { int a[COUNT][COUNT] = { {0, 1, 2}, {2, 3, 4}, {4, 5, 6} }; int x[3] = {1, 2, 3}; int* y = matvec(a, x, 3); for (int i = 0; i &lt; COUNT; i&#43;&#43;) { printf(&#34;%d &#34;, y[i]); } free(y); } 让我们试试使用 Valgrind，注意 Valgrind 只能检测出使用了未初始化的内存，并且对外部环境造成影响的情况。如果把第 26 行的 去掉 ，则 Valgrind 不会检测出任何问题" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zhubicen.github.io/posts/letswriteabug/" />
+<meta property="og:url" content="https://zhubicen.github.io/posts/letswriteabug/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-04-27T22:21:31+08:00" />
 <meta property="article:modified_time" content="2021-04-27T22:21:31+08:00" />
+
 
 </head>
 <body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
@@ -135,13 +136,13 @@
       
       <a class="navbar-item" href="https://zhubicen.github.io/tags/mongodb/">
         
-        Mongo d b
+        Mongo db
         
       </a>
       
       <a class="navbar-item" href="https://zhubicen.github.io/tags/mysql/">
         
-        My sql
+        My SQL
         
       </a>
       

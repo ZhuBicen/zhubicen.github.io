@@ -6,11 +6,7 @@
     <description>Recent content in git on quick start</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 14 Jan 2021 21:34:39 +0800</lastBuildDate>
-    
-	<atom:link href="https://zhubicen.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 14 Jan 2021 21:34:39 +0800</lastBuildDate><atom:link href="https://zhubicen.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Gitlab Merge Request 的三个选项</title>
       <link>https://zhubicen.github.io/posts/gitlab-merge-request/</link>
@@ -22,6 +18,19 @@
 以下的三个图，分别对应上面的三个选项生成的 commit history
 选项 1 为 gitlab 的默认选项，选项 2 和选项 3 一般会要求开发人员 rebase，在 gitlab 上做了 merge request 的 rebase 后，如果还需要进一部在本地编辑。如果在本地分支 git pull 后会产生一个新的 merge commit 并可能会产生冲突。这个问题可以如下解决：
 git checkout this_other_branch git stash // Just in case you have local changes that would be dropped if you dont stash them git fetch git reset —-hard origin/this_other_branch https://medium.</description>
+    </item>
+    
+    <item>
+      <title>Git Submodule 教程</title>
+      <link>https://zhubicen.github.io/posts/git-submodules/</link>
+      <pubDate>Sun, 22 Dec 2019 14:32:54 +0800</pubDate>
+      
+      <guid>https://zhubicen.github.io/posts/git-submodules/</guid>
+      <description>为现有的仓库增加 submodule git submodule add (repository) (directory) 在执行了以上命令后，在 git 仓库的根目录下，会出现一个 .gitmodules，里面会记录当前添加的作为 submodule 的 git 仓库的地址。
+提交这个 .gitmodules 文件：
+git add .gitmodules git commit -m&amp;quot;add sumodule file&amp;quot; git push 经过以上的步骤，我们就把为我们的 git 仓库添加了一个 submodule
+clone 现有的包含 submodule 的仓库 重新clone 我们的仓库，会发现，里面只有一个空的目录。这是因为，默认情况下，git clone 不会把 submodule 同时 clone 下来。为了把submodule 也 clone 下来，需要运行一下的 submodule 指令
+git submodule init git submodule update // 也有可能 sumbodule 可能会包含其他的 git repo, 所以可以使用一下的命令 git submodule update --init --recursive submodule 也是一个普通的 repo，我们可以在目录中，执行log， status， checkout和branch</description>
     </item>
     
     <item>

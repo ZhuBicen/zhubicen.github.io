@@ -13,7 +13,7 @@
     linus torvalds 推荐的单链表删除元素的新方法
      | 阿碧 
   </title>
-  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.d07c1b4f3b7f0e2423ed31c8a7b552418fbe9c9293d0ef36ffdd8c7b91d3cf3bc63b5ecb6d35524034b1057ecea9c26cb0eb255aeb4a4c20572e1754a073247e.css' integrity='sha512-0HwbTzt/DiQj7THIp7VSQY&#43;&#43;nJKT0O82/92Me5HTzzvGO17LbTVSQDSxBX7OqcJssOslWutKTCBXLhdUoHMkfg=='>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.93355167a8783f17d2d032164c86cf0431660c9ae8da42ace2c85c4935e23faded78076536367be532a1852e3f87cfb935f8815d8c8a7b823cd33b027b0ad102.css' integrity='sha512-kzVRZ6h4PxfS0DIWTIbPBDFmDJro2kKs4shcSTXiP63teAdlNjZ75TKhhS4/h8&#43;5NfiBXYyKe4I80zsCewrRAg=='>
   <link rel="canonical" href="https://zhubicen.github.io/posts/remove-entry-in-single-linked-list/">
   <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -29,9 +29,10 @@ void remove_list_entry(entry) { prev = NULL; walk = head; // walk the list to fi
 <meta property="og:description" content="常规手法 使用 walk 变量循环指向各个链表元素，直至查询到相关节点。同时使用prev保留当前元素的前一个节点。在查找到相关的节点后，使用 prev-&gt;next = entry-&gt;next, 删除指定节点。 这里有一个特殊情况，head 即是要删除的指定节点，因此需要判断prev是否为空，来处理此情况。 Linux Torvalds 推荐的方法将去除这一特殊处理
 void remove_list_entry(entry) { prev = NULL; walk = head; // walk the list to find the entry  while (walk != entry) { prev = walk; walk = walk-&gt;next; } // remove the entry by updating the head or previous entry  if (!prev) { head = entry-&gt;next; } else { prev-&gt;next = entry-&gt;next; } } 推荐手法 indirect 指针指向的是 next 指针的地址，对于head节点来说，指向的是 head的地址。因此indirect 在改算法中实际上扮演的是常规算法中prev的角色，只不过由于head变量的存在，是的 indirect所指向的指针不可能为空，因此避免了一个多余的条件判断。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zhubicen.github.io/posts/remove-entry-in-single-linked-list/" />
+<meta property="og:url" content="https://zhubicen.github.io/posts/remove-entry-in-single-linked-list/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-02-26T09:48:48+08:00" />
 <meta property="article:modified_time" content="2020-02-26T09:48:48+08:00" />
+
 
 </head>
 <body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
@@ -135,13 +136,13 @@ void remove_list_entry(entry) { prev = NULL; walk = head; // walk the list to fi
       
       <a class="navbar-item" href="https://zhubicen.github.io/tags/mongodb/">
         
-        Mongo d b
+        Mongo db
         
       </a>
       
       <a class="navbar-item" href="https://zhubicen.github.io/tags/mysql/">
         
-        My sql
+        My SQL
         
       </a>
       

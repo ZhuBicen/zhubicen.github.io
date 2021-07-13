@@ -6,11 +6,7 @@
     <description>Recent content in Spring on quick start</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 30 Jan 2021 11:00:53 +0800</lastBuildDate>
-    
-	<atom:link href="https://zhubicen.github.io/tags/spring/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 30 Jan 2021 11:00:53 +0800</lastBuildDate><atom:link href="https://zhubicen.github.io/tags/spring/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Sprint Cloud Gateway 与 NACOS 集成时出现的一个问题</title>
       <link>https://zhubicen.github.io/posts/gateway/</link>

@@ -6,11 +6,7 @@
     <description>Recent content on quick start</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 14 May 2021 20:39:50 +0800</lastBuildDate>
-    
-	<atom:link href="https://zhubicen.github.io/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 14 May 2021 20:39:50 +0800</lastBuildDate><atom:link href="https://zhubicen.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>unix timestamp 和时区的关系</title>
       <link>https://zhubicen.github.io/posts/unixtimestamp/</link>
@@ -184,7 +180,7 @@ import React, { Component } from &amp;#39;react&amp;#39;; import PropTypes from 
       <pubDate>Tue, 26 May 2020 13:28:26 +0800</pubDate>
       
       <guid>https://zhubicen.github.io/posts/cors/</guid>
-      <description>对于非简单请求 或者初次请求失败后，浏览器会使用 options 方法发起 `preflight request&amp;rsquo;
+      <description>对于非简单请求 或者初次请求失败后，浏览器会使用 options 方法发起 `preflight request&#39;
 preflight request 也就是通常所说的预检请求，如果预检请求失败，可能会出现如下的错误：
 Access to XMLHttpRequest at &#39;http://localhost:8080/security/&#39; from origin &#39;http://localhost:3000&#39; has been blocked by CORS policy: Response to preflight request doesn&#39;t pass access control check: No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource. preflight request 一般会包括一下几个信息：Access-Control-Request-Method 和 Access-Control-Request-Headers，以及一个 Origin 首部
 比如客户端在发起 DELETE 请求之前会发起如下的预检请求：
@@ -763,7 +759,7 @@ git config --global alias.co checkout git config --global alias.br branch git co
       <description>这个 package 的目的是使用结构化的数据作为输入，来生成一些具有固定格式的 文本。从而结构化的数据可以转化为我们需要的文本。
 最简单的一个用法 生成一个template, 然后使用一个结构体变量，去替换template中的内容。 比如一个template中的内容如下，{{.NUmber}}, 如果使用一个结构体（该结构体有一个.Number成员）， {{.Number}}就会被，该变量的值就会替换。
 概念 template可以做什么？ template可以解析一些含有Action的UTF-8编码的文本或文件。并且借助一些参 数执行其中的action，以生成处理后的文件。其中使用的参数执行action所需要的。
-action是输入的文本中有以&amp;rdquo;{{&amp;ldquo;和&amp;rdquo;}}&amp;ldquo;分隔起来的内容。 输入文本中除了action以外的所有内容都会原封不动的转换为输出
+action是输入的文本中有以&amp;quot;{{&amp;ldquo;和&amp;rdquo;}}&amp;ldquo;分隔起来的内容。 输入文本中除了action以外的所有内容都会原封不动的转换为输出
 在下面的一个最简单的例子中 ，{{.Count}}和{{.Material}}就是action。而 sweaters就是在执行这些action时所使用的参数。template执行后的输出到 stdout 中。
 type Inventory struct { Material string Count uint } sweaters := Inventory{&amp;#34;wool&amp;#34;, 17} tmpl, err := template.New(&amp;#34;test&amp;#34;).Parse(&amp;#34;{{.Count}} items are made of {{.Material}}&amp;#34;) if err != nil { panic(err) } err = tmpl.Execute(os.Stdout, sweaters) if err != nil { panic(err) } Action是什么？ go中定义了多种形式的action,比如{{pipeline}}, 或者{{ if pipeline}} T1 {{end}}。其中pipeline是由一系列的command组成，command之间可以使用管道 连接，command可以是一个参数或者函数调用。 下面这段代码的输出是&amp;quot;output&amp;rdquo;,原因是pipeline的输出是pipelin中最后一个 command的输出，</description>
     </item>
@@ -1057,7 +1053,7 @@ add a file to share ,append a share node in smb.conf .and the folder should be 7
 在Ubuntu 6.10 Desktop和Windows XP之间设置文件共享
 在Ubuntu下打开“系统-系统管理-共享的文件夹”，进行相应的设置。在WinXP下打开Ubuntu的IP，可以看到文件夹，但是并不能够访问。 用如下命令修改smb.conf：
 sudo gedit /etc/samba/smb.conf
-将security=user那一行前的注释符&amp;rdquo;;&amp;ldquo;去掉，然后把user改为share，这样可以实现匿名访问。 再用如下命令重启samba：
+将security=user那一行前的注释符&amp;quot;;&amp;ldquo;去掉，然后把user改为share，这样可以实现匿名访问。 再用如下命令重启samba：
 sudo /etc/init.d/samba restart
 在WinXP，可以访问文件夹了，但是只读，仍然无法写入。即使在Ubuntu的GUI下去掉了只读属性也是如此。 最后修改文件夹的权限：
 chmod 777 (文件夹名称)</description>

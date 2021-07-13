@@ -6,11 +6,7 @@
     <description>Recent content in C&#43;&#43; on quick start</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 28 Mar 2020 20:18:30 +0800</lastBuildDate>
-    
-	<atom:link href="https://zhubicen.github.io/tags/c++/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 26 Feb 2020 09:48:48 +0800</lastBuildDate><atom:link href="https://zhubicen.github.io/tags/c++/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>linus torvalds 推荐的单链表删除元素的新方法</title>
       <link>https://zhubicen.github.io/posts/remove-entry-in-single-linked-list/</link>

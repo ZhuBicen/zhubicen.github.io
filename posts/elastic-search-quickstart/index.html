@@ -13,7 +13,7 @@
     Elastic Search Quickstart
      | 阿碧 
   </title>
-  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.d07c1b4f3b7f0e2423ed31c8a7b552418fbe9c9293d0ef36ffdd8c7b91d3cf3bc63b5ecb6d35524034b1057ecea9c26cb0eb255aeb4a4c20572e1754a073247e.css' integrity='sha512-0HwbTzt/DiQj7THIp7VSQY&#43;&#43;nJKT0O82/92Me5HTzzvGO17LbTVSQDSxBX7OqcJssOslWutKTCBXLhdUoHMkfg=='>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.93355167a8783f17d2d032164c86cf0431660c9ae8da42ace2c85c4935e23faded78076536367be532a1852e3f87cfb935f8815d8c8a7b823cd33b027b0ad102.css' integrity='sha512-kzVRZ6h4PxfS0DIWTIbPBDFmDJro2kKs4shcSTXiP63teAdlNjZ75TKhhS4/h8&#43;5NfiBXYyKe4I80zsCewrRAg=='>
   <link rel="canonical" href="https://zhubicen.github.io/posts/elastic-search-quickstart/">
   <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -33,9 +33,10 @@ Using cURL for REST commands Create an index $ curl ‑XPUT &quot;http://localho
 Insert a document $ curl XPUT &quot;http://localhost:9200/music/songs/1&quot; ‑d &#39; { &quot;name&quot;: &quot;Deck the Halls&quot;, &quot;year&quot;: 1885, &quot;lyrics&quot;: &quot;Fa la la la la&quot; }&#39; View a document $ curl ‑XGET &quot;http://localhost:9200/music/songs/1&quot; Output:
 {&quot;_index&quot;:&quot;music&quot;,&quot;_type&quot;:&quot;songs&quot;,&quot;_id&quot;:&quot;1&quot;,&quot;_version&quot;:1,&quot;found&quot;:true,&quot;_source&quot;: { &quot;name&quot;: &quot;Deck the Halls&quot;, &quot;year&quot;: 1885, &quot;lyrics&quot;: &quot;Fa la la la la&quot; }} Update a document $ curl ‑XPUT &quot;http://localhost:9200/music/lyrics/1&quot; ‑d &#39;{ &quot;name&quot;: &quot;Deck the Halls&quot;, &quot;year&quot;: 1886, &quot;lyrics&quot;: &quot;Fa la la la la&quot; }&#39; Delete a document curl ‑XDELETE &quot;http://localhost:9200/music/lyrics/1&quot; Insert a document from a file  $ curl ‑XPUT &quot;http://localhost:9200/music/lyrics/2&quot; ‑d @caseyjones." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zhubicen.github.io/posts/elastic-search-quickstart/" />
+<meta property="og:url" content="https://zhubicen.github.io/posts/elastic-search-quickstart/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2019-01-23T21:08:24+08:00" />
 <meta property="article:modified_time" content="2019-01-23T21:08:24+08:00" />
+
 
 </head>
 <body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
@@ -139,13 +140,13 @@ Insert a document $ curl XPUT &quot;http://localhost:9200/music/songs/1&quot; �
       
       <a class="navbar-item" href="https://zhubicen.github.io/tags/mongodb/">
         
-        Mongo d b
+        Mongo db
         
       </a>
       
       <a class="navbar-item" href="https://zhubicen.github.io/tags/mysql/">
         
-        My sql
+        My SQL
         
       </a>
       

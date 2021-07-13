@@ -6,11 +6,7 @@
     <description>Recent content in Java on quick start</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 27 Dec 2020 13:34:51 +0800</lastBuildDate>
-    
-	<atom:link href="https://zhubicen.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 27 Dec 2020 13:34:51 +0800</lastBuildDate><atom:link href="https://zhubicen.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>一个和 HTTPS  相关的 CORS 异常</title>
       <link>https://zhubicen.github.io/posts/cors-https/</link>
@@ -30,7 +26,7 @@ CORS 的配置在前后端分离的开发模式下非常的常见，因此也就
       <pubDate>Tue, 26 May 2020 13:28:26 +0800</pubDate>
       
       <guid>https://zhubicen.github.io/posts/cors/</guid>
-      <description>对于非简单请求 或者初次请求失败后，浏览器会使用 options 方法发起 `preflight request&amp;rsquo;
+      <description>对于非简单请求 或者初次请求失败后，浏览器会使用 options 方法发起 `preflight request&#39;
 preflight request 也就是通常所说的预检请求，如果预检请求失败，可能会出现如下的错误：
 Access to XMLHttpRequest at &#39;http://localhost:8080/security/&#39; from origin &#39;http://localhost:3000&#39; has been blocked by CORS policy: Response to preflight request doesn&#39;t pass access control check: No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource. preflight request 一般会包括一下几个信息：Access-Control-Request-Method 和 Access-Control-Request-Headers，以及一个 Origin 首部
 比如客户端在发起 DELETE 请求之前会发起如下的预检请求：

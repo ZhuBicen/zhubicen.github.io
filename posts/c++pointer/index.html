@@ -13,7 +13,7 @@
     解读 C&#43;&#43; 指针声明
      | 阿碧 
   </title>
-  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.d07c1b4f3b7f0e2423ed31c8a7b552418fbe9c9293d0ef36ffdd8c7b91d3cf3bc63b5ecb6d35524034b1057ecea9c26cb0eb255aeb4a4c20572e1754a073247e.css' integrity='sha512-0HwbTzt/DiQj7THIp7VSQY&#43;&#43;nJKT0O82/92Me5HTzzvGO17LbTVSQDSxBX7OqcJssOslWutKTCBXLhdUoHMkfg=='>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.93355167a8783f17d2d032164c86cf0431660c9ae8da42ace2c85c4935e23faded78076536367be532a1852e3f87cfb935f8815d8c8a7b823cd33b027b0ad102.css' integrity='sha512-kzVRZ6h4PxfS0DIWTIbPBDFmDJro2kKs4shcSTXiP63teAdlNjZ75TKhhS4/h8&#43;5NfiBXYyKe4I80zsCewrRAg=='>
   <link rel="canonical" href="https://zhubicen.github.io/posts/c&#43;&#43;pointer/">
   <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -29,9 +29,10 @@ char (*(*x())[])()，从里面往外读 , x is a function returning pointer to D
 <meta property="og:description" content="char *const cp ; // const pointer to char char const * pc ; // pointer to const char const char * pc2 ; // pointer to const char Some people find it helpful to read such declarations right to left. For example, &quot;cp is a const pointer to a char&quot; and &quot;pc2 is a pointer to a char const .&quot; 如何复杂的表达式声明，掌握了方法一样可以读出来。首先，()和[]具有比*更高的优先级。因此先读[]，读作 array of，读作pointer to。当然()具有最高的优先级，如果（）里没有内容类似 returntype ( function)()的，读作function。
 char (*(*x())[])()，从里面往外读 , x is a function returning pointer to D，读到这里可以进行一个简化， char(*D)[]()，继续读，D is array of function returning char。因此： function returning pointer to array[] of pointer to function returning char" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zhubicen.github.io/posts/c&#43;&#43;pointer/" />
+<meta property="og:url" content="https://zhubicen.github.io/posts/c&#43;&#43;pointer/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2009-06-27T10:33:33+08:00" />
 <meta property="article:modified_time" content="2009-06-27T10:33:33+08:00" />
+
 
 </head>
 <body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
@@ -135,13 +136,13 @@ char (*(*x())[])()，从里面往外读 , x is a function returning pointer to D
       
       <a class="navbar-item" href="https://zhubicen.github.io/tags/mongodb/">
         
-        Mongo d b
+        Mongo db
         
       </a>
       
       <a class="navbar-item" href="https://zhubicen.github.io/tags/mysql/">
         
-        My sql
+        My SQL
         
       </a>
       

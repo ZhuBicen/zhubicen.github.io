@@ -6,11 +6,7 @@
     <description>Recent content in 小问题 on quick start</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 11 Mar 2021 09:58:22 +0800</lastBuildDate>
-    
-	<atom:link href="https://zhubicen.github.io/tags/%E5%B0%8F%E9%97%AE%E9%A2%98/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 11 Mar 2021 09:58:22 +0800</lastBuildDate><atom:link href="https://zhubicen.github.io/tags/%E5%B0%8F%E9%97%AE%E9%A2%98/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>一些小问题记录</title>
       <link>https://zhubicen.github.io/posts/nacos-http-usage/</link>

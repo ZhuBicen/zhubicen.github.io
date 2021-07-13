@@ -6,11 +6,7 @@
     <description>Recent content in Linux on quick start</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 01 Mar 2018 16:26:41 +0800</lastBuildDate>
-    
-	<atom:link href="https://zhubicen.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 01 Mar 2018 16:26:41 +0800</lastBuildDate><atom:link href="https://zhubicen.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>使用 Eclipse 的 Restore from local history 功能恢复误删除的文件</title>
       <link>https://zhubicen.github.io/posts/eclipse-restore-from-local/</link>
@@ -106,7 +102,7 @@ add a file to share ,append a share node in smb.conf .and the folder should be 7
 在Ubuntu 6.10 Desktop和Windows XP之间设置文件共享
 在Ubuntu下打开“系统-系统管理-共享的文件夹”，进行相应的设置。在WinXP下打开Ubuntu的IP，可以看到文件夹，但是并不能够访问。 用如下命令修改smb.conf：
 sudo gedit /etc/samba/smb.conf
-将security=user那一行前的注释符&amp;rdquo;;&amp;ldquo;去掉，然后把user改为share，这样可以实现匿名访问。 再用如下命令重启samba：
+将security=user那一行前的注释符&amp;quot;;&amp;ldquo;去掉，然后把user改为share，这样可以实现匿名访问。 再用如下命令重启samba：
 sudo /etc/init.d/samba restart
 在WinXP，可以访问文件夹了，但是只读，仍然无法写入。即使在Ubuntu的GUI下去掉了只读属性也是如此。 最后修改文件夹的权限：
 chmod 777 (文件夹名称)</description>

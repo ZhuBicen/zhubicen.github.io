@@ -13,7 +13,7 @@
     Golang Template
      | 阿碧 
   </title>
-  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.d07c1b4f3b7f0e2423ed31c8a7b552418fbe9c9293d0ef36ffdd8c7b91d3cf3bc63b5ecb6d35524034b1057ecea9c26cb0eb255aeb4a4c20572e1754a073247e.css' integrity='sha512-0HwbTzt/DiQj7THIp7VSQY&#43;&#43;nJKT0O82/92Me5HTzzvGO17LbTVSQDSxBX7OqcJssOslWutKTCBXLhdUoHMkfg=='>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.93355167a8783f17d2d032164c86cf0431660c9ae8da42ace2c85c4935e23faded78076536367be532a1852e3f87cfb935f8815d8c8a7b823cd33b027b0ad102.css' integrity='sha512-kzVRZ6h4PxfS0DIWTIbPBDFmDJro2kKs4shcSTXiP63teAdlNjZ75TKhhS4/h8&#43;5NfiBXYyKe4I80zsCewrRAg=='>
   <link rel="canonical" href="https://zhubicen.github.io/posts/golang-template/">
   <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -25,7 +25,7 @@
   <meta name="description" content="这个 package 的目的是使用结构化的数据作为输入，来生成一些具有固定格式的 文本。从而结构化的数据可以转化为我们需要的文本。
 最简单的一个用法 生成一个template, 然后使用一个结构体变量，去替换template中的内容。 比如一个template中的内容如下，{{.NUmber}}, 如果使用一个结构体（该结构体有一个.Number成员）， {{.Number}}就会被，该变量的值就会替换。
 概念 template可以做什么？ template可以解析一些含有Action的UTF-8编码的文本或文件。并且借助一些参 数执行其中的action，以生成处理后的文件。其中使用的参数执行action所需要的。
-action是输入的文本中有以&rdquo;{{&ldquo;和&rdquo;}}&ldquo;分隔起来的内容。 输入文本中除了action以外的所有内容都会原封不动的转换为输出
+action是输入的文本中有以&quot;{{&ldquo;和&rdquo;}}&ldquo;分隔起来的内容。 输入文本中除了action以外的所有内容都会原封不动的转换为输出
 在下面的一个最简单的例子中 ，{{.Count}}和{{.Material}}就是action。而 sweaters就是在执行这些action时所使用的参数。template执行后的输出到 stdout 中。
 type Inventory struct { Material string Count uint } sweaters := Inventory{&#34;wool&#34;, 17} tmpl, err := template.New(&#34;test&#34;).Parse(&#34;{{.Count}} items are made of {{.Material}}&#34;) if err != nil { panic(err) } err = tmpl.Execute(os.Stdout, sweaters) if err != nil { panic(err) } Action是什么？ go中定义了多种形式的action,比如{{pipeline}}, 或者{{ if pipeline}} T1 {{end}}。其中pipeline是由一系列的command组成，command之间可以使用管道 连接，command可以是一个参数或者函数调用。 下面这段代码的输出是&quot;output&rdquo;,原因是pipeline的输出是pipelin中最后一个 command的输出，">
 
@@ -33,13 +33,14 @@ type Inventory struct { Material string Count uint } sweaters := Inventory{&#34;
 <meta property="og:description" content="这个 package 的目的是使用结构化的数据作为输入，来生成一些具有固定格式的 文本。从而结构化的数据可以转化为我们需要的文本。
 最简单的一个用法 生成一个template, 然后使用一个结构体变量，去替换template中的内容。 比如一个template中的内容如下，{{.NUmber}}, 如果使用一个结构体（该结构体有一个.Number成员）， {{.Number}}就会被，该变量的值就会替换。
 概念 template可以做什么？ template可以解析一些含有Action的UTF-8编码的文本或文件。并且借助一些参 数执行其中的action，以生成处理后的文件。其中使用的参数执行action所需要的。
-action是输入的文本中有以&rdquo;{{&ldquo;和&rdquo;}}&ldquo;分隔起来的内容。 输入文本中除了action以外的所有内容都会原封不动的转换为输出
+action是输入的文本中有以&quot;{{&ldquo;和&rdquo;}}&ldquo;分隔起来的内容。 输入文本中除了action以外的所有内容都会原封不动的转换为输出
 在下面的一个最简单的例子中 ，{{.Count}}和{{.Material}}就是action。而 sweaters就是在执行这些action时所使用的参数。template执行后的输出到 stdout 中。
 type Inventory struct { Material string Count uint } sweaters := Inventory{&#34;wool&#34;, 17} tmpl, err := template.New(&#34;test&#34;).Parse(&#34;{{.Count}} items are made of {{.Material}}&#34;) if err != nil { panic(err) } err = tmpl.Execute(os.Stdout, sweaters) if err != nil { panic(err) } Action是什么？ go中定义了多种形式的action,比如{{pipeline}}, 或者{{ if pipeline}} T1 {{end}}。其中pipeline是由一系列的command组成，command之间可以使用管道 连接，command可以是一个参数或者函数调用。 下面这段代码的输出是&quot;output&rdquo;,原因是pipeline的输出是pipelin中最后一个 command的输出，" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zhubicen.github.io/posts/golang-template/" />
+<meta property="og:url" content="https://zhubicen.github.io/posts/golang-template/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2011-12-08T15:52:30+08:00" />
 <meta property="article:modified_time" content="2011-12-08T15:52:30+08:00" />
+
 
 </head>
 <body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
@@ -143,13 +144,13 @@ type Inventory struct { Material string Count uint } sweaters := Inventory{&#34;
       
       <a class="navbar-item" href="https://zhubicen.github.io/tags/mongodb/">
         
-        Mongo d b
+        Mongo db
         
       </a>
       
       <a class="navbar-item" href="https://zhubicen.github.io/tags/mysql/">
         
-        My sql
+        My SQL
         
       </a>
       
@@ -254,7 +255,7 @@ type Inventory struct { Material string Count uint } sweaters := Inventory{&#34;
 <h3 id="template可以做什么">template可以做什么？</h3>
 <p>template可以解析一些含有Action的UTF-8编码的文本或文件。并且借助一些参
 数执行其中的action，以生成处理后的文件。其中使用的参数执行action所需要的。</p>
-<p>action是输入的文本中有以&rdquo;{{&ldquo;和&rdquo;}}&ldquo;分隔起来的内容。
+<p>action是输入的文本中有以&quot;{{&ldquo;和&rdquo;}}&ldquo;分隔起来的内容。
 输入文本中除了action以外的所有内容都会原封不动的转换为输出</p>
 <p>在下面的一个最简单的例子中 ，{{.Count}}和{{.Material}}就是action。而
 sweaters就是在执行这些action时所使用的参数。template执行后的输出到
@@ -303,7 +304,7 @@ func main() {
 }
 </code></pre><p>当然也可以调用有输入参数的参数。比如<code>{{ pipeline . }}</code>或者 <code>{{ pipeline $}}</code>。</p>
 <p>另外，使用action中也可以做一些抽象，类似我们代码中的函数。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-golang" data-lang="golang"><span style="color:#a6e22e">text</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">`</span><span style="color:#75715e">{{</span> <span style="color:#a6e22e">define</span> <span style="color:#e6db74">&#34;title&#34;</span> <span style="color:#75715e">}}</span><span style="color:#e6db74"> </span><span style="color:#75715e">{{</span> <span style="color:#960050;background-color:#1e0010">$</span> <span style="color:#75715e">}}</span><span style="color:#e6db74"> </span><span style="color:#75715e">{{</span> <span style="color:#66d9ef">end</span> <span style="color:#75715e">}}</span><span style="color:#e6db74">  </span><span style="color:#75715e">{{</span> <span style="color:#66d9ef">template</span> <span style="color:#e6db74">&#34;title&#34;</span> <span style="color:#960050;background-color:#1e0010">$</span> <span style="color:#75715e">}}</span><span style="color:#e6db74"> `</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-golang" data-lang="golang"><span style="color:#a6e22e">text</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">`</span><span style="color:#75715e">{{</span> <span style="color:#a6e22e">define</span> <span style="color:#e6db74">&#34;title&#34;</span> <span style="color:#75715e">}}</span><span style="color:#e6db74"> </span><span style="color:#75715e">{{</span> <span style="color:#a6e22e">$</span> <span style="color:#75715e">}}</span><span style="color:#e6db74"> </span><span style="color:#75715e">{{</span> <span style="color:#66d9ef">end</span> <span style="color:#75715e">}}</span><span style="color:#e6db74">  </span><span style="color:#75715e">{{</span> <span style="color:#66d9ef">template</span> <span style="color:#e6db74">&#34;title&#34;</span> <span style="color:#a6e22e">$</span> <span style="color:#75715e">}}</span><span style="color:#e6db74"> `</span>
 	<span style="color:#a6e22e">tmp</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">template</span>.<span style="color:#a6e22e">Must</span>(<span style="color:#a6e22e">template</span>.<span style="color:#a6e22e">New</span>(<span style="color:#e6db74">&#34;test&#34;</span>).<span style="color:#a6e22e">Parse</span>(<span style="color:#a6e22e">text</span>))
 	<span style="color:#a6e22e">tmp</span>.<span style="color:#a6e22e">Execute</span>(<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Stdout</span>, <span style="color:#e6db74">&#34;The Go Programming Language&#34;</span>)
 </code></pre></div>

@@ -13,7 +13,7 @@
     Spring Cloud Quickstart
      | 阿碧 
   </title>
-  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.d07c1b4f3b7f0e2423ed31c8a7b552418fbe9c9293d0ef36ffdd8c7b91d3cf3bc63b5ecb6d35524034b1057ecea9c26cb0eb255aeb4a4c20572e1754a073247e.css' integrity='sha512-0HwbTzt/DiQj7THIp7VSQY&#43;&#43;nJKT0O82/92Me5HTzzvGO17LbTVSQDSxBX7OqcJssOslWutKTCBXLhdUoHMkfg=='>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.93355167a8783f17d2d032164c86cf0431660c9ae8da42ace2c85c4935e23faded78076536367be532a1852e3f87cfb935f8815d8c8a7b823cd33b027b0ad102.css' integrity='sha512-kzVRZ6h4PxfS0DIWTIbPBDFmDJro2kKs4shcSTXiP63teAdlNjZ75TKhhS4/h8&#43;5NfiBXYyKe4I80zsCewrRAg=='>
   <link rel="canonical" href="https://zhubicen.github.io/posts/spring-cloud-quickstart/">
   <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -39,9 +39,10 @@ Greeting 服务 Greeting 的配置文件如下：
 server: port: 9090 greeting: Hello 该服务提供如下接口：
 @RequestMapping(&#34;/&#34;) public String getGreeting(){ LOG." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zhubicen.github.io/posts/spring-cloud-quickstart/" />
+<meta property="og:url" content="https://zhubicen.github.io/posts/spring-cloud-quickstart/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2019-11-27T21:37:00+08:00" />
 <meta property="article:modified_time" content="2019-11-27T21:37:00+08:00" />
+
 
 </head>
 <body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
@@ -145,13 +146,13 @@ server: port: 9090 greeting: Hello 该服务提供如下接口：
       
       <a class="navbar-item" href="https://zhubicen.github.io/tags/mongodb/">
         
-        Mongo d b
+        Mongo db
         
       </a>
       
       <a class="navbar-item" href="https://zhubicen.github.io/tags/mysql/">
         
-        My sql
+        My SQL
         
       </a>
       
@@ -283,9 +284,9 @@ server: port: 9090 greeting: Hello 该服务提供如下接口：
 <p>Clone 代码库：<code>https://github.com/ZhuBicen/spring-cloud-quickstart.git</code>，并了解其中的三个服务：</p>
 <h3 id="greeting-服务">Greeting 服务</h3>
 <p>Greeting  的配置文件如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">server</span>:
-  <span style="color:#66d9ef">port</span>: <span style="color:#ae81ff">9090</span>
-<span style="color:#66d9ef">greeting</span>: Hello
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#f92672">server</span>:
+  <span style="color:#f92672">port</span>: <span style="color:#ae81ff">9090</span>
+<span style="color:#f92672">greeting</span>: <span style="color:#ae81ff">Hello</span>
 </code></pre></div><p>该服务提供如下接口：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#a6e22e">@RequestMapping</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/&#34;</span><span style="color:#f92672">)</span>
 <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getGreeting</span><span style="color:#f92672">(){</span>
@@ -296,8 +297,8 @@ server: port: 9090 greeting: Hello 该服务提供如下接口：
 <p>访问 <code>http://localhost:9090/</code> 会返回 <code>Hello</code></p>
 <h3 id="name-服务">Name 服务</h3>
 <p>Name  的配置文件如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">server.port</span>: <span style="color:#ae81ff">7070</span>
-<span style="color:#66d9ef">name</span>: Bernard
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#f92672">server.port</span>: <span style="color:#ae81ff">7070</span>
+<span style="color:#f92672">name</span>: <span style="color:#ae81ff">Bernard</span>
 </code></pre></div><p>该服务提供如下接口：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#a6e22e">@RequestMapping</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/&#34;</span><span style="color:#f92672">)</span>
 <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getName</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
@@ -364,9 +365,9 @@ server: port: 9090 greeting: Hello 该服务提供如下接口：
 	<span style="color:#f92672">&lt;artifactId&gt;</span>spring-cloud-starter-zipkin<span style="color:#f92672">&lt;/artifactId&gt;</span>
 <span style="color:#f92672">&lt;/dependency&gt;</span>
 </code></pre></div><p>清空 <code>application.yml</code> 中的内容，加入以下内容：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">spring</span>:
-  <span style="color:#66d9ef">application</span>:
-    <span style="color:#66d9ef">name</span>: greeting
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#f92672">spring</span>:
+  <span style="color:#f92672">application</span>:
+    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">greeting</span>
 </code></pre></div><p>把 GreetingApplication.java 改为如下代码：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> brave.sampler.Sampler<span style="color:#f92672">;</span>
 <span style="color:#f92672">import</span> org.springframework.boot.SpringApplication<span style="color:#f92672">;</span>
@@ -397,9 +398,9 @@ server: port: 9090 greeting: Hello 该服务提供如下接口：
 <p><img src="spring-cloud-quickstart.assets/1575118713713.png" alt="1575118713713"></p>
 <h3 id="改造-name-服务">改造 Name 服务</h3>
 <p>清空 <code>application.yml</code> 中的内容，加入以下内容：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">spring</span>:
-  <span style="color:#66d9ef">application</span>:
-    <span style="color:#66d9ef">name</span>: name
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#f92672">spring</span>:
+  <span style="color:#f92672">application</span>:
+    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">name</span>
 </code></pre></div><p>把 NameApplication 同样改为如下内容：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#f92672">package</span> com.example.demo<span style="color:#f92672">;</span>
 
@@ -427,9 +428,9 @@ server: port: 9090 greeting: Hello 该服务提供如下接口：
 <p><img src="spring-cloud-quickstart.assets/1575119853094.png" alt="1575119853094"></p>
 <h3 id="改造-web-服务">改造 Web 服务</h3>
 <p>清空 <code>application.yml</code> 中的内容，加入以下内容：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">spring</span>:
-  <span style="color:#66d9ef">application</span>:
-    <span style="color:#66d9ef">name</span>: web
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#f92672">spring</span>:
+  <span style="color:#f92672">application</span>:
+    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">web</span>
 </code></pre></div><p>加入同 Greeting 服务相同的四个依赖，另外加入以下两个依赖项：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;dependency&gt;</span>
 	<span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.cloud<span style="color:#f92672">&lt;/groupId&gt;</span>
@@ -514,7 +515,7 @@ server: port: 9090 greeting: Hello 该服务提供如下接口：
 <h3 id="查看-zipkin-服务器">查看 Zipkin 服务器</h3>
 <p>访问 Zipkin <code>http://localhost:9411</code>，由于以上代码中 <code> Sampler</code> 的配置，可以看到 zipkin 已经可以分析出，web, greeting 和 name 服务间的依赖关系</p>
 <p><img src="spring-cloud-quickstart.assets/1575123062971.png" alt="1575123062971"></p>
-<p>点击 ”Find Traces&rdquo; 还可以看到更多的内容：</p>
+<p>点击 ”Find Traces&quot; 还可以看到更多的内容：</p>
 <p><img src="spring-cloud-quickstart.assets/1575123208131.png" alt="1575123208131"></p>
 <h2 id="参考文档">参考文档：</h2>
 <p><a href="https://cloud.spring.io/spring-cloud-static/spring-cloud-config/2.1.3.RELEASE/single/spring-cloud-config.html">Spring Cloud Config 官方文档</a>

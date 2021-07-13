@@ -13,7 +13,7 @@
     unix timestamp 和时区的关系
      | 阿碧 
   </title>
-  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.d07c1b4f3b7f0e2423ed31c8a7b552418fbe9c9293d0ef36ffdd8c7b91d3cf3bc63b5ecb6d35524034b1057ecea9c26cb0eb255aeb4a4c20572e1754a073247e.css' integrity='sha512-0HwbTzt/DiQj7THIp7VSQY&#43;&#43;nJKT0O82/92Me5HTzzvGO17LbTVSQDSxBX7OqcJssOslWutKTCBXLhdUoHMkfg=='>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.93355167a8783f17d2d032164c86cf0431660c9ae8da42ace2c85c4935e23faded78076536367be532a1852e3f87cfb935f8815d8c8a7b823cd33b027b0ad102.css' integrity='sha512-kzVRZ6h4PxfS0DIWTIbPBDFmDJro2kKs4shcSTXiP63teAdlNjZ75TKhhS4/h8&#43;5NfiBXYyKe4I80zsCewrRAg=='>
   <link rel="canonical" href="https://zhubicen.github.io/posts/unixtimestamp/">
   <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -33,9 +33,10 @@
  GMT 时间： Fri May 14 2021 12:18:28 GMT&#43;0000 中国标准时间：Fri May 14 2021 20:18:28 GMT&#43;0800 (中国标准时间)  最近遇到一个 bug 是这样的情况，从数据库中 Select 出一组数据，每一个记录中有一个 Datetime 字段，从着一组数据中找出日期最新的字段并把它转成 UNIX timestamp 存入数据库。数据库的时区为中国标准时间: GMT&#43;0800。以上所说的这段逻辑是在 Java 中实现的，程序运行在 Docker 上，但是由于在把 Datetime 转化为 timestamp 的过程中使用了系统的默认时区 GMT&#43;0000，因此在数据库中使用 FROM UNIXTIMESTAMP() 转化为 Datetime 时就和原本的 Datetime 多加了8小时
 假定从数据库获得的时间是 2021/05/14 12:18:28 ，这时的时区是 GMT &#43;0800，但是如果以时区 GMT&#43;0000 去转化为 UNIX timestamp 的话，会转化为 1620994708，在使用 GMT &#43;800 把此 UNIXTIMESTAMP 转化为 UNIX timestamp 时，就会变为 2021/05/14 20:18:28。这样就相差了 8 个小时" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zhubicen.github.io/posts/unixtimestamp/" />
+<meta property="og:url" content="https://zhubicen.github.io/posts/unixtimestamp/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-05-14T20:39:50+08:00" />
 <meta property="article:modified_time" content="2021-05-14T20:39:50+08:00" />
+
 
 </head>
 <body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
@@ -139,13 +140,13 @@
       
       <a class="navbar-item" href="https://zhubicen.github.io/tags/mongodb/">
         
-        Mongo d b
+        Mongo db
         
       </a>
       
       <a class="navbar-item" href="https://zhubicen.github.io/tags/mysql/">
         
-        My sql
+        My SQL
         
       </a>
       

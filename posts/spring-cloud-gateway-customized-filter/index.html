@@ -13,7 +13,7 @@
     Spring Cloud Gateway 的重定向问题
      | 阿碧 
   </title>
-  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.d07c1b4f3b7f0e2423ed31c8a7b552418fbe9c9293d0ef36ffdd8c7b91d3cf3bc63b5ecb6d35524034b1057ecea9c26cb0eb255aeb4a4c20572e1754a073247e.css' integrity='sha512-0HwbTzt/DiQj7THIp7VSQY&#43;&#43;nJKT0O82/92Me5HTzzvGO17LbTVSQDSxBX7OqcJssOslWutKTCBXLhdUoHMkfg=='>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.93355167a8783f17d2d032164c86cf0431660c9ae8da42ace2c85c4935e23faded78076536367be532a1852e3f87cfb935f8815d8c8a7b823cd33b027b0ad102.css' integrity='sha512-kzVRZ6h4PxfS0DIWTIbPBDFmDJro2kKs4shcSTXiP63teAdlNjZ75TKhhS4/h8&#43;5NfiBXYyKe4I80zsCewrRAg=='>
   <link rel="canonical" href="https://zhubicen.github.io/posts/spring-cloud-gateway-customized-filter/">
   <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -37,9 +37,10 @@ Spring Cloud Gateway 的 URL 为： http://localhost, Nginx URL 为 http://local
 方法一：使用 PreserveHostHeader 这也是网上一些文章中建议的方法，在大部分情况下是可以工作的。但是对于 Nginx 似乎不起作用。
 PreserveHostHeader 告知 httpClient(Gateway 中负责转发的组件）使用原有的 Host，如果 Gateway 的后端（如Nginx）在 Redirect 时考虑 Request Host Header ，则有可能会影响最终的 Redirection URL。但是对于 Nginx 的，Request Host Header 并没有影响到 Redirection URL。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zhubicen.github.io/posts/spring-cloud-gateway-customized-filter/" />
+<meta property="og:url" content="https://zhubicen.github.io/posts/spring-cloud-gateway-customized-filter/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-01-16T21:22:24+08:00" />
 <meta property="article:modified_time" content="2020-01-16T21:22:24+08:00" />
+
 
 </head>
 <body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
@@ -143,13 +144,13 @@ PreserveHostHeader 告知 httpClient(Gateway 中负责转发的组件）使用�
       
       <a class="navbar-item" href="https://zhubicen.github.io/tags/mongodb/">
         
-        Mongo d b
+        Mongo db
         
       </a>
       
       <a class="navbar-item" href="https://zhubicen.github.io/tags/mysql/">
         
-        My sql
+        My SQL
         
       </a>
       
@@ -252,34 +253,34 @@ PreserveHostHeader 告知 httpClient(Gateway 中负责转发的组件）使用�
 <h2 id="方法一使用-preservehostheader">方法一：使用 <code>PreserveHostHeader</code></h2>
 <p>这也是网上一些文章中建议的方法，在大部分情况下是可以工作的。但是对于 Nginx  似乎不起作用。</p>
 <p><code>PreserveHostHeader</code> 告知 <code>httpClient</code>(Gateway 中负责转发的组件）使用原有的 Host，如果 Gateway 的后端（如Nginx）在 <code>Redirect</code> 时考虑 <code>Request Host Header</code> ，则有可能会影响最终的 <code>Redirection</code> URL。但是对于 Nginx 的，<code>Request Host Header</code> 并没有影响到 <code>Redirection</code> URL。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">spring</span>:
-  <span style="color:#66d9ef">cloud</span>:
-    <span style="color:#66d9ef">gateway</span>:
-      <span style="color:#66d9ef">routes</span>:
-      - <span style="color:#66d9ef">id</span>: preserve_host_route
-        <span style="color:#66d9ef">uri</span>: https://example.org
-        <span style="color:#66d9ef">filters</span>:
-        - PreserveHostHeader
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#f92672">spring</span>:
+  <span style="color:#f92672">cloud</span>:
+    <span style="color:#f92672">gateway</span>:
+      <span style="color:#f92672">routes</span>:
+      - <span style="color:#f92672">id</span>: <span style="color:#ae81ff">preserve_host_route</span>
+        <span style="color:#f92672">uri</span>: <span style="color:#ae81ff">https://example.org</span>
+        <span style="color:#f92672">filters</span>:
+        - <span style="color:#ae81ff">PreserveHostHeader</span>
 </code></pre></div><h2 id="方法二使用-filter-preservehostheader">方法二：使用 Filter <code>PreserveHostHeader</code></h2>
 <p>除了 <code>PreserveHostHeader</code> 外，<code>Spring Cloud Gateway 2.2.3</code> 提供了新的 Filter： <code>RewriteLocationResponseHeader</code>。可以如下配置：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">      <span style="color:#66d9ef">routes</span>:
-        - <span style="color:#66d9ef">id</span>: content
-          <span style="color:#66d9ef">uri</span>: http://localhost:<span style="color:#ae81ff">8080</span>
-          <span style="color:#66d9ef">predicates</span>:
-            - Path=/content/<span style="color:#75715e">**</span>
-          <span style="color:#66d9ef">filters</span>:
-            - RewriteLocationResponseHeader=AS_IN_REQUEST, Location, ,
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">      <span style="color:#f92672">routes</span>:
+        - <span style="color:#f92672">id</span>: <span style="color:#ae81ff">content</span>
+          <span style="color:#f92672">uri</span>: <span style="color:#ae81ff">http://localhost:8080</span>
+          <span style="color:#f92672">predicates</span>:
+            - <span style="color:#ae81ff">Path=/content/**</span>
+          <span style="color:#f92672">filters</span>:
+            - <span style="color:#ae81ff">RewriteLocationResponseHeader=AS_IN_REQUEST, Location, ,</span>
 </code></pre></div><p><img src="spring-cloud-gateway-customized-filter.assets/image-20200116233833694.png" alt="image-20200116233833694"></p>
 <h2 id="方法三自定义-filter">方法三：自定义 Filter</h2>
 <p>对于旧版的 Gateway，可以使用自定义的 Filter Workaround 这个问题。Filter 的原理如下：
 尝试删除 <code>Location</code> 中的 Host 部分呢，把 <code>http://localhost:8080/content/</code> 转变为 <code>/content/</code>。 这样<code>Location</code> 就变为：<code>/content/</code>,这样浏览器就会使用，原有的 Host 做重定向，从而指向：<code>http://localhost/content/</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">      <span style="color:#66d9ef">routes</span>:
-        - <span style="color:#66d9ef">id</span>: content
-          <span style="color:#66d9ef">uri</span>: http://localhost:<span style="color:#ae81ff">8080</span>
-          <span style="color:#66d9ef">predicates</span>:
-            - Path=/content/<span style="color:#75715e">**</span>
-          <span style="color:#66d9ef">filters</span>:
-            - MyFilter
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">      <span style="color:#f92672">routes</span>:
+        - <span style="color:#f92672">id</span>: <span style="color:#ae81ff">content</span>
+          <span style="color:#f92672">uri</span>: <span style="color:#ae81ff">http://localhost:8080</span>
+          <span style="color:#f92672">predicates</span>:
+            - <span style="color:#ae81ff">Path=/content/**</span>
+          <span style="color:#f92672">filters</span>:
+            - <span style="color:#ae81ff">MyFilter</span>
 </code></pre></div><p><img src="spring-cloud-gateway-customized-filter.assets/image-20200116233850711.png" alt="image-20200116233850711"></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#f92672">import</span> org.slf4j.Logger<span style="color:#f92672">;</span>
 <span style="color:#f92672">import</span> org.slf4j.LoggerFactory<span style="color:#f92672">;</span>

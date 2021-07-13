@@ -13,7 +13,7 @@
     Sprint Cloud Gateway 与 NACOS 集成时出现的一个问题
      | 阿碧 
   </title>
-  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.d07c1b4f3b7f0e2423ed31c8a7b552418fbe9c9293d0ef36ffdd8c7b91d3cf3bc63b5ecb6d35524034b1057ecea9c26cb0eb255aeb4a4c20572e1754a073247e.css' integrity='sha512-0HwbTzt/DiQj7THIp7VSQY&#43;&#43;nJKT0O82/92Me5HTzzvGO17LbTVSQDSxBX7OqcJssOslWutKTCBXLhdUoHMkfg=='>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.93355167a8783f17d2d032164c86cf0431660c9ae8da42ace2c85c4935e23faded78076536367be532a1852e3f87cfb935f8815d8c8a7b823cd33b027b0ad102.css' integrity='sha512-kzVRZ6h4PxfS0DIWTIbPBDFmDJro2kKs4shcSTXiP63teAdlNjZ75TKhhS4/h8&#43;5NfiBXYyKe4I80zsCewrRAg=='>
   <link rel="canonical" href="https://zhubicen.github.io/posts/gateway/">
   <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -33,9 +33,10 @@ spring: cloud: gateway: routes: - id: exchange uri: http://localhost:8002/ predi
 spring: cloud: gateway: routes: - id: exchange uri: lb://localhost:8002/ predicates: - Path=/exchange/** - id: reservation uri: lb://localhost:8003/ predicates: - Path=/reservation/** 上面的配置文件犯了两个错误，一个是没有使用服务名，服务名是注册在服务发现中心的名字，另一个是使用了端口号，gateway 使用服务名获取对应服务的IP和端口，所以这里是不需要端口号的，因此正确的配置文件如下，exchange 和 reservation 都是服务名：
 spring: cloud: gateway: routes: - id: exchange uri: lb://exchange predicates: - Path=/exchange/** - id: reservation uri: lb://reservation predicates: - Path=/reservation/** " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zhubicen.github.io/posts/gateway/" />
+<meta property="og:url" content="https://zhubicen.github.io/posts/gateway/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-01-30T11:00:53+08:00" />
 <meta property="article:modified_time" content="2021-01-30T11:00:53+08:00" />
+
 
 </head>
 <body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
@@ -139,13 +140,13 @@ spring: cloud: gateway: routes: - id: exchange uri: lb://exchange predicates: - 
       
       <a class="navbar-item" href="https://zhubicen.github.io/tags/mongodb/">
         
-        Mongo d b
+        Mongo db
         
       </a>
       
       <a class="navbar-item" href="https://zhubicen.github.io/tags/mysql/">
         
-        My sql
+        My SQL
         
       </a>
       
@@ -251,44 +252,44 @@ spring: cloud: gateway: routes: - id: exchange uri: lb://exchange predicates: - 
       <div class="container">
 <div class="content is-medium">
   <p>最近有这么一个需求，使用 Spring CLoud Gateway 把以 <code>/exchange/</code> 开头的请求转发到一个服务器，以 <code>/reservation/</code> 开头的请求转发到另外一个服务器，很自然的使用下面的配置文件：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">spring</span>:
-   <span style="color:#66d9ef">cloud</span>:
-    <span style="color:#66d9ef">gateway</span>:
-      <span style="color:#66d9ef">routes</span>:
-        - <span style="color:#66d9ef">id</span>: exchange
-          <span style="color:#66d9ef">uri</span>: http://localhost:<span style="color:#ae81ff">8002</span>/
-          <span style="color:#66d9ef">predicates</span>:
-            - Path=/exchange/<span style="color:#75715e">**</span>
-        - <span style="color:#66d9ef">id</span>: reservation
-          <span style="color:#66d9ef">uri</span>: http://localhost:<span style="color:#ae81ff">8003</span>/
-          <span style="color:#66d9ef">predicates</span>:
-            - Path=/reservation/<span style="color:#75715e">**</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#f92672">spring</span>:
+   <span style="color:#f92672">cloud</span>:
+    <span style="color:#f92672">gateway</span>:
+      <span style="color:#f92672">routes</span>:
+        - <span style="color:#f92672">id</span>: <span style="color:#ae81ff">exchange</span>
+          <span style="color:#f92672">uri</span>: <span style="color:#ae81ff">http://localhost:8002/</span>
+          <span style="color:#f92672">predicates</span>:
+            - <span style="color:#ae81ff">Path=/exchange/**</span>
+        - <span style="color:#f92672">id</span>: <span style="color:#ae81ff">reservation</span>
+          <span style="color:#f92672">uri</span>: <span style="color:#ae81ff">http://localhost:8003/</span>
+          <span style="color:#f92672">predicates</span>:
+            - <span style="color:#ae81ff">Path=/reservation/**</span>
 </code></pre></div><p>这里直接 hardcode 了相关的 URL（包括 IP 和端口），测试没有问题。由于项目中还用了 NACOS 作为服务注册于发现中心，因此不能直接 Hardcode URL，需要使用 Load Balance 的方式。根据自己的印象改成了下面这样：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">spring</span>:
-   <span style="color:#66d9ef">cloud</span>:
-    <span style="color:#66d9ef">gateway</span>:
-      <span style="color:#66d9ef">routes</span>:
-        - <span style="color:#66d9ef">id</span>: exchange
-          <span style="color:#66d9ef">uri</span>: lb://localhost:<span style="color:#ae81ff">8002</span>/
-          <span style="color:#66d9ef">predicates</span>:
-            - Path=/exchange/<span style="color:#75715e">**</span>
-        - <span style="color:#66d9ef">id</span>: reservation
-          <span style="color:#66d9ef">uri</span>: lb://localhost:<span style="color:#ae81ff">8003</span>/
-          <span style="color:#66d9ef">predicates</span>:
-            - Path=/reservation/<span style="color:#75715e">**</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#f92672">spring</span>:
+   <span style="color:#f92672">cloud</span>:
+    <span style="color:#f92672">gateway</span>:
+      <span style="color:#f92672">routes</span>:
+        - <span style="color:#f92672">id</span>: <span style="color:#ae81ff">exchange</span>
+          <span style="color:#f92672">uri</span>: <span style="color:#ae81ff">lb://localhost:8002/</span>
+          <span style="color:#f92672">predicates</span>:
+            - <span style="color:#ae81ff">Path=/exchange/**</span>
+        - <span style="color:#f92672">id</span>: <span style="color:#ae81ff">reservation</span>
+          <span style="color:#f92672">uri</span>: <span style="color:#ae81ff">lb://localhost:8003/</span>
+          <span style="color:#f92672">predicates</span>:
+            - <span style="color:#ae81ff">Path=/reservation/**</span>
 </code></pre></div><p>上面的配置文件犯了两个错误，一个是没有使用服务名，服务名是注册在服务发现中心的名字，另一个是使用了端口号，gateway 使用服务名获取对应服务的IP和端口，所以这里是不需要端口号的，因此正确的配置文件如下，<code>exchange</code> 和 <code>reservation</code> 都是服务名：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">spring</span>:
-   <span style="color:#66d9ef">cloud</span>:
-    <span style="color:#66d9ef">gateway</span>:
-      <span style="color:#66d9ef">routes</span>:
-        - <span style="color:#66d9ef">id</span>: exchange
-          <span style="color:#66d9ef">uri</span>: lb://exchange
-          <span style="color:#66d9ef">predicates</span>:
-            - Path=/exchange/<span style="color:#75715e">**</span>
-        - <span style="color:#66d9ef">id</span>: reservation
-          <span style="color:#66d9ef">uri</span>: lb://reservation
-          <span style="color:#66d9ef">predicates</span>:
-            - Path=/reservation/<span style="color:#75715e">**</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#f92672">spring</span>:
+   <span style="color:#f92672">cloud</span>:
+    <span style="color:#f92672">gateway</span>:
+      <span style="color:#f92672">routes</span>:
+        - <span style="color:#f92672">id</span>: <span style="color:#ae81ff">exchange</span>
+          <span style="color:#f92672">uri</span>: <span style="color:#ae81ff">lb://exchange</span>
+          <span style="color:#f92672">predicates</span>:
+            - <span style="color:#ae81ff">Path=/exchange/**</span>
+        - <span style="color:#f92672">id</span>: <span style="color:#ae81ff">reservation</span>
+          <span style="color:#f92672">uri</span>: <span style="color:#ae81ff">lb://reservation</span>
+          <span style="color:#f92672">predicates</span>:
+            - <span style="color:#ae81ff">Path=/reservation/**</span>
 </code></pre></div>
 </div>
 

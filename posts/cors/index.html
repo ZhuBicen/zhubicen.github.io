@@ -13,7 +13,7 @@
     CORS 和 Preflight Request
      | 阿碧 
   </title>
-  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.d07c1b4f3b7f0e2423ed31c8a7b552418fbe9c9293d0ef36ffdd8c7b91d3cf3bc63b5ecb6d35524034b1057ecea9c26cb0eb255aeb4a4c20572e1754a073247e.css' integrity='sha512-0HwbTzt/DiQj7THIp7VSQY&#43;&#43;nJKT0O82/92Me5HTzzvGO17LbTVSQDSxBX7OqcJssOslWutKTCBXLhdUoHMkfg=='>
+  <link rel="stylesheet" href='https://zhubicen.github.io/css/site.min.93355167a8783f17d2d032164c86cf0431660c9ae8da42ace2c85c4935e23faded78076536367be532a1852e3f87cfb935f8815d8c8a7b823cd33b027b0ad102.css' integrity='sha512-kzVRZ6h4PxfS0DIWTIbPBDFmDJro2kKs4shcSTXiP63teAdlNjZ75TKhhS4/h8&#43;5NfiBXYyKe4I80zsCewrRAg=='>
   <link rel="canonical" href="https://zhubicen.github.io/posts/cors/">
   <link rel="alternate" type="application/rss&#43;xml" href="https://zhubicen.github.io/index.xml" title="quick start">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -22,7 +22,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="referrer" content="no-referrer">
   <meta name="author" content="阿碧">
-  <meta name="description" content="对于非简单请求 或者初次请求失败后，浏览器会使用 options 方法发起 `preflight request&rsquo;
+  <meta name="description" content="对于非简单请求 或者初次请求失败后，浏览器会使用 options 方法发起 `preflight request&#39;
 preflight request 也就是通常所说的预检请求，如果预检请求失败，可能会出现如下的错误：
 Access to XMLHttpRequest at &#39;http://localhost:8080/security/&#39; from origin &#39;http://localhost:3000&#39; has been blocked by CORS policy: Response to preflight request doesn&#39;t pass access control check: No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource. preflight request 一般会包括一下几个信息：Access-Control-Request-Method 和 Access-Control-Request-Headers，以及一个 Origin 首部
 比如客户端在发起 DELETE 请求之前会发起如下的预检请求：
@@ -30,16 +30,17 @@ OPTIONS /resource/foo Access-Control-Request-Method: DELETE Access-Control-Reque
 HTTP/1.1 200 OK Content-Length: 0 Connection: keep-alive Access-Control-Allow-Origin: https://foo.">
 
   <meta property="og:title" content="CORS 和 Preflight Request" />
-<meta property="og:description" content="对于非简单请求 或者初次请求失败后，浏览器会使用 options 方法发起 `preflight request&rsquo;
+<meta property="og:description" content="对于非简单请求 或者初次请求失败后，浏览器会使用 options 方法发起 `preflight request&#39;
 preflight request 也就是通常所说的预检请求，如果预检请求失败，可能会出现如下的错误：
 Access to XMLHttpRequest at &#39;http://localhost:8080/security/&#39; from origin &#39;http://localhost:3000&#39; has been blocked by CORS policy: Response to preflight request doesn&#39;t pass access control check: No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource. preflight request 一般会包括一下几个信息：Access-Control-Request-Method 和 Access-Control-Request-Headers，以及一个 Origin 首部
 比如客户端在发起 DELETE 请求之前会发起如下的预检请求：
 OPTIONS /resource/foo Access-Control-Request-Method: DELETE Access-Control-Request-Headers: origin, x-requested-with Origin: https://foo.bar.org 如果服务器允许 DELETE 请求，就会发回如下的回应：
 HTTP/1.1 200 OK Content-Length: 0 Connection: keep-alive Access-Control-Allow-Origin: https://foo." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zhubicen.github.io/posts/cors/" />
+<meta property="og:url" content="https://zhubicen.github.io/posts/cors/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-05-26T13:28:26+08:00" />
 <meta property="article:modified_time" content="2020-05-26T13:28:26+08:00" />
+
 
 </head>
 <body><nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
@@ -143,13 +144,13 @@ HTTP/1.1 200 OK Content-Length: 0 Connection: keep-alive Access-Control-Allow-Or
       
       <a class="navbar-item" href="https://zhubicen.github.io/tags/mongodb/">
         
-        Mongo d b
+        Mongo db
         
       </a>
       
       <a class="navbar-item" href="https://zhubicen.github.io/tags/mysql/">
         
-        My sql
+        My SQL
         
       </a>
       
@@ -249,7 +250,7 @@ HTTP/1.1 200 OK Content-Length: 0 Connection: keep-alive Access-Control-Allow-Or
     <section class="section">
       <div class="container">
 <div class="content is-medium">
-  <p>对于<code>非简单请求</code> 或者初次请求失败后，浏览器会使用 <code>options</code> 方法发起 `preflight request&rsquo;</p>
+  <p>对于<code>非简单请求</code> 或者初次请求失败后，浏览器会使用 <code>options</code> 方法发起 `preflight request'</p>
 <p><img src="cors.assets/1590472178900.png" alt="1590472178900"></p>
 <p><code>preflight request</code> 也就是通常所说的预检请求，如果预检请求失败，可能会出现如下的错误：</p>
 <pre><code>Access to XMLHttpRequest at 'http://localhost:8080/security/' from origin 'http://localhost:3000' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.
@@ -268,7 +269,7 @@ Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE
 Access-Control-Max-Age: 86400
 </code></pre><p>预检请求会做如下的检查：</p>
 <ol>
-<li>检查当前 &lsquo;origin'是否在， 服务器发回的 response header 中的 Access-Control-Allow-Origin 中</li>
+<li>检查当前 &lsquo;origin&rsquo;是否在， 服务器发回的 response header 中的 Access-Control-Allow-Origin 中</li>
 <li>检查<code>access-control-request-method</code> (当前为 DELETE)，是否在 <code>Allow-Methods</code> 列表中</li>
 </ol>
 <p>因此上面失败的 log 意味着第二个检查的失败，此种情况是服务器根本没有返回 <code>Access-Control-Allow-Origin</code> 头部</p>
