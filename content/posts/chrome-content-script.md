@@ -17,3 +17,4 @@ Content scripts can communicate with their parent extension using message passin
 The parent extension can also open a channel to a content script in a given tab by callingchrome.tabs.connect(tabId).
 
 When a channel is opened from a content script to an extension, the onConnect event is fired in all views in the extension. Any view can receive the event. The event contains a Port object, which can be used by the extension view to communicate back to the content scrip
+
