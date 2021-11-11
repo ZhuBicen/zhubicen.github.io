@@ -17,7 +17,7 @@ tags: [Linux]
 
 解决了以上问题后就可以完美的把 Mac Mini 带回家中使用，并且可以远程到自带的 Ubuntu 桌面
 
-![image-20211111215803535](/Users/bzhu/Project/quickstart/content/posts/nodisplay_ubuntu.assets/image-20211111215803535.png)
+![image-20211111215803535](./nodisplay-ubuntu.assets/20211111215803535.png)
 
 有用的链接：
 [添加虚拟显示器](https://askubuntu.com/questions/453109/add-fake-display-when-no-monitor-is-plugged-in)
