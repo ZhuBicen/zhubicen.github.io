@@ -15,3 +15,9 @@ found no layout file for "HTML" for kind "home"
 ##  need hugo installed
 
 ## need go installed to run `go run ./bin/hugoutils.go`
+
+
+## How to start a new article
+```
+1. hugo new contnet/xxx.md
+```
