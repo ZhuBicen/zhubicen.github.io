@@ -1,4 +1,4 @@
-publishDir = "docs"
+publishDir = "public"
 baseURL = "https://zhubicen.github.io/"
 languageCode = "en-us"
 title = "quick start"
