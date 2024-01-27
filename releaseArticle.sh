@@ -1,11 +1,14 @@
-cd docs || exit 1
-git pull origin master || exit 1
-cd ..
-hugo || exit
+#!/bin/bash
 
-go run ./bin/HugoUtils.go || exit 1       
+set -ex
+pushd docs
+git pull origin master
+popd
 
-cd docs
+hugo
+
+pushd docs
 git add *
 git commit -m"New Article" -a
 git push origin HEAD:master
+popd
