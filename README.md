@@ -17,15 +17,11 @@ found no layout file for "HTML" for kind "home"
 
 ## need hugo installed
 
-## need go installed to run `go run ./bin/hugoutils.go`
-
 ## How to start a new article
 
 ```
 1. hugo new content posts/xxx.md
 2. edit the md
 3. After done change the draft status to False
-3. run hugo
-4. commit the submodule docs
 
 ```
