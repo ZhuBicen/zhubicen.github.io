@@ -36,3 +36,6 @@ EAGAIN Resource temporarily unavailable (may be the same value as EWOULDBLOCK) (
 非阻塞模式就是读写函数会立即获取当前数据后返回，而不会等数据的到来。
 
 边缘触发效率更高，但是要求读取数据时使用非阻塞的方式一直把数据读完
+
+epoll 支持水平出发和边缘触发
+select 只支持水平触发
