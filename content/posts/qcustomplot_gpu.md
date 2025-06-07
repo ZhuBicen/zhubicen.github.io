@@ -1,12 +1,12 @@
 ---
-title: "QCustomPlot bugs when GPU enabled"
+title: "QCustomPlot bugs when opengl enabled"
 date: 2025-06-07T17:37:55+08:00
 draft: false
 ---
 
-根据官方文档，GPU 是实验性的 feature, 打开 GPU 的选项后，在系统缩放不是 100% 的情况下，有图片显示不全的问题。当前的最新版本是：2.1.1。
+根据官方文档，openGL 是实验性的 feature, 打开 openGL 的选项后，在系统缩放不是 100% 的情况下，有图片显示不全的问题。当前的最新版本是：2.1.1。
 
-使用自带的 example enable GPU 后，在 system scale 为 100% 的情况下显示为：
+使用自带的 example enable OpenGL 后，在 system scale 为 100% 的情况下显示为：
 
 ![alt text](Snipaste_2025-06-07_18-21-49.png)
 
