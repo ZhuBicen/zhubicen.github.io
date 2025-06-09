@@ -59,4 +59,4 @@ jobs:
             --baseURL "${{ steps.pages.outputs.base_url }}/"
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@main
+        uses: actions/deploy-pages@v4
