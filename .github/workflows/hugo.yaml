@@ -61,15 +61,19 @@ jobs:
         run: |
           du -sh public/
           find public -type l -exec ls -l {} \;
-          find public -type l -delete # Optionally delete symlinks if found
-
-      - name: Analyze Directory Size
-        run: du -h public/* | sort -h
-
+          find public -type l -delete # Ensure symlinks are deleted 
+      - name: Validate Artifact Size
+        run: |
+          if [ "$(du -sh public/ | cut -f1)" -ge 10G ]; then
+              echo "Artifact size exceeds 10GB. Deployment aborted."
+              exit 1
+          fi 
       - name: Clean Up Artifact Directory
         run: |
           rm -rf public/unnecessary-folder
           find public -size +100M -delete # Deletes files larger than 100MB
+
+
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
