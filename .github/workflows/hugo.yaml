@@ -57,6 +57,10 @@ jobs:
             --gc \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
+      - name: Log Artifact Details
+        run: |
+          du -sh public/
+          find public -type l
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
