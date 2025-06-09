@@ -60,7 +60,16 @@ jobs:
       - name: Log Artifact Details
         run: |
           du -sh public/
-          find public -type l
+          find public -type l -exec ls -l {} \;
+          find public -type l -delete # Optionally delete symlinks if found
+
+      - name: Analyze Directory Size
+        run: du -h public/* | sort -h
+
+      - name: Clean Up Artifact Directory
+        run: |
+          rm -rf public/unnecessary-folder
+          find public -size +100M -delete # Deletes files larger than 100MB
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
