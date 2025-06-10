@@ -61,14 +61,16 @@ jobs:
         run: |
           du -sh public/
           find public -type l -exec ls -l {} \;
-          find public -type l -delete # Ensure symlinks are deleted 
+          find public -type f -links +1 -exec ls -l {} \;
           cd public && ls -ahlv && cd ..
           cd public && tree && cd ..
+
       - name: Clean Up Artifact Directory
         run: |
           rm -rf public/unnecessary-folder
+          find public -type l -delete # Ensure symlinks are deleted
+          find public -type f -links +1 -delete # Ensure hard links are deleted
           find public -size +100M -delete # Deletes files larger than 100MB
-
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
