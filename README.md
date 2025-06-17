@@ -17,10 +17,12 @@ found no layout file for "HTML" for kind "home"
 
 ## need hugo installed
 
-## How to start a new article
+## How to start a new article, using page bundle
 
 ```
-1. hugo new content posts/xxx.md
+1. mkdir -p content/posts/my-new-post
+2. hugo new posts/my-new-post/index.md
+3. ensure images under my-new-post dir
 2. edit the md
 3. After done change the draft status to False
 
